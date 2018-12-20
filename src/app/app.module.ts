@@ -1,5 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
+import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 
@@ -8,7 +11,12 @@ import { AppComponent } from './app.component';
     AppComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule,
+    HttpModule,
+    RouterModule.forRoot([
+      { path: '', loadChildren: '../app/layout/layout.module#LayoutModule'}
+    ], { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]
