@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  public popupLogin = false;
   constructor() { }
 
   ngOnInit() {
   }
 
+  login() {
+    this.popupLogin = true;
+  }
+
+  register() {
+    alert('b');
+  }
 }

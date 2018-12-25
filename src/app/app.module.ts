@@ -15,7 +15,8 @@ import { AppComponent } from './app.component';
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: '', loadChildren: '../app/layout/layout.module#LayoutModule'}
+      { path: '', redirectTo: '/wb', pathMatch: 'full' },
+      { path: 'wb', loadChildren: './layout/layout.module#LayoutModule'}
     ], { useHash: true })
   ],
   providers: [],
