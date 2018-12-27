@@ -3561,15 +3561,6 @@ tbody.collapse.in {
   .input-group-addon input[type="checkbox"] {
     margin-top: 0; }
 
-.input-group .form-control:first-child,
-.input-group-addon:first-child,
-.input-group-btn:first-child > .btn,
-.input-group-btn:first-child > .btn-group > .btn,
-.input-group-btn:first-child > .dropdown-toggle,
-.input-group-btn:last-child > .btn:not(:last-child):not(.dropdown-toggle),
-.input-group-btn:last-child > .btn-group:not(:last-child) > .btn {
-  border-bottom-right-radius: 0;
-  border-top-right-radius: 0; }
 
 .input-group-addon:first-child {
   border-right: 0; }
@@ -5856,12 +5847,7 @@ button.close {
 @media print {
   .hidden-print {
     display: none !important; } }
-.header-sky {
-  position: fixed;
-  z-index: 999;
-  right: 0;
-  left: 0;
-  top: 0; }
+
   .header-sky .bg-menu {
     background: #232323;
     -webkit-transition: all 0.2s ease-in-out;
@@ -5888,7 +5874,6 @@ button.close {
         color: #FFF; }
   .header-sky.header-top-sky .navbar {
     box-shadow: 0px 2px 3px #353333;
-    background: #080303;
     opacity: 0.9; }
   .header-sky .header-top {
     -webkit-transition: all 0.2s ease-in-out;
@@ -12152,19 +12137,11 @@ button.close {
             color: #8e7037;
             text-decoration: none; }
 
-.section-slider {
-  position: relative; }
   .section-slider.height-v .item img {
     width: 100%;
     height: 100%; }
   .section-slider.height-v-about .item img {
     width: 100%; }
-  .section-slider .check-avail {
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 6%;
-    z-index: 9; }
     .section-slider .check-avail.check-avail-v3 {
       position: initial;
       padding: 50px 0; }
@@ -12186,31 +12163,12 @@ button.close {
       flex-direction: row; }
       .section-slider .check-avail .container .arrival,
       .section-slider .check-avail .container .departure {
-        width: 27.2%;
+        width: 29.2%;
         background: #fff;
-        padding: 24px 26px 30px 35px;
+        padding: 4px 25px 30px 15px;
         cursor: pointer;
         overflow: hidden; }
-        .section-slider .check-avail .container .arrival input,
-        .section-slider .check-avail .container .departure input {
-          height: 55px;
-          border: none;
-          box-shadow: none;
-          padding-left: 0;
-          color: #b3b3b3;
-          font-family: 'Playfair', serif;
-          font-size: 37px;
-          padding-right: 0;
-          margin-bottom: 10px; }
-          @media (max-width: 1200px) {
-            .section-slider .check-avail .container .arrival input,
-            .section-slider .check-avail .container .departure input {
-              height: 47px;
-              font-size: 28px; } }
-          @media (max-width: 992px) {
-            .section-slider .check-avail .container .arrival input,
-            .section-slider .check-avail .container .departure input {
-              font-size: 25px; } }
+
         .section-slider .check-avail .container .arrival .input-group-addon,
         .section-slider .check-avail .container .departure .input-group-addon {
           background: #fff;
@@ -12271,9 +12229,6 @@ button.close {
         color: white;
         background: #8e7037;
         width: 16.3%; }
-        .section-slider .check-avail .container .find_btn:hover {
-          background: #fff;
-          border: 2px solid #8E7037; }
           .section-slider .check-avail .container .find_btn:hover .text-find {
             color: #8E7037; }
         .section-slider .check-avail .container .find_btn .text-find {

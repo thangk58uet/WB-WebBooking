@@ -1,0 +1,186 @@
+.date-title {
+    border: 1px solid #dadada;
+    height: 80px !important;
+    border-right: 3px solid #febb02;
+    &:last-child {
+        border-right: none;
+    }
+}
+
+.check-avail {
+    margin: 20px 0;
+    .container {
+        color: #383838;
+        border: 0;
+        background-color: #febb02;
+        padding: 4px;
+        border-radius: 4px;
+        width: 100%;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+}
+
+.section-slider .check-avail .date-title {
+    margin-right: 0px;
+}
+
+.width-25-percent {
+    width: 25% !important;
+}
+
+.width-20-percent {
+    width: 20% !important;
+}
+
+.section-slider .check-avail .container .find_btn {
+    .text-find {
+        padding-top: 30px;
+    }
+    background: #005999;
+}
+
+.from-date-box {
+    height: 34px;
+}
+
+.rooms .wrap-rooms .wrap-box .box-img {
+    height: 300px;
+}
+
+.padding-right-8 {
+    padding-right: 8px;
+    padding-left: 0px;
+}
+
+.padding-left-8 {
+    padding-left: 8px;
+    padding-right: 0px;
+}
+
+.uu-dai {
+    display: inline-block;
+    width: 100%;
+    ;
+    .uu-dai-1 {
+        border: 1px solid rgb(20, 20, 20);
+        float: left;
+        margin-right: 8px;
+    }
+    .uu-dai-2 {
+        border: 1px solid rgb(20, 20, 20);
+        float: left;
+        margin-left: 8px;
+    }
+}
+
+.title {
+    margin-top: 20px;
+    .container {
+        padding-left: 0px;
+        p {
+            font-size: 14px;
+            color: #383838;
+            font-family: inherit;
+        }
+    }
+}
+
+.sky-h3 {
+    font-size: 22px;
+}
+
+.view-more-news {
+    font-size: 15px;
+    margin-top: 10px;
+    span {
+        float: right;
+        text-decoration: underline;
+        color: rgb(30, 30, 238);
+    }
+}
+
+.four-boat {
+    .wrap-box {
+        position: relative;
+    }
+    .rooms-content {
+        position: absolute;
+        top: -10px;
+        left: 15px;
+        h4 {
+            color: white !important;
+        }
+    }
+    .price {
+        position: absolute;
+        z-index: 1;
+        top: 220px;
+        right: 25px;
+        background: #383838;
+        border-radius: 4px;
+        p {
+            color: white;
+            padding: 0px 10px 0px 10px;
+        }
+    }
+}
+
+.rooms-content {
+    text-transform: unset;
+    .sky-h4:hover {
+        text-decoration: underline;
+    }
+}
+
+.uu-dai-1 img,
+.uu-dai-2 img {
+    width: 40% !important;
+    padding: 25px;
+    float: left;
+}
+
+.uu-dai-1 .box-img,
+.uu-dai-2 .box-img {
+    height: 200px !important;
+    display: inline-block;
+    width: 100%;
+    text-align: left;
+    .text {
+        margin-top: 30px;
+        h4 {
+            font-size: 20px;
+        }
+        p {
+            color: black;
+            font-family: inherit;
+            padding-bottom: 20px;
+        }
+    }
+    a {
+        color: #07c;
+        font-weight: bold;
+        font-family: inherit;
+        border: 1px solid #07c;
+        padding: 10px;
+        margin-top: 10px;
+        cursor: pointer;
+        &:hover {
+            background: transparent;
+        }
+    }
+}
+
+.uu-dai-1 .wrap-box,
+.uu-dai-2 .wrap-box {
+    border: 1px solid #dadada;
+}
+
+.rooms .wrap-rooms .wrap-box .rooms-content {
+    text-transform: unset !important;
+}
+
+.pointer {
+    cursor: pointer;
+}

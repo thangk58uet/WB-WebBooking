@@ -8,6 +8,8 @@ import { LoginComponent } from '../component/login/login.component';
 import { MainComponent } from '../component/main/main.component';
 import { DxButtonModule, DxDataGridModule, DxDateBoxModule, DxLookupModule,
   DxPopupModule, DxSelectBoxModule, DxTemplateModule, DevExtremeModule } from 'devextreme-angular';
+import { TourDuThuyenComponent } from '../component/tour-du-thuyen/tour-du-thuyen.component';
+import { DetailsDuThuyenComponent } from '../component/details-du-thuyen/details-du-thuyen.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -29,7 +31,9 @@ import { DxButtonModule, DxDataGridModule, DxDateBoxModule, DxLookupModule,
         // {path: 'dashboard', loadChildren: '../../component/user/dashboard/dashboard.module#DashboardModule'},
         { path: 'main', component: MainComponent },
         // { path: 'test', component: TestComponent },
-        { path: 'login', component: LoginComponent }
+        { path: 'login', component: LoginComponent },
+        { path: 'tour', component: TourDuThuyenComponent },
+        { path: 'details', component: DetailsDuThuyenComponent }
       ]
     }]),
     DxSelectBoxModule,
@@ -44,7 +48,9 @@ import { DxButtonModule, DxDataGridModule, DxDateBoxModule, DxLookupModule,
     MainLayoutComponent,
     FooterComponent,
     LoginComponent,
-    MainComponent
+    MainComponent,
+    TourDuThuyenComponent,
+    DetailsDuThuyenComponent
   ]
 })
 export class LayoutModule { }

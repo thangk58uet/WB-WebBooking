@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
     RouterModule.forRoot([
       { path: '', redirectTo: '/wb', pathMatch: 'full' },
       { path: 'wb', loadChildren: './layout/layout.module#LayoutModule'}
-    ], { useHash: true })
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
