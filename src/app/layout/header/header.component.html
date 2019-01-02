@@ -1,46 +1,43 @@
 <header class="header-sky header-top-sky">
-  <div class="container">
-    <!--HEADER-TOP-->
-    <div class="header-top">
-      <div class="header-top-left">
-        <span>LOGO YACHTTOUR</span>
-      </div>
-      <div class="header-top-right">
-        <ul>
-          <li class="dropdown pointer"><a (click)="login()" title="Đăng nhập"
-              class="dropdown-toggle">Đăng Nhập</a></li>
-          <li class="dropdown pointer"><a (click)="register()" title="Đăng ký"
-              class="dropdown-toggle">Đăng ký</a></li>
-        </ul>
-      </div>
+    <div class="container">
+        <!--HEADER-TOP-->
+        <div class="header-top">
+            <div class="header-top-left">
+                <span [routerLink]="'/wb/main'" style="cursor: pointer;">LOGO YACHTTOUR</span>
+            </div>
+            <div class="header-top-right">
+                <ul>
+                    <li class="dropdown pointer"><a (click)="login()" title="Đăng nhập" class="dropdown-toggle">Đăng Nhập</a></li>
+                    <li class="dropdown pointer"><a (click)="register()" title="Đăng ký" class="dropdown-toggle">Đăng ký</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- END/HEADER-TOP -->
     </div>
-    <!-- END/HEADER-TOP -->
-  </div>
-  <!-- MENU-HEADER -->
-  <div class="menu-header">
-    <nav class="navbar">
-      <div class="container">
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li><a href="" title="Trang chủ">Trang chủ</a></li>
-            <li class="dropdown ">
-              <a href="" title="Du thuyền" class="dropdown-toggle"
-                data-toggle="dropdown">Du thuyền<b class="caret"></b></a>
-              <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                <li><a href="" title="">Du thuyền 1</a></li>
-                <li><a href="" title="">Du thuyền 2</a></li>
-                <li><a href="" title="">Du thuyền 3</a></li>
-                <li><a href="" title="">Du thuyền 4</a></li>
-              </ul>
-            </li>
-            <li class="dropdown ">
-              <a href="" title="Tour" class="dropdown-toggle"
-                data-toggle="dropdown">Tour<b class="caret"></b></a>
+    <!-- MENU-HEADER -->
+    <div class="menu-header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="" title="Trang chủ" [routerLink]="'/wb/main'">Trang chủ</a></li>
+                        <li class="dropdown ">
+                            <a href="" title="Du thuyền" class="dropdown-toggle" data-toggle="dropdown">Du thuyền<b class="caret"></b></a>
+                            <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
+                                <li><a href="" title="">NC 14</a></li>
+                                <li><a href="" title="">Leader 36</a></li>
+                                <li><a href="" title="">Cap Camarat 6.5 WA</a></li>
+                                <li><a href="" title="">Cap Camarat 7.5 DC</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="" title="Tour">Tour</a></li>
+
+                        <!--<li class="dropdown ">
+              <a href="" title="Tour" class="dropdown-toggle" data-toggle="dropdown">Tour<b class="caret"></b></a>
               <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
                 <li><a href="" title="">Guest Book</a></li>
                 <li class="submenu-hover1">
-                  <a href="" class="dropdown-toggle"
-                    data-toggle="dropdown">Events <b class="caret"></b></a>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
                   <ul class="dropdown-menu dropdown-margin">
                     <li><a href="">Events </a></li>
                     <li><a href="">Events Fullwidth</a></li>
@@ -48,44 +45,40 @@
                 </li>
                 <li><a href="" title="">Attractions</a></li>
                 <li class="submenu-hover1">
-                  <a href="" class="dropdown-toggle"
-                    data-toggle="dropdown">Blog <b class="caret"></b></a>
+                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
                   <ul class="dropdown-menu dropdown-margin">
                     <li><a href="">Blog </a></li>
                     <li><a href="">Blog Detail</a></li>
                   </ul>
                 </li>
               </ul>
-            </li>
-            <li class="dropdown ">
-              <a href="" title="Thẻ" class="dropdown-toggle"
-                data-toggle="dropdown">Thẻ<b class="caret"></b></a>
-              <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                <li><a href="" title="">Thẻ
-                    1</a></li>
-                <li><a href="" title="">Thẻ
-                    2</a></li>
-                <li><a href="" title="">Thẻ
-                    3</a></li>
-                <li><a href="" title="">Thẻ
-                    4</a></li>
-                <li><a href="" title="">Thẻ
-                    5</a></li>
-              </ul>
-            </li>
-            <li><a href="" title="Tin tức">Tin tức</a></li>
-            <li><a href="" title="Giới thiệu">Giới thiệu</a></li>
-            <li><a href="" title="Liên hệ">Liên hệ</a></li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-  </div>
-  <!-- END / MENU-HEADER -->
-  </header>
-
-  <dx-popup class="popup" [width]="450" [height]="900" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
-    <div *dxTemplate="let data of 'content'">
-      <app-login></app-login>
+            </li>-->
+                        <li class="dropdown ">
+                            <a href="" title="Thẻ" class="dropdown-toggle" data-toggle="dropdown">Thẻ<b class="caret"></b></a>
+                            <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
+                                <li><a href="" title="">Các loại thẻ Vip</a></li>
+                                <li><a href="" title="">Hướng dẫn sử dụng thẻ</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown ">
+                            <a href="" title="Tin tức" class="dropdown-toggle" data-toggle="dropdown">Tin tức<b class="caret"></b></a>
+                            <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
+                                <li><a href="" title="">Tin tức mới</a></li>
+                                <li><a href="" title="">Tin khuyến mại</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="" title="Giới thiệu">Giới thiệu</a></li>
+                        <li><a href="" title="Liên hệ">Liên hệ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
     </div>
-  </dx-popup>
+    <!-- END / MENU-HEADER -->
+</header>
+
+<dx-popup class="popup" [width]="450" [height]="900" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
+    <div *dxTemplate="let data of 'content'">
+        <app-login></app-login>
+    </div>
+</dx-popup>

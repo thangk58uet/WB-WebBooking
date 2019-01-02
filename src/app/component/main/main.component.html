@@ -12,17 +12,17 @@
                     <label>Địa điểm </label>
                     <div>
                         <select class="form-control">
-                  <option>Hà Nội</option>
-                  <option>Đà Nẵng</option>
-                  <option>TP.Hồ Chí Minh</option>
-                </select>
+                <option>Hà Nội</option>
+                <option>Đà Nẵng</option>
+                <option>TP.Hồ Chí Minh</option>
+              </select>
                     </div>
                 </div>
                 <div class="departure date-title ">
                     <label>Thời gian</label>
                     <div>
                         <!-- <input class="form-control" type="text">
-                <span class="input-group-addon"><img src="./assets/icon/date-icon.png" alt="#"></span> -->
+              <span class="input-group-addon"><img src="./assets/icon/date-icon.png" alt="#"></span> -->
                         <dx-date-box class="from-date-box" [(value)]="fromDate" [(max)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
                         </dx-date-box>
                     </div>
@@ -31,45 +31,45 @@
                     <label>Thuê trong</label>
                     <div>
                         <select class="form-control">
-                  <option>2h</option>
-                  <option>4h</option>
-                  <option>1 ngày 2 đêm</option>
-                </select>
+                <option>2h</option>
+                <option>4h</option>
+                <option>1 ngày 2 đêm</option>
+              </select>
                     </div>
                 </div>
                 <div class="arrival width-25-percent date-title ">
                     <label>Mức giá </label>
                     <div>
                         <select class="form-control">
-                  <option>< 5 triệu</option>
-                  <option>5 triệu - 10 triệu</option>
-                  <option>10 triệu - 20 triệu</option>
-                  <option>20 triệu - 30 triệu</option>
-                  <option>> 50 triệu</option>
-                </select>
+                <option>< 5 triệu</option>
+                <option>5 triệu - 10 triệu</option>
+                <option>10 triệu - 20 triệu</option>
+                <option>20 triệu - 30 triệu</option>
+                <option>> 50 triệu</option>
+              </select>
                     </div>
                 </div>
                 <div class="arrival width-20-percent date-title ">
                     <label>Người lớn</label>
                     <div>
                         <select class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                </select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
                     </div>
                 </div>
                 <div class="arrival width-20-percent date-title ">
                     <label>Trẻ em</label>
                     <div>
                         <select class="form-control">
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                </select>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+              </select>
                     </div>
                 </div>
-                <div class="find_btn date-title">
+                <div class="find_btn date-title" [routerLink]="'/wb/tour'">
                     <div class="text-find">
                         Tìm
                     </div>
@@ -79,7 +79,7 @@
     </section>
 
     <!-- OUR-ROOMS-->
-    <section class="rooms">
+    <section class="rooms padding-top-0 padding-bottom-0">
         <div class="container">
             <div class="wrap-rooms">
                 <div class="row">
@@ -118,7 +118,7 @@
                                         <div class="rooms-content">
                                             <h4 class="sky-h4">NC 14</h4>
                                         </div>
-                                        <div class="price">
+                                        <div class="price-gia">
                                             <p>Giá trung bình:</p>
                                             <p>VND 1.000.000/2h</p>
                                         </div>
@@ -132,7 +132,7 @@
                                         <div class="rooms-content" [routerLink]="'/wb/tour'">
                                             <h4 class="sky-h4">Leader 36</h4>
                                         </div>
-                                        <div class="price">
+                                        <div class="price-gia">
                                             <p>Giá trung bình:</p>
                                             <p>VND 4.000.000/2h</p>
                                         </div>
@@ -146,7 +146,7 @@
                                         <div class="rooms-content" [routerLink]="'/wb/tour'">
                                             <h4 class="sky-h4">Cap Camarat 6.5 WA</h4>
                                         </div>
-                                        <div class="price">
+                                        <div class="price-gia">
                                             <p>Giá trung bình:</p>
                                             <p>VND 2.000.000/2h</p>
                                         </div>
@@ -160,7 +160,7 @@
                                         <div class="rooms-content" [routerLink]="'/wb/tour'">
                                             <h4 class="sky-h4">Cap Camarat 7.5 DC</h4>
                                         </div>
-                                        <div class="price">
+                                        <div class="price-gia">
                                             <p>Giá trung bình:</p>
                                             <p>VND 3.000.000/2h</p>
                                         </div>

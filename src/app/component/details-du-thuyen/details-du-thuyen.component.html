@@ -1,87 +1,691 @@
-<div cz-shortcut-listen="true">
+<div cz-shortcut-listen="true details-du-thuyen">
 
-  <!-- OUR-ROOMS-->
-  <section class="rooms">
-    <div class="container">
-      <h2 class="title-room">Đặt Du Thuyền</h2>
-      <div class="outline"></div>
-      <p class="rooms-p">When you host a party or family reunion, the special celebrations let you streng then bonds
-        with</p>
-      <div class="wrap-rooms">
-        <div class="row">
-          <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
-            <div class="owl-stage-outer">
-              <div class="owl-stage" style="transform: translate3d(-2400px, 0px, 0px); transition: all 0s ease 0s; width: 8400px;">
-                <div class="owl-item cloned" style="width: 1200px;">
-                  <!-- CLONED -->
-                </div>
-                <div class="owl-item active" style="width: 1200px;">
-                  <!-- CLONED -->
-                </div>
-                <div class="owl-item" style="width: 1200px;">
-                  <div class="item ">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" style="width: 32.5%">
-                      <div class="wrap-box">
-
-	<div id="booking" class="section">
-		<div class="section-center">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4" style="width: 30%">
-						<div class="booking-form">
-              <p>Google Maps</p>
-              <p>Comment</p>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-                      </div>
+    <!-- OUR-ROOMS-->
+    <section class="section-slider height-v" id="top">
+        <div class="check-avail">
+            <div class="container">
+                <div class="arrival date-title ">
+                    <label>Địa điểm </label>
+                    <div>
+                        <select class="form-control">
+              <option>Hà Nội</option>
+              <option>Đà Nẵng</option>
+              <option>TP.Hồ Chí Minh</option>
+            </select>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 " style="width: 67.5%">
-                      <div class="wrap-box">
-                        <div class="box-img">
-                          <img src="./assets/images/our-2.jpg" class="img-responsive" alt="Double Room" title="Double Room">
-                        </div>
-                        <div class="rooms-content">
-                          <h4 class="sky-h4">Leader 36</h4>
-                          <p class="price">$320 / 1h</p>
-                        </div>
-                        <div style="background-color: yellow; height: 100px;">
-                          Ảnh
-                        </div>
-                        <p class="about-p">Contrary to popular belief, Lorem isn’t simply random text. It has roots in a of
-                          classical Latin literature from 45 BC, making it over 2000 years old. Avalon’s leading hotels with
-                          gracious island hospitality, thoughtful amenities and distinctive</p>
-                        <p class="about-p1">Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up
-                          one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage ...</p>
-                      </div>
-                    </div>
-
-                  </div>
                 </div>
-              </div>
+                <div class="departure date-title ">
+                    <label>Thời gian</label>
+                    <div>
+                        <!-- <input class="form-control" type="text">
+              <span class="input-group-addon"><img src="./assets/icon/date-icon.png" alt="#"></span> -->
+                        <dx-date-box class="from-date-box" [(value)]="fromDate" [(max)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                        </dx-date-box>
+                    </div>
+                </div>
+                <div class="arrival width-25-percent date-title ">
+                    <label>Thuê trong</label>
+                    <div>
+                        <select class="form-control">
+              <option>2h</option>
+              <option>4h</option>
+              <option>1 ngày 2 đêm</option>
+            </select>
+                    </div>
+                </div>
+                <div class="arrival width-25-percent date-title ">
+                    <label>Mức giá </label>
+                    <div>
+                        <select class="form-control">
+              <option>
+                < 5 triệu</option> <option>5 triệu - 10 triệu
+              </option>
+              <option>10 triệu - 20 triệu</option>
+              <option>20 triệu - 30 triệu</option>
+              <option>> 50 triệu</option>
+            </select>
+                    </div>
+                </div>
+                <div class="arrival width-20-percent date-title ">
+                    <label>Người lớn</label>
+                    <div>
+                        <select class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+                    </div>
+                </div>
+                <div class="arrival width-20-percent date-title ">
+                    <label>Trẻ em</label>
+                    <div>
+                        <select class="form-control">
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+            </select>
+                    </div>
+                </div>
+                <div class="find_btn date-title" [routerLink]="'/wb/tour'">
+                    <div class="text-find">
+                        Tìm
+                    </div>
+                </div>
             </div>
-            <div class="owl-nav">
-              <div class="owl-prev">prev</div>
-              <div class="owl-next">next</div>
-            </div>
-          </div>
         </div>
-      </div>
+    </section>
+    <section class="rooms">
+        <div class="container">
+
+            <div class="wrap-rooms">
+                <div class="row">
+                    <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+
+                            <div class="owl-stage" style="transform: translate3d(-2400px, 0px, 0px); transition: all 0s ease 0s; width: 8400px;">
+                                <div class="owl-item cloned" style="width: 1200px;">
+                                    <!-- CLONED -->
+                                </div>
+                                <div class="owl-item active" style="width: 1200px;">
+                                    <!-- CLONED -->
+                                </div>
+                                <div class="owl-item" style="width: 1200px;">
+                                    <div class="item ">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-0" style="width: 32.5%">
+                                            <div class="wrap-box">
+
+                                                <div class="section">
+                                                    <div class="booking-menu-left">
+                                                        <button class="btn-booking-now">Đặt ngay</button>
+                                                    </div>
+
+                                                    <div class="booking-menu-left">
+                                                        <div class="justify-content-center">
+                                                            <i class="bpg_logo"></i>
+                                                            <span class="text-bpg_logo">Chúng tôi luôn khớp giá</span>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="booking-menu-left">
+                                                        <div class="justify-content-center">
+                                                            <i class="fas fa-eye eye-fa-style"></i>
+                                                            <span class="text-bpg_logo">187 người đang tìm chỗ nghỉ ở LEADER</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <img class="google-map" src="../../../assets/images/google-map.jpg">
+                                                    </div>
+
+                                                    <div class="booking-menu-left">
+                                                        <span class="text-drive">Làm thế nào để đến Redhouse Backpacker Hostel từ Sân bay Liên
+                              Khương</span>
+                                                        <div class="booking-bus">
+                                                            <div class="justify-content-center">
+                                                                <i class="fas fa-bus bus-fa-style"></i>
+                                                                <span class="name-transport">Phương tiện công cộng</span>
+                                                                <span class="transport-time">5 phút</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                    <div class="booking-menu-left">
+                                                        <span class="text-drive">Bạn thích chỗ nghỉ này, nhưng vẫn chưa chắc chắn?</span>
+                                                        <button class="btn-hostel">Xem các hostel tương tự</button>
+                                                    </div>
+
+                                                    <div class="comment-customer">
+                                                        <span class="title-cmt">Điều khách yêu thích nhất:</span>
+                                                        <div class="text-customer-like">
+                                                            <span>“Rất yêu khách sạn này, vui vẻ, sạch sẽ và tiện nghi. Đặc biệt chị chủ vui tính
+                                chưa gặp ở nơi nào như thế, 2 chị nhà bếp chăm chỉ, dễ thưong và chiều khách. Tất cả
+                                làm nên một Đà Lạt hoàn hảo đến khó tin ”</span>
+                                                            <div class="info-customer">
+                                                                <span class="avata-customer"></span>
+                                                                <div class="customer-content">
+                                                                    <span class="name-customer">Quỳnh</span>
+                                                                    <span class="country-customer"><img class="country-icon" src="../../../assets/images/covietnam.jpg">Việt
+                                    Nam</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-customer-like">
+                                                            <span>“Rất yêu khách sạn này, vui vẻ, sạch sẽ và tiện nghi. Đặc biệt chị chủ vui tính
+                                chưa gặp ở nơi nào như thế, 2 chị nhà bếp chăm chỉ, dễ thưong và chiều khách. Tất cả
+                                làm nên một Đà Lạt hoàn hảo đến khó tin ”</span>
+                                                            <div class="info-customer">
+                                                                <span class="avata-customer"></span>
+                                                                <div class="customer-content">
+                                                                    <span class="name-customer">Quỳnh</span>
+                                                                    <span class="country-customer"><img class="country-icon" src="../../../assets/images/covietnam.jpg">Việt
+                                    Nam</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="text-customer-like">
+                                                            <span>“Rất yêu khách sạn này, vui vẻ, sạch sẽ và tiện nghi. Đặc biệt chị chủ vui tính
+                                chưa gặp ở nơi nào như thế, 2 chị nhà bếp chăm chỉ, dễ thưong và chiều khách. Tất cả
+                                làm nên một Đà Lạt hoàn hảo đến khó tin ”</span>
+                                                            <div class="info-customer">
+                                                                <span class="avata-customer"></span>
+                                                                <div class="customer-content">
+                                                                    <span class="name-customer">Quỳnh</span>
+                                                                    <span class="country-customer"><img class="country-icon" src="../../../assets/images/covietnam.jpg">Việt
+                                    Nam</span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 67.5%">
+                                            <div class="category-header">
+                                                <div>Thông tin du thuyền và giá</div>
+                                                <div>Tiện nghi</div>
+                                                <div>Quy tắc chung</div>
+                                                <div>Ghi chú</div>
+                                                <div>Đánh giá của khách(333)</div>
+                                            </div>
+                                            <div class="boat-details-description">
+                                                <h2>Leader 36</h2>
+                                                <p>11 Biet Thu, Nha Trang, Việt Nam – <span style="color: blue; text-decoration: underline">Vị
+                            trí xuất sắc - hiển thị bản đồ</span></p>
+                                            </div>
+                                            <div class="wrap-box">
+                                                <div class="box-img" style="border: 1px solid #dadada">
+                                                    <img src="./assets/images/du-thuyen-3.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="padding:25px">
+                                                </div>
+                                                <div class="list-image">
+                                                    <a href="">1</a>
+                                                    <a href="">22</a>
+                                                    <a href="">3</a>
+                                                    <a href="">4</a>
+                                                    <a href="">5</a>
+                                                    <a href="">6</a>
+                                                    <a href="">7</a>
+                                                    <a href="">8</a>
+                                                    <a href="">1</a>
+                                                    <a href="">22</a>
+                                                    <a href="">3</a>
+                                                    <a href="">4</a>
+                                                    <a href="">5</a>
+                                                    <a href="">6</a>
+                                                    <a href="">7</a>
+                                                    <a href="">8</a>
+                                                    <a href="">1</a>
+                                                    <a href="">22</a>
+                                                    <a href="">3</a>
+                                                    <a href="">4</a>
+                                                    <a href="">5</a>
+                                                    <a href="">6</a>
+                                                    <a href="">7</a>
+                                                    <a href="">8</a>
+                                                    <a href="">1</a>
+                                                    <a href="">22</a>
+                                                    <a href="">3</a>
+                                                    <a href="">4</a>
+                                                    <a href="">5</a>
+                                                    <a href="">6</a>
+                                                    <a href="">7</a>
+                                                    <a href="">8</a>
+                                                </div>
+                                                <div class="text-des-details">
+                                                    <div>
+                                                        <div class="text-left">
+                                                            <h4>Một trong những lựa chọn hàng đầu của chúng tôi ở Leader 36</h4>
+                                                            <p>Nằm ở thành phố Nha Trang, Legend Sea Hotel cung cấp các phòng nghỉ hiện đại và trang nhã với truy cập Wi-Fi miễn phí trong toàn bộ khuôn viên. Khách sạn có hồ bơi ngoài trời trên tầng mái, trung
+                                                                tâm thể dục và chỗ đỗ xe miễn phí ngay trong khuôn viên. Các phòng và suite máy lạnh tại đây có sàn lát gỗ, tủ quần áo, két an toàn cá nhân, minibar cũng như truyền hình cáp. Phòng tắm riêng
+                                                                đi kèm bồn tắm hoặc vòi sen, dép, áo choàng tắm và máy sấy tóc. Tại Legend Sea Hotel, du khách có thể đến quầy lễ tân 24 giờ để được hỗ trợ với các dịch vụ giữ hành lý, giặt là, cho thuê
+                                                                xe đạp và sắp xếp tour du lịch. Các dịch vụ mát-xa và đưa đón sân bay cũng được cung cấp với một khoản phụ phí. Du khách có thể thưởng thức tuyển chọn các món ngon của địa phương và châu
+                                                                Á tại nhà hàng của khách sạn. Quầy bar có đủ loại đồ uống giải khát cho khách chọn. Khách sạn nằm trong bán kính chỉ 300 m từ Bãi biển Nha Trang. Sân bay Quốc tế Cam Ranh cách đó khoảng 27
+                                                                km. Đây là khu vực ở Nha Trang mà khách yêu thích, theo các đánh giá độc lập. Chỗ nghỉ này là một trong những vị trí được đánh giá tốt nhất ở Nha Trang! Khách thích nơi đây hơn so với những
+                                                                chỗ nghỉ khác trong khu vực. Các cặp đôi đặc biệt thích địa điểm này — họ cho điểm 9,3 cho kỳ nghỉ dành cho 2 người. Khách sạn này cũng được đánh giá là đáng giá tiền nhất ở Nha Trang! Khách
+                                                                sẽ tiết kiệm được nhiều hơn so với nghỉ tại những chỗ nghỉ khác ở thành phố này. Chúng tôi sử dụng ngôn ngữ của bạn!</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <p>Khách yêu thích chỗ này vì...</p>
+                                                        <p> Nằm tại khu vực được đánh giá cao nhất ở Nha Trang, khách sạn này có điểm vị trí xuất sắc 9,3</p>
+                                                        <p>Đồ Ăn Ngon Tuyệt: Bạn rất nên dùng các bữa ăn ở đây</p>
+                                                        <p>Bạn muốn ngủ thật ngon? Khách sạn này được đánh giá cao nhờ những chiếc giường thoải mái.
+                                                        </p>
+                                                        <p>Wifi miễn phí</p>
+                                                        <p>Đặt ngay</p>
+                                                    </div>
+                                                </div>
+                                                <div class="background-green">
+                                                    <h4>Giữ giá tốt cho kỳ nghỉ sắp tới của bạn</h4>
+                                                    <p>Xác nhận tức thời và hủy MIỄN PHÍ đối với hầu hết tất cả các du thuyền!</p>
+                                                </div>
+
+                                            </div>
+                                            <div id="availability_target" class="hp-availability-section js-hp-availability-section">
+                                                <a name="availability"></a>
+                                                <div class="hp-section-header hp-section-header--with-badge">
+                                                    <h2 class="hp-dates-summary__header" id="availability_target" name="availability_target">
+                                                        Du thuyền sẵn có
+                                                    </h2>
+
+                                                </div>
+                                                <div class="hp-section hp-section__exp-highlight hp-section__highlighted">
+                                                    <div class="hp-section-row">
+                                                        <p class="availability-sub-header">
+                                                            Bạn muốn sử dụng du thuyền vào lúc nào?
+                                                        </p>
+                                                    </div>
+                                                    <div class="lp_bold_date_picker_error js-lp_bold_date_picker_error" style="display:none;">
+                                                        <div class="fe_banner fe_banner__accessible fe_banner__red  ">
+                                                            <div class="fe_banner__message "> Xin lỗi, đặt phòng quá 30 đêm không thể được thực hiện.
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="lp_bold_date_picker_error--checkin js-lp_bold_date_picker_error" style="display:none;">
+                                                        <p class="availability-form-error">
+                                                            Vui lòng nhập ngày bạn muốn để xem phòng trống
+                                                        </p>
+                                                    </div>
+                                                    <div class="lp_bold_date_picker_error--checkout js-lp_bold_date_picker_error" style="display:none;">
+                                                        <p class="availability-form-error">
+                                                            Ngày khởi hành bạn chọn không tồn tại.
+                                                        </p>
+                                                    </div>
+                                                    <div class="lp_bold_date_picker_wrapper">
+                                                        <div class="hp-section-3-col">
+                                                            <div class="hp-section-row hp-input-label">
+                                                                <label class="rt-av-input-label-checkin" for="checkin-input">
+                                  Ngày nhận phòng
+                                </label>
+                                                            </div>
+                                                            <div class="hp-section-row hp-date-input lp_bold_date_picker_select lp_bold_date_picker_checkin placeholder">
+                                                                <svg class="bk-icon -experiments-calendar_checkin hp-date-picker-icon" height="16" width="16" viewBox="0 0 128 128">
+                                  <path d="M112 16H96V8h-8v8H40V8h-8v8H16c-4.4 0-8 3.9-8 8.7v86.6c0 4.8 3.6 8.7 8 8.7h96c4.4 0 8-3.9 8-8.7V24.7c0-4.8-3.6-8.7-8-8.7zm0 95.3a1.1 1.1 0 0 1-.2.7H16.2a1.1 1.1 0 0 1-.2-.7V40h96zM32 84h12v12H32zm38-16H58V56h12zm0 28H58V84h12zm26 0H84V84h12zm0-28H84V56h12zM48 52H28v20h20zm-6 14h-8v-8h8z" />
+                                </svg>
+                                                                <span>
+                                  Ngày nhận phòng
+                                </span>
+                                                                <i class="bicon-downchevron"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hp-section-3-col">
+                                                            <div class="hp-section-row hp-input-label">
+                                                                <label class="rt-av-input-label-checkout" for="checkout-input">
+                                  Ngày trả phòng
+                                </label>
+                                                            </div>
+                                                            <div class="hp-section-row hp-date-input lp_bold_date_picker_select lp_bold_date_picker_checkout placeholder">
+                                                                <svg class="bk-icon -experiments-calendar_checkout hp-date-picker-icon" height="16" width="16" viewBox="0 0 128 128">
+                                  <path d="M112 16H96V8h-8v8H40V8h-8v8H16c-4.4 0-8 3.9-8 8.7v86.6c0 4.8 3.6 8.7 8 8.7h96c4.4 0 8-3.9 8-8.7V24.7c0-4.8-3.6-8.7-8-8.7zm0 95.3a1.1 1.1 0 0 1-.2.7H16.2a1.1 1.1 0 0 1-.2-.7V40h96zM44 68H32V56h12zm0 28H32V84h12zm26-28H58V56h12zm0 28H58V84h12zm26-28H84V56h12zm4 12H80v20h20zm-6 14h-8v-8h8z" />
+                                </svg>
+                                                                <span>
+                                  Ngày trả phòng
+                                </span>
+                                                                <i class="bicon-downchevron"></i>
+                                                            </div>
+                                                        </div>
+                                                        <div class="hp-section-3-col">
+                                                            <div class="hp-section-row">
+                                                                &nbsp;
+                                                            </div>
+                                                            <button class="b-button b-button_primary hp-section-row lp_bold_date_picker_btn " type="submit">
+                                <span class="b-button__text">
+                                  Kiểm tra phòng trống
+                                </span>
+                              </button>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                    <div></div>
+                                                    <div class="hp-section-row hp-section-row__group-search">
+                                                        <div data-component="search/group/group" data-sb-id="main" data-sb-width="medium" data-sb-bbtool-searchbox="0" data-sb-group-children-hide="0" data-sb-group-children-ages-hide="0" data-sb-group-infants-hide="1" data-sb-group-pets-hide="0" data-sb-group-rooms-hide="0"
+                                                            data-sb-group-block-labels="0" data-sb-group-use_adults_label="0" data-sb-group-always-expanded="1" data-sb-group-use-bui-stepper="0" data-fe_sb_group_descriptive_dropdowns="0" data-fe_sb_universal_design="0"
+                                                            data-fe_sb_xpi="1" data-fe_remove_duplicate_ids="0" data-fe_sb_unique_id="">
+                                                            <div class="u-clearfix" data-render>
+                                                                <div class="sb-group__field sb-group__field-rooms">
+                                                                    <label class="sb-searchbox__label sb-group__field__label -inline -small " for="no_rooms">
+                                    Thuê trong
+                                  </label>
+                                                                    <select name="no_rooms" id="no_rooms" data-group-rooms-count aria-label="Số phòng">
+                                    <option value="1" selected="selected">
+                                      2h
+                                    </option>
+                                    <option value="2">
+                                      4h
+                                    </option>
+                                    <option value="3">
+                                      6h
+                                    </option>
+                                    <option value="4">
+                                      8h
+                                    </option>
+                                    <option value="5">
+                                      2 ngày 1 đêm
+                                    </option>
+
+                                  </select>
+                                                                </div>
+                                                                <div class="sb-group__field">
+                                                                    <label class="sb-searchbox__label sb-group__field__label -inline -small " for="group_adults">
+                                    Người lớn
+                                  </label>
+                                                                    <select name="group_adults" aria-label="Số người lớn" id="group_adults" data-group-adults-count>
+                                    <option value="1">
+                                      1
+                                    </option>
+                                    <option value="2" selected="selected">
+                                      2
+                                    </option>
+                                    <option value="3">
+                                      3
+                                    </option>
+                                    <option value="4">
+                                      4
+                                    </option>
+                                    <option value="5">
+                                      5
+                                    </option>
+                                    <option value="6">
+                                      6
+                                    </option>
+                                    <option value="7">
+                                      7
+                                    </option>
+                                    <option value="8">
+                                      8
+                                    </option>
+                                    <option value="9">
+                                      9
+                                    </option>
+                                    <option value="10">
+                                      10
+                                    </option>
+                                    <option value="11">
+                                      11
+                                    </option>
+                                    <option value="12">
+                                      12
+                                    </option>
+                                    <option value="13">
+                                      13
+                                    </option>
+                                    <option value="14">
+                                      14
+                                    </option>
+                                    <option value="15">
+                                      15
+                                    </option>
+                                    <option value="16">
+                                      16
+                                    </option>
+                                    <option value="17">
+                                      17
+                                    </option>
+                                    <option value="18">
+                                      18
+                                    </option>
+                                    <option value="19">
+                                      19
+                                    </option>
+                                    <option value="20">
+                                      20
+                                    </option>
+                                    <option value="21">
+                                      21
+                                    </option>
+                                    <option value="22">
+                                      22
+                                    </option>
+                                    <option value="23">
+                                      23
+                                    </option>
+                                    <option value="24">
+                                      24
+                                    </option>
+                                    <option value="25">
+                                      25
+                                    </option>
+                                    <option value="26">
+                                      26
+                                    </option>
+                                    <option value="27">
+                                      27
+                                    </option>
+                                    <option value="28">
+                                      28
+                                    </option>
+                                    <option value="29">
+                                      29
+                                    </option>
+                                    <option value="30">
+                                      30
+                                    </option>
+                                  </select>
+                                                                </div>
+                                                                <div class="sb-group__field sb-group-children ">
+                                                                    <label class="sb-searchbox__label sb-group__field__label -inline -small " for="group_children">
+                                    Trẻ em
+                                  </label>
+                                                                    <select name="group_children" aria-label="Số trẻ em" id="group_children" data-group-children-count data-component="search/group/children-ages-tooltip search/group/add-children-tooltip" data-add-children-tooltip="">
+                                    <option value="0" selected="selected">
+                                      0
+                                    </option>
+                                    <option value="1">
+                                      1
+                                    </option>
+                                    <option value="2">
+                                      2
+                                    </option>
+                                    <option value="3">
+                                      3
+                                    </option>
+                                    <option value="4">
+                                      4
+                                    </option>
+                                    <option value="5">
+                                      5
+                                    </option>
+                                    <option value="6">
+                                      6
+                                    </option>
+                                    <option value="7">
+                                      7
+                                    </option>
+                                    <option value="8">
+                                      8
+                                    </option>
+                                    <option value="9">
+                                      9
+                                    </option>
+                                    <option value="10">
+                                      10
+                                    </option>
+                                  </select>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <table class="roomstable rt_no_dates dr_rt_no_dates js-dr_rt_no_dates __big-buttons rt_lightbox_enabled roomstable-no-dates-expanded" id="maxotel_rooms" cellspacing="0" border="2">
+                                                <thead data-has="">
+                                                    <tr id="maxotel_table_header">
+                                                        <th class="figure">
+                                                            Phù hợp cho
+                                                        </th>
+                                                        <th>Các tour tương ứng với du thuyền</th>
+                                                        <th class="figure"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr class="odd">
+                                                        <td class="occ_no_dates" style="border-right: 1px solid #5bbaff; border-left: 0 none;">
+                                                            <span class="person" title="Sức chứa tiêu chuẩn: 2">
+                                <i class="fa fa-user"></i><i class="fa fa-user"></i>
+                              </span>
+                                                        </td>
+                                                        <td class="ftd roomType">
+                                                            <!-- start: roomAvailability_roomType -->
+                                                            <div id="31386307">
+                                                                <div class="room-info" id="RD31386307">
+                                                                    <a class="jqrt togglelink" href="#RD31386307" data-room-name-en="Superior Double Room">
+                                                                        <i class="rt_room_type_ico bicon-triangleright"></i> Tour 2h
+                                                                    </a>
+                                                                    <div class="bed-types-wrapper">
+                                                                        <ul class="rt-bed-types">
+                                                                            <li class="rt-bed-type">
+                                                                                <span>1 giường đôi<i class="bicon bicon-double"></i></span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end: roomAvailability_roomType -->
+                                                            </div>
+                                                        </td>
+                                                        <td class="rt_show_dates">
+                                                            <span class="b-button">Hiển thị giá</span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="occ_no_dates" style="border-right: 1px solid #5bbaff; border-left: 0 none;">
+                                                            <span class="person" title="Sức chứa tiêu chuẩn: 2"><i class="fa fa-user"></i><i class="fa fa-user"></i></span>
+                                                        </td>
+                                                        <td class="ftd roomType">
+                                                            <!-- start: roomAvailability_roomType -->
+                                                            <div id="31386308">
+                                                                <div class="room-info" id="RD31386308">
+                                                                    <a class="jqrt togglelink" href="#RD31386308" data-room-name-en="Deluxe Twin Room">
+                                                                        <i class="rt_room_type_ico bicon-triangleright"></i> Tour 4h
+                                                                    </a>
+                                                                    <div class="bed-types-wrapper">
+                                                                        <ul class="rt-bed-types">
+                                                                            <li class="rt-bed-type">
+                                                                                <span>2 giường đơn<i class="bicon bicon-singles"></i></span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end: roomAvailability_roomType -->
+                                                            </div>
+                                                        </td>
+                                                        <td class="rt_show_dates">
+                                                            <span class="b-button">Hiển thị giá</span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="odd">
+                                                        <td class="occ_no_dates" style="border-right: 1px solid #5bbaff; border-left: 0 none;">
+                                                            <span class="person" title="Sức chứa tiêu chuẩn: 2"><i class="fa fa-user"></i><i class="fa fa-user"></i></span>
+                                                        </td>
+                                                        <td class="ftd roomType">
+                                                            <!-- start: roomAvailability_roomType -->
+                                                            <div id="31386309">
+                                                                <div class="room-info" id="RD31386309">
+                                                                    <a class="jqrt togglelink" href="#RD31386309" data-room-name-en="Deluxe Double Room with City View">
+                                                                        <i class="rt_room_type_ico bicon-triangleright"></i> Tour 6h
+                                                                    </a>
+                                                                    <div class="bed-types-wrapper">
+                                                                        <ul class="rt-bed-types">
+                                                                            <li class="rt-bed-type">
+                                                                                <span>1 giường đôi lớn<i class="bicon bicon-double"></i></span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end: roomAvailability_roomType -->
+                                                            </div>
+                                                        </td>
+                                                        <td class="rt_show_dates">
+                                                            <span class="b-button">Hiển thị giá</span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="occ_no_dates" style="border-right: 1px solid #5bbaff; border-left: 0 none;">
+                                                            <span class="person" title="Sức chứa tiêu chuẩn: 3"><i class="fa fa-user"></i><i class="fa fa-user"></i><i
+                                  class="fa fa-user"></i></span>
+                                                        </td>
+                                                        <td class="ftd roomType">
+                                                            <!-- start: roomAvailability_roomType -->
+                                                            <div id="31386310">
+                                                                <div class="room-info" id="RD31386310">
+                                                                    <a class="jqrt togglelink" href="#RD31386310" data-room-name-en="Premier Triple Room">
+                                                                        <i class="rt_room_type_ico bicon-triangleright"></i> Tour 8h
+                                                                    </a>
+                                                                    <div class="bed-types-wrapper">
+                                                                        <ul class="rt-bed-types">
+                                                                            <li class="rt-bed-type">
+                                                                                <span>1 giường đơn<i class="bicon bicon-bed"></i></span> và
+                                                                            </li>
+                                                                            <li class="rt-bed-type">
+                                                                                <span>1 giường đôi lớn<i class="bicon bicon-double"></i></span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end: roomAvailability_roomType -->
+                                                            </div>
+                                                        </td>
+                                                        <td class="rt_show_dates">
+                                                            <span class="b-button">Hiển thị giá</span>
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr class="odd">
+                                                        <td class="occ_no_dates" style="border-right: 1px solid #5bbaff; border-left: 0 none;">
+                                                            <span class="person" title="Sức chứa tiêu chuẩn: 4"><i class="fa fa-user"></i><i class="fa fa-user"></i><i
+                                  class="fa fa-user"></i><i class="fa fa-user"></i></span>
+                                                        </td>
+                                                        <td class="ftd roomType">
+                                                            <!-- start: roomAvailability_roomType -->
+                                                            <div id="31386311">
+                                                                <div class="room-info" id="RD31386311">
+                                                                    <a class="jqrt togglelink" href="#RD31386311" data-room-name-en="Family Room with window">
+                                                                        <i class="rt_room_type_ico bicon-triangleright"></i> Tour 2 ngày 1 đêm
+                                                                    </a>
+                                                                    <div class="bed-types-wrapper">
+                                                                        <ul class="rt-bed-types">
+                                                                            <li class="rt-bed-type">
+                                                                                <span>2 giường đôi lớn<i class="bicon bicon-double"></i></span>
+                                                                            </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- end: roomAvailability_roomType -->
+                                                            </div>
+                                                        </td>
+                                                        <td class="rt_show_dates">
+                                                            <span class="b-button">Hiển thị giá</span>
+                                                        </td>
+                                                    </tr>
+
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="owl-nav">
+                            <div class="owl-prev">prev</div>
+                            <div class="owl-next">next</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+    </section>
+    <!-- END / ROOMS -->
+
+    <!--END / SROLL TOP-->
+    <!-- LOAD JQUERY -->
+
+    <div class="awe-popup-overlay" id="awe-popup-overlay"></div>
+    <div class="awe-popup-wrap" id="awe-popup-wrap">
+        <div class="awe-popup-content"></div>
+        <span class="awe-popup-close" id="awe-popup-close"></span>
     </div>
-    <!-- /container -->
-  </section>
-  <!-- END / ROOMS -->
-
-  <!--END / SROLL TOP-->
-  <!-- LOAD JQUERY -->
-
-  <div class="awe-popup-overlay" id="awe-popup-overlay"></div>
-  <div class="awe-popup-wrap" id="awe-popup-wrap">
-    <div class="awe-popup-content"></div>
-    <span class="awe-popup-close" id="awe-popup-close"></span>
-  </div>
 </div>

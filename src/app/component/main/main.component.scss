@@ -113,10 +113,10 @@
             color: white !important;
         }
     }
-    .price {
+    .price-gia {
         position: absolute;
         z-index: 1;
-        top: 220px;
+        top: 210px;
         right: 25px;
         background: #383838;
         border-radius: 4px;
@@ -183,4 +183,20 @@
 
 .pointer {
     cursor: pointer;
+}
+
+.padding-top-0 {
+    padding-top: 0;
+}
+
+.padding-bottom-0 {
+    padding-bottom: 0;
+}
+
+.booking-form {
+    background-color: #febb02 !important;
+}
+
+.section .section-center {
+    left: 5px !important;
 }

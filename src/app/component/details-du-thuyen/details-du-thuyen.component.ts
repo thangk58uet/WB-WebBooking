@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DetailsDuThuyenComponent implements OnInit {
 
+  public fromDate;
+  public toDate;
   constructor() { }
 
   ngOnInit() {
