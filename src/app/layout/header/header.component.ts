@@ -1,3 +1,4 @@
+import { LoginService } from './../../component/login/login.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -10,13 +11,18 @@ export class HeaderComponent implements OnInit {
   public popupLogin = false;
   public toDate;
   public fromDate;
-  constructor() { }
+  constructor(public loginService: LoginService) { }
 
   ngOnInit() {
+    if (sessionStorage.getItem('token')) {
+      this.loginService.isLogin = true;
+    } else {
+      this.loginService.isLogin = false;
+    }
   }
 
   login() {
-    this.popupLogin = true;
+    this.loginService.popupLogin = true;
   }
 
   register() {

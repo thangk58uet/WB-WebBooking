@@ -1,0 +1,12 @@
+.pagin {
+    float: right;
+}
+
+.normal {
+    cursor: pointer;
+}
+
+.pagin .pagination .active a {
+    background-color: #229288;
+    border-color: #229288;
+}

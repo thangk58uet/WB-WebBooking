@@ -1,4 +1,4 @@
-<header class="header-sky header-top-sky">
+<div class="header-sky header-top-sky">
     <div class="container">
         <!--HEADER-TOP-->
         <div class="header-top">
@@ -6,10 +6,14 @@
                 <span [routerLink]="'/wb/main'" style="cursor: pointer;">LOGO YACHTTOUR</span>
             </div>
             <div class="header-top-right">
-                <ul>
-                    <li class="dropdown pointer"><a (click)="login()" title="Đăng nhập" class="dropdown-toggle">Đăng Nhập</a></li>
-                    <li class="dropdown pointer"><a (click)="register()" title="Đăng ký" class="dropdown-toggle">Đăng ký</a></li>
-                </ul>
+                <div *ngIf="loginService.isLogin === false">
+                    <button type="button" (click)="login()" title="Đăng nhập">Đăng nhập</button>
+                    <button type="button" (click)="register()" title="Đăng ký">Đăng ký</button>
+                </div>
+                <div *ngIf="loginService.isLogin === true" class="user-info">
+                    <a title="Admin" class="dropdown-toggle" style="color: white">Xin chào Admin</a>
+                    <img src="./assets/images/our-2.jpg" class="img-responsive" title="Admin" (click)="toggleUserMenu()">
+                </div>
             </div>
         </div>
         <!-- END/HEADER-TOP -->
@@ -31,28 +35,6 @@
                             </ul>
                         </li>
                         <li><a href="" title="Tour">Tour</a></li>
-
-                        <!--<li class="dropdown ">
-              <a href="" title="Tour" class="dropdown-toggle" data-toggle="dropdown">Tour<b class="caret"></b></a>
-              <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                <li><a href="" title="">Guest Book</a></li>
-                <li class="submenu-hover1">
-                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Events <b class="caret"></b></a>
-                  <ul class="dropdown-menu dropdown-margin">
-                    <li><a href="">Events </a></li>
-                    <li><a href="">Events Fullwidth</a></li>
-                  </ul>
-                </li>
-                <li><a href="" title="">Attractions</a></li>
-                <li class="submenu-hover1">
-                  <a href="" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
-                  <ul class="dropdown-menu dropdown-margin">
-                    <li><a href="">Blog </a></li>
-                    <li><a href="">Blog Detail</a></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>-->
                         <li class="dropdown ">
                             <a href="" title="Thẻ" class="dropdown-toggle" data-toggle="dropdown">Thẻ<b class="caret"></b></a>
                             <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
@@ -75,9 +57,9 @@
         </nav>
     </div>
     <!-- END / MENU-HEADER -->
-</header>
+</div>
 
-<dx-popup class="popup" [width]="450" [height]="900" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
+<dx-popup class="popup" [width]="450" [height]="900" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupLogin">
     <div *dxTemplate="let data of 'content'">
         <app-login></app-login>
     </div>

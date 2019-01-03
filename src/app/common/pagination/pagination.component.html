@@ -1,0 +1,11 @@
+<div class="pagin">
+    <ul class="pagination pull-right">
+        <li title="First" [class]="isDisabledPreviousBtn() ? 'disabled' : 'normal'" (click)="previous(true)"><a>&laquo;</a></li>
+        <li title="Previous" [class]="isDisabledPreviousBtn() ? 'disabled' : 'normal'" (click)="previous()"><a>&lt;</a></li>
+        <li *ngFor="let pageNum of getPages()" (click)="goToPage(pageNum)" [class]="(currentPage === pageNum) ? 'active' : 'normal'">
+            <a>{{ pageNum }}</a>
+        </li>
+        <li title="Next" [class]="isDisabledNextBtn() ? 'disabled' : 'normal'" (click)="next()"><a>&gt;</a></li>
+        <li title="Last" [class]="isDisabledNextBtn() ? 'disabled' : 'normal'" (click)="next(true)"><a>&raquo;</a></li>
+    </ul>
+</div>

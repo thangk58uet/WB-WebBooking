@@ -10,6 +10,14 @@ import { DxButtonModule, DxDataGridModule, DxDateBoxModule, DxLookupModule,
   DxPopupModule, DxSelectBoxModule, DxTemplateModule, DevExtremeModule } from 'devextreme-angular';
 import { TourDuThuyenComponent } from '../component/tour-du-thuyen/tour-du-thuyen.component';
 import { DetailsDuThuyenComponent } from '../component/details-du-thuyen/details-du-thuyen.component';
+import { CommonHttpService } from '../service/common.http.service';
+import { LoginService } from '../component/login/login.service';
+import { HttpClientCustom } from '../service/httpclient.service';
+import { DownloadHelperService } from '../service/downloadHelper';
+import { UploadFileService } from '../service/upload-file.service';
+import { CookieService } from 'ngx-cookie-service';
+import { PaginationComponent } from '../common/pagination/pagination.component';
+import { FormsModule } from '@angular/forms';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -24,6 +32,7 @@ import { DetailsDuThuyenComponent } from '../component/details-du-thuyen/details
 @NgModule({
   imports: [
     CommonModule,
+    FormsModule,
     RouterModule.forChild([{
       path: '',
       component: MainLayoutComponent,
@@ -50,7 +59,16 @@ import { DetailsDuThuyenComponent } from '../component/details-du-thuyen/details
     LoginComponent,
     MainComponent,
     TourDuThuyenComponent,
-    DetailsDuThuyenComponent
+    DetailsDuThuyenComponent,
+    PaginationComponent
+  ],
+  providers: [
+    CommonHttpService,
+    LoginService,
+    HttpClientCustom,
+    DownloadHelperService,
+    UploadFileService,
+    CookieService
   ]
 })
 export class LayoutModule { }

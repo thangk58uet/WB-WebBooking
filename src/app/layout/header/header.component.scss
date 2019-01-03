@@ -1,38 +1,90 @@
 .header-sky.header-top-sky .header-top {
-  margin-top: 0 !important;
+    margin-top: 0 !important;
 }
-.pointer {
-  cursor: pointer;
-}
-.header-sky {
-  background: #003580;
-}
-.navbar-collapse {
-  border-top: 0.5px solid white;
-}
-.header-sky.header-top-sky .navbar .navbar-nav .dropdown-menu {
-  background: #003580;
-}
-.nav {
-  margin-left: -16px;
-  li {
-    padding: 25px 25px !important;
-    margin-right: 5px;
-    &:hover {
-      background-color: rgba(255,255,255,0.1);
-    }
-  }
-  a {
-    font-family: BlinkMacSystemFont,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif !important;
-    font-weight: 300 !important;
-    font-size: 17px !important;
-  }
 
+.pointer {
+    cursor: pointer;
 }
+
+.header-sky {
+    background: #003580;
+}
+
+.navbar-collapse {
+    border-top: 0.5px solid white;
+}
+
+.header-sky.header-top-sky .navbar .navbar-nav .dropdown-menu {
+    background: #003580;
+}
+
+.nav {
+    margin-left: -16px;
+    li {
+        padding: 20px 25px !important;
+        margin-right: 5px;
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+    a {
+        font-weight: 300 !important;
+        font-size: 17px !important;
+    }
+}
+
 .header-sky .navbar .navbar-nav li a {
-  text-transform: unset;
+    text-transform: unset;
 }
+
 .header-top-left {
-  color: black !important;
-  background: white;
+    color: black !important;
+    background: white;
+}
+
+.header-sky .header-top ul li a {
+    font-size: 13px !important;
+}
+
+.header-top-right img {
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 100%;
+    background-color: #bdbdbd;
+    border-radius: 50%;
+    border: 2px solid #fff!important;
+}
+
+.header-top-right button {
+    background-color: white;
+    border: 1px solid #dadada;
+    border-radius: 3px;
+    margin: 5px;
+    height: 30px;
+    line-height: 0;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.header-top-right .user-info {
+    position: relative;
+    a {
+        float: left;
+        margin-right: 32px;
+        padding-top: 10px;
+    }
+    img {
+        cursor: pointer;
+        float: right;
+        position: absolute;
+        top: 8px;
+        right: 0;
+    }
+}
+
+a {
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
 }

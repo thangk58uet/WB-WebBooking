@@ -23,6 +23,7 @@
     "core-js": "^2.5.4",
     "devextreme": "^18.2.4",
     "devextreme-angular": "^18.2.4",
+    "ngx-cookie-service": "^2.1.0",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
