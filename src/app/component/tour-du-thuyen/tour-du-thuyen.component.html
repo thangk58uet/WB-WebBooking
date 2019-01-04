@@ -14,81 +14,52 @@
                 <div class="row">
                     <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
                         <div class="owl-stage-outer">
-                            <div class="owl-stage" style="transition: all 0s ease 0s; width: 1110px;">
-                                <div class="owl-item" style="width: 1110px;">
+                            <div class="owl-stage">
+                                <div class="owl-item">
                                     <div class="item ">
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-0" style="width: 32.5%">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-0" style="width: 30%">
                                             <div class="wrap-box">
                                                 <div id="booking" class="section">
                                                     <div class="section-center">
                                                         <div class="container">
                                                             <div class="row">
-                                                                <div class="col-md-4" style="width: 30%">
+                                                                <div class="col-md-4" style="width: 30%; padding-left: 8px !important">
                                                                     <div class="booking-form">
                                                                         <form>
+                                                                            <h2 style="text-align: left">Tìm</h2>
                                                                             <div class="form-group">
-                                                                                <span class="form-label">Địa điểm</span>
-                                                                                <select class="form-control">
-                                                                                <option>Hà Nội</option>
-                                                                                <option>Đà Nẵng</option>
-                                                                                <option>TP.Hồ Chí Minh</option>
-                                                                              </select>
+                                                                                <p class="form-label">Địa điểm</p>
+                                                                                <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [searchEnabled]="true" (onSelectionChanged)="selectLocation($event)">
+                                                                                </dx-select-box>
+                                                                            </div>
+                                                                            <div class="form-group">
+                                                                                <p class="form-label">Loại du thuyền</p>
+                                                                                <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true" (onSelectionChanged)="selectTypeBoat($event)">
+                                                                                </dx-select-box>
                                                                             </div>
                                                                             <div class="row">
-                                                                                <div class="col-sm-6">
+                                                                                <div class="col-sm-6" style="padding-right: 5px">
                                                                                     <div class="form-group">
-                                                                                        <span class="form-label">Ngày thuê</span>
-                                                                                        <input class="form-control" type="date" required>
+                                                                                        <p class="form-label">Từ ngày</p>
+                                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" [(max)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                                                                                        </dx-date-box>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-sm-6">
+                                                                                <div class="col-sm-6" style="padding-left: 0">
                                                                                     <div class="form-group">
-                                                                                        <span class="form-label">Thời gian thuê</span>
-                                                                                        <select class="form-control">
-                                                                                        <option>1h</option>
-                                                                                        <option>2h</option>
-                                                                                        <option>4h</option>
-                                                                                      </select>
+                                                                                        <p class="form-label">Đến ngày</p>
+                                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                                                                                        </dx-date-box>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row">
-                                                                                <div class="col-sm-4">
-                                                                                    <div class="form-group">
-                                                                                        <span class="form-label">Mức giá</span>
-                                                                                        <select class="form-control">
-                                                                                        <option>< 5tr</option>
-                                                                                        <option>5tr-10tr</option>
-                                                                                        <option>10tr-20tr</option>
-                                                                                      </select>
-                                                                                        <span class="select-arrow"></span>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-4">
-                                                                                    <div class="form-group">
-                                                                                        <span class="form-label">Người lớn</span>
-                                                                                        <select class="form-control">
-                                                                                      <option>1</option>
-                                                                                      <option>2</option>
-                                                                                      <option>3</option>
-                                                                                    </select>
-                                                                                        <span class="select-arrow"></span>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-4">
-                                                                                    <div class="form-group">
-                                                                                        <span class="form-label">Trẻ con</span>
-                                                                                        <select class="form-control">
-                                                                                      <option>0</option>
-                                                                                      <option>1</option>
-                                                                                      <option>2</option>
-                                                                                    </select>
-                                                                                        <span class="select-arrow"></span>
-                                                                                    </div>
-                                                                                </div>
+                                                                            <div class="form-group">
+                                                                                <p class="form-label">Mức giá</p>
+                                                                                <dx-select-box placeholder="Chọn mức giá" [dataSource]="listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
+                                                                                </dx-select-box>
                                                                             </div>
                                                                             <div class="form-btn">
-                                                                                <button class="submit-btn">Tìm kiếm</button>
+                                                                                <button class="submit-btn" (click)="search()">Tìm</button>
                                                                             </div>
                                                                         </form>
                                                                     </div>
@@ -154,13 +125,13 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 67.5%">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0 padding-left-0" style="width: 68%">
                                             <div class="wrap-box search-result">
-                                                <h1 style="font-size: 24px;font-weight: bold">Đã tìm thấy 200 du thuyền</h1>
+                                                <h1 style="font-size: 24px;font-weight: bold">Đã tìm thấy {{ totalCount }} du thuyền</h1>
                                                 <p>3 lý do để du lịch: biển, bãi biển cát và hải sản</p>
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0" style="width: 67.5%">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 padding-left-0" style="width: 68%">
                                             <div class="category-header">
                                                 <div style="background: #0ab21b; color: white;">Đề xuất của chúng tôi</div>
                                                 <div>Giá (ưu tiên thấp nhất)</div>
@@ -168,13 +139,15 @@
                                                 <div>Xếp hạng sao và giá</div>
                                                 <div>Đánh giá hàng đầu</div>
                                             </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 padding-left-0" style="width: 68%" *ngFor="let item of listBoat?.list">
                                             <div class="wrap-box">
                                                 <div class="box-img">
-                                                    <div class="img-right"><img src="./assets/images/du-thuyen-1.jpg" class="img-responsive" alt="Double Room" title="Double Room"></div>
+                                                    <div class="img-right"><img src="{{ item?.linkImage }}" class="img-responsive" alt="Double Room" title="Double Room"></div>
                                                     <div class="text-content">
-                                                        <h2 [routerLink]="'/wb/details'">Leader 36</h2>
-                                                        <p> <span class="sub-text">Nha Trang – Xem trên bản đồ</span> (Cách trung tâm 350 m )</p>
-                                                        <p>Nằm ở thành phố Nha Trang, Legend Sea Hotel cung cấp các phòng nghỉ hiện đại và trang nhã với truy cập Wi-Fi miễn phí trong toàn bộ khuôn viên.</p>
+                                                        <h2 (click)="routerLinkDetail(item)">{{ item?.name }}</h2>
+                                                        <p> <span class="sub-text">{{ item?.province?.name }}– Xem trên bản đồ</span> (Cách trung tâm 350 m)</p>
+                                                        <p>{{ item?.description }}</p>
                                                         <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>
                                                     </div>
                                                     <div class="danh-gia">
@@ -185,131 +158,15 @@
                                                         <a>Hiển thị giá</a>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0" style="width: 67.5%">
-                                            <div class="wrap-box">
-                                                <div class="box-img">
-                                                    <div class="img-right"><img src="./assets/images/du-thuyen-2.jpg" class="img-responsive" alt="Double Room" title="Double Room"></div>
-                                                    <div class="text-content">
-                                                        <h2 [routerLink]="'/wb/details'">NC 14</h2>
-                                                        <p> <span class="sub-text">Nha Trang – Xem trên bản đồ</span> (Cách trung tâm 350 m )</p>
-                                                        <p>Nằm ở thành phố Nha Trang, Legend Sea Hotel cung cấp các phòng nghỉ hiện đại và trang nhã với truy cập Wi-Fi miễn phí trong toàn bộ khuôn viên.</p>
-                                                        <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>
-                                                    </div>
-                                                    <div class="danh-gia">
-                                                        <h4>Tốt</h4>
-                                                        <p style="margin-top: -6px">100 đánh giá</p>
-                                                        <span class="diem-danh-gia">8.9</span>
-                                                        <p style="color: #07c;font-weight:bold">Yêu thích</p>
-                                                        <a>Hiển thị giá</a>
-                                                    </div>
-                                                </div>
 
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0" style="width: 67.5%">
-                                            <div class="wrap-box">
-                                                <div class="box-img">
-                                                    <div class="img-right"><img src="./assets/images/du-thuyen-3.jpg" class="img-responsive" alt="Double Room" title="Double Room"></div>
-                                                    <div class="text-content">
-                                                        <h2 [routerLink]="'/wb/details'">Cap Camarat 7.5 DC</h2>
-                                                        <p> <span class="sub-text">Nha Trang – Xem trên bản đồ</span> (Cách trung tâm 350 m )</p>
-                                                        <p>Nằm ở thành phố Nha Trang, Legend Sea Hotel cung cấp các phòng nghỉ hiện đại và trang nhã với truy cập Wi-Fi miễn phí trong toàn bộ khuôn viên.</p>
-                                                        <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>
-                                                    </div>
-                                                    <div class="danh-gia">
-                                                        <h4>Tuyệt hảo</h4>
-                                                        <p style="margin-top: -6px">400 đánh giá</p>
-                                                        <span class="diem-danh-gia">9.4</span>
-                                                        <p style="color: #07c;font-weight:bold">Được ưa chuộng</p>
-                                                        <a>Hiển thị giá</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0" style="width: 67.5%">
-                                            <div class="wrap-box">
-                                                <div class="box-img">
-                                                    <div class="img-right"><img src="./assets/images/du-thuyen-4.jpg" class="img-responsive" alt="Double Room" title="Double Room"></div>
-                                                    <div class="text-content">
-                                                        <h2 [routerLink]="'/wb/details'">Cap Camarat 6.5 WA</h2>
-                                                        <p> <span class="sub-text">Nha Trang – Xem trên bản đồ</span> (Cách trung tâm 350 m )</p>
-                                                        <p>Nằm ở thành phố Nha Trang, Legend Sea Hotel cung cấp các phòng nghỉ hiện đại và trang nhã với truy cập Wi-Fi miễn phí trong toàn bộ khuôn viên.</p>
-                                                        <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>
-                                                    </div>
-                                                    <div class="danh-gia">
-                                                        <h4>Rất tốt</h4>
-                                                        <p style="margin-top: -6px">600 đánh giá</p>
-                                                        <span class="diem-danh-gia">8.5</span>
-                                                        <p style="color: #07c;font-weight:bold">Yêu thích</p>
-                                                        <a>Hiển thị giá</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0" style="width: 67.5%">
-                                            <div class="wrap-box">
-                                                <div class="box-img">
-                                                    <div class="img-right"><img src="./assets/images/du-thuyen-1.jpg" class="img-responsive" alt="Double Room" title="Double Room"></div>
-                                                    <div class="text-content">
-                                                        <h2 [routerLink]="'/wb/details'">Leader 36</h2>
-                                                        <p> <span class="sub-text">Nha Trang – Xem trên bản đồ</span> (Cách trung tâm 350 m )</p>
-                                                        <p>Nằm ở thành phố Nha Trang, Legend Sea Hotel cung cấp các phòng nghỉ hiện đại và trang nhã với truy cập Wi-Fi miễn phí trong toàn bộ khuôn viên.</p>
-                                                        <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>
-                                                    </div>
-                                                    <div class="danh-gia">
-                                                        <h4>Tuyệt vời</h4>
-                                                        <p style="margin-top: -6px">600 đánh giá</p>
-                                                        <span class="diem-danh-gia">9.7</span>
-                                                        <p style="color: #07c;font-weight:bold">Được ưa chuộng</p>
-                                                        <a>Hiển thị giá</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0" style="width: 67.5%">
-                                            <div class="wrap-box">
-                                                <div class="box-img">
-                                                    <div class="img-right"><img src="./assets/images/du-thuyen-2.jpg" class="img-responsive" alt="Double Room" title="Double Room"></div>
-                                                    <div class="text-content">
-                                                        <h2 [routerLink]="'/wb/details'">Cap Camarat 7.5 DC</h2>
-                                                        <p> <span class="sub-text">Nha Trang – Xem trên bản đồ</span> (Cách trung tâm 350 m )</p>
-                                                        <p>Nằm ở thành phố Nha Trang, Legend Sea Hotel cung cấp các phòng nghỉ hiện đại và trang nhã với truy cập Wi-Fi miễn phí trong toàn bộ khuôn viên.</p>
-                                                        <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>
-                                                    </div>
-                                                    <div class="danh-gia">
-                                                        <h4>Xuất Sắc</h4>
-                                                        <p style="margin-top: -6px">500 đánh giá</p>
-                                                        <span class="diem-danh-gia">9.8</span>
-                                                        <p style="color: #07c;font-weight:bold">Rất yêu thích</p>
-                                                        <a>Hiển thị giá</a>
-                                                    </div>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 pagination" style="width: 67.5%; left: 21%">
-                                            <a href="#">&laquo;</a>
-                                            <a href="#" class="active">1</a>
-                                            <a href="#">2</a>
-                                            <a href="#">3</a>
-                                            <a href="#">4</a>
-                                            <a href="#">5</a>
-                                            <a href="#">6</a>
-                                            <a href="#">&raquo;</a>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 padding-left-0 pagination" style="width: 68%">
+                                            <app-pagination [totalPages]="1" (goPage)="goToPage($event)" [pagesToShow]="5" [currentPage]="1"></app-pagination>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="owl-nav">
-                            <div class="owl-prev">prev</div>
-                            <div class="owl-next">next</div>
                         </div>
                     </div>
                 </div>

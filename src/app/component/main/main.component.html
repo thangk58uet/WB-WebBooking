@@ -11,42 +11,36 @@
                 <div class="arrival date-title ">
                     <label>Địa điểm </label>
                     <div>
-                        <select class="form-control">
-                <option>Hà Nội</option>
-                <option>Đà Nẵng</option>
-                <option>TP.Hồ Chí Minh</option>
-              </select>
+                        <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [searchEnabled]="true">
+                        </dx-select-box>
+                    </div>
+                </div>
+                <div class="arrival date-title ">
+                    <label>Loại du thuyền </label>
+                    <div>
+                        <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true">
+                        </dx-select-box>
                     </div>
                 </div>
                 <div class="departure date-title ">
-                    <label>Thời gian</label>
+                    <label>Từ ngày</label>
                     <div>
-                        <!-- <input class="form-control" type="text">
-              <span class="input-group-addon"><img src="./assets/icon/date-icon.png" alt="#"></span> -->
                         <dx-date-box class="from-date-box" [(value)]="fromDate" [(max)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
                         </dx-date-box>
                     </div>
                 </div>
-                <div class="arrival width-25-percent date-title ">
-                    <label>Thuê trong</label>
+                <div class="departure date-title ">
+                    <label>Đến ngày</label>
                     <div>
-                        <select class="form-control">
-                <option>2h</option>
-                <option>4h</option>
-                <option>1 ngày 2 đêm</option>
-              </select>
+                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                        </dx-date-box>
                     </div>
                 </div>
                 <div class="arrival width-25-percent date-title ">
                     <label>Mức giá </label>
                     <div>
-                        <select class="form-control">
-                <option>< 5 triệu</option>
-                <option>5 triệu - 10 triệu</option>
-                <option>10 triệu - 20 triệu</option>
-                <option>20 triệu - 30 triệu</option>
-                <option>> 50 triệu</option>
-              </select>
+                        <dx-select-box placeholder="Chọn mức giá" [dataSource]="listPrice" [searchEnabled]="true">
+                        </dx-select-box>
                     </div>
                 </div>
                 <div class="find_btn date-title" [routerLink]="'/wb/tour'">
@@ -64,7 +58,7 @@
             <div class="wrap-rooms">
                 <div class="row">
                     <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
-                        <div class="owl-item" style="width: 1110px;">
+                        <div class="owl-item">
                             <div class="item four-boat">
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-8 uu-dai-1">
                                     <div class="wrap-box">
@@ -90,62 +84,20 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-8">
-                                    <div class="wrap-box pointer" [routerLink]="'/wb/tour'">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" *ngFor="let item of boatType; let i = index" [ngClass]="i%2 === 0 ? 'padding-right-8' : 'padding-left-8'">
+                                    <div class="wrap-box pointer" (click)="routerLink(item?.name, item?.id)">
                                         <div class="box-img">
-                                            <img src="./assets/images/du-thuyen-1.jpg" class="img-responsive" alt="PLuxury Room" title="Luxury Room">
+                                            <img src="{{ item?.linkImage }}" class="img-responsive" alt="PLuxury Room" title="Luxury Room">
                                         </div>
                                         <div class="rooms-content">
-                                            <h4 class="sky-h4">NC 14</h4>
+                                            <h4 class="sky-h4">{{ item?.name }}</h4>
                                         </div>
                                         <div class="price-gia">
-                                            <p>Giá trung bình:</p>
-                                            <p>VND 1.000.000/2h</p>
+                                            <p>{{ item?.description}}</p>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-8">
-                                    <div class="wrap-box pointer" [routerLink]="'/wb/tour'">
-                                        <div class="box-img">
-                                            <img src="./assets/images/du-thuyen-2.jpg" class="img-responsive" alt="Double Room" title="Double Room">
-                                        </div>
-                                        <div class="rooms-content" [routerLink]="'/wb/tour'">
-                                            <h4 class="sky-h4">Leader 36</h4>
-                                        </div>
-                                        <div class="price-gia">
-                                            <p>Giá trung bình:</p>
-                                            <p>VND 4.000.000/2h</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-8">
-                                    <div class="wrap-box pointer" [routerLink]="'/wb/tour'">
-                                        <div class="box-img">
-                                            <img src="./assets/images/du-thuyen-3.jpg" class="img-responsive" alt="Family Room" title="Family Room">
-                                        </div>
-                                        <div class="rooms-content" [routerLink]="'/wb/tour'">
-                                            <h4 class="sky-h4">Cap Camarat 6.5 WA</h4>
-                                        </div>
-                                        <div class="price-gia">
-                                            <p>Giá trung bình:</p>
-                                            <p>VND 2.000.000/2h</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-8">
-                                    <div class="wrap-box pointer" [routerLink]="'/wb/tour'">
-                                        <div class="box-img">
-                                            <img src="./assets/images/du-thuyen-4.jpg" class="img-responsive" alt="Deluxe Room" title="Deluxe Room">
-                                        </div>
-                                        <div class="rooms-content" [routerLink]="'/wb/tour'">
-                                            <h4 class="sky-h4">Cap Camarat 7.5 DC</h4>
-                                        </div>
-                                        <div class="price-gia">
-                                            <p>Giá trung bình:</p>
-                                            <p>VND 3.000.000/2h</p>
-                                        </div>
-                                    </div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -164,7 +116,7 @@
             <div id="events-v2" class="owl-carousel owl-theme owl-loaded owl-drag">
 
                 <div class="owl-stage-outer">
-                    <div class="owl-stage" style="transition: all 0.25s ease 0s; width: 1100px;">
+                    <div class="owl-stage" style="transition: all 0.25s ease 0s">
                         <div class="owl-item active" style="width: 19%; margin-right: 10px;">
                             <div class="item">
                                 <div class="events-item">

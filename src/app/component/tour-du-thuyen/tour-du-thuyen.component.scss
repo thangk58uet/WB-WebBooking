@@ -7,7 +7,7 @@
         background: #cce1ff;
         border-right: 1px solid white;
         text-align: center;
-        padding: 8px 20.6px;
+        padding: 8px 17.6px;
         color: #07c;
         font-weight: bold;
         cursor: pointer;
@@ -81,7 +81,7 @@
         .danh-gia {
             width: 16%;
             float: right;
-            margin-top: -190px;
+            margin-top: -150px;
             text-align: left;
             h4 {
                 color: blue;
@@ -209,4 +209,34 @@
 .pagination a:hover:not(.active) {
     background-color: #ddd;
     border-radius: 5px;
+}
+
+#booking {
+    background: #febb02;
+    border: 1px solid #c6c6c6;
+    border-radius: 3px;
+    .booking-form {
+        margin-top: 15px;
+        margin-right: 8px;
+        p {
+            text-align: left;
+            font-size: 15px;
+            font-weight: 400 !important;
+            font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+        }
+        .form-btn {
+            margin-top: 25px;
+            button {
+                background-color: #07c;
+                color: white;
+                height: 50px;
+                padding: 8px 15px;
+                line-height: 1;
+                border: 2px solid white;
+                border-radius: 6px;
+                font-weight: 400 !important;
+                font-size: 23px;
+            }
+        }
+    }
 }

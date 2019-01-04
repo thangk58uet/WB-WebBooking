@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
@@ -6,7 +6,8 @@ import { HeaderComponent } from 'src/app/layout/header/header.component';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent implements OnInit {
 
