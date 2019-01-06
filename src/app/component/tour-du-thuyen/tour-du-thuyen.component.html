@@ -29,26 +29,26 @@
                                                                             <h2 style="text-align: left">Tìm</h2>
                                                                             <div class="form-group">
                                                                                 <p class="form-label">Địa điểm</p>
-                                                                                <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [searchEnabled]="true" (onSelectionChanged)="selectLocation($event)">
+                                                                                <dx-select-box placeholder="Chọn địa điểm" [dataSource]="commonService.listLocation" [searchEnabled]="true" [value]="commonService.location" (onSelectionChanged)="selectLocation($event)">
                                                                                 </dx-select-box>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <p class="form-label">Loại du thuyền</p>
-                                                                                <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true" (onSelectionChanged)="selectTypeBoat($event)">
+                                                                                <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true" [value]="commonService.boatType" (onSelectionChanged)="selectTypeBoat($event)">
                                                                                 </dx-select-box>
                                                                             </div>
                                                                             <div class="row">
                                                                                 <div class="col-sm-6" style="padding-right: 5px">
                                                                                     <div class="form-group">
                                                                                         <p class="form-label">Từ ngày</p>
-                                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" [(max)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" [(max)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
                                                                                         </dx-date-box>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-6" style="padding-left: 0">
                                                                                     <div class="form-group">
                                                                                         <p class="form-label">Đến ngày</p>
-                                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
                                                                                         </dx-date-box>
                                                                                     </div>
                                                                                 </div>
@@ -91,14 +91,6 @@
                                                         <div><input type="checkbox" value="1 sao"><span>Lễ tân phục vụ 24/24</span></div>
                                                     </div>
                                                     <div class="category">
-                                                        <h4>Tiện nghi</h4>
-                                                        <div><input type="checkbox" value="1 sao"><span>Wifi miễn phí</span></div>
-                                                        <div><input type="checkbox" name="2 sao"><span>Chỗ đỗ xe</span></div>
-                                                        <div><input type="checkbox" name="3 sao"><span>Xe đưa đón sân bay</span></div>
-                                                        <div><input type="checkbox" name="4 sao"><span>Trung tâm thể dục</span></div>
-                                                        <div><input type="checkbox" name="5 sao"><span>Phòng không hút thuốc</span></div>
-                                                    </div>
-                                                    <div class="category">
                                                         <h4>Tiện nghi phòng</h4>
                                                         <div><input type="checkbox" value="1 sao"><span>Phòng tắm riêng</span></div>
                                                         <div><input type="checkbox" name="2 sao"><span>Ban công</span></div>
@@ -110,14 +102,6 @@
                                                         <div><input type="checkbox" name="3 sao"><span>Tivi màn hình phẳng</span></div>
                                                         <div><input type="checkbox" name="4 sao"><span>Điều hòa không khí</span></div>
                                                         <div><input type="checkbox" name="5 sao"><span>Ấm đun nước điện</span></div>
-                                                    </div>
-                                                    <div class="category">
-                                                        <h4>Xếp hạng sao</h4>
-                                                        <div><input type="checkbox" value="1 sao"><span>1 sao</span></div>
-                                                        <div><input type="checkbox" name="2 sao"><span>2 sao</span></div>
-                                                        <div><input type="checkbox" name="3 sao"><span>3 sao</span></div>
-                                                        <div><input type="checkbox" name="4 sao"><span>4 sao</span></div>
-                                                        <div><input type="checkbox" name="5 sao"><span>5 sao</span></div>
                                                     </div>
                                                 </div>
                                                 <div class="google-map-tour">
@@ -133,11 +117,11 @@
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 padding-left-0" style="width: 68%">
                                             <div class="category-header">
-                                                <div style="background: #0ab21b; color: white;">Đề xuất của chúng tôi</div>
-                                                <div>Giá (ưu tiên thấp nhất)</div>
-                                                <div>Sao</div>
-                                                <div>Xếp hạng sao và giá</div>
-                                                <div>Đánh giá hàng đầu</div>
+                                                <div style="background: #0ab21b; color: white; width: 22.5%">Đề xuất của chúng tôi</div>
+                                                <div style="width: 22.5%">Giá (ưu tiên thấp nhất)</div>
+                                                <div style="width: 10%">Sao</div>
+                                                <div style="width: 22.5%">Xếp hạng sao và giá</div>
+                                                <div style="width: 22.5%">Đánh giá hàng đầu</div>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 padding-left-0" style="width: 68%" *ngFor="let item of listBoat?.list">
@@ -145,7 +129,7 @@
                                                 <div class="box-img">
                                                     <div class="img-right"><img src="{{ item?.linkImage }}" class="img-responsive" alt="Double Room" title="Double Room"></div>
                                                     <div class="text-content">
-                                                        <h2 (click)="routerLinkDetail(item)">{{ item?.name }}</h2>
+                                                        <h2 (click)="routerLinkDetail(item, item?.id)">{{ item?.name }}</h2>
                                                         <p> <span class="sub-text">{{ item?.province?.name }}– Xem trên bản đồ</span> (Cách trung tâm 350 m)</p>
                                                         <p>{{ item?.description }}</p>
                                                         <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>

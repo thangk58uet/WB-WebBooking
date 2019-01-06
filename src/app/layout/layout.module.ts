@@ -1,3 +1,4 @@
+import { TourDuThuyenService } from './../component/tour-du-thuyen/tour-du-thuyen.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
@@ -18,6 +19,13 @@ import { UploadFileService } from '../service/upload-file.service';
 import { CookieService } from 'ngx-cookie-service';
 import { PaginationComponent } from '../common/pagination/pagination.component';
 import { FormsModule } from '@angular/forms';
+import { CommonService } from '../service/common.service';
+import { RegisterComponent } from '../component/register/register.component';
+import { VerifyEmailComponent } from '../component/register/verify-email/verify-email.component';
+import { InformationComponent } from '../component/book-du-thuyen/information/information.component';
+import { VerifyInformationComponent } from '../component/book-du-thuyen/verify-information/verify-information.component';
+import { BookSuccessComponent } from './../component/book-du-thuyen/book-success/book-success.component';
+import { UserComponent } from '../component/user/user.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -31,7 +39,7 @@ import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
-    CommonModule,
+CommonModule,
     FormsModule,
     RouterModule.forChild([{
       path: '',
@@ -39,10 +47,14 @@ import { FormsModule } from '@angular/forms';
       children: [
         // {path: 'dashboard', loadChildren: '../../component/user/dashboard/dashboard.module#DashboardModule'},
         { path: 'main', component: MainComponent },
-        // { path: 'test', component: TestComponent },
         { path: 'login', component: LoginComponent },
         { path: 'tour', component: TourDuThuyenComponent },
-        { path: 'details', component: DetailsDuThuyenComponent }
+        { path: 'details', component: DetailsDuThuyenComponent },
+        { path: 'account/active', component: DetailsDuThuyenComponent},
+        { path: 'book/information', component: InformationComponent},
+        { path: 'book/verify-information', component: VerifyInformationComponent},
+        { path: 'book/confirm-information', component: BookSuccessComponent},
+        { path: 'user', component: UserComponent},
       ]
     }]),
     DxSelectBoxModule,
@@ -50,7 +62,7 @@ import { FormsModule } from '@angular/forms';
     DxPopupModule,
     DxTemplateModule,
     DxLookupModule,
-    DevExtremeModule,
+    DevExtremeModule
   ],
   declarations: [
     HeaderComponent,
@@ -60,7 +72,13 @@ import { FormsModule } from '@angular/forms';
     MainComponent,
     TourDuThuyenComponent,
     DetailsDuThuyenComponent,
-    PaginationComponent
+    PaginationComponent,
+    RegisterComponent,
+    VerifyEmailComponent,
+    InformationComponent,
+    VerifyInformationComponent,
+    BookSuccessComponent,
+    UserComponent
   ],
   providers: [
     CommonHttpService,
@@ -68,7 +86,9 @@ import { FormsModule } from '@angular/forms';
     HttpClientCustom,
     DownloadHelperService,
     UploadFileService,
-    CookieService
+    CookieService,
+    CommonService,
+    TourDuThuyenService
   ]
 })
 export class LayoutModule { }

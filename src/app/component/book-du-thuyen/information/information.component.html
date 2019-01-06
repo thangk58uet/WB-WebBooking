@@ -1,0 +1,170 @@
+<div cz-shortcut-listen="true book-du-thuyen" style="margin-bottom: 20px;">
+    <section class="rooms">
+        <div class="container">
+
+            <div class="wrap-rooms">
+                <div class="description">
+                    <p>
+                        <span>Chọn phòng ></span>
+                        <span>Nhập thông tin ></span>
+                        <span>Chi tiết cuối cùng ></span>
+                    </p>
+                </div>
+                <div class="row">
+                    <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+
+                            <div class="owl-stage">
+                                <div class="owl-item">
+                                    <div class="item ">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" style="width: 30%">
+                                            <div class="wrap-box">
+                                                <div class="section">
+                                                    <div class="booking-menu-left">
+                                                        <div class="details-information">
+                                                            <h4>Chi tiết đặt phòng của bạn</h4>
+                                                            <p>Nhận du thuyền: {{ commonService.detailsBook?.startHour }}h 06-01-2019</p>
+                                                            <p>Trả du thuyền: {{ commonService.detailsBook?.startHour + commonService.detailsBook?.duration }}h 06-01-2019</p>
+                                                            <p>Tổng thời gian: {{ commonService.detailsBook?.duration }}h</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <div class="details-information">
+                                                            <h4>Đặt phòng bao gồm:</h4>
+                                                            <p style="font-weight: normal; color: #0ab21b !important">Wifi miễn phí</p>
+                                                            <p style="font-weight: normal; color: #0ab21b !important">Chỗ đỗ xe miễn phí</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <div class="details-information">
+                                                            <h4>Các dịch vụ đi kèm:</h4>
+                                                            <div style="font-size: 15px; text-align: left"><input type="checkbox" style="margin: 10px">Tắm mát</div>
+                                                            <div style="font-size: 15px; text-align: left"><input type="checkbox" style="margin: 10px">Xông hơi</div>
+                                                            <div style="font-size: 15px; text-align: left"><input type="checkbox" style="margin: 10px">Điều hòa</div>
+                                                            <div style="font-size: 15px; text-align: left"><input type="checkbox" style="margin: 10px">Máy lạnh</div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <div class="details-information">
+                                                            <h4>Tóm tắt giá</h4>
+                                                            <p>Du thuyền: {{ commonService.detailsBook?.price }}</p>
+                                                            <p>10% Thuế</p>
+                                                            <p>Giá</p>
+                                                            <p>Phụ phí</p>
+                                                            <p>Thuế thành phố</p>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <div class="details-information">
+                                                            <h4>Lịch thanh toán của bạn</h4>
+                                                            <p style="color: #0ab21b !important">Không cần thanh toán hôm nay. Bạn sẽ trả khi đến nghỉ.</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <div class="details-information">
+                                                            <h4>Chi phí hủy là bao nhiêu?</h4>
+                                                            <p style="color: #0ab21b !important">MIỄN PHÍ hủy đến 23:59 ngày ngày 20 Tháng 2</p>
+                                                            <p>Từ 00:00 ngày ngày 21 Tháng 2 VND 200.000</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <div class="details-information">
+                                                            <p style="color: #07c !important">Bạn có mã khuyến mãi không?</p>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left" style="border: 1px solid #ffa9a9; background: #fbe8e8">
+                                                        <div class="details-information">
+                                                            <p>Số lượng du thuyền có giới hạn</p>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 68%">
+                                            <div class="wrap-box ">
+                                                <div class="box-img">
+                                                    <div class="img-right"><img src="http://150.95.113.234:8080/boat-booking-api/api/image/6a37598e-3795-4e13-8ce7-f5f281c57b8a" class="img-responsive" alt="Double Room" title="Double Room"></div>
+                                                    <div class="text-content">
+                                                        <h2 (click)="routerLinkDetail()">Thuyền NC số 14 </h2>
+                                                        <p><span class="special">Ưu đãi trong ngày</span> <span class="tien-ich"> Bãi biển</span></p>
+                                                        <p> <span class="tien-ich">Đưa đón sân bay</span> <span class="tien-ich">Đỗ xe miễn phí</span></p>
+                                                        <p><span class="tien-ich">Vật nuôi miễn phí</span></p>
+                                                        <p>96/6 Tran Phu, Nha Trang, Việt Nam</p>
+                                                    </div>
+
+                                                </div>
+                                                <div class="background-green">
+                                                    <p>Tuyệt quá! <span style="font-weight: bold">Bạn đã chọn phòng rẻ nhất và tiết kiệm được 12%</span> so với phòng tại các chỗ nghỉ khác ở Nha Trang. <span style="font-weight: bold">Đừng bỏ lỡ giá tốt nhất của chúng tôi</span>,
+                                                        hãy đặt ngay!</p>
+                                                </div>
+                                                <h4 style="padding-top: 10px">Nhập thông tin chi tiết của bạn</h4>
+                                                <div class="form-input-information">
+                                                    <p>Đăng nhập để đặt du thuyền với thông tin đã lưu của bạn hoặc đăng ký để quản lý đặt du thuyền của bạn mọi lúc mọi nơi!</p>
+                                                    <h5 style="font-weight: bold">Vui lòng điền thông tin bằng Tiếng Việt hoặc Tiếng Anh</h5>
+                                                    <div class="row input-field">
+                                                        <div class="col-sm-2">
+                                                            <span>Danh xưng</span>
+                                                            <input type="text">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <span>Họ (tiếng Anh)</span>
+                                                            <input type="text">
+                                                        </div>
+                                                        <div class="col-sm-3">
+                                                            <span>Tên (tiếng Anh)</span>
+                                                            <input type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row input-field">
+                                                        <div class="col-sm-4">
+                                                            <span>Địa chỉ email</span>
+                                                            <input type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row input-field">
+                                                        <div class="col-sm-4">
+                                                            <span>Xác nhận địa chỉ email</span>
+                                                            <input type="text">
+                                                        </div>
+                                                    </div>
+                                                    <div style="margin-left: 12px">
+                                                        <h4 style="font-weight: bold; font-size: 15px">Bạn đặt phòng cho ai?</h4>
+                                                        <input type="radio" name="a">Tôi là khách đặt du thuyền
+                                                        <br>
+                                                        <input type="radio" name="a">Tôi đặt du thuyền cho người khác
+                                                    </div>
+                                                </div>
+                                                <h4 style="margin-top: 15px;">Đặt câu hỏi</h4>
+                                                <div class="form-input-information p-b-b-none">
+                                                    <p style="font-size: 15px;font-weight: bold;">Các yêu cầu đặc biệt</p>
+                                                    <p>Yêu cầu đặc biệt không thể được đảm bảo - nhưng chỗ nghỉ sẽ cố gắng hết sức để đáp ứng nhu cầu của bạn. </p>
+                                                    <p>Bạn luôn có thể gửi yêu cầu đặc biệt sau khi hoàn tất đặt phòng của mình!</p>
+                                                    <textarea name="message" rows="6" cols="50"></textarea>
+                                                    <p style="font-size: 15px;font-weight: bold;">Thời gian dự kiến của bạn <span style="font-weight: normal">(không bắt buộc)</span></p>
+                                                    <p style="font-size: 13px;font-weight: bold;">Lễ tân trực 24h <span style="font-weight: normal">Sẵn sàng hỗ trợ bất kỳ lúc nào bạn cần</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="next-book-boat">
+                                                <p [routerLink]="'/wb/book/verify-information'">Tiếp theo: Chi tiết cuối cùng <i class="fa fa-angle-right" aria-hidden="true"></i></p>
+
+                                            </div>
+                                            <div class="background-green">
+                                                <p>Ở trang sau bạn sẽ được yêu cầu cung cấp thêm một vài thông tin. Không cần có thẻ tín dụng để hoàn tất đặt phòng này. Bạn sẽ thanh toán trong thời gian lưu trú.</p>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+    </section>
+    <!-- END / ROOMS -->
+
+</div>

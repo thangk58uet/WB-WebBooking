@@ -21,16 +21,12 @@ export class HttpClientCustom {
   }
 
   get(url, params?) {
-    if (!this.cookieService.get('userName')) {
-      this.router.navigate(['/login/']);
-    } else {
-      const headers = new Headers();
-      this.createAuthorizationHeader(headers);
-      return this.http.get(API_URL + url, {
-        headers: headers,
-        params: params
-      });
-    }
+    const headers = new Headers();
+    this.createAuthorizationHeader(headers);
+    return this.http.get(API_URL + url, {
+      headers: headers,
+      params: params
+    });
   }
 
   logout(e) {

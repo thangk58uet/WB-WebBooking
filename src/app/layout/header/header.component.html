@@ -13,6 +13,7 @@
                 <div *ngIf="loginService.isLogin === true" class="user-info">
                     <a title="Admin" class="dropdown-toggle" style="color: white">Xin chào Admin</a>
                     <img src="./assets/images/our-2.jpg" class="img-responsive" title="Admin" (click)="toggleUserMenu()">
+                    <button type="button" (click)="logout()" title="Đăng xuất">Đăng xuất</button>
                 </div>
             </div>
         </div>
@@ -59,8 +60,14 @@
     <!-- END / MENU-HEADER -->
 </div>
 
-<dx-popup class="popup" [width]="450" [height]="900" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupLogin">
+<dx-popup class="popup" [width]="450" [height]="900" [showTitle]="true" [title]="'Yachttour.com'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupLogin">
     <div *dxTemplate="let data of 'content'">
         <app-login></app-login>
+    </div>
+</dx-popup>
+
+<dx-popup class="popup" [width]="450" [height]="900" [showTitle]="true" [title]="'Yachttour.com'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupRegister">
+    <div *dxTemplate="let data of 'content'">
+        <app-register></app-register>
     </div>
 </dx-popup>

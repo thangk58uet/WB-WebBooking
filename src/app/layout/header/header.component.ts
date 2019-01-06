@@ -26,6 +26,11 @@ export class HeaderComponent implements OnInit {
   }
 
   register() {
-    alert('b');
+    this.loginService.popupRegister = true;
+  }
+
+  logout() {
+    this.loginService.isLogin = false;
+    sessionStorage.clear();
   }
 }

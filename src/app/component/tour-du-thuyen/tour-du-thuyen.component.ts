@@ -1,4 +1,4 @@
-import { CommonService } from './../../service/common.service';
+import { CommonService } from '../../service/common.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TourDuThuyenService } from './tour-du-thuyen.service';
 import { Router } from '@angular/router';
@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 export class TourDuThuyenComponent implements OnInit {
 
   public listLocation = ['Hà Nội', 'Tp. Hồ Chí Minh', 'Đà Nẵng'];
-  public listTypeBoat = ['NC 14', 'LEADER 36'];
+  public listTypeBoat = ['NC 14', 'LEADER 36', 'Cap Camarat 6.5 WA', 'Cap Camarat 7.5 DC'];
   public listPrice = ['< 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu'];
 
   public typeBoat;
@@ -25,7 +25,7 @@ export class TourDuThuyenComponent implements OnInit {
   public linkImage = 'http://150.95.113.234:8080/boat-booking-api/api/image/';
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
-              private commonService: CommonService,
+              public commonService: CommonService,
               private router: Router) { }
 
   ngOnInit() {
@@ -53,11 +53,16 @@ export class TourDuThuyenComponent implements OnInit {
           this.listBoat.list[index].linkImage = this.linkImage + this.listBoat.list[index].images[0].reference;
         }
       }
-    })
+    });
   }
 
-  routerLinkDetail(item) {
+  routerLinkDetail(item, id) {
     this.commonService.detailBoat = item;
+    this.commonService.boatId = id;
     this.router.navigate(['/wb/details'], {queryParams: { item }} );
+  }
+
+  goToPage(e) {
+
   }
 }

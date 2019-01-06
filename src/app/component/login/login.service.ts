@@ -1,5 +1,8 @@
+import { HttpClientCustom } from './../../service/httpclient.service';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Response} from '@angular/http';
+import { Observable, of } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { Http } from '@angular/http';
 import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
@@ -9,9 +12,11 @@ const API_URL = environment.apiUrl;
 export class LoginService {
 
   public popupLogin = false;
+  public popupRegister = false;
   public isLogin = false;
   constructor(private http: Http,
-              private cookieService: CookieService) {
+              private cookieService: CookieService,
+              private httpClient: HttpClientCustom) {
   }
 
   login(loginInfo, successCallback = null, failCallback = null) {
@@ -40,6 +45,12 @@ export class LoginService {
 
   getToken() {
     return (this.cookieService.get('token'));
+  }
+
+  public register(params): Observable<Response> {
+    return this.httpClient.post(`/account/register`, params).pipe(map((res: Response) => {
+      return res.json();
+    }));
   }
 
 }
