@@ -11,7 +11,6 @@ export class MainLayoutComponent implements OnInit {
   constructor(private router: Router) { }
 
   ngOnInit() {
-    this.router.navigate(['/wb/main']);
   }
 
 }

@@ -1,5 +1,5 @@
+import { CommonService } from 'src/app/service/common.service';
 import { Component, OnInit } from '@angular/core';
-import { CommonService } from './../../../service/common.service';
 import { alert } from 'devextreme/ui/dialog';
 
 @Component({
@@ -18,7 +18,7 @@ export class VerifyInformationComponent implements OnInit {
   bookSuccess() {
     const params = {
         boatId: this.commonService.boatId,
-        bookingDate: '2019-01-30',
+        bookingDate: this.commonService.dateBook,
         contact: {
           email: 'email@gmail.com',
           firstName: 'Nguyễn',

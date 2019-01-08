@@ -6,7 +6,7 @@
             text-align: center;
             font-weight: inherit;
             color: white;
-            font-family: inherit;
+            font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
         }
     }
 }
@@ -61,5 +61,15 @@
     color: #07c;
     &:hover {
         text-decoration: underline;
+    }
+}
+
+.footer-logo {
+    width: 150px;
+    height: 50px;
+    img {
+        width: 100%;
+        height: 100%;
+        background-size: 100%;
     }
 }

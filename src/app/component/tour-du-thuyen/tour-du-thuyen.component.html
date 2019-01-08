@@ -29,12 +29,12 @@
                                                                             <h2 style="text-align: left">Tìm</h2>
                                                                             <div class="form-group">
                                                                                 <p class="form-label">Địa điểm</p>
-                                                                                <dx-select-box placeholder="Chọn địa điểm" [dataSource]="commonService.listLocation" [searchEnabled]="true" [value]="commonService.location" (onSelectionChanged)="selectLocation($event)">
+                                                                                <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [searchEnabled]="true" [value]="location" (onSelectionChanged)="selectLocation($event)">
                                                                                 </dx-select-box>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <p class="form-label">Loại du thuyền</p>
-                                                                                <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true" [value]="commonService.boatType" (onSelectionChanged)="selectTypeBoat($event)">
+                                                                                <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true" [value]="typeBoat" (onSelectionChanged)="selectTypeBoat($event)">
                                                                                 </dx-select-box>
                                                                             </div>
                                                                             <div class="row">
@@ -55,7 +55,7 @@
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <p class="form-label">Mức giá</p>
-                                                                                <dx-select-box placeholder="Chọn mức giá" [dataSource]="listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
+                                                                                <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
                                                                                 </dx-select-box>
                                                                             </div>
                                                                             <div class="form-btn">
@@ -139,7 +139,7 @@
                                                         <p style="margin-top: -6px">600 đánh giá</p>
                                                         <span class="diem-danh-gia">9.2</span>
                                                         <p style="color: #07c;font-weight:bold">Được ưa chuộng</p>
-                                                        <a>Hiển thị giá</a>
+                                                        <p style="color: green; font-size: 20px">VND 500.000</p>
                                                     </div>
                                                 </div>
                                             </div>

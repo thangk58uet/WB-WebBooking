@@ -11,7 +11,7 @@
                 <div class="arrival date-title ">
                     <label>Địa điểm </label>
                     <div>
-                        <dx-select-box placeholder="Chọn địa điểm" [dataSource]="commonService?.listLocation" [searchEnabled]="true">
+                        <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [searchEnabled]="true">
                         </dx-select-box>
                     </div>
                 </div>
@@ -39,7 +39,7 @@
                 <div class="arrival width-25-percent date-title ">
                     <label>Mức giá </label>
                     <div>
-                        <dx-select-box placeholder="Chọn mức giá" [dataSource]="listPrice" [searchEnabled]="true">
+                        <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice" [searchEnabled]="true">
                         </dx-select-box>
                     </div>
                 </div>
@@ -85,15 +85,12 @@
                                     </div>
                                 </div>
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6" *ngFor="let item of boatType; let i = index" [ngClass]="i%2 === 0 ? 'padding-right-8' : 'padding-left-8'">
-                                    <div class="wrap-box pointer" (click)="routerLink(item?.name, item?.id)">
+                                    <div class="wrap-box pointer" (click)="routerLink(item)">
                                         <div class="box-img">
                                             <img src="{{ item?.linkImage }}" class="img-responsive" alt="PLuxury Room" title="Luxury Room">
                                         </div>
                                         <div class="rooms-content">
                                             <h4 class="sky-h4">{{ item?.name }}</h4>
-                                        </div>
-                                        <div class="price-gia">
-                                            <p>{{ item?.description}}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -111,7 +108,7 @@
     <!--OUR-NEWS-->
     <section class="events">
         <div class="container">
-            <h2 class="events-title">Tin Tức</h2>
+            <h2 class="events-title">Tour nổi bật</h2>
             <div class="line"></div>
             <div id="events-v2" class="owl-carousel owl-theme owl-loaded owl-drag">
 
@@ -123,7 +120,7 @@
                                     <div class="events-img"><img src="./assets/images/Our-Events-3.jpg" class="img-responsive" alt="Image"></div>
                                     <div class="events-content">
                                         <a href="" title="">
-                                            <p class="sky-p">Tin Tức 1</p>
+                                            <p class="sky-p">Tour số 1</p>
                                             <h3 class="sky-h3"> Beach Sports</h3>
                                         </a>
                                     </div>
@@ -136,7 +133,7 @@
                                     <div class="events-img"><img src="./assets/images/Our-Events-1.jpg" class="img-responsive" alt="Image"></div>
                                     <div class="events-content">
                                         <a href="" title="">
-                                            <p class="sky-p">Tin Tức 2</p>
+                                            <p class="sky-p">Tour số 2</p>
                                             <h3 class="sky-h3">Wedding Day</h3>
                                         </a>
                                     </div>
@@ -149,7 +146,7 @@
                                     <div class="events-img"><img src="./assets/images/Our-Events-2.jpg" class="img-responsive" alt="Image"></div>
                                     <div class="events-content">
                                         <a href="" title="">
-                                            <p class="sky-p">Tin Tức 3</p>
+                                            <p class="sky-p">Tour số 3</p>
                                             <h3 class="sky-h3">Golf Cup 2017</h3>
                                         </a>
                                     </div>
@@ -162,7 +159,7 @@
                                     <div class="events-img"><img src="./assets/images/Our-Events-3.jpg" class="img-responsive" alt="Image"></div>
                                     <div class="events-content">
                                         <a href="" title="">
-                                            <p class="sky-p">Tin Tức 4</p>
+                                            <p class="sky-p">Tour số 4</p>
                                             <h3 class="sky-h3"> Beach Sports</h3>
                                         </a>
                                     </div>
@@ -175,7 +172,7 @@
                                     <div class="events-img"><img src="./assets/images/Our-Events-3.jpg" class="img-responsive" alt="Image"></div>
                                     <div class="events-content">
                                         <a href="" title="">
-                                            <p class="sky-p">Tin Tức 5</p>
+                                            <p class="sky-p">Tour số 5</p>
                                             <h3 class="sky-h3"> Beach Sports</h3>
                                         </a>
                                     </div>

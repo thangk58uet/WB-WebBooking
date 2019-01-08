@@ -7,24 +7,18 @@ import { HttpClientCustom } from './httpclient.service';
 @Injectable()
 export class CommonService {
 
-  public boatTypeId = '';
-  public detailBoat = {};
-  public location = '';
-  public boatType = '';
   public boatId = '';
   public boatTourId = '';
-  public listLocation = [];
   public detailsBook: any = [];
+  public dateBook = '';
+  public listImages: any = [];
+  public listPrice = ['< 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu'];
+  public pathImage = 'http://150.95.113.234:8080/boat-booking-api/api/image/';
+
   constructor(private httpClient: HttpClientCustom) { }
 
-  public getBoatType(): Observable<Response> {
-    return this.httpClient.get('/boat-type/').pipe(map((res: Response) => {
-      return res.json();
-    }));
-  }
-
   public getTourBoatType(boatTypeId, params): Observable<Response> {
-    return this.httpClient.get(`tour/check-available/${boatTypeId}`, params).pipe(map((res: Response) => {
+    return this.httpClient.get(`boat-type-tour/${boatTypeId}`, params).pipe(map((res: Response) => {
       return res.json();
     }));
   }
@@ -37,6 +31,12 @@ export class CommonService {
 
   public getListProvince(): Observable<Response> {
     return this.httpClient.get('/province/').pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public getListTypeBoat(): Observable<Response> {
+    return this.httpClient.get('/boat-type/').pipe(map((res: Response) => {
       return res.json();
     }));
   }
@@ -55,6 +55,18 @@ export class CommonService {
 
   public bookReservation(params): Observable<Response> {
     return this.httpClient.post('/reservation/', params).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public activeAccount(params): Observable<Response> {
+    return this.httpClient.post('/account/activate/', params).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public getDetailBoatById(id): Observable<Response> {
+    return this.httpClient.get(`/boat/${id}`, id).pipe(map((res: Response) => {
       return res.json();
     }));
   }

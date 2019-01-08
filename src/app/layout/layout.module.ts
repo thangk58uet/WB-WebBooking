@@ -26,6 +26,8 @@ import { InformationComponent } from '../component/book-du-thuyen/information/in
 import { VerifyInformationComponent } from '../component/book-du-thuyen/verify-information/verify-information.component';
 import { BookSuccessComponent } from './../component/book-du-thuyen/book-success/book-success.component';
 import { UserComponent } from '../component/user/user.component';
+import { ShowImageComponent } from '../component/details-du-thuyen/show-image/show-image.component';
+import { ActiveAccountComponent } from '../component/active-account/active-account.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -78,7 +80,9 @@ CommonModule,
     InformationComponent,
     VerifyInformationComponent,
     BookSuccessComponent,
-    UserComponent
+    UserComponent,
+    ShowImageComponent,
+    ActiveAccountComponent,
   ],
   providers: [
     CommonHttpService,

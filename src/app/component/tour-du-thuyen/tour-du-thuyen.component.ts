@@ -1,7 +1,7 @@
 import { CommonService } from '../../service/common.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TourDuThuyenService } from './tour-du-thuyen.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-tour-du-thuyen',
@@ -11,10 +11,6 @@ import { Router } from '@angular/router';
 })
 export class TourDuThuyenComponent implements OnInit {
 
-  public listLocation = ['Hà Nội', 'Tp. Hồ Chí Minh', 'Đà Nẵng'];
-  public listTypeBoat = ['NC 14', 'LEADER 36', 'Cap Camarat 6.5 WA', 'Cap Camarat 7.5 DC'];
-  public listPrice = ['< 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu'];
-
   public typeBoat;
   public location;
   public fromDate = new Date();
@@ -22,14 +18,18 @@ export class TourDuThuyenComponent implements OnInit {
   public price;
   public listBoat: any = [];
   public totalCount;
-  public linkImage = 'http://150.95.113.234:8080/boat-booking-api/api/image/';
+  public listLocation: any = [];
+  public listTypeBoat: any = [];
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.search();
+    this.getListBoatType();
+    this.getListLocation();
   }
 
   selectLocation(e) {
@@ -44,22 +44,43 @@ export class TourDuThuyenComponent implements OnInit {
     this.price = e.selectedItem;
   }
 
+  getListLocation() {
+    this.commonService.getListProvince().subscribe( res => {
+      if (res && res['value']) {
+        for (let index = 0; index < res['value'].length; index++) {
+          this.listLocation.push(res['value'][index].name);
+        }
+      }
+    });
+  }
+
+  getListBoatType() {
+    this.typeBoat = this.activatedRoute.snapshot.queryParams.typeBoat;
+    this.commonService.getListTypeBoat().subscribe( res => {
+      if (res && res['value']) {
+        for (let index = 0; index < res['value'].length; index++) {
+          this.listTypeBoat.push(res['value'][index].name);
+        }
+      }
+    });
+  }
+
   search() {
-    this.tourDuThuyenService.getListBoat(this.commonService.boatTypeId).subscribe(res => {
+    this.tourDuThuyenService.getListBoat(this.activatedRoute.snapshot.queryParams.id).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];
+      console.log(this.listBoat.province);
       if (this.listBoat.list) {
         for (let index = 0; index < this.listBoat.list.length; index++) {
-          this.listBoat.list[index].linkImage = this.linkImage + this.listBoat.list[index].images[0].reference;
+          this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].images[0].reference;
         }
       }
     });
   }
 
   routerLinkDetail(item, id) {
-    this.commonService.detailBoat = item;
-    this.commonService.boatId = id;
-    this.router.navigate(['/wb/details'], {queryParams: { item }} );
+    const typeBoat = item.type.name;
+    this.router.navigate(['/wb/details'], {queryParams: { id, typeBoat }} );
   }
 
   goToPage(e) {

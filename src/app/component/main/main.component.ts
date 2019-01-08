@@ -14,38 +14,41 @@ export class MainComponent implements OnInit {
   public fromDate = new Date();
   public toDate = new Date();
   public boatType = [];
-  public listTypeBoat = ['NC 14', 'Leader 36', 'Cap Camarat 6.5 WA', 'Cap Camarat 7.5 DC'];
-  public listPrice = ['< 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu'];
-  public linkImage = 'http://150.95.113.234:8080/boat-booking-api/api/image/';
+  public listTypeBoat = [];
+  public listLocation = [];
 
   constructor(public commonService: CommonService,
               private router: Router) { }
 
   ngOnInit() {
-    this.getBoatType();
     this.getListLocation();
-  }
-
-  getBoatType() {
-    this.commonService.getBoatType().subscribe( res => {
-      this.boatType = (res && res['value']) ? res['value'] : [];
-      for (let index = 0; index < this.boatType.length; index++) {
-        this.boatType[index].linkImage = this.linkImage + this.boatType[index].image.reference;
-      }
-    });
+    this.getListBoatType();
   }
 
   getListLocation() {
     this.commonService.getListProvince().subscribe( res => {
-      this.commonService.listLocation = [];
       if (res && res['value']) {
-        this.commonService.listLocation.push()
+        for(let index = 0; index < res['value'].length; index++) {
+          this.listLocation.push(res['value'][index].name)
+        }
+      }
+    });
+    console.log(this.listLocation);
+  }
+
+  getListBoatType() {
+    this.commonService.getListTypeBoat().subscribe( res => {
+      this.boatType = (res && res['value']) ? res['value'] : [];
+      for (let index = 0; index < this.boatType.length; index++) {
+        this.boatType[index].linkImage = this.commonService.pathImage + this.boatType[index].image.reference;
+        this.listTypeBoat.push(res['value'][index].name)
       }
     });
   }
-  routerLink(name, id) {
-    this.commonService.boatTypeId = id;
-    this.commonService.boatType = name;
-    this.router.navigate(['/wb/tour'], {queryParams: { name }});
+
+  routerLink(item) {
+    const id = item.id;
+    const typeBoat = item.name;
+    this.router.navigate(['/wb/tour'], {queryParams: { id, typeBoat }});
   }
 }
