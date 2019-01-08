@@ -3,6 +3,8 @@ import { TourDuThuyenService } from '../tour-du-thuyen/tour-du-thuyen.service';
 import { CommonService } from '../../service/common.service';
 import * as $ from 'jquery';
 import { Router, ActivatedRoute } from '@angular/router';
+import { DetailsDuThuyenService } from './details-du-thuyen.service';
+import { UploadFileService } from 'src/app/service/upload-file.service';
 @Component({
   selector: 'app-details-du-thuyen',
   templateUrl: './details-du-thuyen.component.html',
@@ -19,17 +21,31 @@ export class DetailsDuThuyenComponent implements OnInit {
   public dateBookBoat = new Date();
   public boatTour: any = [];
   public countImage = 0;
+
   public popupShowImage = false;
+  public popupShowImageComment = false;
+
   public indexImage = null;
   public typeBoat;
   public location;
   public listLocation: any = [];
   public listTypeBoat: any = [];
+  public listAccessoryFree = [];
+  public listAccessoryPaid = [];
+  public contentComment = '';  /*Creat Comment*/
+  public listComment: any = [];
+  public userName = 'userName';
+  public filePost: any = {};
+  public imageId = '';
+  public contentNameComment = ''; /*popup show Image Comment*/
+  public nameTitleShowImage = '';
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
               private router: Router,
-              private activatedRoute: ActivatedRoute) { }
+              private activatedRoute: ActivatedRoute,
+              private detailsDuThuyenService: DetailsDuThuyenService,
+              private uploadFileService: UploadFileService) { }
 
   ngOnInit() {
     this.getDetailBoat();
@@ -38,6 +54,8 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.getAccesssoryType();
     this.getListBoatType();
     this.getListLocation();
+    this.getListAcessoryType();
+    this.getListComment();
   }
 
   getBoatTour() {
@@ -96,8 +114,14 @@ export class DetailsDuThuyenComponent implements OnInit {
     });
   }
 
-  viewImage(linkImage) {
+  viewImage(linkImage, name) {
+    this.nameTitleShowImage = name;
     this.popupShowImage = true;
+  }
+
+  viewImageComment(linkImage, content) {
+    this.contentNameComment = content;
+    this.popupShowImageComment = true;
   }
 
   selectImage(index) {
@@ -116,13 +140,13 @@ export class DetailsDuThuyenComponent implements OnInit {
   getAccessory() {
     this.commonService.getAccessory().subscribe( res => {
 
-    })
+    });
   }
 
   getAccesssoryType() {
     this.commonService.getAccessoryType().subscribe ( res => {
 
-    })
+    });
   }
 
   bookTour(item, id) {
@@ -134,4 +158,41 @@ export class DetailsDuThuyenComponent implements OnInit {
     }
     this.router.navigate(['/wb/book/information']);
   }
+
+  getListAcessoryType() {
+    this.detailsDuThuyenService.getAccessoryType('FREE').subscribe( res => {
+      this.listAccessoryFree = (res && res['value'] && res['value'][0].accessories) ? res['value'][0].accessories : [];
+    });
+
+    this.detailsDuThuyenService.getAccessoryType('PAID').subscribe( res => {
+      this.listAccessoryPaid = (res && res['value'] && res['value'][0].accessories) ? res['value'][0].accessories : [];
+    });
+  }
+
+  getListComment() {
+    this.detailsDuThuyenService.getComment().subscribe( res => {
+      this.listComment = (res && res['value'] && res['value'].list) ? res['value'].list : [];
+    });
+  }
+
+  creatComment() {
+    const params = {
+      boatId: this.activatedRoute.snapshot.queryParams.id,
+      content: this.contentComment,
+      type: 'BOAT',
+      imageId: this.imageId
+    };
+    console.log(params);
+    this.detailsDuThuyenService.creatComment(params).subscribe( res => {
+      // location.reload();
+    });
+  }
+
+  fileChange(e) {
+    this.filePost = e.files[0];
+    this.uploadFileService.uploadFile('/image/upload', this.filePost).subscribe( res => {
+      this.imageId = (res && res['value']) ? res['value'].id : '';
+    });
+  }
+
 }

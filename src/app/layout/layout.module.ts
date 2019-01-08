@@ -28,6 +28,9 @@ import { BookSuccessComponent } from './../component/book-du-thuyen/book-success
 import { UserComponent } from '../component/user/user.component';
 import { ShowImageComponent } from '../component/details-du-thuyen/show-image/show-image.component';
 import { ActiveAccountComponent } from '../component/active-account/active-account.component';
+import { ThousandNumberFormatter } from '../pipe/thousand-number-formatter.pipe';
+import { DetailsDuThuyenService } from '../component/details-du-thuyen/details-du-thuyen.service';
+import { ShowImageComponentComponent } from '../component/details-du-thuyen/show-image-component/show-image-component.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -52,7 +55,7 @@ CommonModule,
         { path: 'login', component: LoginComponent },
         { path: 'tour', component: TourDuThuyenComponent },
         { path: 'details', component: DetailsDuThuyenComponent },
-        { path: 'account/active', component: DetailsDuThuyenComponent},
+        { path: 'account/activate', component: DetailsDuThuyenComponent},
         { path: 'book/information', component: InformationComponent},
         { path: 'book/verify-information', component: VerifyInformationComponent},
         { path: 'book/confirm-information', component: BookSuccessComponent},
@@ -83,6 +86,8 @@ CommonModule,
     UserComponent,
     ShowImageComponent,
     ActiveAccountComponent,
+    ThousandNumberFormatter,
+    ShowImageComponentComponent,
   ],
   providers: [
     CommonHttpService,
@@ -92,7 +97,8 @@ CommonModule,
     UploadFileService,
     CookieService,
     CommonService,
-    TourDuThuyenService
+    TourDuThuyenService,
+    DetailsDuThuyenService
   ]
 })
 export class LayoutModule { }

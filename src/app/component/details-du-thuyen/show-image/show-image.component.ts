@@ -12,7 +12,7 @@ export class ShowImageComponent implements OnInit {
   @Input() linkImage = '';
   @Input() listImages = [];
   @Input() countImage = null;
-  public name = '';
+  @Input() name = '';
   constructor(public commonService: CommonService) { }
 
   ngOnInit() {

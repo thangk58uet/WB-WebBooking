@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Injectable } from '@angular/core';
 import { Response} from '@angular/http';
 import { Observable, of } from 'rxjs';
@@ -12,8 +13,17 @@ export class CommonService {
   public detailsBook: any = [];
   public dateBook = '';
   public listImages: any = [];
-  public listPrice = ['< 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu'];
-  public pathImage = 'http://150.95.113.234:8080/boat-booking-api/api/image/';
+  public listPrice = ['Dưới 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu', 'Trên 50 triệu'];
+  public listPriceId = [
+    { min: 0, max: 5},
+    { min: 5, max: 10},
+    { min: 10, max: 20},
+    { min: 20, max: 30},
+    { min: 30, max: 50},
+    { min: 50, max: 1000000},
+  ]
+  public url = environment.apiUrl;
+  public pathImage = environment.apiUrl + '/image/';
 
   constructor(private httpClient: HttpClientCustom) { }
 

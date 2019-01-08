@@ -5,10 +5,11 @@ import { FormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { ShowImageComponentComponent } from './component/details-du-thuyen/show-image-component/show-image-component.component';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,

@@ -11,14 +11,14 @@
                 <div class="arrival date-title ">
                     <label>Địa điểm </label>
                     <div>
-                        <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [searchEnabled]="true">
+                        <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [value]="location" [searchEnabled]="true" (onSelectionChanged)="selectLocation($event)">
                         </dx-select-box>
                     </div>
                 </div>
                 <div class="arrival date-title ">
                     <label>Loại du thuyền </label>
                     <div>
-                        <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true">
+                        <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [value]="typeBoat" [searchEnabled]="true" (onSelectionChanged)="selectTypeBoat($event)">
                         </dx-select-box>
                     </div>
                 </div>
@@ -39,11 +39,11 @@
                 <div class="arrival width-25-percent date-title ">
                     <label>Mức giá </label>
                     <div>
-                        <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice" [searchEnabled]="true">
+                        <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice" [value]="price" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
                         </dx-select-box>
                     </div>
                 </div>
-                <div class="find_btn date-title" [routerLink]="'/wb/tour'">
+                <div class="find_btn date-title" (click)="searchListBoat()">
                     <div class="text-find">
                         Tìm
                     </div>
@@ -114,66 +114,13 @@
 
                 <div class="owl-stage-outer">
                     <div class="owl-stage" style="transition: all 0.25s ease 0s">
-                        <div class="owl-item active" style="width: 19%; margin-right: 10px;">
+                        <div class="owl-item tour-hightlights" style="width: 19.2%; margin-right: 6px;" *ngFor="let item of listTourHighlights?.list">
                             <div class="item">
                                 <div class="events-item">
-                                    <div class="events-img"><img src="./assets/images/Our-Events-3.jpg" class="img-responsive" alt="Image"></div>
+                                    <div class="events-img"><img src="{{ item?.linkImage}}" (click)="detailsTourHighlights(item, item?.id)" class="img-responsive" alt="Image" style="width: 100%; height: 280px;"></div>
                                     <div class="events-content">
                                         <a href="" title="">
-                                            <p class="sky-p">Tour số 1</p>
-                                            <h3 class="sky-h3"> Beach Sports</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item cloned" style="width: 19%; margin-right: 10px;">
-                            <div class="item ">
-                                <div class="events-item">
-                                    <div class="events-img"><img src="./assets/images/Our-Events-1.jpg" class="img-responsive" alt="Image"></div>
-                                    <div class="events-content">
-                                        <a href="" title="">
-                                            <p class="sky-p">Tour số 2</p>
-                                            <h3 class="sky-h3">Wedding Day</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item cloned" style="width: 19%; margin-right: 10px;">
-                            <div class="item">
-                                <div class="events-item">
-                                    <div class="events-img"><img src="./assets/images/Our-Events-2.jpg" class="img-responsive" alt="Image"></div>
-                                    <div class="events-content">
-                                        <a href="" title="">
-                                            <p class="sky-p">Tour số 3</p>
-                                            <h3 class="sky-h3">Golf Cup 2017</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 19%; margin-right: 10px;">
-                            <div class="item">
-                                <div class="events-item">
-                                    <div class="events-img"><img src="./assets/images/Our-Events-3.jpg" class="img-responsive" alt="Image"></div>
-                                    <div class="events-content">
-                                        <a href="" title="">
-                                            <p class="sky-p">Tour số 4</p>
-                                            <h3 class="sky-h3"> Beach Sports</h3>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 19%; margin-right: 10px;">
-                            <div class="item">
-                                <div class="events-item">
-                                    <div class="events-img"><img src="./assets/images/Our-Events-3.jpg" class="img-responsive" alt="Image"></div>
-                                    <div class="events-content">
-                                        <a href="" title="">
-                                            <p class="sky-p">Tour số 5</p>
-                                            <h3 class="sky-h3"> Beach Sports</h3>
+                                            <h4 class="sky-h3"> {{ item?.name }}</h4>
                                         </a>
                                     </div>
                                 </div>
@@ -182,7 +129,7 @@
                     </div>
                 </div>
                 <div class="view-more-news">
-                    <span>Xem thêm</span>
+                    <span (click)="routerLinkDetail()">Xem thêm</span>
                 </div>
             </div>
         </div>

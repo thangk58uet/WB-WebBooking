@@ -20,6 +20,8 @@ export class TourDuThuyenComponent implements OnInit {
   public totalCount;
   public listLocation: any = [];
   public listTypeBoat: any = [];
+  public locationId = null;
+  public boatTypeId = null;
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
@@ -27,17 +29,19 @@ export class TourDuThuyenComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
-    this.search();
     this.getListBoatType();
     this.getListLocation();
+    this.search();
   }
 
   selectLocation(e) {
     this.location = e.selectedItem;
+    this.locationId = this.listLocation.indexOf(this.location) + 1;
   }
 
   selectTypeBoat(e) {
     this.typeBoat = e.selectedItem;
+    this.boatTypeId = this.listTypeBoat.indexOf(this.typeBoat) + 1;
   }
 
   selectPrice(e) {
@@ -45,6 +49,9 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   getListLocation() {
+    this.locationId = this.activatedRoute.snapshot.queryParams.locationId;
+    this.location = this.activatedRoute.snapshot.queryParams.location;
+    this.price = this.activatedRoute.snapshot.queryParams.price;
     this.commonService.getListProvince().subscribe( res => {
       if (res && res['value']) {
         for (let index = 0; index < res['value'].length; index++) {
@@ -55,6 +62,7 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   getListBoatType() {
+    this.boatTypeId = this.activatedRoute.snapshot.queryParams.boatTypeId;
     this.typeBoat = this.activatedRoute.snapshot.queryParams.typeBoat;
     this.commonService.getListTypeBoat().subscribe( res => {
       if (res && res['value']) {
@@ -66,13 +74,40 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   search() {
-    this.tourDuThuyenService.getListBoat(this.activatedRoute.snapshot.queryParams.id).subscribe(res => {
+    if (this.activatedRoute.snapshot.queryParams.boatTypeId) {
+      this.searchbyId();
+    } else { this.searchbyParams(); }
+  }
+
+  searchbyId() {
+    this.tourDuThuyenService.getListBoatById(this.boatTypeId).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];
-      console.log(this.listBoat.province);
       if (this.listBoat.list) {
         for (let index = 0; index < this.listBoat.list.length; index++) {
-          this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].images[0].reference;
+          this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].type.image.reference;
+        }
+      }
+    });
+  }
+
+  searchbyParams() {
+    const params = {
+      boatTypeId: this.boatTypeId,
+      locationId: this.locationId,
+      fromDate: this.activatedRoute.snapshot.queryParams.fromDate,
+      toDate: this.activatedRoute.snapshot.queryParams.fromDate,
+    };
+    this.tourDuThuyenService.getListBoatByParams(params).subscribe(res => {
+      this.listBoat = (res && res['value']) ? res['value'] : [];
+      this.totalCount = this.listBoat['totalCount'];
+      if (this.listBoat.list) {
+        for (let index = 0; index < this.listBoat.list.length; index++) {
+          if (this.listBoat.list[index].images > 0) {
+            this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].images[0].reference;
+          } else {
+            this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].type.image.reference;
+          }
         }
       }
     });
