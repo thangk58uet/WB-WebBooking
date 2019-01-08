@@ -1,0 +1,71 @@
+.show-image {
+    .image {
+        width: 78%;
+        float: left;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        img {
+            padding: 0 40px;
+            max-height: 680px;
+        }
+        background: black;
+    }
+    .comment {
+        width: 20%;
+        background: #e9f0fa;
+        border: 1px solid #07c;
+        height: 100%;
+        margin-left: 15px;
+    }
+    .owl-nav-custom {
+        i {
+            color: #07c;
+            font-size: 30px;
+        }
+        .owl-prev {
+            position: absolute;
+            top: 400px;
+            left: 20px;
+            cursor: pointer;
+        }
+        .owl-next {
+            position: absolute;
+            top: 400px;
+            right: 390px;
+            cursor: pointer;
+        }
+    }
+    .list-image {
+        width: 100%;
+        margin-top: 10px;
+        display: flex;
+        justify-content: center;
+        a {
+            width: 100px;
+            height: 100px;
+            float: left;
+            border: 1px solid white;
+            cursor: pointer;
+            background-size: 100% !important;
+        }
+    }
+    .text {
+        font-size: 16px;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+    }
+    .title {
+        font-size: 18px;
+        color: white;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        height: 45px;
+        span {
+            line-height: 2.5;
+        }
+    }
+}

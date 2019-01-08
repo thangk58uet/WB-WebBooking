@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TourDuThuyenService } from '../tour-du-thuyen/tour-du-thuyen.service';
 import { CommonService } from '../../service/common.service';
 import * as $ from 'jquery';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-details-du-thuyen',
   templateUrl: './details-du-thuyen.component.html',
@@ -15,52 +15,94 @@ export class DetailsDuThuyenComponent implements OnInit {
   public listBoat: any = [];
   public detailBoat: any = {};
   public listImages: any = [];
-  public pathImage = 'http://150.95.113.234:8080/boat-booking-api/api/image/';
   public linkImage = '';
   public dateBookBoat = new Date();
-  public listLocation = ['Hà Nội', 'Tp. Hồ Chí Minh', 'Đà Nẵng'];
-  public listTypeBoat = ['NC 14', 'LEADER 36'];
-  public listPrice = ['< 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu'];
   public boatTour: any = [];
   public countImage = 0;
+  public popupShowImage = false;
+  public indexImage = null;
+  public typeBoat;
+  public location;
+  public listLocation: any = [];
+  public listTypeBoat: any = [];
+
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
-              private router: Router) { }
+              private router: Router,
+              private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.getDetailBoat();
     this.getBoatTour();
     this.getAccessory();
     this.getAccesssoryType();
-  }
-
-  getDetailBoat() {
-    this.detailBoat = this.commonService.detailBoat;
-    this.listImages = this.detailBoat.images;
-    if (this.listImages && this.listImages.length > 0) {
-      this.linkImage = this.pathImage + this.listImages[0].reference;
-    }
+    this.getListBoatType();
+    this.getListLocation();
   }
 
   getBoatTour() {
     const dateParams = this.dateBookBoat.toJSON().slice(0, 10);
-    this.commonService.getBoatTour(this.detailBoat.id, { date: dateParams }).subscribe( res => {
+    this.commonService.dateBook = dateParams;
+    this.commonService.getBoatTour(this.activatedRoute.snapshot.queryParams.id, { date: dateParams }).subscribe( res => {
       this.boatTour = (res && res['value']) ? res['value'] : [];
+    });
+  }
+
+  getListLocation() {
+    this.commonService.getListProvince().subscribe( res => {
+      if (res && res['value']) {
+        for (let index = 0; index < res['value'].length; index++) {
+          this.listLocation.push(res['value'][index].name);
+        }
+      }
+    });
+  }
+
+  getListBoatType() {
+    this.typeBoat = this.activatedRoute.snapshot.queryParams.typeBoat;
+    this.commonService.getListTypeBoat().subscribe( res => {
+      if (res && res['value']) {
+        for (let index = 0; index < res['value'].length; index++) {
+          this.listTypeBoat.push(res['value'][index].name);
+        }
+      }
     });
   }
 
   prevImage() {
     this.countImage -= 1;
+    this.indexImage = this.countImage;
     if (this.countImage >= 0) {
-      $('img[src="' + this.linkImage + '"]').attr('src', this.pathImage + this.listImages[this.countImage].reference);
+      this.linkImage = this.commonService.pathImage + this.listImages[this.countImage].reference;
     }
   }
 
   nextImage() {
     this.countImage += 1;
+    this.indexImage = this.countImage;
     if (this.countImage < this.listImages.length) {
-      $('img[src="' + this.linkImage + '"]').attr('src', this.pathImage + this.listImages[this.countImage].reference);
+      this.linkImage = this.commonService.pathImage + this.listImages[this.countImage].reference;
     }
+  }
+
+  getDetailBoat() {
+    this.commonService.getDetailBoatById(this.activatedRoute.snapshot.queryParams.id).subscribe( res => {
+      this.detailBoat = (res && res['value']) ? res['value'] : [];
+      this.location = this.detailBoat.province.name;
+      this.listImages = this.detailBoat.images;
+      if (this.listImages && this.listImages.length > 0) {
+        this.linkImage = this.commonService.pathImage + this.listImages[0].reference;
+      }
+    });
+  }
+
+  viewImage(linkImage) {
+    this.popupShowImage = true;
+  }
+
+  selectImage(index) {
+    this.indexImage = index;
+    this.linkImage = this.commonService.pathImage + this.listImages[index].reference;
   }
 
   selectLocation(e) {}
