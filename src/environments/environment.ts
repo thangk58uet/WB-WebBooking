@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://150.95.113.234:8080/boat-booking-api/api'
+  apiUrl: "https://yachttour.vn/core/api"
+  // apiUrl: 'http://150.95.113.234:8080/boat-booking-api/api'
 };
 
 /*
