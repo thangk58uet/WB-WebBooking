@@ -182,9 +182,8 @@ export class DetailsDuThuyenComponent implements OnInit {
       type: 'BOAT',
       imageId: this.imageId
     };
-    console.log(params);
     this.detailsDuThuyenService.creatComment(params).subscribe( res => {
-      // location.reload();
+      location.reload();
     });
   }
 
