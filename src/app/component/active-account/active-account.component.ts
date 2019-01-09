@@ -14,16 +14,12 @@ export class ActiveAccountComponent implements OnInit {
               private commonService: CommonService) { }
 
   ngOnInit() {
-    this.getKeyActive();
-  }
-
-  getKeyActive() {
-    this.keyActive = this.activatedRoute.snapshot.queryParams.key;
+    this.activeAccount();
   }
 
   activeAccount() {
-    this.commonService.activeAccount(this.keyActive).subscribe( res => {
+    this.commonService.activeAccount(this.keyActive = this.activatedRoute.snapshot.queryParams.key).subscribe( res => {
 
-    })
+    });
   }
 }

@@ -115,7 +115,7 @@ export class TourDuThuyenComponent implements OnInit {
 
   routerLinkDetail(item, id) {
     const typeBoat = item.type.name;
-    this.router.navigate(['/wb/details'], {queryParams: { id, typeBoat }} );
+    this.router.navigate(['/details'], {queryParams: { id, typeBoat }} );
   }
 
   goToPage(e) {

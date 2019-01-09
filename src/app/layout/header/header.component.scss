@@ -39,7 +39,6 @@
 
 .header-top-left {
     color: black !important;
-    background: white;
     width: 125px;
     height: 42px;
     img {
@@ -94,4 +93,12 @@
 
 a {
     font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.submenu-hover {
+    min-width: 210px;
+}
+
+.container a {
+    cursor: pointer;
 }

@@ -8545,7 +8545,7 @@ button.close {
         -ms-transition: opacity 0.4s ease 0s, -ms-transform 0.4s ease 0s;
     }
     .header-sky .navbar .navbar-nav .submenu-hover {
-        width: 190px;
+        width: 240px;
         filter: alpha(opacity=0);
         padding: 20px;
         transform: translateY(50px);
@@ -19094,7 +19094,7 @@ a:focus {
     }
     .header-sky .navbar .navbar-nav li .submenu-hover li:hover a {
         background: transparent;
-        color: #8E7037 !important;
+        color: #FFF !important;
     }
     .header-sky .navbar .navbar-nav li .submenu-hover li:hover .dropdown-margin li a {
         color: #FFF !important;

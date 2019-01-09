@@ -16,8 +16,7 @@ import { ShowImageComponentComponent } from './component/details-du-thuyen/show-
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: '/wb', pathMatch: 'full' },
-      { path: 'wb', loadChildren: './layout/layout.module#LayoutModule'}
+      { path: '', loadChildren: './layout/layout.module#LayoutModule' },
     ], { useHash: true })
   ],
   providers: [],

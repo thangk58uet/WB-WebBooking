@@ -3,7 +3,7 @@
         <!--HEADER-TOP-->
         <div class="header-top">
             <div class="header-top-left">
-                <img src="./assets/icon/logo2.png" alt="Yachttour" [routerLink]="'/wb/main'" style="cursor: pointer;">
+                <img src="./assets/icon/logo3.png" alt="Yachttour" [routerLink]="'/trang-chu'" style="cursor: pointer;">
             </div>
             <div class="header-top-right">
                 <div *ngIf="loginService.isLogin === false">
@@ -25,33 +25,34 @@
             <div class="container">
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li><a href="" title="Trang chủ" [routerLink]="'/wb/main'">Trang chủ</a></li>
+                        <li><a title="Trang chủ" [routerLink]="'/trang-chu'">Trang chủ</a></li>
                         <li class="dropdown ">
-                            <a href="" title="Du thuyền" class="dropdown-toggle" data-toggle="dropdown">Du thuyền<b class="caret"></b></a>
+                            <a title="Du thuyền" class="dropdown-toggle" data-toggle="dropdown">Du thuyền<b class="caret"></b></a>
                             <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                                <li><a href="" title="">NC 14</a></li>
-                                <li><a href="" title="">Leader 36</a></li>
-                                <li><a href="" title="">Cap Camarat 6.5 WA</a></li>
-                                <li><a href="" title="">Cap Camarat 7.5 DC</a></li>
+                                <li><a title="NC 14">NC 14</a></li>
+                                <li><a title="Leader 36">Leader 36</a></li>
+                                <li><a title="Cap Camarat 6.5 WA">Cap Camarat 6.5 WA</a></li>
+                                <li><a title="Cap Camarat 7.5 DC">Cap Camarat 7.5 DC</a></li>
+                                <li><a title="Leader 40">Leader 40</a></li>
                             </ul>
                         </li>
-                        <li><a href="" title="Tour">Tour</a></li>
+                        <li><a title="Tour" (click)="routerLinkTour()">Tour</a></li>
                         <li class="dropdown ">
-                            <a href="" title="Thẻ" class="dropdown-toggle" data-toggle="dropdown">Thẻ<b class="caret"></b></a>
+                            <a title="Thẻ" class="dropdown-toggle" data-toggle="dropdown">Thẻ<b class="caret"></b></a>
                             <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                                <li><a href="" title="">Các loại thẻ Vip</a></li>
-                                <li><a href="" title="">Hướng dẫn sử dụng thẻ</a></li>
+                                <li><a title="">Các loại thẻ Vip</a></li>
+                                <li><a title="">Hướng dẫn sử dụng thẻ</a></li>
                             </ul>
                         </li>
                         <li class="dropdown ">
-                            <a href="" title="Tin tức" class="dropdown-toggle" data-toggle="dropdown">Tin tức<b class="caret"></b></a>
+                            <a title="Tin tức" class="dropdown-toggle" data-toggle="dropdown">Tin tức<b class="caret"></b></a>
                             <ul class="dropdown-menu icon-fa-caret-up submenu-hover">
-                                <li><a href="" title="">Tin tức mới</a></li>
-                                <li><a href="" title="">Tin khuyến mại</a></li>
+                                <li><a title="">Tin tức mới</a></li>
+                                <li><a title="">Tin khuyến mại</a></li>
                             </ul>
                         </li>
-                        <li><a href="" title="Giới thiệu">Giới thiệu</a></li>
-                        <li><a href="" title="Liên hệ">Liên hệ</a></li>
+                        <li><a title="Giới thiệu">Giới thiệu</a></li>
+                        <li><a title="Liên hệ">Liên hệ</a></li>
                     </ul>
                 </div>
             </div>

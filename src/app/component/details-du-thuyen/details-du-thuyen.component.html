@@ -98,8 +98,8 @@
                                                                     <span style="color: red; display: inline-block;">: {{ item?.user?.rank }}</span>
                                                                     </span>
                                                                 </div>
-                                                                <div class="col-sm-4" style="padding-left: 0; padding-right: 0; border: 1px solid #07c">
-                                                                    <img src="{{ linkImage }}" (click)="viewImageComment(linkImage, item?.content)" class="img-responsive" alt="Comment Image" title="Xem hình ảnh" style="width: 100%; height: 85px; cursor: pointer">
+                                                                <div class="col-sm-4" style="padding-left: 0; padding-right: 0; border: 1px solid #07c" *ngIf="item?.linkImageComment">
+                                                                    <img src="{{ item?.linkImageComment }}" (click)="viewImageComment(item?.linkImageComment, item?.content)" class="img-responsive" alt="Comment Image" title="Xem hình ảnh" style="width: 100%; height: 85px; cursor: pointer">
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -309,6 +309,6 @@
 
         <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Xem hình ảnh'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImageComment">
             <div *dxTemplate="let data of 'content'">
-                <app-show-image-component [linkImage]="linkImage" [name]="contentNameComment"></app-show-image-component>
+                <app-show-image-component [linkImage]="linkImageComment" [name]="contentNameComment"></app-show-image-component>
             </div>
         </dx-popup>

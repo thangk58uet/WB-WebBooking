@@ -39,6 +39,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   public imageId = '';
   public contentNameComment = ''; /*popup show Image Comment*/
   public nameTitleShowImage = '';
+  public linkImageComment = '';
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
@@ -122,6 +123,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   viewImageComment(linkImage, content) {
     this.contentNameComment = content;
     this.popupShowImageComment = true;
+    this.linkImageComment = linkImage;
   }
 
   selectImage(index) {
@@ -156,7 +158,7 @@ export class DetailsDuThuyenComponent implements OnInit {
       this.commonService.detailsBook[index].endHour = this.commonService.detailsBook[index].startHour +
       this.commonService.detailsBook[index].duration;
     }
-    this.router.navigate(['/wb/book/information']);
+    this.router.navigate(['/book/information']);
   }
 
   getListAcessoryType() {
@@ -172,6 +174,13 @@ export class DetailsDuThuyenComponent implements OnInit {
   getListComment() {
     this.detailsDuThuyenService.getComment().subscribe( res => {
       this.listComment = (res && res['value'] && res['value'].list) ? res['value'].list : [];
+      if (this.listComment) {
+        for (let index = 0; index < this.listComment.length; index++) {
+          if (this.listComment[index].image) {
+            this.listComment[index].linkImageComment = this.commonService.pathImage + this.listComment[index].image.reference;
+          }
+        }
+      }
     });
   }
 

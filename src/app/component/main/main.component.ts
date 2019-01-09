@@ -71,7 +71,7 @@ export class MainComponent implements OnInit {
   routerLink(item) {
     const boatTypeId = item.id;
     const typeBoat = item.name;
-    this.router.navigate(['/wb/tour'], {queryParams: { boatTypeId, typeBoat }});
+    this.router.navigate(['/tour'], {queryParams: { boatTypeId, typeBoat }});
   }
 
   searchListBoat() {
@@ -83,7 +83,7 @@ export class MainComponent implements OnInit {
     // const toDate = this.toDate.toJSON().slice(0, 10);
 
     // const price = this.price;
-    this.router.navigate(['/wb/tour'], {queryParams: { locationId, boatTypeId, location, typeBoat }});
+    this.router.navigate(['/tour'], {queryParams: { locationId, boatTypeId, location, typeBoat }});
   }
 
   getListTourHighlights() {
@@ -108,10 +108,10 @@ export class MainComponent implements OnInit {
 
   detailsTourHighlights(item, id) {
     const typeBoat = item.type.name;
-    this.router.navigate(['/wb/details'], {queryParams: { id, typeBoat }} );
+    this.router.navigate(['/details'], {queryParams: { id, typeBoat }} );
   }
 
   routerLinkDetail() {
-    this.router.navigate(['/wb/tour']);
+    this.router.navigate(['/tour']);
   }
 }
