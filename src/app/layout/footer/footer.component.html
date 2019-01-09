@@ -76,10 +76,10 @@
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 no-padding">
                     <div class="payments text-right">
                         <ul>
-                            <li>
-                                <a title="Jeanneau"><img src="./assets/icon/jeanneau-logo.png" alt="Jeanneau"></a>
+                            <li *ngFor="let item of lsPartnerLogo">
+                                <a title="{{ item.name }}"><img src="{{ imageUrlAPI }}{{ item.image.reference }}" alt="{{ item.name }}"></a>
                             </li>
-                            <li>
+                            <!-- <li>
                                 <a title="Prestige"><img src="./assets/icon/prestige-logo.png" alt="Prestige"></a>
                             </li>
                             <li>
@@ -87,7 +87,7 @@
                             </li>
                             <li>
                                 <a title="Fountaine"><img src="./assets/icon/fountaine_logo.png" alt="Fountaine"></a>
-                            </li>
+                            </li> -->
                         </ul>
                     </div>
                 </div>

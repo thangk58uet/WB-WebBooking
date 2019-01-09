@@ -2,6 +2,8 @@ import { TourDuThuyenService } from './../component/tour-du-thuyen/tour-du-thuye
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
+import { HeaderService } from './header/header.service';
+import { FooterService } from './footer/footer.service';
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { FooterComponent } from './footer/footer.component';
 import { RouterModule } from '@angular/router';
@@ -98,7 +100,9 @@ CommonModule,
     CookieService,
     CommonService,
     TourDuThuyenService,
-    DetailsDuThuyenService
+    DetailsDuThuyenService,
+    HeaderService, 
+    FooterService
   ]
 })
 export class LayoutModule { }

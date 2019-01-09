@@ -1,4 +1,7 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { FooterService } from './footer.service';
+import { CommonService } from 'src/app/service/common.service';
+
 
 @Component({
   selector: 'app-footer',
@@ -8,9 +11,23 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  public lsPartnerLogo;
+  public imageUrlAPI;
+  constructor(
+    public footerService : FooterService,
+    public commonService : CommonService) { }
 
   ngOnInit() {
+    this.imageUrlAPI = this.commonService.pathImage;
+    this.getPartnerLogo();
   }
 
+  getPartnerLogo() {
+    this.footerService.getPartnerLogo().subscribe(res => {
+      if (res && res['value']) {
+          this.lsPartnerLogo = res['value'];
+      }
+    });
+    
+  }
 }
