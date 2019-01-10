@@ -1,7 +1,7 @@
 import { CommonService } from '../../service/common.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TourDuThuyenService } from './tour-du-thuyen.service';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-tour-du-thuyen',
@@ -23,6 +23,14 @@ export class TourDuThuyenComponent implements OnInit {
   public locationId = null;
   public boatTypeId = null;
 
+  public totalElements: number;
+  public totalPages = 0;
+  public currentPage = 1;
+  public pagination = {
+    pageNum: 0,
+    pageSize: 6
+  };
+
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
               private router: Router,
@@ -32,6 +40,14 @@ export class TourDuThuyenComponent implements OnInit {
     this.getListBoatType();
     this.getListLocation();
     this.search();
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        if (sessionStorage.getItem('currentUrl') === '/tour') {
+          this.search();
+        }
+      }
+    });
+
   }
 
   selectLocation(e) {
@@ -74,36 +90,21 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   search() {
-    if (this.activatedRoute.snapshot.queryParams.boatTypeId) {
-      this.searchbyId();
-    } else { this.searchbyParams(); }
-  }
-
-  searchbyId() {
-    this.tourDuThuyenService.getListBoatById(this.boatTypeId).subscribe(res => {
-      this.listBoat = (res && res['value']) ? res['value'] : [];
-      this.totalCount = this.listBoat['totalCount'];
-      if (this.listBoat.list) {
-        for (let index = 0; index < this.listBoat.list.length; index++) {
-          this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].type.image.reference;
-        }
-      }
-    });
-  }
-
-  searchbyParams() {
     const params = {
       boatTypeId: this.boatTypeId,
       locationId: this.locationId,
       fromDate: this.activatedRoute.snapshot.queryParams.fromDate,
       toDate: this.activatedRoute.snapshot.queryParams.fromDate,
+      pageNum: this.pagination.pageNum,
+      pageSize: this.pagination.pageSize
     };
     this.tourDuThuyenService.getListBoatByParams(params).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];
+      this.totalPages = Math.ceil(this.totalCount / this.pagination.pageSize);
       if (this.listBoat.list) {
         for (let index = 0; index < this.listBoat.list.length; index++) {
-          if (this.listBoat.list[index].images > 0) {
+          if (this.listBoat.list[index].images.length > 0) {
             this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].images[0].reference;
           } else {
             this.listBoat.list[index].linkImage = this.commonService.pathImage + this.listBoat.list[index].type.image.reference;
@@ -119,6 +120,8 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   goToPage(e) {
-
+    this.currentPage = e;
+    this.pagination.pageNum = e - 1;
+    this.search();
   }
 }

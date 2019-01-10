@@ -2,6 +2,7 @@ import { LoginService } from './../../component/login/login.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderService } from './header.service';
+import { alert, confirm } from 'devextreme/ui/dialog';
 
 @Component({
   selector: 'app-header',
@@ -31,7 +32,6 @@ export class HeaderComponent implements OnInit {
           this.lsMenu = res['value'];
       }
     });
-    
   }
 
   login() {
@@ -43,8 +43,13 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    this.loginService.isLogin = false;
-    sessionStorage.clear();
+    const result = confirm('Bạn muốn đăng xuất?', 'Yachttour.vn');
+    result['done']((dialogResult) => {
+      if (dialogResult) {
+        this.loginService.isLogin = false;
+        sessionStorage.clear();
+      }
+    });
   }
 
   routerLinkTour() {

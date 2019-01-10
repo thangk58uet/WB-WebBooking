@@ -77,17 +77,30 @@
 
 .header-top-right .user-info {
     position: relative;
-    a {
-        float: left;
-        margin-right: 32px;
-        padding-top: 10px;
+    border-top: unset !important;
+    .dropdown {
+        position: relative;
+        &:hover {
+            background: unset !important;
+        }
+        img {
+            cursor: pointer;
+            float: right;
+            position: absolute;
+            right: -10px;
+        }
     }
-    img {
-        cursor: pointer;
-        float: right;
-        position: absolute;
-        top: 8px;
-        right: 93px;
+    p {
+        color: white;
+    }
+    li {
+        padding: 10px !important;
+        a {
+            color: #07c;
+            font-weight: 500 !important;
+            font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+            text-transform: unset !important;
+        }
     }
 }
 

@@ -1,3 +1,4 @@
+import { MainService } from './../component/main/main.service';
 import { TourDuThuyenService } from './../component/tour-du-thuyen/tour-du-thuyen.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -33,6 +34,7 @@ import { ActiveAccountComponent } from '../component/active-account/active-accou
 import { ThousandNumberFormatter } from '../pipe/thousand-number-formatter.pipe';
 import { DetailsDuThuyenService } from '../component/details-du-thuyen/details-du-thuyen.service';
 import { ShowImageComponentComponent } from '../component/details-du-thuyen/show-image-component/show-image-component.component';
+import { TinMoiComponent } from '../component/tin-tuc/tin-moi/tin-moi.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -53,6 +55,7 @@ CommonModule,
       component: MainLayoutComponent,
       children: [
         // {path: 'dashboard', loadChildren: '../../component/user/dashboard/dashboard.module#DashboardModule'},
+        { path: '', component: MainComponent },
         { path: 'trang-chu', component: MainComponent },
         { path: 'tour', component: TourDuThuyenComponent },
         { path: 'du-thuyen', component: TourDuThuyenComponent },
@@ -62,6 +65,7 @@ CommonModule,
         { path: 'book/verify-information', component: VerifyInformationComponent},
         { path: 'book/confirm-information', component: BookSuccessComponent},
         { path: 'user', component: UserComponent},
+        { path: 'tin-moi', component: TinMoiComponent},
       ]
     }]),
     DxSelectBoxModule,
@@ -90,6 +94,7 @@ CommonModule,
     ActiveAccountComponent,
     ThousandNumberFormatter,
     ShowImageComponentComponent,
+    TinMoiComponent
   ],
   providers: [
     CommonHttpService,
@@ -101,8 +106,9 @@ CommonModule,
     CommonService,
     TourDuThuyenService,
     DetailsDuThuyenService,
-    HeaderService, 
-    FooterService
+    HeaderService,
+    FooterService,
+    MainService
   ]
 })
 export class LayoutModule { }

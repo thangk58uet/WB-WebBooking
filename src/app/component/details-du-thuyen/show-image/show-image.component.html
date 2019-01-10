@@ -13,9 +13,9 @@
     <div class="image col-sm-8" style="padding-top: 6px;">
         <div class="text row col-sm-8">{{ countImage + 1}}/{{ listImages?.length }}</div>
     </div>
-    <div class="image col-sm-8" style="padding: 6px;">
-        <div class="list-image row col-sm-8">
-            <a class="" *ngFor="let item of listImages; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
-        </div>
-    </div>
+    <!-- <div class="image col-sm-8" style="padding: 6px;">
+      <div class="list-image row col-sm-8">
+          <a class="" *ngFor="let item of listImages; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
+      </div>
+  </div> -->
 </div>

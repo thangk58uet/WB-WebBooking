@@ -23,15 +23,18 @@ export class MainComponent implements OnInit {
   public boatTypeId = null;
   public locationId = null;
   public listTourHighlights: any = [];
+  public listNews: any = [];
 
   constructor(public commonService: CommonService,
               private router: Router,
-              private tourDuThuyenService: TourDuThuyenService) { }
+              private tourDuThuyenService: TourDuThuyenService,
+              private mainService: MainService) { }
 
   ngOnInit() {
     this.getListLocation();
     this.getListBoatType();
     this.getListTourHighlights();
+    this.getNews();
   }
 
   selectLocation(e) {
@@ -51,7 +54,7 @@ export class MainComponent implements OnInit {
   getListLocation() {
     this.commonService.getListProvince().subscribe( res => {
       if (res && res['value']) {
-        for(let index = 0; index < res['value'].length; index++) {
+        for (let index = 0; index < res['value'].length; index++) {
           this.listLocation.push(res['value'][index].name);
         }
       }
@@ -113,5 +116,11 @@ export class MainComponent implements OnInit {
 
   routerLinkDetail() {
     this.router.navigate(['/tour']);
+  }
+
+  getNews() {
+    this.mainService.getNews().subscribe( res => {
+
+    });
   }
 }

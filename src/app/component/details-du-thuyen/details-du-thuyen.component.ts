@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { TourDuThuyenService } from '../tour-du-thuyen/tour-du-thuyen.service';
 import { CommonService } from '../../service/common.service';
-import * as $ from 'jquery';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DetailsDuThuyenService } from './details-du-thuyen.service';
 import { UploadFileService } from 'src/app/service/upload-file.service';
+
+declare var google: any;
+
 @Component({
   selector: 'app-details-du-thuyen',
   templateUrl: './details-du-thuyen.component.html',
@@ -48,8 +50,18 @@ export class DetailsDuThuyenComponent implements OnInit {
               private detailsDuThuyenService: DetailsDuThuyenService,
               private uploadFileService: UploadFileService) { }
 
-  ngOnInit() {
+  // tslint:disable-next-line:use-life-cycle-interface
+  ngAfterViewInit(): void {
+    // Load google maps script after view init
+    const DSLScript = document.createElement('script');
+
+    DSLScript.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDYWdmQ2indDeIb1IwJ_FTmc4czofdvWqo'; // replace by your API key
+    DSLScript.type = 'text/javascript';
+    document.body.appendChild(DSLScript);
     this.getDetailBoat();
+
+  }
+  ngOnInit() {
     this.getBoatTour();
     this.getAccessory();
     this.getAccesssoryType();
@@ -111,6 +123,15 @@ export class DetailsDuThuyenComponent implements OnInit {
       this.listImages = this.detailBoat.images;
       if (this.listImages && this.listImages.length > 0) {
         this.linkImage = this.commonService.pathImage + this.listImages[0].reference;
+      }
+      if (this.detailBoat.province) {
+        const lat = this.detailBoat.province.latitude;
+        const long = this.detailBoat.province.longitude;
+        if (lat && long) {
+          // tslint:disable-next-line:radix
+          this.gmt_init_map(Number(lat), Number(long), 'google_map', parseInt('11'),
+            'ROADMAP', '', true, false, true);
+        }
       }
     });
   }
@@ -200,6 +221,64 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.filePost = e.files[0];
     this.uploadFileService.uploadFile('/image/upload', this.filePost).subscribe( res => {
       this.imageId = (res && res['value']) ? res['value'].id : '';
+    });
+  }
+
+  gmt_init_map(Lat, Lng, map_canvas_id, zoom, maptype, info,
+    show_marker, show_popup, scrollwheel) {
+      const latLng = new google.maps.LatLng(Lat, Lng);
+
+      switch (maptype) {
+      case 'SATELLITE':
+        maptype = google.maps.MapTypeId.SATELLITE;
+        break;
+
+      case 'HYBRID':
+        maptype = google.maps.MapTypeId.HYBRID;
+        break;
+
+      case 'TERRAIN':
+        maptype = google.maps.MapTypeId.TERRAIN;
+        break;
+
+      default:
+        maptype = google.maps.MapTypeId.ROADMAP;
+        break;
+
+      }
+
+    const map = new google.maps.Map(document.getElementById(map_canvas_id), {
+      zoom : zoom,
+      center : latLng,
+      mapTypeId : maptype,
+      scrollwheel : scrollwheel
+    });
+
+    if (show_marker) {
+      this.showMarker(map, latLng);
+    }
+
+    google.maps.event.addListener(map, 'click', function(event) {
+      console.log(event.latLng.lat() + ' ' + event.latLng.lng());
+      // if (marker) {
+      //     marker.setMap(null);
+      // }
+      // $("#idProvinceLatitude").val(event.latLng.lat());
+      // $("#idProvinceLongitude").val(event.latLng.lng());
+      // showMarker(event.latLng);
+    });
+
+    google.maps.event.addListener(map, 'zoom_changed', function() {
+      // $("#map_zoom").val(map.zoom);
+    });
+
+    }
+
+  showMarker(map, latLng) {
+    const marker = new google.maps.Marker({
+      position : latLng,
+      draggable : false,
+      map : map
     });
   }
 

@@ -12,20 +12,20 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.router.events.subscribe(e => {
-      if (e instanceof NavigationEnd) {
-        sessionStorage.setItem('currentUrl', e.url);
-      }
-    });
-    setTimeout(() => {
-      if (sessionStorage.getItem('currentUrl')) {
-        if (sessionStorage.getItem('currentUrl') === '/') {
-          this.router.navigate(['/trang-chu']);
-          return;
-        } else {
-          this.router.navigateByUrl(sessionStorage.getItem('currentUrl'));
-        }
-      } else { this.router.navigate(['/trang-chu']); }
-    }, 1000);
+    // this.router.events.subscribe(e => {
+    //   if (e instanceof NavigationEnd) {
+    //     sessionStorage.setItem('currentUrl', e.url);
+    //   }
+    // });
+    // setTimeout(() => {
+    //   if (sessionStorage.getItem('currentUrl')) {
+    //     if (sessionStorage.getItem('currentUrl') === '/') {
+    //       this.router.navigate(['/trang-chu']);
+    //       return;
+    //     } else {
+    //       this.router.navigateByUrl(sessionStorage.getItem('currentUrl'));
+    //     }
+    //   } else { this.router.navigate(['/trang-chu']); }
+    // }, 1000);
   }
 }

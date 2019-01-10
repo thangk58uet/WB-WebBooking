@@ -118,7 +118,8 @@
 
                                                 </div>
                                                 <div class="google-map-tour">
-                                                    img
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.294062377245!2d105.90918911540227!3d21.020916693420876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a9233368050d%3A0xd61957efdf4c02a8!2zMzggUGjhu5EgTmfhu41jIFRyw6wsIFRo4bqhY2ggQsOgbiwgTG9uZyBCacOqbiwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1547022043641"
+                                                        width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
                                                 </div>
                                             </div>
                                         </div>
@@ -139,27 +140,27 @@
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 padding-left-0" style="width: 68%" *ngFor="let item of listBoat?.list">
                                             <div class="wrap-box">
-                                                <div class="box-img">
-                                                    <div class="img-right"><img src="{{ item?.linkImage }}" class="img-responsive" alt="Double Room" title="Double Room"></div>
-                                                    <div class="text-content">
+                                                <div class="box-img row">
+                                                    <div class="img-right col-sm-3" style="padding-left: 8px"><img src="{{ item?.linkImage }}" class="img-responsive" alt="Double Room" title="Double Room"></div>
+                                                    <div class="text-content col-sm-6" style="padding-left: 0; padding-right: 8px">
                                                         <h2 (click)="routerLinkDetail(item, item?.id)">{{ item?.name }}</h2>
                                                         <p> <span class="sub-text">{{ item?.province?.name }}– Xem trên bản đồ</span> (Cách trung tâm 350 m)</p>
                                                         <p>{{ item?.description }}</p>
                                                         <p><span class="special">Đang khuyến mãi!</span> <span style="color:red"> Được đặt nhiều nhất trong 24h qua</span></p>
                                                     </div>
-                                                    <div class="danh-gia">
+                                                    <div class="danh-gia col-sm-3" style="padding-left: 8px; padding-right: 0">
                                                         <h4>Tuyệt vời</h4>
                                                         <p style="margin-top: -6px">600 đánh giá</p>
                                                         <span class="diem-danh-gia">9.2</span>
                                                         <p style="color: #07c;font-weight:bold">Được ưa chuộng</p>
-                                                        <p style="color: green; font-size: 20px">VND 500.000</p>
+                                                        <p style="color: green; font-size: 20px; font-weight: bold">VND {{ item?.price | thousandNumberFormatter }}</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 tour-du-lich padding-right-0 padding-left-0 pagination" style="width: 68%">
-                                            <app-pagination [totalPages]="1" (goPage)="goToPage($event)" [pagesToShow]="5" [currentPage]="1"></app-pagination>
+                                            <app-pagination [totalPages]="totalPages" (goPage)="goToPage($event)" [pagesToShow]="5" [currentPage]="currentPage"></app-pagination>
                                         </div>
                                     </div>
                                 </div>

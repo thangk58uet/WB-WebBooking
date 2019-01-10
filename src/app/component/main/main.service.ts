@@ -9,5 +9,9 @@ export class MainService {
 
   constructor(private httpClient: HttpClientCustom) { }
 
-
+  public getNews(): Observable<Response> {
+    return this.httpClient.get('/news').pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
 }

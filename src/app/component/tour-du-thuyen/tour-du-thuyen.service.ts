@@ -9,12 +9,6 @@ export class TourDuThuyenService {
 
   constructor(private httpClient: HttpClientCustom) { }
 
-  public getListBoatById(boatTypeId): Observable<Response> {
-    return this.httpClient.get(`/boat/?boatTypeId=${boatTypeId}`).pipe(map((res: Response) => {
-      return res.json();
-    }));
-  }
-
   public getListBoatByParams(params): Observable<Response> {
     return this.httpClient.get(`/boat/`, params).pipe(map((res: Response) => {
       return res.json();

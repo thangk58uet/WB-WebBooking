@@ -7,14 +7,15 @@
         background: #cce1ff;
         border-right: 1px solid white;
         text-align: center;
-        padding: 8px 29px;
         color: #07c;
         font-weight: bold;
-        border-radius: 4px;
+        padding-top: 8px;
         cursor: pointer;
+        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
     }
     margin-bottom: 10px;
     border: 1px solid #07c;
+    border-radius: 4px;
 }
 
 .check-avail {
@@ -163,15 +164,16 @@
             .btn-hostel {
                 margin: 10px 0;
                 width: 90%;
-                background-color: #a7c7f5;
-                color: blue;
+                background: #07c;
+                color: white;
                 padding: 5px 40px;
                 border-radius: 5px;
                 font-weight: bold;
-                border: 3px solid blue;
+                border: 1px solid blue;
             }
             .btn-hostel:hover {
-                background-color: #fff;
+                background-color: blue;
+                border: 1px solid white;
             }
         }
         .comment-customer {

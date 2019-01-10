@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { ShowImageComponentComponent } from './component/details-du-thuyen/show-image-component/show-image-component.component';
+import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -17,9 +17,9 @@ import { ShowImageComponentComponent } from './component/details-du-thuyen/show-
     HttpModule,
     RouterModule.forRoot([
       { path: '', loadChildren: './layout/layout.module#LayoutModule' },
-    ], { useHash: true })
+    ])
   ],
-  providers: [],
+  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
