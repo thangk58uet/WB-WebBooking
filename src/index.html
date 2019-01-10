@@ -27,8 +27,7 @@
     <!-- MAIN STYLE -->
     <link rel="stylesheet" href="/assets/css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/"
-        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script> -->
 </head>
 
@@ -37,7 +36,7 @@
     <div id="fb-root"></div>
     <script>
         const FACEBOOK_APP_ID = '134306623917784';
-        window.fbAsyncInit = function () {
+        window.fbAsyncInit = function() {
             FB.init({
                 appId: FACEBOOK_APP_ID,
                 cookie: true,
@@ -46,18 +45,18 @@
             });
             FB.AppEvents.logPageView();
         };
-        (function (d, s, id) {
+        (function(d, s, id) {
             var js, fjs = d.getElementsByTagName(s)[0];
             if (d.getElementById(id)) return;
-            js = d.createElement(s); js.id = id;
+            js = d.createElement(s);
+            js.id = id;
             js.src = 'https://connect.facebook.net/vi_VN/sdk/xfbml.customerchat.js';
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
 
     <!-- Your customer chat code -->
-    <div class="fb-customerchat" attribution=setup_tool page_id="1747492325270456" logged_in_greeting="Xin chào! Bạn có cần giúp gì không?"
-        logged_out_greeting="Xin chào! Bạn có cần giúp gì không?">
+    <div class="fb-customerchat" attribution=setup_tool page_id="1252162808279111" logged_in_greeting="Xin chào! Bạn có cần giúp gì không?" logged_out_greeting="Xin chào! Bạn có cần giúp gì không?">
     </div>
 </body>
 
