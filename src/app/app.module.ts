@@ -5,7 +5,7 @@ import { FormsModule } from '@angular/forms';
 import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,13 @@ import { LocationStrategy, HashLocationStrategy } from '@angular/common';
       { path: '', loadChildren: './layout/layout.module#LayoutModule' },
     ])
   ],
-  providers: [{provide: LocationStrategy, useClass: HashLocationStrategy}],
-  bootstrap: [AppComponent]
+  
+  providers: [
+    // Below line is optional as default LocationStrategy is PathLocationStrategy
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
+    // {provide: LocationStrategy, useClass: HashLocationStrategy}
+  ],
+  bootstrap: [AppComponent],
+  
 })
 export class AppModule { }
