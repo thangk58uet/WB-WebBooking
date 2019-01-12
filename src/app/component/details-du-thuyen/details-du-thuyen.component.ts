@@ -29,6 +29,9 @@ export class DetailsDuThuyenComponent implements OnInit {
   public popupShowImage = false;
   public popupShowImageComment = false;
 
+  public latitude;
+  public longitude;
+
   public indexImage = null;
   public typeBoat;
   public location;
@@ -148,6 +151,8 @@ export class DetailsDuThuyenComponent implements OnInit {
       if (this.detailBoat.province) {
         const lat = this.detailBoat.province.latitude;
         const long = this.detailBoat.province.longitude;
+        this.latitude = lat;
+        this.longitude = long;
         if (lat && long) {
           // tslint:disable-next-line:radix
           this.gmt_init_map(Number(lat), Number(long), 'google_map', parseInt('11'),

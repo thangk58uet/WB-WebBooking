@@ -37,6 +37,8 @@ import { ShowImageComponentComponent } from '../component/details-du-thuyen/show
 import { TinMoiComponent } from '../component/tin-tuc/tin-moi/tin-moi.component';
 import { XemTinComponent } from '../component/tin-tuc/xem-tin/xem-tin.component';
 import { TheComponent } from '../component/the/the.component';
+import { StaticPageComponent } from 'src/app/component/static-page/static-page.component';
+import { StaticPageService } from 'src/app/component/static-page/static-page.service';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -71,6 +73,7 @@ import { TheComponent } from '../component/the/the.component';
         { path: 'tin-tuc/tin-khuyen-mai', component: TinMoiComponent},
         { path: 'tin-tuc/xem-tin', component: XemTinComponent},
         { path: 'the', component: TheComponent},
+        { path: 'noi-dung/:link', component: StaticPageComponent},
       ]
     }]),
     DxSelectBoxModule,
@@ -101,7 +104,8 @@ import { TheComponent } from '../component/the/the.component';
     ShowImageComponentComponent,
     TinMoiComponent,
     XemTinComponent,
-    TheComponent
+    TheComponent, 
+    StaticPageComponent
   ],
   providers: [
     CommonHttpService,
@@ -115,7 +119,8 @@ import { TheComponent } from '../component/the/the.component';
     DetailsDuThuyenService,
     HeaderService,
     FooterService,
-    MainService
+    MainService,
+    StaticPageService
   ]
 })
 export class LayoutModule { }
