@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit } from '@angular/core';
 import { TourDuThuyenService } from '../tour-du-thuyen/tour-du-thuyen.service';
 import { CommonService } from '../../service/common.service';
@@ -42,13 +43,21 @@ export class DetailsDuThuyenComponent implements OnInit {
   public contentNameComment = ''; /*popup show Image Comment*/
   public nameTitleShowImage = '';
   public linkImageComment = '';
+  public userInfo = {
+    fullName: '',
+    email: '',
+    phoneNumber: ''
+  };
+  public token = '';
+  public popupLogin = false;
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
               private router: Router,
               private activatedRoute: ActivatedRoute,
               private detailsDuThuyenService: DetailsDuThuyenService,
-              private uploadFileService: UploadFileService) { }
+              private uploadFileService: UploadFileService,
+              private cookieService: CookieService) { }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit(): void {
@@ -62,6 +71,8 @@ export class DetailsDuThuyenComponent implements OnInit {
 
   }
   ngOnInit() {
+    this.token = this.cookieService.get('token');
+
     this.getBoatTour();
     this.getAccessory();
     this.getAccesssoryType();
@@ -69,6 +80,13 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.getListLocation();
     this.getListAcessoryType();
     this.getListComment();
+    this.getUserInfo();
+  }
+
+  getUserInfo() {
+    this.userInfo.fullName = this.cookieService.get('fullName');
+    this.userInfo.email = this.cookieService.get('email');
+    this.userInfo.phoneNumber = this.cookieService.get('phoneNumber');
   }
 
   getBoatTour() {
@@ -173,13 +191,11 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   bookTour(item, id) {
-    this.commonService.detailsBook = item;
-    this.commonService.boatTourId = id;
     for (let index = 0; index < this.commonService.detailsBook.length; index++) {
       this.commonService.detailsBook[index].endHour = this.commonService.detailsBook[index].startHour +
       this.commonService.detailsBook[index].duration;
     }
-    this.router.navigate(['/book/information']);
+    this.router.navigate(['/book/information'], { queryParams: { id }});
   }
 
   getListAcessoryType() {
@@ -280,6 +296,10 @@ export class DetailsDuThuyenComponent implements OnInit {
       draggable : false,
       map : map
     });
+  }
+
+  login() {
+    this.popupLogin = true;
   }
 
 }

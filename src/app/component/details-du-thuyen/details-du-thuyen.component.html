@@ -79,13 +79,11 @@
                                                         <div class="text-customer-like" *ngFor="let item of listComment">
                                                             <span style="background: #e9f0fa; margin-bottom: 10px">{{ item?.content }}</span>
                                                             <div class="info-customer row">
-                                                                <div class="col-sm-1"><span class=""><i class="fa fa-user-circle-o avata-customer" aria-hidden="true"></i></span></div>
-                                                                <div class="col-sm-7 customer-content" style="width: 53.33%">
-                                                                    <span class="name-customer">{{ item?.user?.firstName }}</span>
-                                                                    <span class="country-customer">
-                                                                    <span style="color: #07c; display: inline-block; font-weight: bold; text-decoration: underline">Rank</span>
-                                                                    <span style="color: red; display: inline-block;">: {{ item?.user?.rank }}</span>
-                                                                    </span>
+                                                                <div class="row col-sm-8">
+                                                                    <div class=""><span style="text-align: center"><i class="fa fa-user-circle-o avata-customer" aria-hidden="true"></i></span></div>
+                                                                    <div class=" customer-content">
+                                                                        <span class="name-customer">{{ item?.user?.firstName }}</span>
+                                                                    </div>
                                                                 </div>
                                                                 <div class="col-sm-4" style="padding-left: 0; padding-right: 0; border: 1px solid #07c" *ngIf="item?.linkImageComment">
                                                                     <img src="{{ item?.linkImageComment }}" (click)="viewImageComment(item?.linkImageComment, item?.content)" class="img-responsive" alt="Comment Image" title="Xem hình ảnh" style="width: 100%; height: 85px; cursor: pointer">
@@ -94,8 +92,8 @@
                                                         </div>
                                                     </div>
                                                     <div class="booking-menu-left login-comment">
-                                                        <p class="text-drive">Để lại bình luận của bạn, <span class="text-login-comment">Đăng
-                              nhập</span> ngay</p>
+                                                        <p class="text-drive">Để lại bình luận của bạn, <span class="text-login-comment" (click)="login()">Đăng
+                            nhập</span> ngay</p>
                                                         <p>Mỗi ý kiến đóng góp của các bạn đều là món quà đối với chúng tôi!</p>
                                                     </div>
                                                 </div>
@@ -110,9 +108,30 @@
                                                 <div style="width: 30%">Đánh giá của khách(333)</div>
                                             </div>
                                             <div class="boat-details-description">
-                                                <h2>{{ detailBoat?.name }}</h2>
-                                                <p>11 Biet Thu, Nha Trang, Việt Nam – <span style="color: blue; text-decoration: underline">Vị
-                          trí xuất sắc - hiển thị bản đồ</span></p>
+                                                <div class="row">
+                                                    <div class="col-sm-6" style="margin-top: 20px">
+                                                        <h2 style="margin-top: 0 !important">{{ detailBoat?.name }}</h2>
+                                                    </div>
+                                                    <div class="col-sm-6" style="display: flex;justify-content: flex-end; margin-top: 20px">
+                                                        <a href="#availability_target" style="text-decoration: none; line-height: 2">Đặt ngay</a>
+                                                        <span class="icon-share" title="Chia sẻ"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
+                                                    </div>
+
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6">
+                                                        <p style="font-weight: bold; color: #07c">{{ detailBoat?.province?.name }} –
+                                                            <span style="color: blue; text-decoration: underline; font-weight: normal">Vị
+                                                          trí xuất sắc - hiển thị bản đồ
+                                                        </span>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6">
+                                                        <!-- <i class="bpg_logo" style="color: green"></i> -->
+                                                        <p style="color: green; text-align: right;font-weight: bold">Chúng tôi luôn khớp giá!</p>
+                                                    </div>
+                                                </div>
+
                                             </div>
                                             <div class="wrap-box">
                                                 <div class="box-img" style="border: 1px solid #dadada">
@@ -129,7 +148,7 @@
                                                     <div>
                                                         <div class="text-left">
                                                             <h4>Một trong những lựa chọn hàng đầu của chúng tôi {{ detailBoat?.name }}</h4>
-                                                            <p> {{ detailBoat?.description }}</p>
+                                                            <div class="content" [innerHTML]="detailBoat?.description"></div>
                                                         </div>
                                                     </div>
                                                     <div class="text-right">
@@ -165,7 +184,7 @@
                                                         <div class="row">
                                                             <div class="col-sm-4" *ngFor="let item of listAccessoryPaid">
                                                                 <input type="checkbox"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter
-                                }} VND)</span>
+                              }} VND)</span>
                                                             </div>
                                                         </div>
 
@@ -181,21 +200,21 @@
                                                     <div class="hp-section hp-section__exp-highlight hp-section__highlighted book-boat">
                                                         <div class="hp-section-row">
                                                             <label class="availability-sub-header">
-                              Vui lòng nhập ngày bạn muốn đặt du thuyền
-                            </label>
+                            Vui lòng nhập ngày bạn muốn đặt du thuyền
+                          </label>
                                                         </div>
                                                         <div class="hp-section-row hp-input-label">
                                                             <div class="row" style="margin-left: 130px">
                                                                 <span class="col-sm-3" style="font-weight: normal; text-align: left; line-height: 22px">Ngày
-                                đặt du thuyền</span>
+                              đặt du thuyền</span>
                                                                 <dx-date-box class="from-date-box col-sm-3" [(value)]="dateBookBoat" [(min)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
                                                                 </dx-date-box>
                                                                 <div class="col-sm-3">
                                                                     <button class="b-button b-button_primary hp-section-row lp_bold_date_picker_btn" (click)="getBoatTour()">
-                                  <span class="b-button__text">
-                                    Kiểm tra
-                                  </span>
-                                </button>
+                                <span class="b-button__text">
+                                  Kiểm tra
+                                </span>
+                              </button>
                                                                 </div>
                                                             </div>
 
@@ -230,7 +249,7 @@
                                                             </td>
                                                             <td class="occ_no_dates" style="border: 1px solid #5bbaff">
                                                                 <span style="color: green; font-size: 18px">{{ item?.price | thousandNumberFormatter }}
-                                VND</span>
+                              VND</span>
                                                             </td>
                                                             <td class="rt_show_dates" style="border: 1px solid #5bbaff">
                                                                 <span class="b-button" (click)="bookTour(item, item?.id)">Đặt tour</span>
@@ -242,20 +261,16 @@
                                                     <h4>Giữ giá tốt cho kỳ nghỉ sắp tới của bạn</h4>
                                                     <p>Giá có thể sẽ tăng, vì vậy hãy đảm bảo đặt du thuyền của bạn ngay hôm nay.</p>
                                                 </div>
-                                                <div class="background-green write-comment">
+                                                <div class="background-green write-comment" *ngIf="token">
                                                     <h4>Bình luận về {{ detailBoat?.name }}</h4>
                                                     <div class="row information">
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6">
                                                             <span class="title">Họ tên : </span>
-                                                            <span class="value">Nguyễn Huy Thắng</span>
+                                                            <span class="value">{{ userInfo.fullName }}</span>
                                                         </div>
-                                                        <div class="col-sm-4">
+                                                        <div class="col-sm-6">
                                                             <span class="title">Email : </span>
-                                                            <span class="value">thangk58@gmail.com</span>
-                                                        </div>
-                                                        <div class="col-sm-3">
-                                                            <span class="title">Rank : </span>
-                                                            <span class="value">Gold</span>
+                                                            <span class="value">{{ userInfo.email }}</span>
                                                         </div>
                                                     </div>
                                                     <div class="row input-comment">
@@ -299,5 +314,11 @@
         <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Xem hình ảnh'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImageComment">
             <div *dxTemplate="let data of 'content'">
                 <app-show-image-component [linkImage]="linkImageComment" [name]="contentNameComment"></app-show-image-component>
+            </div>
+        </dx-popup>
+
+        <dx-popup class="popup" [width]="'22%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour.com'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
+            <div *dxTemplate="let data of 'content'">
+                <app-login></app-login>
             </div>
         </dx-popup>

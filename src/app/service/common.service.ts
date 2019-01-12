@@ -13,7 +13,8 @@ export class CommonService {
   public detailsBook: any = [];
   public dateBook = '';
   public listImages: any = [];
-  public listPrice = ['Dưới 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu', '30 triệu - 50 triệu', 'Trên 50 triệu'];
+  public listPrice = ['Dưới 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu',
+  '30 triệu - 50 triệu', 'Trên 50 triệu'];
   public listPriceId = [
     { min: 0, max: 5},
     { min: 5, max: 10},
@@ -21,7 +22,7 @@ export class CommonService {
     { min: 20, max: 30},
     { min: 30, max: 50},
     { min: 50, max: 1000000},
-  ]
+  ];
   public url = environment.apiUrl;
   public pathImage = environment.apiUrl + '/image/';
 
@@ -77,6 +78,18 @@ export class CommonService {
 
   public getDetailBoatById(id): Observable<Response> {
     return this.httpClient.get(`/boat/${id}`, id).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public getNewsById(categoryId): Observable<Response> {
+    return this.httpClient.get(`/news/${categoryId}`).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public getNews(): Observable<Response> {
+    return this.httpClient.get(`/news/`).pipe(map((res: Response) => {
       return res.json();
     }));
   }

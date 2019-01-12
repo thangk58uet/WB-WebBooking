@@ -1,0 +1,58 @@
+<div cz-shortcut-listen="true xem-tin">
+    <!-- OUR-ROOMS-->
+    <section class="rooms padding-top-0 padding-bottom-0">
+        <div class="container">
+            <div class="wrap-rooms">
+                <div class="row">
+                    <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
+                            <div class="owl-stage">
+                                <div class="owl-item">
+                                    <div class="item ">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-0" style="width: 30%">
+                                            <div class="wrap-box">
+                                                <h4 style="text-align: left; color: green; font-size: 21px;padding: 10px;border: 1px solid #07c;">Tin khuyến mại</h4>
+                                                <div class="box-img-tin-moi row">
+                                                    <div class="col-sm-4">
+                                                        <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="width: 100%; height: 100px; background-size: 100%">
+                                                    </div>
+                                                    <div class="text col-sm-6">
+                                                        <h4 sty>{{ newDetails?.title }}</h4>
+                                                        <p>{{ item?.description }}</p>
+                                                        <p class="button-xem" (click)="viewDetailNews(item?.id)">Xem</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0 padding-left-0 news-content" style="width: 68% !important">
+                                            <div style="">
+                                                <h4 style="text-align: left; color: #07c; font-size: 21px">{{ newDetails?.title }}</h4>
+                                            </div>
+
+                                            <div class="box-img" style="border: 1px solid #dadada">
+                                                <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="{{ detailBoat?.name }}" style="width: 100%; height: 100%;cursor: pointer">
+                                            </div>
+
+                                            <div [innerHTML]="newDetails?.content"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /container -->
+    </section>
+    <!-- END / ROOMS -->
+
+    <!--END / SROLL TOP-->
+    <!-- LOAD JQUERY -->
+
+    <div class="awe-popup-overlay" id="awe-popup-overlay"></div>
+    <div class="awe-popup-wrap" id="awe-popup-wrap">
+        <div class="awe-popup-content"></div>
+        <span class="awe-popup-close" id="awe-popup-close"></span>
+    </div>
+</div>

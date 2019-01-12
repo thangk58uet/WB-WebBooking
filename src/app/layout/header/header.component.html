@@ -5,16 +5,16 @@
             <div class="header-top-left">
                 <img src="./assets/icon/logo3.png" alt="Yachttour" [routerLink]="'/trang-chu'" style="cursor: pointer;">
             </div>
-            <div class="header-top-right">
-                <div *ngIf="loginService.isLogin === false">
+            <div class="header-top-right col-sm-4">
+                <div *ngIf="loginService.isLogin === false" style="display: flex; justify-content: flex-end">
                     <button type="button" (click)="login()" title="Đăng nhập">Đăng nhập</button>
                     <button type="button" (click)="register()" title="Đăng ký">Đăng ký</button>
                 </div>
-                <div *ngIf="loginService.isLogin === true" class="collapse navbar-collapse user-info row col-sm-6">
-                    <div class="col-sm-6" style="width: 75%; margin-top: 12px">
-                        <p>Xin chào Admin</p>
+                <div *ngIf="loginService.isLogin === true" class="collapse navbar-collapse user-info row">
+                    <div class="col-sm-6" style="width: 82%; margin-top: 12px; text-align: right">
+                        <p>Xin chào {{ fullName }}</p>
                     </div>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <ul class="nav navbar-nav">
                             <li class="dropdown">
                                 <a title="Admin">
@@ -39,11 +39,11 @@
                 <div class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
                         <li *ngFor="let item of lsMenu" [ngClass]="{'dropdown':  item.menus?.length, '': !item.menus?.length }">
-                            <a *ngIf="!item.menus?.length" title="{{ item.title }}" [routerLink]="item?.href">{{ item.title }}</a>
-                            <a *ngIf="item.menus?.length" title="{{ item.title }}" class="dropdown-toggle" data-toggle="dropdown">{{ item.title }}<b class="caret"></b></a>
+                            <a *ngIf="!item.menus?.length" title="{{ item.title }}" href="#{{ item?.href }}">{{ item.title }}</a>
+                            <a *ngIf="item.menus?.length" title="item.title" class="dropdown-toggle" data-toggle="dropdown">{{ item.title }}<b class="caret"></b></a>
 
                             <ul class="dropdown-menu icon-fa-caret-up submenu-hover" *ngIf="item.menus?.length">
-                                <li *ngFor="let item2 of item.menus"><a title="{{ item2.title }}" [routerLink]="item2?.href">{{ item2.title }}</a></li>
+                                <li *ngFor="let item2 of item.menus"><a title="{{ item2.title }}" href="#{{ item2?.href }}">{{ item2.title }}</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -60,7 +60,7 @@
     </div>
 </dx-popup>
 
-<dx-popup class="popup" [width]="'22%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.com'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupRegister">
+<dx-popup class="popup" [width]="'40%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.com'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupRegister">
     <div *dxTemplate="let data of 'content'">
         <app-register></app-register>
     </div>

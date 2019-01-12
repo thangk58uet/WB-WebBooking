@@ -1,5 +1,6 @@
 import { CommonService } from './../../../service/common.service';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-tin-moi',
@@ -21,10 +22,24 @@ export class TinMoiComponent implements OnInit {
   public locationId = null;
   public listTourHighlights: any = [];
   public listNews: any = [];
+  public isTinMoi: boolean;
+  public listTinTuc: any = [];
+  public listKhuyenMai: any = [];
 
-  constructor(public commonService: CommonService) { }
+  constructor(public commonService: CommonService,
+              private router: Router) { }
 
   ngOnInit() {
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        if (e.url === '/tin-tuc/tin-moi') {
+          this.isTinMoi = true;
+        } else {
+          this.isTinMoi = false;
+        }
+      }
+    });
+    this.getListNew();
   }
 
   selectLocation(e) {
@@ -42,4 +57,15 @@ export class TinMoiComponent implements OnInit {
   }
 
   searchListBoat() {}
+
+  getListNew() {
+    const categoryId = (this.isTinMoi) ? 1 : 2;
+    this.commonService.getNews().subscribe(res => {
+      this.listNews = (res && res['value']) ? res['value'] : [];
+    });
+  }
+
+  viewDetailNews(id) {
+    this.router.navigate(['/tin-tuc/tin-moi/xem-tin'], { queryParams: { id }})
+  }
 }

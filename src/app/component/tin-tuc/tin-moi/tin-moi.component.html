@@ -60,74 +60,14 @@
                     <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
                         <div class="owl-item">
                             <div class="item four-boat">
-                                <div class="col-xs-4 tin-moi-new" style=" padding-left: 0">
+                                <div class="col-xs-4 tin-moi-new" *ngFor="let item of listNews">
                                     <div class="wrap-box">
-                                        <div class="box-img">
-                                            <img src="./assets/images/tet-nguyen-dan.jpg" class="img-responsive" alt="PLuxury Room" title="Luxury Room" style="width: 100%; height: 220px; background-size: 100%">
-                                            <div class="text">
-                                                <h4>Tết Nguyên Đán</h4>
-                                                <p>Tiết kiệm từ 20% trở lên ở một số nơi từ 25/1 đến 18/2</p>
-                                                <a>Xem ưu đãi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 tin-moi-new">
-                                    <div class="wrap-box">
-                                        <div class="box-img">
+                                        <div class="box-img-tin-moi">
                                             <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="width: 100%; height: 220px; background-size: 100%">
                                             <div class="text">
-                                                <h4>Ưu đãi dịp lễ tết</h4>
-                                                <p>Tiết kiệm từ 20% trở lên ở một số nơi từ 25/1 đến 18/2</p>
-                                                <a>Xem ưu đãi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 tin-moi-new" style="padding-right: 0">
-                                    <div class="wrap-box">
-                                        <div class="box-img">
-                                            <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="width: 100%; height: 220px; background-size: 100%">
-                                            <div class="text">
-                                                <h4>Ưu đãi dịp lễ tết</h4>
-                                                <p>Tiết kiệm từ 20% trở lên ở một số nơi từ 25/1 đến 18/2</p>
-                                                <a>Xem ưu đãi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 tin-moi-new" style=" padding-left: 0">
-                                    <div class="wrap-box">
-                                        <div class="box-img">
-                                            <img src="./assets/images/tet-nguyen-dan.jpg" class="img-responsive" alt="PLuxury Room" title="Luxury Room" style="width: 100%; height: 220px; background-size: 100%">
-                                            <div class="text">
-                                                <h4>Tết Nguyên Đán</h4>
-                                                <p>Tiết kiệm từ 20% trở lên ở một số nơi từ 25/1 đến 18/2</p>
-                                                <a>Xem ưu đãi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 tin-moi-new">
-                                    <div class="wrap-box">
-                                        <div class="box-img">
-                                            <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="width: 100%; height: 220px; background-size: 100%">
-                                            <div class="text">
-                                                <h4>Ưu đãi dịp lễ tết</h4>
-                                                <p>Tiết kiệm từ 20% trở lên ở một số nơi từ 25/1 đến 18/2</p>
-                                                <a>Xem ưu đãi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-xs-4 tin-moi-new" style="padding-right: 0">
-                                    <div class="wrap-box">
-                                        <div class="box-img">
-                                            <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="width: 100%; height: 220px; background-size: 100%">
-                                            <div class="text">
-                                                <h4>Ưu đãi dịp lễ tết</h4>
-                                                <p>Tiết kiệm từ 20% trở lên ở một số nơi từ 25/1 đến 18/2</p>
-                                                <a>Xem ưu đãi</a>
+                                                <h4>{{ item?.title }}</h4>
+                                                <p>{{ item?.description }}</p>
+                                                <p class="button-xem" (click)="viewDetailNews(item?.id)">Xem</p>
                                             </div>
                                         </div>
                                     </div>

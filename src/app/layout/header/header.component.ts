@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderService } from './header.service';
 import { alert, confirm } from 'devextreme/ui/dialog';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -12,10 +13,12 @@ import { alert, confirm } from 'devextreme/ui/dialog';
 export class HeaderComponent implements OnInit {
 
   public lsMenu;
+  public fullName = '';
 
   constructor(public loginService: LoginService,
     private router: Router,
-    public headerService: HeaderService) { }
+    public headerService: HeaderService,
+    private cookieService: CookieService) { }
 
   ngOnInit() {
     this.getMenu();
@@ -24,6 +27,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.loginService.isLogin = false;
     }
+    this.fullName = this.cookieService.get('fullName');
   }
 
   getMenu() {
@@ -47,7 +51,9 @@ export class HeaderComponent implements OnInit {
     result['done']((dialogResult) => {
       if (dialogResult) {
         this.loginService.isLogin = false;
+        this.cookieService.deleteAll();
         sessionStorage.clear();
+        location.reload();
       }
     });
   }

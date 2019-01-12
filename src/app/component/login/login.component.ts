@@ -36,7 +36,10 @@ export class LoginComponent implements OnInit {
   loginSuccess(response = null) {
     if (response && response.accessToken) {
       sessionStorage.setItem('token', response.accessToken);
-      this.loginService.popupLogin = false;
+      location.reload();
+      setTimeout(() => {
+        this.loginService.popupLogin = false;
+      }, 1000);
     } else {
       this.loginError();
     }

@@ -119,8 +119,13 @@ export class MainComponent implements OnInit {
   }
 
   getNews() {
-    this.mainService.getNews().subscribe( res => {
-
+    this.commonService.getNews().subscribe( res => {
+      this.listNews = (res && res['value'] ? res['value'] : []);
+      this.listNews = this.listNews.slice(0,2);
     });
+  }
+
+  xemUuDai(id, categoryId) {
+    this.router.navigate(['/tin-tuc/tin-moi/xem-tin'], { queryParams: { id, categoryId }});
   }
 }

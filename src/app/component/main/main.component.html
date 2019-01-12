@@ -60,26 +60,14 @@
                     <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
                         <div class="owl-item">
                             <div class="item four-boat">
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-8 uu-dai-1">
+                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-8 uu-dai-1" *ngFor="let item of listNews">
                                     <div class="wrap-box">
                                         <div class="box-img">
                                             <img src="./assets/images/tet-nguyen-dan.jpg" class="img-responsive" alt="PLuxury Room" title="Luxury Room">
                                             <div class="text">
-                                                <h4>Tết Nguyên Đán</h4>
-                                                <p>Tiết kiệm từ 20% trở lên ở một số nơi từ 25/1 đến 18/2</p>
-                                                <a>Xem ưu đãi</a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-8 uu-dai-2">
-                                    <div class="wrap-box">
-                                        <div class="box-img">
-                                            <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room">
-                                            <div class="text">
-                                                <h4>Ưu đãi dịp lễ tết</h4>
-                                                <p>Tiết kiệm từ 15% trở lên cho các kỳ lưu trú trên khắp thế giới đến hết 31/3</p>
-                                                <a>Xem ưu đãi</a>
+                                                <h4>{{ item?.title }}</h4>
+                                                <p>{{ item?.description }}</p>
+                                                <a (click)="xemUuDai(item?.id, item?.category?.id)">Xem ngay!</a>
                                             </div>
                                         </div>
                                     </div>

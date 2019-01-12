@@ -3,6 +3,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { TourDuThuyenService } from './tour-du-thuyen.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
+declare const $: any;
 @Component({
   selector: 'app-tour-du-thuyen',
   templateUrl: './tour-du-thuyen.component.html',
@@ -37,17 +38,16 @@ export class TourDuThuyenComponent implements OnInit {
               private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
+    this.router.events.subscribe(e => {
+        if (e instanceof NavigationEnd) {
+          if (e.url === '/tour') {
+            location.reload();
+          }
+        }
+      });
     this.getListBoatType();
     this.getListLocation();
     this.search();
-    this.router.events.subscribe(e => {
-      if (e instanceof NavigationEnd) {
-        if (sessionStorage.getItem('currentUrl') === '/tour') {
-          this.search();
-        }
-      }
-    });
-
   }
 
   selectLocation(e) {
@@ -123,5 +123,10 @@ export class TourDuThuyenComponent implements OnInit {
     this.currentPage = e;
     this.pagination.pageNum = e - 1;
     this.search();
+  }
+
+  selectOptions(e, option) {
+    $('.click-btn-tour').removeClass('click-btn-tour-selected');
+    $(e.target).addClass('click-btn-tour-selected');
   }
 }

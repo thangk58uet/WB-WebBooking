@@ -12,11 +12,11 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // this.router.events.subscribe(e => {
-    //   if (e instanceof NavigationEnd) {
-    //     sessionStorage.setItem('currentUrl', e.url);
-    //   }
-    // });
+    this.router.events.subscribe(e => {
+      if (e instanceof NavigationEnd) {
+        window.scrollTo(0, 0);
+      }
+    });
     // setTimeout(() => {
     //   if (sessionStorage.getItem('currentUrl')) {
     //     if (sessionStorage.getItem('currentUrl') === '/') {

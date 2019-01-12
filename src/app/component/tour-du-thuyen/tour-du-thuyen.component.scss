@@ -75,6 +75,17 @@
                 font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
                 color: black !important;
             }
+            .inner-description {
+                p::after {
+                    content: "...";
+                    display: inline-block;
+                    width: 3px;
+                    height: 3px;
+                }
+                span {
+                    display: none;
+                }
+            }
         }
         .danh-gia {
             width: 20%;
@@ -233,4 +244,13 @@
             }
         }
     }
+}
+
+.click-btn-tour {
+    width: 25% !important;
+}
+
+.click-btn-tour-selected {
+    background: #0ab21b !important;
+    color: white !important;
 }

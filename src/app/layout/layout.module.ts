@@ -35,6 +35,7 @@ import { ThousandNumberFormatter } from '../pipe/thousand-number-formatter.pipe'
 import { DetailsDuThuyenService } from '../component/details-du-thuyen/details-du-thuyen.service';
 import { ShowImageComponentComponent } from '../component/details-du-thuyen/show-image-component/show-image-component.component';
 import { TinMoiComponent } from '../component/tin-tuc/tin-moi/tin-moi.component';
+import { XemTinComponent } from '../component/tin-tuc/xem-tin/xem-tin.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -65,7 +66,9 @@ CommonModule,
         { path: 'book/verify-information', component: VerifyInformationComponent},
         { path: 'book/confirm-information', component: BookSuccessComponent},
         { path: 'user', component: UserComponent},
-        { path: 'tin-moi', component: TinMoiComponent},
+        { path: 'tin-tuc/tin-moi', component: TinMoiComponent},
+        { path: 'tin-tuc/tin-khuyen-mai', component: TinMoiComponent},
+        { path: 'tin-tuc/tin-moi/xem-tin', component: XemTinComponent},
       ]
     }]),
     DxSelectBoxModule,
@@ -94,7 +97,8 @@ CommonModule,
     ActiveAccountComponent,
     ThousandNumberFormatter,
     ShowImageComponentComponent,
-    TinMoiComponent
+    TinMoiComponent,
+    XemTinComponent
   ],
   providers: [
     CommonHttpService,

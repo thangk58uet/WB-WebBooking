@@ -609,3 +609,40 @@ h4 {
         }
     }
 }
+
+.note-information {
+    display: inline-block;
+    font-size: 16px;
+    .border-radius-50 {
+        border-radius: 50%;
+        color: white;
+        border: 1px solid #07c;
+    }
+    .background-color-blue {
+        background-color: blue;
+    }
+    .background-color-gray {
+        background-color: gray;
+    }
+    .color-gray {
+        color: gray;
+    }
+    span {
+        margin-right: 5px;
+    }
+    span i {
+        width: 20px;
+        height: 20px;
+        margin-right: 5px;
+    }
+    div {
+        display: inline-block;
+        margin-right: 5px;
+    }
+    .underline-left {
+        width: 330px;
+        border-top: 2px solid #dadada;
+        height: 2px;
+        font-size: 4px;
+    }
+}
