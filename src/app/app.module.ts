@@ -19,13 +19,12 @@ import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@a
       { path: '', loadChildren: './layout/layout.module#LayoutModule' },
     ])
   ],
-  
+
   providers: [
     // Below line is optional as default LocationStrategy is PathLocationStrategy
     {provide: LocationStrategy, useClass: PathLocationStrategy},
     // {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],
-  
 })
 export class AppModule { }

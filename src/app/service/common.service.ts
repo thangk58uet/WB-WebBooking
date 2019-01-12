@@ -88,8 +88,20 @@ export class CommonService {
     }));
   }
 
-  public getNews(): Observable<Response> {
-    return this.httpClient.get(`/news/`).pipe(map((res: Response) => {
+  public getNews(params?): Observable<Response> {
+    return this.httpClient.get('/news/', params).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public getTourById(id): Observable<Response> {
+    return this.httpClient.get(`/tour/${id}`).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public getInfoTourByBoat(params): Observable<Response> {
+    return this.httpClient.get(`/tour-info/`, params).pipe(map((res: Response) => {
       return res.json();
     }));
   }

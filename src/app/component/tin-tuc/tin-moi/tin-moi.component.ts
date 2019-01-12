@@ -59,13 +59,16 @@ export class TinMoiComponent implements OnInit {
   searchListBoat() {}
 
   getListNew() {
-    const categoryId = (this.isTinMoi) ? 1 : 2;
-    this.commonService.getNews().subscribe(res => {
-      this.listNews = (res && res['value']) ? res['value'] : [];
+    const newsCategoryId = (this.isTinMoi) ? 1 : 2;
+    this.commonService.getNews({newsCategoryId}).subscribe(res => {
+      this.listNews = (res && res['value']) ? res['value'].list : [];
+      for (let index = 0; index < this.listNews.length; index++) {
+        this.listNews[index].linkImage = this.commonService.pathImage + this.listNews[index].image.reference;
+      }
     });
   }
 
   viewDetailNews(id) {
-    this.router.navigate(['/tin-tuc/tin-moi/xem-tin'], { queryParams: { id }})
+    this.router.navigate(['/tin-tuc/xem-tin'], { queryParams: { id }});
   }
 }

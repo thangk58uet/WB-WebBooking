@@ -24,6 +24,7 @@ export class MainComponent implements OnInit {
   public locationId = null;
   public listTourHighlights: any = [];
   public listNews: any = [];
+  public listNewsDisplay: any = [];
 
   constructor(public commonService: CommonService,
               private router: Router,
@@ -120,12 +121,20 @@ export class MainComponent implements OnInit {
 
   getNews() {
     this.commonService.getNews().subscribe( res => {
-      this.listNews = (res && res['value'] ? res['value'] : []);
-      this.listNews = this.listNews.slice(0,2);
+      this.listNews = (res && res['value'] ? res['value'].list : []);
+      this.listNewsDisplay = [];
+      for ( let index = 0; index < this.listNews.length; index++) {
+        if (this.listNews[index].isHighlight === true) {
+          this.listNewsDisplay.push(this.listNews[index]);
+        }
+      }
+      for (let index = 0; index < this.listNewsDisplay.length; index++) {
+        this.listNewsDisplay[index].linkImage = this.commonService.pathImage + this.listNewsDisplay[index].image.reference;
+      }
     });
   }
 
   xemUuDai(id, categoryId) {
-    this.router.navigate(['/tin-tuc/tin-moi/xem-tin'], { queryParams: { id, categoryId }});
+    this.router.navigate(['/tin-tuc/xem-tin'], { queryParams: { id, categoryId }});
   }
 }

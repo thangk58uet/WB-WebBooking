@@ -20,8 +20,16 @@ export class XemTinComponent implements OnInit {
   }
 
   getNewsDetail() {
-    this.commonService.getNews().subscribe(res => {
-      this.newDetails = (res && res['value']) ? res['value'][this.activatedRoute.snapshot.queryParams.id - 1] : {};
+    this.commonService.getNewsById(this.activatedRoute.snapshot.queryParams.id).subscribe(res => {
+      this.newDetails = (res && res['value']) ? res['value'] : {};
+      this.newDetails.linkImage = this.commonService.pathImage + this.newDetails.image.reference;
     });
+  }
+
+  getListNew() {
+    // const categoryId = (this.isTinMoi) ? 1 : 2;
+    // this.commonService.getNews().subscribe(res => {
+    //   this.listNews = (res && res['value']) ? res['value'].list : [];
+    // });
   }
 }

@@ -25,9 +25,18 @@
                                                     <div class="booking-menu-left">
                                                         <div class="details-information">
                                                             <h4>Chi tiết đặt phòng của bạn</h4>
-                                                            <p>Nhận du thuyền: {{ commonService.detailsBook?.startHour }}h 06-01-2019</p>
-                                                            <p>Trả du thuyền: {{ commonService.detailsBook?.startHour + commonService.detailsBook?.duration }}h 06-01-2019</p>
-                                                            <p>Tổng thời gian: {{ commonService.detailsBook?.duration }}h</p>
+                                                            <p>
+                                                                <span>Nhận du thuyền : </span>
+                                                                <span>{{ detailTour?.startHour }}h {{ dateBook }}</span>
+                                                            </p>
+                                                            <p>
+                                                                <span>Trả du thuyền: </span>
+                                                                <span>{{ detailTour?.startHour + detailTour?.duration }}h {{ dateBook }}</span>
+                                                            </p>
+                                                            <p>
+                                                                <span>Tổng thời gian: </span>
+                                                                <span>{{ detailTour?.duration }}h</span>
+                                                            </p>
                                                         </div>
                                                     </div>
                                                     <div class="booking-menu-left">
@@ -49,15 +58,15 @@
                                                     <div class="booking-menu-left">
                                                         <div class="details-information">
                                                             <h4>Tóm tắt giá</h4>
-                                                            <p>Du thuyền: {{ commonService.detailsBook?.price }}</p>
-                                                            <p>10% Thuế</p>
+                                                            <p>Du thuyền: {{ price | thousandNumberFormatter }} VND</p>
+                                                            <!-- <p>10% Thuế</p>
                                                             <p>Giá</p>
                                                             <p>Phụ phí</p>
-                                                            <p>Thuế thành phố</p>
+                                                            <p>Thuế thành phố</p> -->
                                                         </div>
 
                                                     </div>
-                                                    <div class="booking-menu-left">
+                                                    <!-- <div class="booking-menu-left">
                                                         <div class="details-information">
                                                             <h4>Lịch thanh toán của bạn</h4>
                                                             <p style="color: #0ab21b !important">Không cần thanh toán hôm nay. Bạn sẽ trả khi đến nghỉ.</p>
@@ -69,7 +78,7 @@
                                                             <p style="color: #0ab21b !important">MIỄN PHÍ hủy đến 23:59 ngày ngày 20 Tháng 2</p>
                                                             <p>Từ 00:00 ngày ngày 21 Tháng 2 VND 200.000</p>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="booking-menu-left">
                                                         <div class="details-information">
                                                             <p style="color: #07c !important">Bạn có mã khuyến mãi không?</p>
@@ -87,13 +96,10 @@
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 68%">
                                             <div class="wrap-box ">
                                                 <div class="box-img">
-                                                    <div class="img-right"><img src="http://150.95.113.234:8080/boat-booking-api/api/image/6a37598e-3795-4e13-8ce7-f5f281c57b8a" class="img-responsive" alt="Double Room" title="Double Room"></div>
+                                                    <div class="img-right"><img src="{{ linkImage }}" class="img-responsive" alt="{{ boatName }}" title="{{ boatName }}"></div>
                                                     <div class="text-content">
-                                                        <h2 (click)="routerLinkDetail()">Thuyền NC số 14 </h2>
-                                                        <p><span class="special">Ưu đãi trong ngày</span> <span class="tien-ich"> Bãi biển</span></p>
-                                                        <p> <span class="tien-ich">Đưa đón sân bay</span> <span class="tien-ich">Đỗ xe miễn phí</span></p>
-                                                        <p><span class="tien-ich">Vật nuôi miễn phí</span></p>
-                                                        <p>96/6 Tran Phu, Nha Trang, Việt Nam</p>
+                                                        <h2>{{ boatName }}</h2>
+                                                        <p>{{ location }}</p>
                                                     </div>
 
                                                 </div>
@@ -108,27 +114,28 @@
                                                     <div class="row input-field">
                                                         <div class="col-sm-2">
                                                             <span>Danh xưng</span>
-                                                            <input type="text">
+                                                            <dx-select-box placeholder="" [dataSource]="listType" [searchEnabled]="true" [value]="type" (onSelectionChanged)="selectType($event)">
+                                                            </dx-select-box>
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <span>Họ (tiếng Anh)</span>
-                                                            <input type="text">
+                                                            <input type="text" [(ngModel)]="userInfo.firstName">
                                                         </div>
                                                         <div class="col-sm-3">
                                                             <span>Tên (tiếng Anh)</span>
-                                                            <input type="text">
+                                                            <input type="text" [(ngModel)]="userInfo.lastName">
                                                         </div>
                                                     </div>
                                                     <div class="row input-field">
                                                         <div class="col-sm-4">
                                                             <span>Địa chỉ email</span>
-                                                            <input type="text">
+                                                            <input type="text" [(ngModel)]="userInfo.email">
                                                         </div>
                                                     </div>
                                                     <div class="row input-field">
                                                         <div class="col-sm-4">
                                                             <span>Xác nhận địa chỉ email</span>
-                                                            <input type="text">
+                                                            <input type="text" [(ngModel)]="userInfo.email">
                                                         </div>
                                                     </div>
                                                     <div style="margin-left: 12px">

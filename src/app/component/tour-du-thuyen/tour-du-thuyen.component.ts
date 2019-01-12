@@ -31,6 +31,8 @@ export class TourDuThuyenComponent implements OnInit {
     pageNum: 0,
     pageSize: 6
   };
+  public sortType = '';
+  public sortDirection = '';
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
@@ -96,8 +98,16 @@ export class TourDuThuyenComponent implements OnInit {
       fromDate: this.activatedRoute.snapshot.queryParams.fromDate,
       toDate: this.activatedRoute.snapshot.queryParams.fromDate,
       pageNum: this.pagination.pageNum,
-      pageSize: this.pagination.pageSize
+      pageSize: this.pagination.pageSize,
+      sortBy: this.sortType,
+      sortDirection: this.sortDirection
     };
+    if (params.sortBy === '') {
+      delete params.sortBy;
+    }
+    if (params.sortDirection === '') {
+      delete params.sortDirection;
+    }
     this.tourDuThuyenService.getListBoatByParams(params).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];
@@ -126,6 +136,20 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   selectOptions(e, option) {
+    if (option === 1) {
+      this.sortType = '';
+      this.sortDirection = '';
+    } else if (option === 2) {
+      this.sortType = 'minPrice';
+      this.sortDirection = 'ASC';
+    } else if (option === 3) {
+      this.sortType = 'minPrice';
+      this.sortDirection = 'DESC';
+    } else {
+      this.sortType = 'averageRate';
+      this.sortDirection = 'ASC';
+    }
+    this.search();
     $('.click-btn-tour').removeClass('click-btn-tour-selected');
     $(e.target).addClass('click-btn-tour-selected');
   }

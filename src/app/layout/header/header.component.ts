@@ -13,7 +13,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class HeaderComponent implements OnInit {
 
   public lsMenu;
-  public fullName = '';
+  public lastName = '';
 
   constructor(public loginService: LoginService,
     private router: Router,
@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.loginService.isLogin = false;
     }
-    this.fullName = this.cookieService.get('fullName');
+    this.lastName = this.cookieService.get('lastName');
   }
 
   getMenu() {

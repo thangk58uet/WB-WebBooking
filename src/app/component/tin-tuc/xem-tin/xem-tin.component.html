@@ -11,29 +11,29 @@
                                     <div class="item ">
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-0" style="width: 30%">
                                             <div class="wrap-box">
-                                                <h4 style="text-align: left; color: green; font-size: 21px;padding: 10px;border: 1px solid #07c;">Tin khuyến mại</h4>
-                                                <div class="box-img-tin-moi row">
-                                                    <div class="col-sm-4">
-                                                        <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="width: 100%; height: 100px; background-size: 100%">
+                                                <h4 style="text-align: left; color: green; font-size: 21px;padding: 10px;border: 1px solid #07c;">Các tin tức khác</h4>
+                                                <div class="box-img-tin-moi">
+                                                    <div class="row" style="width: 60%;">
+                                                        <img src="{{ newDetails?.linkImage }}" class="img-responsive" style="width: 100%; height: 100px; background-size: 100%">
                                                     </div>
-                                                    <div class="text col-sm-6">
-                                                        <h4 sty>{{ newDetails?.title }}</h4>
-                                                        <p>{{ item?.description }}</p>
-                                                        <p class="button-xem" (click)="viewDetailNews(item?.id)">Xem</p>
+                                                    <div class="text row">
+                                                        <h4>{{ newDetails?.title }}</h4>
+                                                        <p>{{ newDetails?.description }}</p>
+                                                        <p class="button-xem">Xem</p>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0 padding-left-0 news-content" style="width: 68% !important">
                                             <div style="">
-                                                <h4 style="text-align: left; color: #07c; font-size: 21px">{{ newDetails?.title }}</h4>
+                                                <h4 style="text-align: center; color: #07c; font-size: 21px; background: #dff6e1 !important; padding: 15px; border: 1px solid #dadada">{{ newDetails?.title }}</h4>
                                             </div>
 
                                             <div class="box-img" style="border: 1px solid #dadada">
-                                                <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="{{ detailBoat?.name }}" style="width: 100%; height: 100%;cursor: pointer">
+                                                <img src="{{ newDetails?.linkImage }}" class="img-responsive" style="width: 100%; height: 100%;cursor: pointer">
                                             </div>
 
-                                            <div [innerHTML]="newDetails?.content"></div>
+                                            <div class="content-news" style="background: #eaf0f9; border: 1px solid #dadada; margin-top: 20px; margin-bottom: 20px" [innerHTML]="newDetails?.content"></div>
                                         </div>
                                     </div>
                                 </div>

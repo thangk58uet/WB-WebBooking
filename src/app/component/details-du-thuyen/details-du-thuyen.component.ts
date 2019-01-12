@@ -1,10 +1,11 @@
 import { CookieService } from 'ngx-cookie-service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TourDuThuyenService } from '../tour-du-thuyen/tour-du-thuyen.service';
 import { CommonService } from '../../service/common.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { DetailsDuThuyenService } from './details-du-thuyen.service';
 import { UploadFileService } from 'src/app/service/upload-file.service';
+import { InformationComponent } from './../book-du-thuyen/information/information.component';
 
 declare var google: any;
 
@@ -44,12 +45,13 @@ export class DetailsDuThuyenComponent implements OnInit {
   public nameTitleShowImage = '';
   public linkImageComment = '';
   public userInfo = {
-    fullName: '',
+    lastName: '',
     email: '',
     phoneNumber: ''
   };
   public token = '';
   public popupLogin = false;
+  @ViewChild(InformationComponent) informationComponent: InformationComponent;
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
@@ -70,6 +72,7 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.getDetailBoat();
 
   }
+
   ngOnInit() {
     this.token = this.cookieService.get('token');
 
@@ -84,7 +87,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userInfo.fullName = this.cookieService.get('fullName');
+    this.userInfo.lastName = this.cookieService.get('lastName');
     this.userInfo.email = this.cookieService.get('email');
     this.userInfo.phoneNumber = this.cookieService.get('phoneNumber');
   }
@@ -190,12 +193,16 @@ export class DetailsDuThuyenComponent implements OnInit {
     });
   }
 
-  bookTour(item, id) {
+  bookTour(price, id) {
+    const date = this.dateBookBoat.toJSON().slice(0, 10);
+    const tourId = id;
+    const locationId = this.detailBoat.province.id;
+    const boatTypeId = this.detailBoat.type.id;
     for (let index = 0; index < this.commonService.detailsBook.length; index++) {
       this.commonService.detailsBook[index].endHour = this.commonService.detailsBook[index].startHour +
       this.commonService.detailsBook[index].duration;
     }
-    this.router.navigate(['/book/information'], { queryParams: { id }});
+    this.router.navigate(['/book/information'], { queryParams: { boatTypeId, tourId, date, locationId }});
   }
 
   getListAcessoryType() {

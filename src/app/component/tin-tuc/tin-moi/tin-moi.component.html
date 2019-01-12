@@ -63,7 +63,7 @@
                                 <div class="col-xs-4 tin-moi-new" *ngFor="let item of listNews">
                                     <div class="wrap-box">
                                         <div class="box-img-tin-moi">
-                                            <img src="./assets/images/banh-chung.jpg" class="img-responsive" alt="Double Room" title="Double Room" style="width: 100%; height: 220px; background-size: 100%">
+                                            <img src="{{ item?.linkImage }}" class="img-responsive" style="width: 100%; height: 220px; background-size: 100%">
                                             <div class="text">
                                                 <h4>{{ item?.title }}</h4>
                                                 <p>{{ item?.description }}</p>

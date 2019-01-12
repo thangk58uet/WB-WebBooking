@@ -13,8 +13,10 @@ export class RegisterComponent implements OnInit {
   public passWord = '';
   public email = '';
   public popupVerifyEmail = false;
-  public fullName = '';
+  public firstName = '';
+  public lastName = '';
   public phoneNumber = '';
+
   constructor(private loginService: LoginService) { }
 
   ngOnInit() {
@@ -27,7 +29,8 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       userType: 'EMAIL',
       langKey: 'abc',
-      fisrtName : this.fullName,
+      fisrtName : this.firstName,
+      lastname: this.lastName,
       phoneNumber: this.phoneNumber
     };
     this.loginService.register(params).subscribe(res => {

@@ -26,10 +26,11 @@ export class LoginService {
         sessionStorage.setItem('token', data.json().value.accessToken);
         this.cookieService.set('token', data.json().value.accessToken);
 
-        this.cookieService.set('fullName',data.json().value.firstName);
-        this.cookieService.set('email',data.json().value.email);
-        this.cookieService.set('cardNumber',data.json().value.cardNumber);
-        this.cookieService.set('phoneNumber',data.json().value.phoneNumber);
+        this.cookieService.set('firstName', data.json().value.firstName);
+        this.cookieService.set('lastName', data.json().value.lastName);
+        this.cookieService.set('email', data.json().value.email);
+        this.cookieService.set('cardNumber', data.json().value.cardNumber);
+        this.cookieService.set('phoneNumber', data.json().value.phoneNumber);
         // tslint:disable-next-line:no-unused-expression
         successCallback && successCallback(data.json().value);
       }, (err) => {

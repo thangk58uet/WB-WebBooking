@@ -36,6 +36,7 @@ import { DetailsDuThuyenService } from '../component/details-du-thuyen/details-d
 import { ShowImageComponentComponent } from '../component/details-du-thuyen/show-image-component/show-image-component.component';
 import { TinMoiComponent } from '../component/tin-tuc/tin-moi/tin-moi.component';
 import { XemTinComponent } from '../component/tin-tuc/xem-tin/xem-tin.component';
+import { TheComponent } from '../component/the/the.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -49,7 +50,7 @@ import { XemTinComponent } from '../component/tin-tuc/xem-tin/xem-tin.component'
 
 @NgModule({
   imports: [
-CommonModule,
+    CommonModule,
     FormsModule,
     RouterModule.forChild([{
       path: '',
@@ -68,7 +69,8 @@ CommonModule,
         { path: 'user', component: UserComponent},
         { path: 'tin-tuc/tin-moi', component: TinMoiComponent},
         { path: 'tin-tuc/tin-khuyen-mai', component: TinMoiComponent},
-        { path: 'tin-tuc/tin-moi/xem-tin', component: XemTinComponent},
+        { path: 'tin-tuc/xem-tin', component: XemTinComponent},
+        { path: 'the', component: TheComponent},
       ]
     }]),
     DxSelectBoxModule,
@@ -98,7 +100,8 @@ CommonModule,
     ThousandNumberFormatter,
     ShowImageComponentComponent,
     TinMoiComponent,
-    XemTinComponent
+    XemTinComponent,
+    TheComponent
   ],
   providers: [
     CommonHttpService,
