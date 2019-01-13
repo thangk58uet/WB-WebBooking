@@ -65,3 +65,14 @@
         <app-register></app-register>
     </div>
 </dx-popup>
+
+<dx-popup [width]="'50%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupWellcome">
+    <div *dxTemplate="let data of 'content'">
+        <div class="popup-wellcome">
+            <h4>Chào mừng bạn đến với Yachttour.vn</h4>
+            <p>Hệ thống du thuyền cá nhân Yachttour!</p>
+            <p>Nơi mở ra không gian và thời gian dành riêng cho bạn</p>
+            <p>Hãy bắt đầu trải nghiệm những thú vị <span (click)="routerLinkMain()"> tại đây</span></p>
+        </div>
+    </div>
+</dx-popup>

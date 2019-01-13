@@ -184,8 +184,10 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4" *ngFor="let item of listAccessoryPaid">
-                                                                <input type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter
-                              }} VND)</span>
+                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter}} VND)</span>
+                                                            </div>
+                                                            <div class="col-sm-4" *ngFor="let item of listAccessoryPaid">
+                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter}} VND)</span>
                                                             </div>
                                                         </div>
 
@@ -306,7 +308,7 @@
 
         </div>
 
-        <dx-popup class="popup" [width]="'96%'" [height]="'100%'" [showTitle]="true" [title]="'Xem hình ảnh'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImage">
+        <dx-popup class="popup" [width]="'99%'" [height]="'90%'" [showTitle]="true" [title]="'Xem hình ảnh'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImage">
             <div *dxTemplate="let data of 'content'">
                 <app-show-image [linkImage]="linkImage" [listImages]="listImages" [countImage]="indexImage" [name]="nameTitleShowImage"></app-show-image>
             </div>
@@ -326,6 +328,6 @@
 
         <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Chi tiết tour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupTourInfo">
             <div *dxTemplate="let data of 'content'">
-                <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice" [tourName]="tourName"></app-popup-tour-info>
+                <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice" [tourName]="tourName" [provinceName]="provinceName" [detailTour]="detailTour"></app-popup-tour-info>
             </div>
         </dx-popup>

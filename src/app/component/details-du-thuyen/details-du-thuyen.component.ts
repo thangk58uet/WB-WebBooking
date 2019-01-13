@@ -61,6 +61,8 @@ export class DetailsDuThuyenComponent implements OnInit {
   public tourId = '';
   public tourName = '';
   public tourPrice = '';
+  public provinceName = '';
+  public detailTour: any = {};
 
   @ViewChild(InformationComponent) informationComponent: InformationComponent;
 
@@ -352,7 +354,24 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.boatTypeId = this.detailBoat.type.id;
     this.tourPrice = price;
     this.tourName = name;
+    this.provinceName = this.detailBoat.province.name;
     this.popupTourInfo = true;
+    const params = {
+      tourId: this.tourId,
+      provinceId: this.provinceId,
+      boatTypeId: this.boatTypeId
+    };
+    this.commonService.getInfoTourByBoat(params).subscribe( res => {
+      this.detailTour = (res && res['value']) ? res['value'] : {};
+      this.listImages = this.detailTour.images;
+      if (this.detailTour.images.length > 0) {
+        this.linkImage = this.commonService.pathImage + this.detailTour.images[0].reference;
+      } else {
+        this.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
+      }
+    }, err => {
+      this.detailTour = {};
+    });
   }
 
 }

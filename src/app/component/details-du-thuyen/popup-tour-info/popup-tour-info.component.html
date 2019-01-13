@@ -1,5 +1,5 @@
 <div class="popup-tour-info">
-    <div class=row>
+    <div class=row *ngIf="detailTour?.boatTypeTour">
         <div class="wrap-box col-sm-6">
             <div class="box-img" style="border: 1px solid #dadada">
                 <img src="{{ linkImage }}" class="img-responsive" alt="{{ detailTour?.name }}" title="{{ detailTour?.name }}" style="width: 100%; height: 100%;cursor: pointer">
@@ -9,7 +9,6 @@
                 </div>
             </div>
             <div class="list-image">
-                <a class="" (click)="selectImage(i)" *ngFor="let item of listImages; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
                 <a class="" (click)="selectImage(i)" *ngFor="let item of listImages; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
             </div>
         </div>
@@ -21,12 +20,12 @@
     <div class="row footer">
         <div class="col-sm-8">
             <div>
-                <h4>{{ detailTour?.boatTypeTour?.tour?.name }}</h4>
-                <p>{{ detailTour?.province?.name }}</p>
+                <h4>{{ tourName }}</h4>
+                <p>{{ provinceName }}</p>
             </div>
         </div>
         <div class="col-sm-3">
-            <h5>{{ detailTour?.boatTypeTour?.price | thousandNumberFormatter }} VND</h5>
+            <h5>{{ tourPrice | thousandNumberFormatter }} VND</h5>
         </div>
     </div>
 </div>

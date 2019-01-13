@@ -14,6 +14,8 @@ export class LoginService {
   public popupLogin = false;
   public popupRegister = false;
   public isLogin = false;
+  public popupWellcome = false;
+
   constructor(private http: Http,
               private cookieService: CookieService,
               private httpClient: HttpClientCustom) {

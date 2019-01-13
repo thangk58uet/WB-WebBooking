@@ -101,7 +101,7 @@ export class CommonService {
   }
 
   public getInfoTourByBoat(params): Observable<Response> {
-    return this.httpClient.get(`/tour-info/`, params).pipe(map((res: Response) => {
+    return this.httpClient.get(`/tour-info/get-by`, params).pipe(map((res: Response) => {
       return res.json();
     }));
   }

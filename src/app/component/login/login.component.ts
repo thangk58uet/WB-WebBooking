@@ -36,8 +36,9 @@ export class LoginComponent implements OnInit {
 
   loginSuccess(response = null) {
     if (response && response.accessToken) {
+      this.loginService.popupWellcome = true;
       sessionStorage.setItem('token', response.accessToken);
-      location.reload();
+      // location.reload();
       this.routerMain.emit();
       setTimeout(() => {
         this.loginService.popupLogin = false;

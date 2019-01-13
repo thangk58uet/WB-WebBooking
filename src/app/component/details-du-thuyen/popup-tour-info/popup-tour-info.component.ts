@@ -14,8 +14,9 @@ export class PopupTourInfoComponent implements OnInit {
   @Input() boatTypeId = '';
   @Input() tourPrice = '';
   @Input() tourName = '';
+  @Input() provinceName = '';
 
-  public detailTour: any = {};
+  @Input() detailTour: any = {};
   public linkImage = '';
   public listImages: any = [];
   public countImage = 0;
@@ -25,25 +26,6 @@ export class PopupTourInfoComponent implements OnInit {
   constructor(public commonService: CommonService) { }
 
   ngOnInit() {
-    this.getInfoTourBoat();
-    console.log(screen.height);
-  }
-
-  getInfoTourBoat() {
-    const params = {
-      tourId: this.tourId,
-      provinceId: this.provinceId,
-      boatTypeId: this.boatTypeId
-    };
-    this.commonService.getInfoTourByBoat(params).subscribe( res => {
-      this.detailTour = (res && res['value'][0]) ? res['value'][0] : {};
-      this.listImages = this.detailTour.images;
-      if (this.detailTour.images.length > 0) {
-        this.linkImage = this.commonService.pathImage + this.detailTour.images[0].reference;
-      } else {
-        this.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
-      }
-    });
   }
 
   prevImage() {
@@ -66,6 +48,4 @@ export class PopupTourInfoComponent implements OnInit {
     this.indexImage = index;
     this.linkImage = this.commonService.pathImage + this.listImages[index].reference;
   }
-
-
 }
