@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
     } else {
       this.loginService.isLogin = false;
     }
-    this.lastName = this.cookieService.get('lastName');
+    this.lastName = sessionStorage.getItem('lastName');
   }
 
   getMenu() {

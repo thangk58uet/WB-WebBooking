@@ -105,4 +105,10 @@ export class CommonService {
       return res.json();
     }));
   }
+
+  public getAccessoryById(id): Observable<Response> {
+    return this.httpClient.get(`/accessory/${id}`).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
 }

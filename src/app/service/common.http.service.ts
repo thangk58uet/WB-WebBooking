@@ -42,7 +42,7 @@ export class CommonHttpService {
     const headers = new Headers();
     this.setAuthorization(headers);
     const accessToken = this.getAccessToken();
-    if (!this.cookieService.get('userName')) {
+    if (!sessionStorage.getItem('userName')) {
       this.router.navigate(['/login/']);
     } else {
       this.http.get(this.API_URL + url, {headers: headers, search: params}).toPromise()

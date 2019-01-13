@@ -13,9 +13,9 @@
                                             <div class="wrap-box">
 
                                                 <div class="section">
-                                                    <div class="booking-menu-left">
-                                                        <a class="btn-booking-now" href="#availability_target">Đặt ngay</a>
-                                                    </div>
+                                                    <!-- <div class="booking-menu-left">
+                                                        <a class="btn-booking-now" href="'#availability_target'">Đặt ngay</a>
+                                                    </div> -->
 
                                                     <div class="booking-menu-left background-green">
                                                         <div class="justify-content-center">
@@ -101,19 +101,19 @@
                                             </div>
                                         </div>
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 68%">
-                                            <div class="category-header">
+                                            <!-- <div class="category-header">
                                                 <div style="width: 30%">Thông tin du thuyền và giá</div>
                                                 <div style="width: 15%">Tiện nghi</div>
                                                 <div style="width: 25%">Quy tắc chung</div>
                                                 <div style="width: 30%">Đánh giá của khách(333)</div>
-                                            </div>
+                                            </div> -->
                                             <div class="boat-details-description">
                                                 <div class="row">
                                                     <div class="col-sm-6" style="margin-top: 20px">
                                                         <h2 style="margin-top: 0 !important">{{ detailBoat?.name }}</h2>
                                                     </div>
                                                     <div class="col-sm-6" style="display: flex;justify-content: flex-end; margin-top: 20px">
-                                                        <a href="#availability_target" style="text-decoration: none; line-height: 2">Đặt ngay</a>
+                                                        <!-- <a href="#availability_target" style="text-decoration: none; line-height: 2">Đặt ngay</a> -->
                                                         <span class="icon-share" title="Chia sẻ"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
                                                     </div>
 
@@ -121,7 +121,7 @@
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <p style="font-weight: bold; color: #07c">{{ detailBoat?.province?.name }} –
-                                                            <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query={{latitude}},{{longitude}}"> <span style="color: blue; text-decoration: underline; font-weight: normal">Vị
+                                                            <a style="background: unset !important; border: unset !important" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query={{latitude}},{{longitude}}"> <span style="color: blue; text-decoration: underline; font-weight: normal">Vị
                                                           trí xuất sắc - hiển thị bản đồ
                                                         </span>
                                                             </a>
@@ -184,7 +184,7 @@
                                                         </div>
                                                         <div class="row">
                                                             <div class="col-sm-4" *ngFor="let item of listAccessoryPaid">
-                                                                <input type="checkbox" (click)="checkBox($event)"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter
+                                                                <input type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter
                               }} VND)</span>
                                                             </div>
                                                         </div>

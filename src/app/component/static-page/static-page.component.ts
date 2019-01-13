@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, ViewEncapsulation } from '@angular/core';
 import { StaticPageService } from './static-page.service';
 // import { Router } from '@angular/router';
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 
 @Component({
@@ -19,7 +19,6 @@ export class StaticPageComponent implements OnInit {
     public staticPageService: StaticPageService
   ) {
     this.router.params.subscribe(params => {
-      console.log(params);
       this.link = params['link'];
     });
   }

@@ -57,7 +57,6 @@ export class TourDuThuyenComponent implements OnInit {
   selectLocation(e) {
     this.location = e.selectedItem;
     this.locationId = this.listLocation.indexOf(this.location) + 1;
-    console.log(this.locationId)
   }
 
   selectTypeBoat(e) {
@@ -126,7 +125,7 @@ export class TourDuThuyenComponent implements OnInit {
     if (!this.price) {
       delete params.minPrice;
       delete params.maxPrice;
-    };
+    }
     this.tourDuThuyenService.getListBoatByParams(params).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];

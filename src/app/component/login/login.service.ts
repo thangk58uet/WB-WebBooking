@@ -24,13 +24,12 @@ export class LoginService {
       this.doLogin(loginInfo).subscribe((data) => {
         this.isLogin = true;
         sessionStorage.setItem('token', data.json().value.accessToken);
-        this.cookieService.set('token', data.json().value.accessToken);
 
-        this.cookieService.set('firstName', data.json().value.firstName);
-        this.cookieService.set('lastName', data.json().value.lastName);
-        this.cookieService.set('email', data.json().value.email);
-        this.cookieService.set('cardNumber', data.json().value.cardNumber);
-        this.cookieService.set('phoneNumber', data.json().value.phoneNumber);
+        sessionStorage.setItem('firstName', data.json().value.firstName);
+        sessionStorage.setItem('lastName', data.json().value.lastName);
+        sessionStorage.setItem('email', data.json().value.email);
+        sessionStorage.setItem('cardNumber', data.json().value.cardNumber);
+        sessionStorage.setItem('phoneNumber', data.json().value.phoneNumber);
         // tslint:disable-next-line:no-unused-expression
         successCallback && successCallback(data.json().value);
       }, (err) => {
@@ -51,7 +50,7 @@ export class LoginService {
   }
 
   getToken() {
-    return (this.cookieService.get('token'));
+    return (sessionStorage.getItem('token'));
   }
 
   public register(params): Observable<Response> {

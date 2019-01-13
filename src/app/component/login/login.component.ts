@@ -1,6 +1,6 @@
-import { Component, OnInit, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { LoginService } from './login.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
 
 @Component({
@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   public userName: string;
   public passWord: string;
+  @Output() routerMain = new EventEmitter();
 
   @ViewChild(HeaderComponent) headerComponent: HeaderComponent;
 
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit {
     if (response && response.accessToken) {
       sessionStorage.setItem('token', response.accessToken);
       location.reload();
+      this.routerMain.emit();
       setTimeout(() => {
         this.loginService.popupLogin = false;
       }, 1000);

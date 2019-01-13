@@ -38,7 +38,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   public listLocation: any = [];
   public listTypeBoat: any = [];
   public listAccessoryFree = [];
-  public listAccessoryId: any = [];
+  public listAccessoryId = [];
   public listAccessoryPaid = [];
   public contentComment = '';  /*Creat Comment*/
   public listComment: any = [];
@@ -78,7 +78,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.token = this.cookieService.get('token');
+    this.token = sessionStorage.getItem('token');
 
     this.getBoatTour();
     this.getAccessory();
@@ -91,9 +91,9 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userInfo.lastName = this.cookieService.get('lastName');
-    this.userInfo.email = this.cookieService.get('email');
-    this.userInfo.phoneNumber = this.cookieService.get('phoneNumber');
+    this.userInfo.lastName = sessionStorage.getItem('lastName');
+    this.userInfo.email = sessionStorage.getItem('email');
+    this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
   }
 
   getBoatTour() {
@@ -156,11 +156,10 @@ export class DetailsDuThuyenComponent implements OnInit {
         this.longitude = long;
         if (lat && long) {
           // tslint:disable-next-line:radix
-          setTimeout(()=> {
+          setTimeout(() => {
             this.gmt_init_map(Number(lat), Number(long), 'google_map', parseInt('11'),
             'ROADMAP', '', true, false, true);
           }, 1500);
-         
         }
       }
     });
@@ -203,16 +202,18 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   bookTour(price, id) {
+    sessionStorage.setItem('listAccessoryId', JSON.stringify(this.listAccessoryId));
     const date = this.dateBookBoat.toJSON().slice(0, 10);
     const tourId = id;
     const locationId = this.detailBoat.province.id;
     const boatTypeId = this.detailBoat.type.id;
     const name = this.detailBoat.name;
+    const boatId = this.activatedRoute.snapshot.queryParams.id;
     for (let index = 0; index < this.commonService.detailsBook.length; index++) {
       this.commonService.detailsBook[index].endHour = this.commonService.detailsBook[index].startHour +
       this.commonService.detailsBook[index].duration;
     }
-    this.router.navigate(['/book/information'], { queryParams: { boatTypeId, tourId, date, locationId, name }});
+    this.router.navigate(['/book/information'], { queryParams: { boatTypeId, tourId, date, locationId, name, boatId }});
   }
 
   getListAcessoryType() {
@@ -322,8 +323,20 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.popupLogin = true;
   }
 
-  checkBox(e) {
-    console.log(e);
+  checkBox(e, id) {
+    if (e.target.checked) {
+      const index = this.listAccessoryId.indexOf(id);
+      if (index === -1) {
+        this.listAccessoryId.push(id);
+      }
+    } else {
+      const index = this.listAccessoryId.indexOf(id);
+      if (index === -1) {
+        return;
+      } else {
+        this.listAccessoryId.splice(index, 1);
+      }
+    }
   }
 
 }

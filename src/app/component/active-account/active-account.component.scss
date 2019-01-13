@@ -1,0 +1,18 @@
+.login100-form-btn {
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+}
+
+.active-account {
+    h4 {
+        text-align: center;
+        color: #07c;
+    }
+    border: 1px solid #07c;
+    background: #dff6e1;
+    .button-click {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: center;
+    }
+}

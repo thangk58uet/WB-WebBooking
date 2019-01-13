@@ -6,10 +6,12 @@ import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import { PopupTourInfoComponent } from './component/details-du-thuyen/popup-tour-info/popup-tour-info.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    PopupTourInfoComponent
   ],
   imports: [
     BrowserModule,

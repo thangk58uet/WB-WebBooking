@@ -1,25 +1,36 @@
 import { CommonService } from './../../service/common.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-active-account',
   templateUrl: './active-account.component.html',
-  styleUrls: ['./active-account.component.scss']
+  styleUrls: ['./active-account.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ActiveAccountComponent implements OnInit {
 
-  public keyActive = '';
+  public popupActive = true;
+  public popupLogin = false;
   constructor(private activatedRoute: ActivatedRoute,
-              private commonService: CommonService) { }
+              private commonService: CommonService,
+              private router: Router) { }
 
   ngOnInit() {
     this.activeAccount();
   }
 
   activeAccount() {
-    this.commonService.activeAccount(this.keyActive = this.activatedRoute.snapshot.queryParams.key).subscribe( res => {
-
+    this.commonService.activeAccount({key: this.activatedRoute.snapshot.queryParams.key}).subscribe( res => {
     });
+  }
+
+  login() {
+    this.popupActive = false;
+    this.popupLogin = true;
+  }
+
+  routerMain() {
+    this.router.navigate(['/trang-chu']);
   }
 }

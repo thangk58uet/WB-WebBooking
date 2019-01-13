@@ -22,6 +22,8 @@ export class InformationComponent implements OnInit {
     lastName: '',
     email: ''
   };
+  public listAccessoryId = [];
+  public accessoryInfo: any = [];
 
   public listType = ['Anh', 'Chị'];
   public type = '';
@@ -38,13 +40,15 @@ export class InformationComponent implements OnInit {
     this.initUserInfo();
     this.getInfoTourBoat();
     this.getUserInfo();
+    this.getListAccessory();
   }
 
   routerLinkVerify(name, date) {
     const tourId = this.activatedRoute.snapshot.queryParams.tourId;
     const provinceId = this.activatedRoute.snapshot.queryParams.locationId;
-    const  boatTypeId = this.activatedRoute.snapshot.queryParams.boatTypeId;
-    this.router.navigate(['/book/verify-information'], { queryParams: { boatTypeId, tourId, date, provinceId, name }});
+    const boatTypeId = this.activatedRoute.snapshot.queryParams.boatTypeId;
+    const boatId = this.activatedRoute.snapshot.queryParams.boatId;
+    this.router.navigate(['/book/verify-information'], { queryParams: { boatTypeId, tourId, date, provinceId, name, boatId }});
   }
 
   initUserInfo() {
@@ -54,9 +58,9 @@ export class InformationComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userInfo.firstName = this.cookieService.get('firstName');
-    this.userInfo.lastName = this.cookieService.get('lastName');
-    this.userInfo.email = this.cookieService.get('email');
+    this.userInfo.firstName = sessionStorage.getItem('firstName');
+    this.userInfo.lastName = sessionStorage.getItem('lastName');
+    this.userInfo.email = sessionStorage.getItem('email');
   }
 
   selectType(e) {}
@@ -76,4 +80,15 @@ export class InformationComponent implements OnInit {
       }
     });
   }
+
+  getListAccessory() {
+    this.accessoryInfo = [];
+    this.listAccessoryId = JSON.parse(sessionStorage.getItem('listAccessoryId'));
+    for (let index = 0; index < this.listAccessoryId.length; index++) {
+      this.commonService.getAccessoryById(this.listAccessoryId[index]).subscribe( res => {
+        this.accessoryInfo.push(res['value']);
+      });
+    }
+  }
+
 }

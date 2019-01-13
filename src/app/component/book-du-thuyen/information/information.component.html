@@ -42,8 +42,7 @@
                                                     <div class="booking-menu-left">
                                                         <div class="details-information">
                                                             <h4>Đặt phòng bao gồm : </h4>
-                                                            <p style="font-weight: normal; color: #0ab21b !important">Wifi miễn phí</p>
-                                                            <p style="font-weight: normal; color: #0ab21b !important">Chỗ đỗ xe miễn phí</p>
+                                                            <p style="font-weight: normal; color: #0ab21b !important" *ngFor="let item of accessoryInfo">{{ item?.name }}</p>
                                                         </div>
                                                     </div>
                                                     <!-- <div class="booking-menu-left">
