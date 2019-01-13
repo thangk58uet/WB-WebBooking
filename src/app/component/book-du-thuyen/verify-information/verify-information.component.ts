@@ -36,6 +36,7 @@ export class VerifyInformationComponent implements OnInit {
     console.log(this.accessoryInfo);
     //this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
     this.getInfoTourBoat();
+    this.getListAccessory();
   }
 
   getInfoTourBoat() {
