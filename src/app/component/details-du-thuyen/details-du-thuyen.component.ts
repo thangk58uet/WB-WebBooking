@@ -156,8 +156,11 @@ export class DetailsDuThuyenComponent implements OnInit {
         this.longitude = long;
         if (lat && long) {
           // tslint:disable-next-line:radix
-          this.gmt_init_map(Number(lat), Number(long), 'google_map', parseInt('11'),
+          setTimeout(()=> {
+            this.gmt_init_map(Number(lat), Number(long), 'google_map', parseInt('11'),
             'ROADMAP', '', true, false, true);
+          }, 1500);
+         
         }
       }
     });
