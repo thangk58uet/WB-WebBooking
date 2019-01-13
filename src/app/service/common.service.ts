@@ -71,7 +71,7 @@ export class CommonService {
   }
 
   public activeAccount(params): Observable<Response> {
-    return this.httpClient.post('/account/activate/', params).pipe(map((res: Response) => {
+    return this.httpClient.get('/account/activate/', params).pipe(map((res: Response) => {
       return res.json();
     }));
   }

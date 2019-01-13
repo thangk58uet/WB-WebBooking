@@ -1,7 +1,8 @@
 <dx-popup class="popup" [width]="'50%'" [height]="'70%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="popupActive">
     <div *dxTemplate="let data of 'content'">
         <div class="active-account">
-            <h4 style="margin-top: 40px" class=row>Kích hoạt tài khoản thành công!</h4>
+            <h4 style="margin-top: 40px" class=row>
+                <span><i class="fa fa-check" aria-hidden="true"></i>Kích hoạt tài khoản thành công!</span></h4>
             <div class="row button-click">
                 <button style="background: #07c;color: white !important;margin: 20px;padding: 10px 20px;border-radius: 4px;" (click)="login()">Đăng nhập ngay</button>
                 <button style="background: #07c;color: white !important;margin: 20px;padding: 10px 20px;border-radius: 4px;" [routerLink]="'/trang-chu'">Về trang chủ</button>

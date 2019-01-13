@@ -29,8 +29,8 @@ export class RegisterComponent implements OnInit {
       email: this.email,
       userType: 'EMAIL',
       langKey: 'abc',
-      fisrtName : this.firstName,
-      lastname: this.lastName,
+      firstName : this.firstName,
+      lastName: this.lastName,
       phoneNumber: this.phoneNumber
     };
     this.loginService.register(params).subscribe(res => {

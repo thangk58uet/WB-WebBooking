@@ -95,14 +95,14 @@
 
     <!--OUR-NEWS-->
     <section class="events">
-        <div class="container">
+        <div class="container" style="padding-left: 0;padding-right: 0; margin-bottom: 20px">
             <h2 class="events-title">Tour nổi bật</h2>
             <div class="line"></div>
             <div id="events-v2" class="owl-carousel owl-theme owl-loaded owl-drag">
 
                 <div class="owl-stage-outer">
                     <div class="owl-stage" style="transition: all 0.25s ease 0s">
-                        <div class="owl-item tour-hightlights" style="width: 19.2%; margin-right: 6px;" *ngFor="let item of listTourHighlights?.list">
+                        <div class="owl-item tour-hightlights" style="width: 19.4%; margin-right: 6px;" *ngFor="let item of listTourHighlights?.list">
                             <div class="item">
                                 <div class="events-item">
                                     <div class="events-img"><img src="{{ item?.linkImage}}" (click)="detailsTourHighlights(item, item?.id)" class="img-responsive" alt="Image" style="width: 100%; height: 200px;"></div>
