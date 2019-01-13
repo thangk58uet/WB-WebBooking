@@ -16,12 +16,12 @@ export class CommonService {
   public listPrice = ['Dưới 5 triệu', '5 triệu - 10 triệu', '10 triệu - 20 triệu', '20 triệu - 30 triệu',
   '30 triệu - 50 triệu', 'Trên 50 triệu'];
   public listPriceId = [
-    { min: 0, max: 5},
-    { min: 5, max: 10},
-    { min: 10, max: 20},
-    { min: 20, max: 30},
-    { min: 30, max: 50},
-    { min: 50, max: 1000000},
+    { min: 0, max: 5000000},
+    { min: 5000000, max: 10000000},
+    { min: 10000000, max: 20000000},
+    { min: 20000000, max: 30000000},
+    { min: 30000000, max: 50000000},
+    { min: 50000000, max: 1000000000000},
   ];
   public url = environment.apiUrl;
   public pathImage = environment.apiUrl + '/image/';

@@ -38,6 +38,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   public listLocation: any = [];
   public listTypeBoat: any = [];
   public listAccessoryFree = [];
+  public listAccessoryId: any = [];
   public listAccessoryPaid = [];
   public contentComment = '';  /*Creat Comment*/
   public listComment: any = [];
@@ -203,16 +204,20 @@ export class DetailsDuThuyenComponent implements OnInit {
     const tourId = id;
     const locationId = this.detailBoat.province.id;
     const boatTypeId = this.detailBoat.type.id;
+    const name = this.detailBoat.name;
     for (let index = 0; index < this.commonService.detailsBook.length; index++) {
       this.commonService.detailsBook[index].endHour = this.commonService.detailsBook[index].startHour +
       this.commonService.detailsBook[index].duration;
     }
-    this.router.navigate(['/book/information'], { queryParams: { boatTypeId, tourId, date, locationId }});
+    this.router.navigate(['/book/information'], { queryParams: { boatTypeId, tourId, date, locationId, name }});
   }
 
   getListAcessoryType() {
     this.detailsDuThuyenService.getAccessoryType('FREE').subscribe( res => {
       this.listAccessoryFree = (res && res['value'] && res['value'][0].accessories) ? res['value'][0].accessories : [];
+      for (let index = 0; index < this.listAccessoryFree.length; index++) {
+        this.listAccessoryId.push(this.listAccessoryFree[index].id);
+      }
     });
 
     this.detailsDuThuyenService.getAccessoryType('PAID').subscribe( res => {
@@ -312,6 +317,10 @@ export class DetailsDuThuyenComponent implements OnInit {
 
   login() {
     this.popupLogin = true;
+  }
+
+  checkBox(e) {
+    console.log(e);
   }
 
 }

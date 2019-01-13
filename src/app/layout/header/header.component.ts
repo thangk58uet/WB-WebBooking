@@ -51,13 +51,16 @@ export class HeaderComponent implements OnInit {
     result['done']((dialogResult) => {
       if (dialogResult) {
         this.loginService.isLogin = false;
-        this.cookieService.deleteAll();
         sessionStorage.clear();
         location.reload();
+        this.clearCookie();
       }
     });
   }
 
+  clearCookie() {
+    return this.cookieService.deleteAll();
+  }
   routerLinkTour() {
     this.router.navigate(['/tour']);
   }

@@ -33,6 +33,8 @@ export class TourDuThuyenComponent implements OnInit {
   };
   public sortType = '';
   public sortDirection = '';
+  public minPrice = 0;
+  public maxPrice = 100000000000000;
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
@@ -55,6 +57,7 @@ export class TourDuThuyenComponent implements OnInit {
   selectLocation(e) {
     this.location = e.selectedItem;
     this.locationId = this.listLocation.indexOf(this.location) + 1;
+    console.log(this.locationId)
   }
 
   selectTypeBoat(e) {
@@ -64,6 +67,10 @@ export class TourDuThuyenComponent implements OnInit {
 
   selectPrice(e) {
     this.price = e.selectedItem;
+    if (this.price) {
+      this.minPrice = this.commonService.listPriceId[this.commonService.listPrice.indexOf(this.price)].min;
+      this.maxPrice = this.commonService.listPriceId[this.commonService.listPrice.indexOf(this.price)].max;
+    }
   }
 
   getListLocation() {
@@ -99,6 +106,8 @@ export class TourDuThuyenComponent implements OnInit {
       toDate: this.activatedRoute.snapshot.queryParams.fromDate,
       pageNum: this.pagination.pageNum,
       pageSize: this.pagination.pageSize,
+      minPrice: this.minPrice,
+      maxPrice: this.maxPrice,
       sortBy: this.sortType,
       sortDirection: this.sortDirection
     };
@@ -108,6 +117,16 @@ export class TourDuThuyenComponent implements OnInit {
     if (params.sortDirection === '') {
       delete params.sortDirection;
     }
+    if (!params.boatTypeId) {
+      delete params.boatTypeId;
+    }
+    if (!params.locationId) {
+      delete params.locationId;
+    }
+    if (!this.price) {
+      delete params.minPrice;
+      delete params.maxPrice;
+    };
     this.tourDuThuyenService.getListBoatByParams(params).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];

@@ -26,27 +26,27 @@
                                                         <div class="details-information">
                                                             <h4>Chi tiết đặt phòng của bạn</h4>
                                                             <p>
+                                                                <span>Thông tin tour : </span>
+                                                                <span class="value">{{ detailTour?.boatTypeTour?.tour?.name }}</span>
+                                                            </p>
+                                                            <p>
                                                                 <span>Nhận du thuyền : </span>
-                                                                <span>{{ detailTour?.startHour }}h {{ dateBook }}</span>
+                                                                <span class="value">{{ detailTour?.boatTypeTour?.tour?.startHour }}h {{ dateBook }}</span>
                                                             </p>
                                                             <p>
-                                                                <span>Trả du thuyền: </span>
-                                                                <span>{{ detailTour?.startHour + detailTour?.duration }}h {{ dateBook }}</span>
-                                                            </p>
-                                                            <p>
-                                                                <span>Tổng thời gian: </span>
-                                                                <span>{{ detailTour?.duration }}h</span>
+                                                                <span>Trả du thuyền : </span>
+                                                                <span class="value">{{ detailTour?.boatTypeTour?.tour?.startHour + detailTour?.boatTypeTour?.tour?.duration }}h {{ dateBook }}</span>
                                                             </p>
                                                         </div>
                                                     </div>
                                                     <div class="booking-menu-left">
                                                         <div class="details-information">
-                                                            <h4>Đặt phòng bao gồm:</h4>
+                                                            <h4>Đặt phòng bao gồm : </h4>
                                                             <p style="font-weight: normal; color: #0ab21b !important">Wifi miễn phí</p>
                                                             <p style="font-weight: normal; color: #0ab21b !important">Chỗ đỗ xe miễn phí</p>
                                                         </div>
                                                     </div>
-                                                    <div class="booking-menu-left">
+                                                    <!-- <div class="booking-menu-left">
                                                         <div class="details-information">
                                                             <h4>Các dịch vụ đi kèm:</h4>
                                                             <div style="font-size: 15px; text-align: left"><input type="checkbox" style="margin: 10px">Tắm mát</div>
@@ -54,11 +54,14 @@
                                                             <div style="font-size: 15px; text-align: left"><input type="checkbox" style="margin: 10px">Điều hòa</div>
                                                             <div style="font-size: 15px; text-align: left"><input type="checkbox" style="margin: 10px">Máy lạnh</div>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="booking-menu-left">
                                                         <div class="details-information">
                                                             <h4>Tóm tắt giá</h4>
-                                                            <p>Du thuyền: {{ price | thousandNumberFormatter }} VND</p>
+                                                            <p>
+                                                                <span>Du thuyền : </span>
+                                                                <span class="value">{{ detailTour?.boatTypeTour?.price | thousandNumberFormatter }} VND</span>
+                                                            </p>
                                                             <!-- <p>10% Thuế</p>
                                                             <p>Giá</p>
                                                             <p>Phụ phí</p>
@@ -79,11 +82,11 @@
                                                             <p>Từ 00:00 ngày ngày 21 Tháng 2 VND 200.000</p>
                                                         </div>
                                                     </div> -->
-                                                    <div class="booking-menu-left">
+                                                    <!-- <div class="booking-menu-left">
                                                         <div class="details-information">
-                                                            <!-- <p style="color: #07c !important">Bạn có mã khuyến mãi không?</p> -->
+                                                            <p style="color: #07c !important">Bạn có mã khuyến mãi không?</p>
                                                         </div>
-                                                    </div>
+                                                    </div> -->
                                                     <div class="booking-menu-left" style="border: 1px solid #ffa9a9; background: #fbe8e8">
                                                         <div class="details-information">
                                                             <p>Số lượng du thuyền có giới hạn</p>
@@ -96,20 +99,20 @@
                                         <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 68%">
                                             <div class="wrap-box ">
                                                 <div class="box-img">
-                                                    <div class="img-right"><img src="{{ linkImage }}" class="img-responsive" alt="{{ boatName }}" title="{{ boatName }}"></div>
+                                                    <div class="img-right"><img src="{{ detailTour?.linkImage }}" class="img-responsive" alt="{{ boatName }}" title="{{ boatName }}"></div>
                                                     <div class="text-content">
                                                         <h2>{{ boatName }}</h2>
-                                                        <p>{{ location }}</p>
+                                                        <p>{{ detailTour?.province?.name }}</p>
                                                     </div>
 
                                                 </div>
                                                 <div class="background-green">
-                                                    <p>Tuyệt quá! <span style="font-weight: bold">Đừng bỏ lỡ giá tốt nhất của chúng tôi</span>,
-                                                        hãy đặt ngay!</p>
+                                                    <p>Tuyệt quá! <span style="font-weight: bold">Đừng bỏ lỡ giá tốt nhất của chúng tôi</span>, hãy đặt ngay!</p>
                                                 </div>
                                                 <h4 style="padding-top: 10px">Nhập thông tin chi tiết của bạn</h4>
                                                 <div class="form-input-information">
-                                                    <p>Đăng nhập để đặt du thuyền với thông tin đã lưu của bạn hoặc đăng ký để quản lý đặt du thuyền của bạn mọi lúc mọi nơi!</p>
+                                                    <p><span style="color: #07c;font-weight: bold;cursor: pointer" class="hover-underline">Đăng nhập</span> để đặt du thuyền với thông tin đã lưu của bạn hoặc <span style="color: #07c;font-weight: bold;cursor: pointer"
+                                                            class="hover-underline">đăng ký</span> để quản lý đặt du thuyền của bạn mọi lúc mọi nơi!</p>
                                                     <h5 style="font-weight: bold">Vui lòng điền thông tin bằng Tiếng Việt hoặc Tiếng Anh</h5>
                                                     <div class="row input-field">
                                                         <div class="col-sm-2">
@@ -156,7 +159,7 @@
                                                 </div>
                                             </div>
                                             <div class="next-book-boat">
-                                                <p [routerLink]="'/book/verify-information'">Tiếp theo: Chi tiết cuối cùng <i class="fa fa-angle-right" aria-hidden="true"></i></p>
+                                                <p (click)="routerLinkVerify(boatName, dateBook)">Tiếp theo: Chi tiết cuối cùng <i class="fa fa-angle-right" aria-hidden="true"></i></p>
 
                                             </div>
                                             <div class="background-green">

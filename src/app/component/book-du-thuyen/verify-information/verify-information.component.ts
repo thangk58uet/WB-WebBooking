@@ -1,6 +1,8 @@
 import { CommonService } from 'src/app/service/common.service';
 import { Component, OnInit } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
+import { ActivatedRoute } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-verify-information',
@@ -10,9 +12,41 @@ import { alert } from 'devextreme/ui/dialog';
 export class VerifyInformationComponent implements OnInit {
 
   public popupBookSuccess = false;
-  constructor(public commonService: CommonService) { }
+  public detailTour: any = {};
+  public dateBook = '';
+  public linkImage = '';
+  public boatName = '';
+  public location = '';
+  public price = 0;
+
+  public userInfo = {
+    phoneNumber: ''
+  };
+  constructor(public commonService: CommonService,
+              private activatedRoute: ActivatedRoute,
+              private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.dateBook = this.activatedRoute.snapshot.queryParams.date;
+    this.boatName = this.activatedRoute.snapshot.queryParams.name;
+    this.userInfo.phoneNumber = this.cookieService.get('phoneNumber');
+    this.getInfoTourBoat();
+  }
+
+  getInfoTourBoat() {
+    const params = {
+      tourId: this.activatedRoute.snapshot.queryParams.tourId,
+      provinceId: this.activatedRoute.snapshot.queryParams.locationId,
+      boatTypeid: this.activatedRoute.snapshot.queryParams.boatTypeId
+    };
+    this.commonService.getInfoTourByBoat(params).subscribe( res => {
+      this.detailTour = (res && res['value'][0]) ? res['value'][0] : {};
+      if (this.detailTour.images.length > 0) {
+        this.detailTour.linkImage = this.commonService.pathImage + this.detailTour.images[0].reference;
+      } else {
+        this.detailTour.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
+      }
+    });
   }
 
   bookSuccess() {
