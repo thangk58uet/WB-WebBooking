@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-user',
@@ -12,4 +12,7 @@ export class UserComponent implements OnInit {
   ngOnInit() {
   }
 
+  getUserInfo() {
+
+  }
 }

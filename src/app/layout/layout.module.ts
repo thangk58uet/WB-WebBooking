@@ -69,7 +69,7 @@ import { PopupTourInfoComponent } from '../component/details-du-thuyen/popup-tou
         { path: 'book/information', component: InformationComponent},
         { path: 'book/verify-information', component: VerifyInformationComponent},
         { path: 'book/confirm-information', component: BookSuccessComponent},
-        { path: 'user', component: UserComponent},
+        { path: 'user-profile', component: UserComponent},
         { path: 'tin-tuc/tin-moi', component: TinMoiComponent},
         { path: 'tin-tuc/tin-khuyen-mai', component: TinMoiComponent},
         { path: 'tin-tuc/xem-tin', component: XemTinComponent},

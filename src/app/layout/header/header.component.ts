@@ -70,4 +70,8 @@ export class HeaderComponent implements OnInit {
     this.loginService.popupWellcome = false;
     this.router.navigate(['/trang-chu']);
   }
+
+  openUserProfile() {
+    this.router.navigate(['/user-profile']);
+  }
 }
