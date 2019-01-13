@@ -19,4 +19,14 @@ export class FooterService {
     }));
   }
 
+  public registerEmailNotification(email): Observable<any> {
+    const data = {
+        email : email
+    };
+    return this.http.post(API_URL + '/email-notification/', data).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+
 }

@@ -92,7 +92,7 @@ export class VerifyInformationComponent implements OnInit {
       //   alert('Bạn không đủ tiền. Vui lòng nạp tiền vào tài khoản', 'Yachttour.vn');
       // }
       // const message = JSON.parse(err['_body']).message;
-      // alert(message, 'Yachtour.com');
+      // alert(message, 'Yachtour.vn');
     });
   }
 }

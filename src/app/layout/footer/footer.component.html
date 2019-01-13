@@ -10,8 +10,8 @@
                 <div class="textbox">
                     <div class="form-group">
                         <div class="input-group">
-                            <input type="email" class="form-control" placeholder="Địa chỉ email của bạn" aria-label="Search for...">
-                            <button class="btn btn-secondary" type="button">
+                            <input type="email"  [(ngModel)]="email" class="form-control" placeholder="Địa chỉ email của bạn" aria-label="Search for...">
+                            <button class="btn btn-secondary" type="button" (click)="registerEmailNotification()">
                 Đăng ký
               </button>
                         </div>

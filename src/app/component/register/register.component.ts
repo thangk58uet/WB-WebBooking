@@ -38,7 +38,7 @@ export class RegisterComponent implements OnInit {
       this.loginService.popupRegister = false;
     }, err => {
       const message = JSON.parse(err['_body']).message;
-      alert(message, 'Yachtour.com');
+      alert(message, 'Yachtour.vn');
     });
   }
 }
