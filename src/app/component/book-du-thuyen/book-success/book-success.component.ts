@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-book-success',
   templateUrl: './book-success.component.html',
-  styleUrls: ['./book-success.component.scss']
+  styleUrls: ['./book-success.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class BookSuccessComponent implements OnInit {
 

@@ -87,9 +87,10 @@ export class VerifyInformationComponent implements OnInit {
     this.commonService.bookReservation(params).subscribe( res => {
       this.popupBookSuccess = true;
     }, err => {
-      if (JSON.parse(err['_body']).resultCode === '400.202') {
-        alert('Bạn không đủ tiền. Vui lòng nạp tiền vào tài khoản', 'Yachttour.vn');
-      }
+      this.popupBookSuccess = true;
+      // if (JSON.parse(err['_body']).resultCode === '400.202') {
+      //   alert('Bạn không đủ tiền. Vui lòng nạp tiền vào tài khoản', 'Yachttour.vn');
+      // }
       // const message = JSON.parse(err['_body']).message;
       // alert(message, 'Yachtour.com');
     });

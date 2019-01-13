@@ -66,6 +66,7 @@ export class HeaderComponent implements OnInit {
   }
 
   routerLinkMain() {
+    this.lastName = sessionStorage.getItem('lastName');
     this.loginService.popupWellcome = false;
     this.router.navigate(['/trang-chu']);
   }
