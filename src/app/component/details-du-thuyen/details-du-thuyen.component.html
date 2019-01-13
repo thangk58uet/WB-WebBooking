@@ -235,7 +235,7 @@
                                                             <td class="ftd roomType">
                                                                 <div id="31386307">
                                                                     <div class="room-info" id="RD31386307">
-                                                                        <a class="jqrt togglelink" href="#RD31386307" data-room-name-en="Superior Double Room">
+                                                                        <a class="jqrt togglelink" (click)="openPopupTourInfo(item?.id, item?.price, item?.name)" data-room-name-en="Superior Double Room" title="Xem chi tiết">
                                                                             <i class="rt_room_type_ico bicon-triangleright"></i> {{ item?.name }}
                                                                         </a>
                                                                         <div class="bed-types-wrapper">
@@ -321,5 +321,11 @@
         <dx-popup class="popup" [width]="'22%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
             <div *dxTemplate="let data of 'content'">
                 <app-login></app-login>
+            </div>
+        </dx-popup>
+
+        <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Chi tiết tour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupTourInfo">
+            <div *dxTemplate="let data of 'content'">
+                <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice" [tourName]="tourName"></app-popup-tour-info>
             </div>
         </dx-popup>

@@ -39,6 +39,7 @@ import { XemTinComponent } from '../component/tin-tuc/xem-tin/xem-tin.component'
 import { TheComponent } from '../component/the/the.component';
 import { StaticPageComponent } from 'src/app/component/static-page/static-page.component';
 import { StaticPageService } from 'src/app/component/static-page/static-page.service';
+import { PopupTourInfoComponent } from '../component/details-du-thuyen/popup-tour-info/popup-tour-info.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -104,8 +105,9 @@ import { StaticPageService } from 'src/app/component/static-page/static-page.ser
     ShowImageComponentComponent,
     TinMoiComponent,
     XemTinComponent,
-    TheComponent, 
-    StaticPageComponent
+    TheComponent,
+    StaticPageComponent,
+    PopupTourInfoComponent
   ],
   providers: [
     CommonHttpService,

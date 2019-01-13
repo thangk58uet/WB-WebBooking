@@ -69,7 +69,7 @@ export class InformationComponent implements OnInit {
     const params = {
       tourId: this.activatedRoute.snapshot.queryParams.tourId,
       provinceId: this.activatedRoute.snapshot.queryParams.locationId,
-      boatTypeid: this.activatedRoute.snapshot.queryParams.boatTypeId
+      boatTypeId: this.activatedRoute.snapshot.queryParams.boatTypeId
     };
     this.commonService.getInfoTourByBoat(params).subscribe( res => {
       this.detailTour = (res && res['value'][0]) ? res['value'][0] : {};

@@ -55,6 +55,13 @@ export class DetailsDuThuyenComponent implements OnInit {
   };
   public token = '';
   public popupLogin = false;
+  public popupTourInfo = false;
+  public boatTypeId = '';
+  public provinceId = '';
+  public tourId = '';
+  public tourName = '';
+  public tourPrice = '';
+
   @ViewChild(InformationComponent) informationComponent: InformationComponent;
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
@@ -337,6 +344,15 @@ export class DetailsDuThuyenComponent implements OnInit {
         this.listAccessoryId.splice(index, 1);
       }
     }
+  }
+
+  openPopupTourInfo(id, price, name) {
+    this.tourId = id;
+    this.provinceId = this.detailBoat.province.id;
+    this.boatTypeId = this.detailBoat.type.id;
+    this.tourPrice = price;
+    this.tourName = name;
+    this.popupTourInfo = true;
   }
 
 }

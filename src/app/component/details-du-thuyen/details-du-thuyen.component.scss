@@ -750,3 +750,11 @@ table th {
     margin: 13px 10px;
     background: url("//r-ec.bstatic.com/static/img/bpg/bpg_logo/43fb545d9c32614b87f0615a97620ad3d8685525.png") no-repeat;
 }
+
+.togglelink {
+    font-weight: bold;
+    &:hover {
+        text-decoration: underline;
+    }
+    cursor: pointer;
+}
