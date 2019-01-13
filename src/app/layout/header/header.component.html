@@ -21,7 +21,7 @@
                                     <img src="./assets/images/our-2.jpg" class="img-responsive" title="Admin">
                                 </a>
                                 <ul class="dropdown-menu icon-fa-caret-up submenu-hover" style="margin-top: 10px;">
-                                    <li><a title="NC 14">Hồ sơ cá nhân</a></li>
+                                    <li><a title="NC 14" (click)="openUserProfile()">Hồ sơ cá nhân</a></li>
                                     <li><a title="Đăng xuất" (click)="logout()">Đăng xuất</a></li>
                                 </ul>
                             </li>
@@ -72,7 +72,7 @@
             <h4>Chào mừng bạn đến với Yachttour.vn</h4>
             <p>Hệ thống du thuyền cá nhân Yachttour!</p>
             <p>Nơi mở ra không gian và thời gian dành riêng cho bạn</p>
-            <p>Hãy bắt đầu trải nghiệm những thú vị <span (click)="routerLinkMain()"> tại đây</span></p>
+            <p>Hãy bắt đầu trải nghiệm những thú vị <span (click)="routerLinkMain()" style="cursor: pointer"> tại đây</span></p>
         </div>
     </div>
 </dx-popup>

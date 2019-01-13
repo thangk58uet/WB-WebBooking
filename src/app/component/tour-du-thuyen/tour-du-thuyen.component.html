@@ -68,7 +68,8 @@
                                                     </div>
                                                 </div>
                                                 <div class="google-map-tour">
-                                                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8863.718180512984!2d106.976896724101!3d20.9230018979934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDU1JzIzLjkiTiAxMDbCsDU4JzU3LjkiRQ!5e0!3m2!1svi!2s!4v1547314488039" width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8863.718180512984!2d106.976896724101!3d20.9230018979934!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjDCsDU1JzIzLjkiTiAxMDbCsDU4JzU3LjkiRQ!5e0!3m2!1svi!2s!4v1547314488039"
+                                                        width="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
                                                     <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.92331449722392!2d106.9827435327777!3d21.020916693420876!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135a9233368050d%3A0xd61957efdf4c02a8!2zMzggUGjhu5EgTmfhu41jIFRyw6wsIFRo4bqhY2ggQsOgbiwgTG9uZyBCacOqbiwgSMOgIE7hu5lpLCBWaeG7h3QgTmFt!5e0!3m2!1svi!2s!4v1547022043641"
                                                         width="100%" frameborder="0" style="border:0" allowfullscreen></iframe> -->
                                                 </div>
@@ -97,8 +98,9 @@
                                                         <div class="img-right col-sm-3" style="padding-left: 8px"><img src="{{ item?.linkImage }}" class="img-responsive" alt="Double Room" title="Double Room"></div>
                                                         <div class="text-content col-sm-6" style="padding-left: 0; padding-right: 8px">
                                                             <h2 (click)="routerLinkDetail(item, item?.id)" style="margin-top: 0">{{ item?.name }}</h2>
-                                                            <p> <a  target="_blank" rel="noopener noreferrer" 
-                                                                href="https://www.google.com/maps/search/?api=1&query={{item?.province?.latitude}},{{item?.province?.longitude}}"> <span class="sub-text">{{ item?.province?.name }} – Xem trên bản đồ</span></a></p>
+                                                            <p>
+                                                                <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query={{item?.province?.latitude}},{{item?.province?.longitude}}"> <span class="sub-text">{{ item?.province?.name }} – Xem trên bản đồ</span></a>
+                                                            </p>
                                                             <div class="inner-description" [innerHTML]="item?.description"></div>
                                                         </div>
                                                         <div class="danh-gia col-sm-3" style="padding-left: 8px; padding-right: 0">
@@ -110,7 +112,7 @@
                                                                 <p style="color: green; font-size: 20px; font-weight: bold; text-align: center">{{ item?.minPrice | thousandNumberFormatter }}</p>
                                                                 <p style="color: green; font-size: 20px; font-weight: bold; text-align: center; margin-top: -18px">VND</p>
                                                             </div>
-                                                            <p style="color: #07c; background: #dff6e1 ;text-align: center">bao gồm thuế và phí</p>
+                                                            <p style="color: #07c; background: #dff6e1 ;text-align: center">chưa gồm VAT</p>
                                                         </div>
                                                     </div>
                                                 </div>
