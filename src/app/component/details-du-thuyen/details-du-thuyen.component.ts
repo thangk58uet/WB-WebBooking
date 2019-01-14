@@ -6,7 +6,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DetailsDuThuyenService } from './details-du-thuyen.service';
 import { UploadFileService } from 'src/app/service/upload-file.service';
 import { InformationComponent } from './../book-du-thuyen/information/information.component';
-
+import {
+  SocialService
+} from "ng6-social-button";
 declare var google: any;
 
 @Component({
@@ -64,6 +66,11 @@ export class DetailsDuThuyenComponent implements OnInit {
   public provinceName = '';
   public detailTour: any = {};
 
+  shareObj = {
+    href: "https://yachttour.vn/",
+    // hashtag:"#FACEBOOK-SHARE-HASGTAG"
+  };
+
   @ViewChild(InformationComponent) informationComponent: InformationComponent;
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
@@ -72,7 +79,8 @@ export class DetailsDuThuyenComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private detailsDuThuyenService: DetailsDuThuyenService,
               private uploadFileService: UploadFileService,
-              private cookieService: CookieService) { }
+              private cookieService: CookieService,
+              private socialAuthService: SocialService) { }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit(): void {

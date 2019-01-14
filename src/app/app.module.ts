@@ -6,6 +6,16 @@ import { Http, HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+  Ng6SocialButtonModule,
+  SocialServiceConfig
+} from "ng6-social-button";
+
+// Configs
+export function getAuthServiceConfigs() {
+  let config = new SocialServiceConfig()
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -15,6 +25,7 @@ import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@a
     BrowserModule,
     FormsModule,
     HttpModule,
+    Ng6SocialButtonModule,
     RouterModule.forRoot([
       { path: '', loadChildren: './layout/layout.module#LayoutModule' },
     ])
@@ -24,6 +35,10 @@ import { LocationStrategy, HashLocationStrategy, PathLocationStrategy } from '@a
     // Below line is optional as default LocationStrategy is PathLocationStrategy
     {provide: LocationStrategy, useClass: PathLocationStrategy},
     // {provide: LocationStrategy, useClass: HashLocationStrategy}
+    {
+      provide: SocialServiceConfig,
+      useFactory: getAuthServiceConfigs
+    }
   ],
   bootstrap: [AppComponent],
 })
