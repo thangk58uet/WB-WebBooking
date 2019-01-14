@@ -17,7 +17,7 @@ export class PopupTourInfoComponent implements OnInit {
   @Input() provinceName = '';
 
   @Input() detailTour: any = {};
-  public linkImage = '';
+  @Input() linkImage = '';
   public listImages: any = [];
   public countImage = 0;
   public indexImage = null;
@@ -32,20 +32,20 @@ export class PopupTourInfoComponent implements OnInit {
     this.countImage -= 1;
     this.indexImage = this.countImage;
     if (this.countImage >= 0) {
-      this.linkImage = this.commonService.pathImage + this.listImages[this.countImage].reference;
+      this.linkImage = this.commonService.pathImage + this.detailTour.images[this.countImage].reference;
     }
   }
 
   nextImage() {
     this.countImage += 1;
     this.indexImage = this.countImage;
-    if (this.countImage < this.listImages.length) {
-      this.linkImage = this.commonService.pathImage + this.listImages[this.countImage].reference;
+    if (this.countImage < this.detailTour.images.length) {
+      this.linkImage = this.commonService.pathImage + this.detailTour.images[this.countImage].reference;
     }
   }
 
   selectImage(index) {
-    this.indexImage = index;
-    this.linkImage = this.commonService.pathImage + this.listImages[index].reference;
+    this.countImage = index;
+    this.linkImage = this.commonService.pathImage + this.detailTour.images[index].reference;
   }
 }

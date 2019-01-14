@@ -20,49 +20,66 @@ export class VerifyInformationComponent implements OnInit {
   public price = 0;
 
   public userInfo = {
-    phoneNumber: 0
+    email: '',
+    firstName: '',
+    lastName: '',
+    phoneNumber: '',
+    passport: '',
+    address: ''
   };
+  public message = '';
 
   public listAccessoryId = [];
   public accessoryInfo = [];
+  public tourInfo: any = {};
+  public boatInfo: any = {};
+  public totalPriceAccessory = 0;
+
   constructor(public commonService: CommonService,
               private activatedRoute: ActivatedRoute,
               private cookieService: CookieService) { }
 
   ngOnInit() {
     this.dateBook = this.activatedRoute.snapshot.queryParams.date;
-    this.boatName = this.activatedRoute.snapshot.queryParams.name;
-    this.accessoryInfo = JSON.parse(sessionStorage.getItem('accessoryInfo'));
-    console.log(this.accessoryInfo);
-    //this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
-    this.getInfoTourBoat();
-    this.getListAccessory();
-  }
+    this.price = +this.activatedRoute.snapshot.queryParams.price;
 
-  getInfoTourBoat() {
-    const params = {
-      tourId: this.activatedRoute.snapshot.queryParams.tourId,
-      provinceId: this.activatedRoute.snapshot.queryParams.locationId,
-      boatTypeid: this.activatedRoute.snapshot.queryParams.boatTypeId
-    };
-    this.commonService.getInfoTourByBoat(params).subscribe( res => {
-      this.detailTour = (res && res['value'][0]) ? res['value'][0] : {};
-      if (this.detailTour.images.length > 0) {
-        this.detailTour.linkImage = this.commonService.pathImage + this.detailTour.images[0].reference;
-      } else {
-        this.detailTour.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
-      }
-    });
+    //this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
+    this.getListAccessory();
+    this.getTourInfo();
+    this.getBoatInfo();
   }
 
   getListAccessory() {
     this.accessoryInfo = [];
+    this.totalPriceAccessory = 0;
     this.listAccessoryId = JSON.parse(sessionStorage.getItem('listAccessoryId'));
     for (let index = 0; index < this.listAccessoryId.length; index++) {
       this.commonService.getAccessoryById(this.listAccessoryId[index]).subscribe( res => {
-        this.accessoryInfo.push(res['value']);
+        if(res && res['value']) {
+          setTimeout(() => {
+            this.accessoryInfo.push(res['value']);
+            this.totalPriceAccessory += res['value'].price;
+          }, 1000);
+        }
       });
     }
+  }
+
+  getTourInfo() {
+    this.commonService.getTourById(this.activatedRoute.snapshot.queryParams.tourId).subscribe( res => {
+      this.tourInfo = (res && res['value']) ? res['value'] : {};
+    })
+  }
+
+  getBoatInfo() {
+    this.commonService.getDetailBoatById(this.activatedRoute.snapshot.queryParams.boatId).subscribe( res => {
+      this.boatInfo = (res && res['value']) ? res['value'] : {};
+      if(this.boatInfo.images) {
+        this.boatInfo.linkImage = this.commonService.pathImage + this.boatInfo.images[0].reference;
+      } else {
+        this.boatInfo.linkImage = this.commonService.pathImage + this.boatInfo.type.images.reference;
+      }
+    })
   }
 
   bookSuccess() {
@@ -70,15 +87,16 @@ export class VerifyInformationComponent implements OnInit {
         boatId: this.activatedRoute.snapshot.queryParams.boatId,
         bookingDate: this.dateBook,
         contact: {
-          email: sessionStorage.getItem('email'),
-          firstName: sessionStorage.getItem('firstName'),
+          email: this.userInfo.email,
+          firstName: this.userInfo.firstName,
           gender: 'MALE',
-          lastName: sessionStorage.getItem('lastName'),
+          lastName: this.userInfo.phoneNumber,
           phoneNumber: this.userInfo.phoneNumber,
+          address: this.userInfo.address,
+          passport: this.userInfo.passport
         },
         listAccessoryId: JSON.parse(sessionStorage.getItem('listAccessoryId')),
-        message: 'string',
-        status: 'PENDING',
+        message: this.message,
         tourId: this.activatedRoute.snapshot.queryParams.tourId
     };
     if (!params.contact.phoneNumber) {

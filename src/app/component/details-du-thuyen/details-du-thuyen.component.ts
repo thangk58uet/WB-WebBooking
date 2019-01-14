@@ -6,10 +6,9 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DetailsDuThuyenService } from './details-du-thuyen.service';
 import { UploadFileService } from 'src/app/service/upload-file.service';
 import { InformationComponent } from './../book-du-thuyen/information/information.component';
-import {
-  SocialService
-} from "ng6-social-button";
+
 declare var google: any;
+declare const $: any;
 
 @Component({
   selector: 'app-details-du-thuyen',
@@ -34,7 +33,6 @@ export class DetailsDuThuyenComponent implements OnInit {
   public latitude;
   public longitude;
 
-  public indexImage = null;
   public typeBoat;
   public location;
   public listLocation: any = [];
@@ -64,6 +62,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   public tourName = '';
   public tourPrice = '';
   public provinceName = '';
+  public indexImage = null;
   public detailTour: any = {};
 
   shareObj = {
@@ -79,8 +78,7 @@ export class DetailsDuThuyenComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private detailsDuThuyenService: DetailsDuThuyenService,
               private uploadFileService: UploadFileService,
-              private cookieService: CookieService,
-              private socialAuthService: SocialService) { }
+              private cookieService: CookieService) { }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit(): void {
@@ -194,6 +192,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   selectImage(index) {
+    this.countImage = index;
     this.indexImage = index;
     this.linkImage = this.commonService.pathImage + this.listImages[index].reference;
   }
@@ -222,15 +221,14 @@ export class DetailsDuThuyenComponent implements OnInit {
     sessionStorage.setItem('listAccessoryId', JSON.stringify(this.listAccessoryId));
     const date = this.dateBookBoat.toJSON().slice(0, 10);
     const tourId = id;
-    const locationId = this.detailBoat.province.id;
+    const provinceId = this.detailBoat.province.id;
     const boatTypeId = this.detailBoat.type.id;
-    const name = this.detailBoat.name;
     const boatId = this.activatedRoute.snapshot.queryParams.id;
     for (let index = 0; index < this.commonService.detailsBook.length; index++) {
       this.commonService.detailsBook[index].endHour = this.commonService.detailsBook[index].startHour +
       this.commonService.detailsBook[index].duration;
     }
-    this.router.navigate(['/book/information'], { queryParams: { boatTypeId, tourId, date, locationId, name, boatId }});
+    this.router.navigate(['/book/information'], { queryParams: { boatTypeId, tourId, date, provinceId, boatId, price }});
   }
 
   getListAcessoryType() {
@@ -247,8 +245,10 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getListComment() {
+    this.listComment = [];
     this.detailsDuThuyenService.getComment().subscribe( res => {
       this.listComment = (res && res['value'] && res['value'].list) ? res['value'].list : [];
+      this.listComment = this.listComment.slice(0,5);
       if (this.listComment) {
         for (let index = 0; index < this.listComment.length; index++) {
           if (this.listComment[index].image) {
@@ -377,9 +377,14 @@ export class DetailsDuThuyenComponent implements OnInit {
       } else {
         this.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
       }
+      console.log(this.linkImage);
     }, err => {
       this.detailTour = {};
     });
+  }
+
+  forcusTour() {
+    $('#availability_target').scrollTo();
   }
 
 }

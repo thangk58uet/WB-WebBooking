@@ -1,5 +1,8 @@
 .popup-tour-info {
+    height: 100%;
     .box-img {
+        height: 280px;
+        background: black;
         position: relative;
         .owl-nav-custom {
             i {
@@ -12,14 +15,14 @@
             }
             .owl-prev {
                 position: absolute;
-                top: 150px;
-                left: 20px;
+                top: 80%;
+                left: 3%;
                 cursor: pointer;
             }
             .owl-next {
                 position: absolute;
-                top: 150px;
-                right: 20px;
+                top: 80%;
+                right: 3%;
                 cursor: pointer;
             }
         }
@@ -59,15 +62,11 @@
         margin-top: 10px;
         a {
             width: 20%;
-            height: 60px;
+            height: 80px;
             float: left;
             border: 1px solid #dadada;
             cursor: pointer;
-            background-size: 100% !important;
+            background-size: cover !important;
         }
-    }
-    .description {
-        overflow: auto;
-        max-height: 100vh;
     }
 }

@@ -13,9 +13,9 @@
                                             <div class="wrap-box">
 
                                                 <div class="section">
-                                                    <!-- <div class="booking-menu-left">
-                                                        <a class="btn-booking-now" href="'#availability_target'">Đặt ngay</a>
-                                                    </div> -->
+                                                    <div class="booking-menu-left">
+                                                        <a class="btn-booking-now" (click)="forcusTour()">Đặt ngay</a>
+                                                    </div>
 
                                                     <div class="booking-menu-left background-green">
                                                         <div class="justify-content-center">
@@ -80,7 +80,8 @@
                                                             <span style="background: #e9f0fa; margin-bottom: 10px">{{ item?.content }}</span>
                                                             <div class="info-customer row">
                                                                 <div class="row col-sm-8">
-                                                                    <div class=""><span style="text-align: center"><i class="fa fa-user-circle-o avata-customer" aria-hidden="true"></i></span></div>
+                                                                    <div class=""><span style="text-align: center"><i class="fa fa-user-circle-o avata-customer"
+                                        aria-hidden="true"></i></span></div>
                                                                     <div class=" customer-content">
                                                                         <span class="name-customer" style="font-size: 14px">{{ item?.user?.lastName }}</span>
                                                                     </div>
@@ -93,7 +94,7 @@
                                                     </div>
                                                     <div class="booking-menu-left login-comment">
                                                         <p class="text-drive">Để lại bình luận của bạn, <span class="text-login-comment" (click)="login()">Đăng
-                            nhập</span> ngay</p>
+                                nhập</span> ngay</p>
                                                         <p>Mỗi ý kiến đóng góp của các bạn đều là món quà đối với chúng tôi!</p>
                                                     </div>
                                                 </div>
@@ -113,21 +114,20 @@
                                                         <h2 style="margin-top: 0 !important">{{ detailBoat?.name }}</h2>
                                                     </div>
                                                     <div class="col-sm-6" style="display: flex;justify-content: flex-end; margin-top: 20px">
-                                                        <!-- <a href="#availability_target" style="text-decoration: none; line-height: 2">Đặt ngay</a> -->
+                                                        <a href="#availability_target" style="text-decoration: none; line-height: 2">Đặt ngay</a>
                                                         <!-- <span class="icon-share" title="Chia sẻ"><i class="fa fa-share-alt" aria-hidden="true"></i></span> -->
                                                         <!-- Your share button code -->
-                                                        <div class="fb-share-button" 
-                                                            data-href="https://yachttour.vn/" 
-                                                            data-layout="button_count">
-                                                        </div>                                 
-                                                     </div>
+                                                        <div class="fb-share-button" data-href="https://yachttour.vn/" data-layout="button_count">
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-6">
                                                         <p style="font-weight: bold; color: #07c">{{ detailBoat?.province?.name }} –
-                                                            <a style="background: unset !important; border: unset !important" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query={{latitude}},{{longitude}}"> <span style="color: blue; text-decoration: underline; font-weight: normal">Vị
-                                                          trí xuất sắc - hiển thị bản đồ
-                                                        </span>
+                                                            <a style="background: unset !important; border: unset !important" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query={{latitude}},{{longitude}}">
+                                                                <span style="color: blue; text-decoration: underline; font-weight: normal">Vị
+                                  trí xuất sắc - hiển thị bản đồ
+                                </span>
                                                             </a>
                                                         </p>
                                                     </div>
@@ -139,8 +139,8 @@
 
                                             </div>
                                             <div class="wrap-box">
-                                                <div class="box-img" style="border: 1px solid #dadada">
-                                                    <img src="{{ linkImage }}" (click)="viewImage(linkImage, detailBoat?.name)" class="img-responsive" alt="Double Room" title="{{ detailBoat?.name }}" style="width: 100%; height: 100%;cursor: pointer">
+                                                <div class="box-img" style="border: 1px solid #dadada" style="display: flex; justify-content: center;background: black">
+                                                    <img src="{{ linkImage }}" (click)="viewImage(linkImage, detailBoat?.name)" class="img-responsive" alt="Double Room" title="{{ detailBoat?.name }}" style="width: auto; height: 100%;cursor: pointer">
                                                     <div class="owl-nav-custom">
                                                         <div class="owl-prev" (click)="prevImage()"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
                                                         <div class="owl-next" (click)="nextImage()"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
@@ -178,7 +178,8 @@
                                                         </div>
                                                         <div class="col-sm-4" style="margin-top: 9px">
                                                             <div *ngFor="let item of listAccessoryFree; let i = index">
-                                                                <input type="checkbox" checked *ngIf="i%2 === 0"><span *ngIf="i%2 === 0">{{ item?.name }}</span>
+                                                                <input type="checkbox" checked *ngIf="i%2 === 0"><span *ngIf="i%2 === 0">{{ item?.name
+                                  }}</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-4" style="margin-top: 9px">
@@ -193,42 +194,46 @@
                                                         </div>
                                                         <div class="col-sm-9" style="margin-top: 9px">
                                                             <div *ngFor="let item of listAccessoryPaid; let i = index">
-                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} : {{ item?.price | thousandNumberFormatter}} VND</span>
+                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{
+                                  item?.name }} : {{ item?.price | thousandNumberFormatter}} VND</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div id="availability_target" class="hp-availability-section js-hp-availability-section">
-                                                    <a name="availability"></a>
-                                                    <div class="hp-section-header hp-section-header--with-badge">
-                                                        <h2 class="hp-dates-summary__header" id="availability_target" name="availability_target" style="padding-top: 12px">
-                                                            Du thuyền sẵn có
-                                                        </h2>
-                                                    </div>
-                                                    <div class="hp-section hp-section__exp-highlight hp-section__highlighted book-boat">
-                                                        <div class="hp-section-row">
-                                                            <label class="availability-sub-header">
-                            Vui lòng nhập ngày bạn muốn đặt du thuyền
-                          </label>
+                                                <section>
+                                                    <div id="availability_target" class="hp-availability-section js-hp-availability-section">
+                                                        <a name="availability"></a>
+                                                        <div class="hp-section-header hp-section-header--with-badge" style="text-align: left; margin: 6px 0">
+                                                            <h2 class="hp-dates-summary__header" name="availability_target" style="padding-top: 12px">
+                                                                Du thuyền sẵn có
+                                                            </h2>
                                                         </div>
-                                                        <div class="hp-section-row hp-input-label">
-                                                            <div class="row">
-                                                                <span class="col-sm-4" style="font-weight: normal; text-align: right; line-height: 33px">Ngày
-                              đặt du thuyền</span>
-                                                                <dx-date-box class="from-date-box col-sm-4" style="width: 22%" [(value)]="dateBookBoat" [(min)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
-                                                                </dx-date-box>
-                                                                <div class="col-sm-3">
-                                                                    <button class="b-button b-button_primary hp-section-row lp_bold_date_picker_btn" (click)="getBoatTour()">
-                                <span class="b-button__text">
-                                  Kiểm tra
-                                </span>
-                              </button>
+                                                        <div class="hp-section hp-section__exp-highlight hp-section__highlighted book-boat">
+                                                            <div class="hp-section-row">
+                                                                <label class="availability-sub-header">
+                                  Vui lòng nhập ngày bạn muốn đặt du thuyền
+                                </label>
+                                                            </div>
+                                                            <div class="hp-section-row hp-input-label">
+                                                                <div class="row">
+                                                                    <span class="col-sm-4" style="font-weight: normal; text-align: right; line-height: 33px">Ngày
+                                    đặt du thuyền</span>
+                                                                    <dx-date-box class="from-date-box col-sm-4" style="width: 22%" [(value)]="dateBookBoat" [(min)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                    </dx-date-box>
+                                                                    <div class="col-sm-3">
+                                                                        <button class="b-button b-button_primary hp-section-row lp_bold_date_picker_btn" (click)="getBoatTour()">
+                                      <span class="b-button__text">
+                                        Kiểm tra
+                                      </span>
+                                    </button>
+                                                                    </div>
                                                                 </div>
-                                                            </div>
 
+                                                            </div>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </section>
+
                                                 <table class="roomstable rt_no_dates dr_rt_no_dates js-dr_rt_no_dates __big-buttons rt_lightbox_enabled roomstable-no-dates-expanded" id="maxotel_rooms" cellspacing="0" border="2">
                                                     <thead data-has="">
                                                         <tr id="maxotel_table_header">
@@ -257,10 +262,10 @@
                                                             </td>
                                                             <td class="occ_no_dates" style="border: 1px solid #5bbaff">
                                                                 <span style="color: green; font-size: 18px">{{ item?.price | thousandNumberFormatter }}
-                              VND</span>
+                                  VND</span>
                                                             </td>
                                                             <td class="rt_show_dates" style="border: 1px solid #5bbaff">
-                                                                <span class="b-button" (click)="bookTour(item?.price, item?.id)">Đặt tour</span>
+                                                                <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)">Đặt tour</span>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -290,7 +295,7 @@
                                                                 <span style="color:#07c; font-weight: bold">Thêm hình ảnh</span>
                                                             </div>
                                                             <div class="col-sm-4">
-                                                                <input class="choose-file" type="file" value="Upload" name="uploadFile" id="inputFile" accept=".xlsx, .xlsb" (change)="fileChange(input)" #input/>
+                                                                <input class="choose-file" type="file" value="Upload" name="uploadFile" id="inputFile" accept=".xlsx, .xlsb" (change)="fileChange(input)" #input />
                                                             </div>
                                                         </div>
                                                         <div class="col-sm-11">
@@ -333,16 +338,17 @@
 
         <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Chi tiết tour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupTourInfo">
             <div *dxTemplate="let data of 'content'">
-                <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice" [tourName]="tourName" [provinceName]="provinceName" [detailTour]="detailTour"></app-popup-tour-info>
+                <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice" [tourName]="tourName" [provinceName]="provinceName" [detailTour]="detailTour" [linkImage]="linkImage"></app-popup-tour-info>
             </div>
         </dx-popup>
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-          var js, fjs = d.getElementsByTagName(s)[0];
-          if (d.getElementById(id)) return;
-          js = d.createElement(s); js.id = id;
-          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-          fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));</script>
-      
-       
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>

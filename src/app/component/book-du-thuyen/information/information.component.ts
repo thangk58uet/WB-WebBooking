@@ -27,6 +27,9 @@ export class InformationComponent implements OnInit {
 
   public listType = ['Anh', 'Chị'];
   public type = '';
+  public tourInfo: any = {};
+  public boatInfo: any = {};
+  public totalPriceAccessory = 0;
 
   constructor(public commonService: CommonService,
               private activatedRoute: ActivatedRoute,
@@ -35,20 +38,21 @@ export class InformationComponent implements OnInit {
 
   ngOnInit() {
     this.dateBook = this.activatedRoute.snapshot.queryParams.date;
-    this.boatName = this.activatedRoute.snapshot.queryParams.name;
+    this.price = +this.activatedRoute.snapshot.queryParams.price;
 
     this.initUserInfo();
-    this.getInfoTourBoat();
     this.getUserInfo();
     this.getListAccessory();
+    this.getTourInfo();
+    this.getBoatInfo();
   }
 
   routerLinkVerify(name, date) {
     const tourId = this.activatedRoute.snapshot.queryParams.tourId;
-    const provinceId = this.activatedRoute.snapshot.queryParams.locationId;
     const boatTypeId = this.activatedRoute.snapshot.queryParams.boatTypeId;
     const boatId = this.activatedRoute.snapshot.queryParams.boatId;
-    this.router.navigate(['/book/verify-information'], { queryParams: { boatTypeId, tourId, date, provinceId, name, boatId }});
+    const price = this.price;
+    this.router.navigate(['/book/verify-information'], { queryParams: { boatTypeId, tourId, date, boatId, price }});
   }
 
   initUserInfo() {
@@ -65,30 +69,37 @@ export class InformationComponent implements OnInit {
 
   selectType(e) {}
 
-  getInfoTourBoat() {
-    const params = {
-      tourId: this.activatedRoute.snapshot.queryParams.tourId,
-      provinceId: this.activatedRoute.snapshot.queryParams.locationId,
-      boatTypeId: this.activatedRoute.snapshot.queryParams.boatTypeId
-    };
-    this.commonService.getInfoTourByBoat(params).subscribe( res => {
-      this.detailTour = (res && res['value'][0]) ? res['value'][0] : {};
-      if (this.detailTour.images.length > 0) {
-        this.detailTour.linkImage = this.commonService.pathImage + this.detailTour.images[0].reference;
-      } else {
-        this.detailTour.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
-      }
-    });
-  }
-
   getListAccessory() {
     this.accessoryInfo = [];
+    this.totalPriceAccessory = 0;
     this.listAccessoryId = JSON.parse(sessionStorage.getItem('listAccessoryId'));
     for (let index = 0; index < this.listAccessoryId.length; index++) {
       this.commonService.getAccessoryById(this.listAccessoryId[index]).subscribe( res => {
-        this.accessoryInfo.push(res['value']);
+        if (res && res['value']) {
+          setTimeout(() => {
+            this.accessoryInfo.push(res['value']);
+            this.totalPriceAccessory += res['value'].price;
+          }, 1000);
+        }
       });
     }
+  }
+
+  getTourInfo() {
+    this.commonService.getTourById(this.activatedRoute.snapshot.queryParams.tourId).subscribe( res => {
+      this.tourInfo = (res && res['value']) ? res['value'] : {};
+    });
+  }
+
+  getBoatInfo() {
+    this.commonService.getDetailBoatById(this.activatedRoute.snapshot.queryParams.boatId).subscribe( res => {
+      this.boatInfo = (res && res['value']) ? res['value'] : {};
+      if (this.boatInfo.images) {
+        this.boatInfo.linkImage = this.commonService.pathImage + this.boatInfo.images[0].reference;
+      } else {
+        this.boatInfo.linkImage = this.commonService.pathImage + this.boatInfo.type.images.reference;
+      }
+    });
   }
 
 }
