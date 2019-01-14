@@ -674,7 +674,8 @@ div#rate_guarantee {
     .paid {
         input,
         span {
-            color: red;
+            color: green;
+            font-weight: bold
         }
     }
 }

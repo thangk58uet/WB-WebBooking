@@ -169,28 +169,29 @@
                                                 <h4 style="text-align: left; padding: 8px 0;">Các dịch vụ đi kèm</h4>
                                                 <div class="background-green dich-vu">
                                                     <div class="row free" style="margin: auto !important">
-                                                        <div class="row col-sm-3">
+                                                        <div class="col-sm-3">
                                                             <h5 style="padding-left: 0">Dịch vụ miễn phí</h5>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4" *ngFor="let item of listAccessoryFree">
-                                                                <input type="checkbox" checked><span>{{ item?.name }}</span>
+                                                        <div class="col-sm-4" style="margin-top: 9px">
+                                                            <div *ngFor="let item of listAccessoryFree; let i = index">
+                                                                <input type="checkbox" checked *ngIf="i%2 === 0"><span *ngIf="i%2 === 0">{{ item?.name }}</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4" style="margin-top: 9px">
+                                                            <div *ngFor="let item of listAccessoryFree; let i = index">
+                                                                <input type="checkbox" checked *ngIf="i%2 != 0"><span *ngIf="i%2 != 0">{{ item?.name }}</span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="row paid" style="margin: auto !important">
-                                                        <div class="row col-sm-3">
+                                                        <div class="col-sm-3">
                                                             <h5 style="padding-left: 0">Dịch vụ trả phí</h5>
                                                         </div>
-                                                        <div class="row">
-                                                            <div class="col-sm-4" *ngFor="let item of listAccessoryPaid">
-                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter}} VND)</span>
-                                                            </div>
-                                                            <div class="col-sm-4" *ngFor="let item of listAccessoryPaid">
-                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} ({{ item?.price | thousandNumberFormatter}} VND)</span>
+                                                        <div class="col-sm-9" style="margin-top: 9px">
+                                                            <div *ngFor="let item of listAccessoryPaid; let i = index">
+                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{ item?.name }} : {{ item?.price | thousandNumberFormatter}} VND</span>
                                                             </div>
                                                         </div>
-
                                                     </div>
                                                 </div>
                                                 <div id="availability_target" class="hp-availability-section js-hp-availability-section">
