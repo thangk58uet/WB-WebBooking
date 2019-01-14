@@ -39,6 +39,11 @@ export class TinMoiComponent implements OnInit {
         }
       }
     });
+    if(this.router.url === '/tin-tuc/tin-moi'){
+      this.isTinMoi = true;
+    }else{
+      this.isTinMoi = false;
+    }
     this.getListNew();
   }
 

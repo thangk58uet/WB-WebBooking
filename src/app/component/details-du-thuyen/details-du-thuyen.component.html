@@ -114,9 +114,13 @@
                                                     </div>
                                                     <div class="col-sm-6" style="display: flex;justify-content: flex-end; margin-top: 20px">
                                                         <!-- <a href="#availability_target" style="text-decoration: none; line-height: 2">Đặt ngay</a> -->
-                                                        <span class="icon-share" title="Chia sẻ"><i class="fa fa-share-alt" aria-hidden="true"></i></span>
-                                                    </div>
-
+                                                        <!-- <span class="icon-share" title="Chia sẻ"><i class="fa fa-share-alt" aria-hidden="true"></i></span> -->
+                                                        <!-- Your share button code -->
+                                                        <div class="fb-share-button" 
+                                                            data-href="https://yachttour.vn/" 
+                                                            data-layout="button_count">
+                                                        </div>                                 
+                                                     </div>
                                                 </div>
                                                 <div class="row">
                                                     <div class="col-sm-6">
@@ -332,3 +336,13 @@
                 <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice" [tourName]="tourName" [provinceName]="provinceName" [detailTour]="detailTour"></app-popup-tour-info>
             </div>
         </dx-popup>
+        <div id="fb-root"></div>
+        <script>(function(d, s, id) {
+          var js, fjs = d.getElementsByTagName(s)[0];
+          if (d.getElementById(id)) return;
+          js = d.createElement(s); js.id = id;
+          js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+          fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));</script>
+      
+       
