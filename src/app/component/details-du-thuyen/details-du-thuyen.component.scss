@@ -573,7 +573,7 @@ div#rate_guarantee {
 
 #availability_target {
     margin-top: 0;
-    padding-bottom: 20px;
+    padding-bottom: 0;
 }
 
 .rooms .wrap-rooms .wrap-box .box-img {
@@ -758,4 +758,11 @@ table th {
         text-decoration: underline;
     }
     cursor: pointer;
+}
+
+.enable-make-reservation {
+  background: #e7efdb;
+}
+.disable-make-reservation {
+  background: #f3dbe0;
 }

@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { alert } from 'devextreme/ui/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { UserService } from '../../user/user.service';
+import { getMessageCodeError } from 'src/app/common/common.constant';
 
 @Component({
   selector: 'app-verify-information',
@@ -25,9 +27,10 @@ export class VerifyInformationComponent implements OnInit {
     lastName: '',
     phoneNumber: '',
     passport: '',
-    address: ''
+    address: '',
+    message: ''
   };
-  public message = '';
+  public userInfoTotal: any = {};
 
   public listAccessoryId = [];
   public accessoryInfo = [];
@@ -37,7 +40,8 @@ export class VerifyInformationComponent implements OnInit {
 
   constructor(public commonService: CommonService,
               private activatedRoute: ActivatedRoute,
-              private cookieService: CookieService) { }
+              private cookieService: CookieService,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.dateBook = this.activatedRoute.snapshot.queryParams.date;
@@ -47,6 +51,21 @@ export class VerifyInformationComponent implements OnInit {
     this.getListAccessory();
     this.getTourInfo();
     this.getBoatInfo();
+    this.getUserInfo();
+  }
+
+  getUserInfo() {
+    this.userInfo.firstName = sessionStorage.getItem('InputFirstName');
+    this.userInfo.lastName = sessionStorage.getItem('InputLastName');
+    this.userInfo.email = sessionStorage.getItem('InputEmail');
+    this.userInfo.message = sessionStorage.getItem('message');
+
+    this.userService.getAccountInfo().subscribe( res => {
+      this.userInfoTotal =(res && res['value'])? res['value'] : {};
+      this.userInfo.phoneNumber = this.userInfoTotal.phoneNumber;
+      this.userInfo.address = this.userInfoTotal.address;
+      this.userInfo.passport = this.userInfoTotal.passport;
+    })
   }
 
   getListAccessory() {
@@ -83,34 +102,38 @@ export class VerifyInformationComponent implements OnInit {
   }
 
   bookSuccess() {
-    const params = {
+    if (!this.userInfo.address || ! this.userInfo.phoneNumber || !this.userInfo.passport) {
+      alert('Vui lòng nhập đầy đủ thông tin khi đặt tour!', 'Yachttour');
+    } else {
+      const params = {
         boatId: this.activatedRoute.snapshot.queryParams.boatId,
         bookingDate: this.dateBook,
         contact: {
           email: this.userInfo.email,
           firstName: this.userInfo.firstName,
           gender: 'MALE',
-          lastName: this.userInfo.phoneNumber,
+          lastName: this.userInfo.lastName,
           phoneNumber: this.userInfo.phoneNumber,
           address: this.userInfo.address,
           passport: this.userInfo.passport
         },
         listAccessoryId: JSON.parse(sessionStorage.getItem('listAccessoryId')),
-        message: this.message,
+        message: this.userInfo.message,
         tourId: this.activatedRoute.snapshot.queryParams.tourId
-    };
-    if (!params.contact.phoneNumber) {
-      delete params.contact.phoneNumber;
+      };
+      if (!params.contact.phoneNumber) {
+        delete params.contact.phoneNumber;
+      }
+      this.commonService.bookReservation(params).subscribe( res => {
+        this.popupBookSuccess = true;
+      }, err => {
+        this.popupBookSuccess = false;
+        alert(getMessageCodeError(err), 'Yachttour.vn');
+      });
     }
-    this.commonService.bookReservation(params).subscribe( res => {
-      this.popupBookSuccess = true;
-    }, err => {
-      this.popupBookSuccess = true;
-      // if (JSON.parse(err['_body']).resultCode === '400.202') {
-      //   alert('Bạn không đủ tiền. Vui lòng nạp tiền vào tài khoản', 'Yachttour.vn');
-      // }
-      // const message = JSON.parse(err['_body']).message;
-      // alert(message, 'Yachtour.vn');
-    });
+  }
+
+  closePopup() {
+    this.popupBookSuccess = false;
   }
 }

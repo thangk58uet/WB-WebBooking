@@ -76,6 +76,7 @@ import { UserService } from '../component/user/user.service';
         { path: 'tin-tuc/xem-tin', component: XemTinComponent},
         { path: 'the', component: TheComponent},
         { path: 'noi-dung/:link', component: StaticPageComponent},
+        { path: '/account/reset/finish', component: StaticPageComponent}
       ]
     }]),
     DxSelectBoxModule,

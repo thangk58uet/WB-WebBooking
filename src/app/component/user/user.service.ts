@@ -15,8 +15,33 @@ export class UserService {
     }));
   }
 
-  public getHistoryTour(): Observable<Response> {
-    return this.httpClient.get(`/reservation/by-user/`).pipe(map((res: Response) => {
+  public getHistoryTour(params): Observable<Response> {
+    return this.httpClient.get(`/reservation/by-user/`,params).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+
+  public changePassword(params): Observable<Response> {
+    return this.httpClient.put(`/account/change-password`, params).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public modifyAccountInfo(params): Observable<Response> {
+    return this.httpClient.put(`/account/`, params).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public forgotPassword(params): Observable<Response> {
+    return this.httpClient.post(`/account/reset-password/init/`, params).pipe(map((res: Response) => {
+      return res.json();
+    }));
+  }
+
+  public resetPassword(params): Observable<Response> {
+    return this.httpClient.post(`/account/reset-password/finish/`, params).pipe(map((res: Response) => {
       return res.json();
     }));
   }

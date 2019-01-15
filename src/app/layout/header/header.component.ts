@@ -1,6 +1,6 @@
 import { LoginService } from './../../component/login/login.service';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { HeaderService } from './header.service';
 import { alert, confirm } from 'devextreme/ui/dialog';
 import { CookieService } from 'ngx-cookie-service';
@@ -50,6 +50,14 @@ export class HeaderComponent implements OnInit {
     const result = confirm('Bạn muốn đăng xuất?', 'Yachttour.vn');
     result['done']((dialogResult) => {
       if (dialogResult) {
+        this.router.events.subscribe(e => {
+          if (e instanceof NavigationEnd) {
+            if (e.url === '/user-profile') {
+              this.router.navigate(['/trang-chu']);
+              return;
+            }
+          }
+        });
         this.loginService.isLogin = false;
         sessionStorage.clear();
         location.reload();

@@ -64,6 +64,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   public provinceName = '';
   public indexImage = null;
   public detailTour: any = {};
+  public linkImagePopupInfo = '';
 
   shareObj = {
     href: "https://yachttour.vn/",
@@ -106,7 +107,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userInfo.fullName = sessionStorage.getItem('lastName') + '' + sessionStorage.getItem('firstName');
+    this.userInfo.fullName = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName');
     this.userInfo.email = sessionStorage.getItem('email');
     this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
   }
@@ -371,19 +372,19 @@ export class DetailsDuThuyenComponent implements OnInit {
     };
     this.commonService.getInfoTourByBoat(params).subscribe( res => {
       this.detailTour = (res && res['value']) ? res['value'] : {};
-      this.listImages = this.detailTour.images;
       if (this.detailTour.images.length > 0) {
-        this.linkImage = this.commonService.pathImage + this.detailTour.images[0].reference;
+        this.linkImagePopupInfo = this.commonService.pathImage + this.detailTour.images[0].reference;
       } else {
-        this.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
+        this.linkImagePopupInfo = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
       }
     }, err => {
-      this.detailTour = {};
     });
   }
 
   forcusTour() {
-    $('#availability_target').scrollTo();
+    $('html, body').animate({
+      scrollTop: $('#availability_target').offset().top
+    });
   }
 
 }

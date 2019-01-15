@@ -118,7 +118,7 @@
                                                     <div class="row input-field">
                                                         <div class="col-sm-6">
                                                             <span>Địa chỉ *</span>
-                                                            <input type="text">
+                                                            <input type="text" [(ngModel)]="userInfo.address">
                                                         </div>
                                                     </div>
                                                     <div class="row input-field">
@@ -180,9 +180,9 @@
     </section>
     <!-- END / ROOMS -->
 
-    <dx-popup class="popup" [width]="600" [height]="400" [showTitle]="true" [title]="'Yachttour thông báo'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupBookSuccess">
+    <dx-popup class="popup" [width]="600" [height]="400" [showTitle]="true" [title]="'Yachttour.vn thông báo'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="popupBookSuccess">
         <div *dxTemplate="let data of 'content'">
-            <app-book-success></app-book-success>
+            <app-book-success (closePopup)="closePopup()"></app-book-success>
         </div>
     </dx-popup>
 </div>

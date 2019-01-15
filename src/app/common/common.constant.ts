@@ -1,6 +1,6 @@
 
 export function getMessageCodeError(err) {
-  const code = JSON.parse(err['_body']).code;
+  const code = JSON.parse(err['_body']).resultCode;
 
   switch (code) {
     // user
@@ -29,9 +29,8 @@ export function getMessageCodeError(err) {
 
     // reservation
     case '400.200' : return 'Đặt phòng không thành công';
-    case '400.201' : return 'Không thể đặt trước với tư cách là QUẢN TRỊ';
-    case '400.202' : return 'Người dùng không có đủ tiền';
-    case '400.203' : return 'Thời gian đặt trước đã được bảo lưu';
+    case '400.202' : return 'Bạn không đủ tiền. Vui lòng nạp thêm tiền vào tài khoản!';
+    case '400.203' : return 'Tour này đã có người đặt trước đó. Vui lòng thử lại!';
     case '400.204' : return 'Đặt chỗ nhưng thiếu địa chỉ liên hệ';
     case '400.205' : return 'Giá chưa được giải quyết';
     case '400.207' : return 'Chọn phụ kiện không hợp lệ';
@@ -53,6 +52,8 @@ export function getMessageCodeError(err) {
     case '400.401' : return 'Menu thiếu cấp';
     case '400.402' : return 'Menu thiếu parentId';
     case '400.403' : return 'Lỗi di chuyển menu';
+
+    default: 'Đã có lỗi xảy ra!'
 
     // case '400.' : return '';
   }

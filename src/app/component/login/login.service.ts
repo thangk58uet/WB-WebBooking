@@ -26,12 +26,11 @@ export class LoginService {
       this.doLogin(loginInfo).subscribe((data) => {
         this.isLogin = true;
         sessionStorage.setItem('token', data.json().value.accessToken);
-
+        this.cookieService.set('token', data.json().value.accessToken);
         sessionStorage.setItem('firstName', data.json().value.firstName);
         sessionStorage.setItem('lastName', data.json().value.lastName);
         sessionStorage.setItem('email', data.json().value.email);
-        sessionStorage.setItem('cardNumber', data.json().value.cardNumber);
-        sessionStorage.setItem('phoneNumber', data.json().value.phoneNumber);
+
         // tslint:disable-next-line:no-unused-expression
         successCallback && successCallback(data.json().value);
       }, (err) => {

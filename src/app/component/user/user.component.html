@@ -10,7 +10,7 @@
                     <p>Level: {{ userInfo.level }}</p>
                     <p>Loại thẻ: {{ userInfo.cardType }}</p>
                     <p>Họ và tên: {{ userInfo.fullName }}</p>
-                    <p>Số dư : {{ userInfo.level | thousandNumberFormatter }} VND</p>
+                    <p>Số dư : {{ userInfo.moneyAmount | thousandNumberFormatter }} VND</p>
                 </div>
             </div>
             <div class="col-sm-8">
@@ -51,19 +51,19 @@
                                             <label for="website" class="col-4 col-form-label">Số điện thoại</label>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="publicinfo" class="col-4 col-form-label">Tên và địa chỉ công ty</label>
+                                            <label for="publicinfo" class="col-4 col-form-label">Địa chỉ</label>
                                         </div>
                                     </div>
 
                                     <div class="input-info-customer">
-                                        <input id="username" name="username" placeholder="Tên đăng nhập" class="form-control here" type="text" disabled [(ngModel)]="userInfo.login">
+                                        <input id="username" name="username" placeholder="Tên đăng nhập" class="form-control here" type="text" disabled="userInfo.login" [(ngModel)]="userInfo.login">
                                         <input id="password" name="password" placeholder="Họ của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.firstName">
                                         <input id="lastname" name="lastname" placeholder="Tên của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.lastName">
-                                        <input id="name" name="name" placeholder="Chứng minh thư / hộ chiếu" class="form-control here" type="text" [(ngModel)]="userInfo.passpost">
+                                        <input id="name" name="name" placeholder="Chứng minh thư / hộ chiếu" class="form-control here" type="text" [(ngModel)]="userInfo.passport">
                                         <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" [(ngModel)]="userInfo.email">
                                         <input id="website" name="website" placeholder="Số điện thoại" class="form-control here" type="text" [(ngModel)]="userInfo.phoneNumber">
                                         <textarea id="publicinfo" name="publicinfo" cols="40" rows="2" class="form-control" [(ngModel)]="userInfo.address"></textarea>
-                                        <button name="submit" type="submit" class="btn btn-primary">Cập nhật thông tin</button>
+                                        <button name="submit" type="submit" class="btn btn-primary" (click)="modifyAccountInfo()">Cập nhật thông tin</button>
                                     </div>
                                 </form>
                             </div>
@@ -84,6 +84,36 @@
                             <div class="col-sm-12 no-tour" *ngIf="historyTourInfo.length === 0">
                                 <p>Bạn chưa đặt tour! <span class="router" [routerLink]="'/tour'">Đặt ngay</span></p>
                             </div>
+                            <div class="col-sm-12 have-tour" *ngIf="historyTourInfo.length > 0">
+                                <div class="tour-content row" *ngFor="let item of historyTourInfo">
+                                    <div class="col-sm-6 tour-reservation-info" style="width: 40%;padding-left: 0;padding-right: 0">
+                                        <h4>Thông tin tour du thuyền</h4>
+                                        <p>Tên tour : {{ item?.tour?.name }}</p>
+                                        <p>Tên du thuyền : {{ item?.boat?.name }}</p>
+                                        <p>Địa điểm : {{ item?.boat?.province?.name }}</p>
+                                        <p>Ngày nhận du thuyền : {{ item?.tour?.startHour}}</p>
+                                        <p>Ngày trả du thuyền : {{ item?.tour?.startHour}}</p>
+                                        <p>Giá : {{ item?.price | thousandNumberFormatter }} VND</p>
+                                    </div>
+                                    <div class="col-sm-6 user-book-tour-info" style="width: 40%;padding-left: 0;padding-right: 0">
+                                        <h4>Thông tin người đặt</h4>
+                                        <p>Họ tên: {{ item?.contact?.firstName }} {{ item?.contact?.lastName }}</p>
+                                        <p>Số điện thoại: {{ item?.contact?.phoneNumber }}</p>
+                                        <p>Email : {{ item?.contact?.email }}</p>
+                                        <p>CMTND/passport : {{ item?.contact?.passport }}</p>
+                                        <p>Địa chỉ : {{ item?.contact?.address }}</p>
+                                        <p>Ghi chú : </p>
+                                    </div>
+                                    <div class="status col-sm-4" style="width: 20%;padding-left: 0;padding-right: 0">
+                                        <h4 style="border-right: unset !important">Trạng thái</h4>
+                                        <p *ngIf="item?.status === 'CONFIRMED'" class="confirm">Đã thanh toán</p>
+                                        <p *ngIf="item?.status !== 'CONFIRMED'" class="pending">Chưa thanh toán</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="pagination row" style="justify-content: flex-end;display: flex">
+                            <app-pagination [totalPages]="totalPages" (goPage)="goToPage($event)" [pagesToShow]="5" [currentPage]="currentPage"></app-pagination>
                         </div>
                         <div class="row" style="margin-left: 0px">
                             <div class="col-sm-12" style="padding-left: 0px">
@@ -105,7 +135,8 @@
     </div>
 </div>
 
-<dx-popup [width]="'25%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupChangePassword">
+<!-- ĐỔI MẬT KHẨU -->
+<dx-popup [width]="'30%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupChangePassword">
     <div *dxTemplate="let data of 'content'">
         <div class="form-change-password">
             <div class="limiter">
@@ -130,14 +161,101 @@
                             <span class="focus-input100" data-symbol="&#xf190;"></span>
                         </div>
                         <div class="text-right p-t-8 p-b-31">
-                            <a href="#">
+                            <a (click)="forgotPassword()" style="cursor: pointer;">
                                 Quên mật khẩu?
                               </a>
                         </div>
                         <div class="container-login100-form-btn">
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
-                                <button class="login100-form-btn" style="background: #07c" (click)="login()">Đổi mật khẩu</button>
+                                <button class="login100-form-btn" style="background: #07c" (click)="confirmChangePassword()">Đổi mật khẩu</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</dx-popup>
+
+<!-- QUÊN MẬT KHẨU -->
+<dx-popup [width]="'30%'" [height]="'70%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupForgotPassword">
+    <div *dxTemplate="let data of 'content'">
+        <div class="form-forgot-password">
+            <div class="limiter">
+                <div class="container-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-20">
+                            Lấy lại mật khẩu
+                        </span>
+                        <p style="text-align: center;color: #07c;font-size: 16px;font-weight: bolder;text-decoration: underline;">Vui lòng nhập email đăng ký tài khoản của bạn</p>
+                        <div class="wrap-input100 validate-input m-b-40" data-validate="Username is reauired">
+                            <span class="label-input100">Email</span>
+                            <input class="input100" type="text" name="username" placeholder="Email" [(ngModel)]="userInfo.email">
+                            <span class="focus-input100" data-symbol="&#x2709;"></span>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" style="background: #07c" (click)="confirmForgotPassword()">Tiếp tục</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</dx-popup>
+
+<!-- KIỂM TRA EMAIL LẤY LẠI MẬT KHẨU -->
+<dx-popup [width]="'30%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupCheckEmail">
+    <div *dxTemplate="let data of 'content'">
+        <div class="form-forgot-password">
+            <div class="limiter">
+                <div class="container-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-20">
+                            Lấy lại mật khẩu
+                        </span>
+                        <p style="text-align: center;color: #07c;font-size: 16px;font-weight: bolder;text-decoration: underline;">Chúng tôi đã gửi cho bạn 1 đường link vào email của bạn. Vui lòng kiểm tra email!</p>
+                        <div class="container-login100-form-btn m-t-30">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" style="background: #07c" (click)="checkEmailResetPassword()">Kiểm tra ngay</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</dx-popup>
+
+<!-- TẠO MẬT KHẨU MỚI( QUÊN MẬT KHẨU) -->
+<dx-popup [width]="'30%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupResetPassword">
+    <div *dxTemplate="let data of 'content'">
+        <div class="form-reset-password">
+            <div class="limiter">
+                <div class="container-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-20">
+                        Tạo mật khẩu mới
+                      </span>
+                        <p style="text-align: center;color: #07c;font-size: 16px;font-weight: bolder;text-decoration: underline;">Vui lòng kiểm tra email của bạn và nhập key để tạo mật khẩu mới</p>
+                        <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+                            <span class="label-input100">Mật khẩu mới</span>
+                            <input class="input100" type="password" name="pass" placeholder="Mật khẩu mới" [(ngModel)]="resetPasswordInfo.newPassword">
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-40" data-validate="Password is required">
+                            <span class="label-input100">Xác nhận mật khẩu</span>
+                            <input class="input100" type="password" name="pass" placeholder="Xác nhận mật khẩu" [(ngModel)]="resetPasswordInfo.confirmNewPassword">
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" style="background: #07c" (click)="confirmResetPassword()">Tiếp tục</button>
                             </div>
                         </div>
                     </form>

@@ -145,7 +145,7 @@
                                                     <div class="row input-field">
                                                         <div class="col-sm-4">
                                                             <span>Xác nhận địa chỉ email</span>
-                                                            <input type="text" [(ngModel)]="userInfo.email">
+                                                            <input type="text" [(ngModel)]="userInfo.confirmEmail">
                                                         </div>
                                                     </div>
                                                     <div style="margin-left: 12px">
@@ -160,7 +160,7 @@
                                                     <p style="font-size: 15px;font-weight: bold;">Các yêu cầu đặc biệt</p>
                                                     <p>Yêu cầu đặc biệt không thể được đảm bảo - nhưng chúng tôi sẽ cố gắng hết sức để đáp ứng nhu cầu của bạn. </p>
                                                     <p>Bạn luôn có thể gửi yêu cầu đặc biệt sau khi hoàn tất đặt tour của mình!</p>
-                                                    <textarea name="message" rows="6" cols="50"></textarea>
+                                                    <textarea name="message" rows="6" cols="50" [(ngModel)]="userInfo.message"></textarea>
                                                     <p style="font-size: 15px;font-weight: bold;">Thời gian dự kiến của bạn <span style="font-weight: normal">(không bắt buộc)</span></p>
                                                     <!-- <p style="font-size: 13px;font-weight: bold;">Lễ tân trực 24h <span style="font-weight: normal">Sẵn sàng hỗ trợ bất kỳ lúc nào bạn cần</span></p> -->
                                                 </div>

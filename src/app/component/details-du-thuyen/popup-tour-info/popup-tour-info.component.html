@@ -1,19 +1,19 @@
 <div class="popup-tour-info">
-    <div class=row *ngIf="detailTour?.boatTypeTour" style="height: 100%">
+    <div class=row *ngIf="detailTourInfo?.boatTypeTour" style="height: 100%">
         <div class="wrap-box col-sm-6">
             <div class="box-img" style="border: 1px solid #dadada" style="display: flex;justify-content: center">
-                <img src="{{ linkImage }}" class="img-responsive" alt="{{ detailTour?.name }}" title="{{ detailTour?.name }}" style="width: auto; height: 100%;cursor: pointer">
+                <img src="{{ linkImageInfo }}" class="img-responsive" alt="{{ detailTourInfo?.name }}" title="{{ detailTourInfo?.name }}" style="width: auto; height: 100%;cursor: pointer">
                 <div class="owl-nav-custom">
                     <div class="owl-prev" (click)="prevImage()"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
                     <div class="owl-next" (click)="nextImage()"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
                 </div>
             </div>
             <div class="list-image">
-                <a class="" (click)="selectImage(i)" *ngFor="let item of detailTour.images; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
+                <a class="" (click)="selectImage(i)" *ngFor="let item of detailTourInfo.images; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
             </div>
         </div>
         <div class="col-sm-6 description" style="height: 80%">
-            <div [innerHTML]="detailTour?.description" style="height: 100%;overflow: auto"></div>
+            <div [innerHTML]="detailTourInfo?.description" style="height: 100%;overflow: auto"></div>
         </div>
 
     </div>

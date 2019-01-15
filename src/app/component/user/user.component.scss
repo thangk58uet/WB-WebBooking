@@ -64,15 +64,76 @@
                     cursor: pointer;
                 }
             }
+            .have-tour {
+              border: 1px #07c;
+              .tour-content {
+                border: 1px solid #07c;
+                margin-bottom: 20px;
+                background: #e9f0fa;
+                .tour-reservation-info {
+                  border-right: #07c;
+                  p {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                    color: black;
+                    font-weight: 600;
+                  }
+                }
+                .user-book-tour-info {
+                  border-right: #07c;
+                  p {
+                    margin-left: 10px;
+                    color: black;
+                    font-weight: 600;
+                    margin-right: 10px;
+                  }
+                }
+                .status {
+                  p {
+                    margin-left: 10px;
+                    margin-right: 10px;
+                  }
+                  .confirm {
+                    color: green;
+                    background: #e4f7e7;
+                    border: 1px solid green;
+                    padding: 10px;
+                    margin-top: 70px;
+                    font-weight: bold;
+                    text-align: center;
+                  }
+                  .pending {
+                    color: red;
+                    background: #f3dbe0;
+                    border: 1px solid red;
+                    padding: 10px 20px;
+                    margin-top: 70px;
+                    font-weight: bold;
+                    text-align: center;
+                  }
+                }
+                .pagination {
+                  margin-top: -10px;
+                }
+              }
+              h4 {
+                margin-top: 0px;
+                color: white;
+                background: #07c;
+                padding: 8px;
+                text-align: center;
+                border-right: 1px solid white;
+              }
+            }
         }
     }
 }
 
-.form-change-password {
+.form-change-password, .form-forgot-password, .form-reset-password {
     span,
     input,
     button,
-    a {
+    a,p {
         font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
     }
 }
