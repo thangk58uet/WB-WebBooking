@@ -1,6 +1,7 @@
 /deep/.user-info {
     a,
-    h4 {
+    h4,
+    p {
         font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
     }
     a {
@@ -21,5 +22,57 @@
     }
     .form-control {
         margin-bottom: 15px;
+    }
+    .info-the {
+        border: 1px solid #96d99d;
+        background-color: #e4f7e7;
+        padding: 25px 15px;
+        margin-top: 30px;
+        p {
+            padding: 5px;
+            color: #07c;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+    .list-group {
+        margin-top: 12px;
+    }
+    a,
+    button {
+        cursor: pointer;
+    }
+    .history-tour {
+        .notice {
+            border: 1px solid #96d99d;
+            background-color: #e4f7e7;
+            padding: 20px 10px;
+            p {
+                color: #07c;
+                font-weight: 500;
+            }
+        }
+        .content-history {
+            .no-tour {
+                text-align: center;
+                border: 1px solid #dadada;
+                padding: 20px;
+                .router {
+                    font-weight: bold;
+                    color: #07c;
+                    text-decoration: underline;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.form-change-password {
+    span,
+    input,
+    button,
+    a {
+        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
     }
 }

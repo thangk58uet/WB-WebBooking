@@ -1,36 +1,48 @@
 <div class="user-info" style="margin: 30px 0">
-    <div class="container">
+    <div class="container profile">
         <div class="row" style="margin-right: 0px; margin-left: 0px">
-            <div class="col-md-3 ">
+            <div class="col-sm-4 " style="width: 32%;">
                 <div class="list-group ">
-                    <a href="#" class="list-group-item list-group-item-action active">Hồ sơ của bạn</a>
-                    <a href="#" class="list-group-item list-group-item-action">Đặt du thuyền</a>
+                    <a (click)="profile($event)" class="list-group-item list-group-item-action active">Hồ sơ của bạn</a>
+                    <a (click)="historyTour($event)" class="list-group-item list-group-item-action">Lịch sử đặt tour</a>
+                </div>
+                <div class="info-the">
+                    <p>Level: {{ userInfo.level }}</p>
+                    <p>Loại thẻ: {{ userInfo.cardType }}</p>
+                    <p>Họ và tên: {{ userInfo.fullName }}</p>
+                    <p>Số dư : {{ userInfo.level | thousandNumberFormatter }} VND</p>
                 </div>
             </div>
-            <div class="col-md-9">
+            <div class="col-sm-8">
                 <div class="card">
-                    <div class="card-body">
+                    <!-- profile -->
+                    <div class="card-body profile" *ngIf="isProfile">
                         <div class="row">
-                            <div class="col-md-12">
-                                <h4>Tài khoản Yachttour.vn của bạn</h4>
+                            <div class="col-sm-12">
+                                <h4 style="color: #07c;padding-left: 0" class="col-sm-8">Tài khoản Yachttour.vn của bạn</h4>
+                                <div class="col-sm-4" style="padding-right: 0;text-align: right; width: 33%">
+                                    <button name="submit" type="submit" class="btn btn-primary" (click)="changePassword()">Đổi mật khẩu</button>
+                                </div>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom: 5px">
                                 <hr>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-12">
+                        <div class="row" style="margin-left: 0px">
+                            <div class="col-sm-12">
                                 <form>
                                     <div class="label-info-customer">
                                         <div class="form-group row">
                                             <label for="username" class="col-4 col-form-label">Tên đăng nhập</label>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="password" class="col-4 col-form-label">Mật khẩu mới</label>
+                                            <label for="firstname" class="col-4 col-form-label">Họ</label>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="lastname" class="col-4 col-form-label">Họ và tên đệm</label>
+                                            <label for="lastname" class="col-4 col-form-label">Tên</label>
                                         </div>
                                         <div class="form-group row">
-                                            <label for="name" class="col-4 col-form-label">Tên Khách Hàng</label>
+                                            <label for="name" class="col-4 col-form-label">CMTND/passport</label>
                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-4 col-form-label">Email</label>
@@ -44,13 +56,13 @@
                                     </div>
 
                                     <div class="input-info-customer">
-                                        <input id="username" name="username" placeholder="Tên đăng nhập" class="form-control here" type="text">
-                                        <input id="password" name="password" placeholder="Mật khẩu mới" class="form-control here" type="text">
-                                        <input id="lastname" name="lastname" placeholder="Họ và tên đệm" class="form-control here" type="text">
-                                        <input id="name" name="name" placeholder="Tên Khách Hàng" class="form-control here" type="text">
-                                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                        <input id="website" name="website" placeholder="Số điện thoại" class="form-control here" type="text">
-                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="2" class="form-control"></textarea>
+                                        <input id="username" name="username" placeholder="Tên đăng nhập" class="form-control here" type="text" disabled [(ngModel)]="userInfo.login">
+                                        <input id="password" name="password" placeholder="Họ của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.firstName">
+                                        <input id="lastname" name="lastname" placeholder="Tên của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.lastName">
+                                        <input id="name" name="name" placeholder="Chứng minh thư / hộ chiếu" class="form-control here" type="text" [(ngModel)]="userInfo.passpost">
+                                        <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" [(ngModel)]="userInfo.email">
+                                        <input id="website" name="website" placeholder="Số điện thoại" class="form-control here" type="text" [(ngModel)]="userInfo.phoneNumber">
+                                        <textarea id="publicinfo" name="publicinfo" cols="40" rows="2" class="form-control" [(ngModel)]="userInfo.address"></textarea>
                                         <button name="submit" type="submit" class="btn btn-primary">Cập nhật thông tin</button>
                                     </div>
                                 </form>
@@ -58,8 +70,79 @@
                         </div>
 
                     </div>
+                    <!-- history-tour -->
+                    <div class="card-body history-tour" *ngIf="!isProfile">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <h4 style="color: #07c;padding-left: 0" class="col-sm-8">Lịch sử đặt tour của bạn</h4>
+                            </div>
+                            <div class="col-sm-12" style="margin-bottom: 5px">
+                                <hr>
+                            </div>
+                        </div>
+                        <div class="row content-history" style="margin-left: 0px">
+                            <div class="col-sm-12 no-tour" *ngIf="historyTourInfo.length === 0">
+                                <p>Bạn chưa đặt tour! <span class="router" [routerLink]="'/tour'">Đặt ngay</span></p>
+                            </div>
+                        </div>
+                        <div class="row" style="margin-left: 0px">
+                            <div class="col-sm-12" style="padding-left: 0px">
+                                <h4>
+                                    <span style="color:red; text-decoration: underline">Ghi chú</span>
+                                    <span style="color:red">(*)</span>
+                                </h4>
+                            </div>
+                            <div class="col-sm-12 notice">
+                                <p>Việc hủy dịch vụ chỉ có hiệu lực khi Yachttour nhận được yêu cầu qua hotline: 0762.89.89.68 hoặc qua email: info@yachttour.vn</p>
+                                <p>• Hủy dịch vụ trước 3 ngày từ ngày khởi hành sẽ được hoàn tiền 100%.</p>
+                                <p>• Hủy dịch vụ trong vòng 1 đến 3 ngày trước ngày khởi hành sẽ được hoàn tiền 50% giá trị tour.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<dx-popup [width]="'25%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupChangePassword">
+    <div *dxTemplate="let data of 'content'">
+        <div class="form-change-password">
+            <div class="limiter">
+                <div class="container-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-49">
+                              Đổi mật khẩu
+                            </span>
+                        <div class="wrap-input100 validate-input m-b-23" data-validate="Username is reauired">
+                            <span class="label-input100">Mật khẩu cũ</span>
+                            <input class="input100" type="text" name="username" placeholder="Mật khẩu cũ" [(ngModel)]="oldPassword">
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+                            <span class="label-input100">Mật khẩu mới</span>
+                            <input class="input100" type="password" name="pass" placeholder="Mật khẩu mới" [(ngModel)]="newPassword">
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+                        <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
+                            <span class="label-input100">Xác nhận mật khẩu</span>
+                            <input class="input100" type="password" name="pass" placeholder="Xác nhận mật khẩu" [(ngModel)]="confirmPassword">
+                            <span class="focus-input100" data-symbol="&#xf190;"></span>
+                        </div>
+                        <div class="text-right p-t-8 p-b-31">
+                            <a href="#">
+                                Quên mật khẩu?
+                              </a>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" style="background: #07c" (click)="login()">Đổi mật khẩu</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</dx-popup>

@@ -40,6 +40,7 @@ import { TheComponent } from '../component/the/the.component';
 import { StaticPageComponent } from 'src/app/component/static-page/static-page.component';
 import { StaticPageService } from 'src/app/component/static-page/static-page.service';
 import { PopupTourInfoComponent } from '../component/details-du-thuyen/popup-tour-info/popup-tour-info.component';
+import { UserService } from '../component/user/user.service';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -122,7 +123,8 @@ import { PopupTourInfoComponent } from '../component/details-du-thuyen/popup-tou
     HeaderService,
     FooterService,
     MainService,
-    StaticPageService
+    StaticPageService,
+    UserService
   ]
 })
 export class LayoutModule { }

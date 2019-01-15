@@ -4,6 +4,7 @@ import { TourDuThuyenService } from './tour-du-thuyen.service';
 import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 
 declare const $: any;
+
 @Component({
   selector: 'app-tour-du-thuyen',
   templateUrl: './tour-du-thuyen.component.html',

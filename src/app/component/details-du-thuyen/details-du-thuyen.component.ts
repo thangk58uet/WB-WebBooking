@@ -49,7 +49,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   public nameTitleShowImage = '';
   public linkImageComment = '';
   public userInfo = {
-    lastName: '',
+    fullName: '',
     email: '',
     phoneNumber: ''
   };
@@ -106,7 +106,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userInfo.lastName = sessionStorage.getItem('lastName');
+    this.userInfo.fullName = sessionStorage.getItem('lastName') + '' + sessionStorage.getItem('firstName');
     this.userInfo.email = sessionStorage.getItem('email');
     this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
   }
@@ -377,7 +377,6 @@ export class DetailsDuThuyenComponent implements OnInit {
       } else {
         this.linkImage = this.commonService.pathImage + this.detailTour.boatTypeTour.boatType.image.reference;
       }
-      console.log(this.linkImage);
     }, err => {
       this.detailTour = {};
     });

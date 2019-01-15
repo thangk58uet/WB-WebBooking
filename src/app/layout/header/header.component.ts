@@ -74,4 +74,16 @@ export class HeaderComponent implements OnInit {
   openUserProfile() {
     this.router.navigate(['/user-profile']);
   }
+
+  routerTour() {
+    this.lastName = sessionStorage.getItem('lastName');
+    this.router.navigate(['/tour']);
+    this.loginService.popupWellcome = false;
+  }
+
+  routerThe() {
+    this.lastName = sessionStorage.getItem('lastName');
+    this.router.navigate(['/noi-dung/huong-dan-su-dung-the']);
+    this.loginService.popupWellcome = false;
+  }
 }

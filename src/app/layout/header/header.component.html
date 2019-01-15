@@ -66,13 +66,18 @@
     </div>
 </dx-popup>
 
-<dx-popup [width]="'50%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupWellcome">
+<dx-popup [width]="'50%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="loginService.popupWellcome">
     <div *dxTemplate="let data of 'content'">
         <div class="popup-wellcome">
             <h4>Chào mừng bạn đến với Yachttour.vn</h4>
             <p>Hệ thống du thuyền cá nhân Yachttour!</p>
             <p>Nơi mở ra không gian và thời gian dành riêng cho bạn</p>
-            <p>Hãy bắt đầu trải nghiệm những thú vị <span (click)="routerLinkMain()" style="cursor: pointer"> tại đây</span></p>
+            <p>Hãy bắt đầu trải nghiệm những thú vị tại đây! </p>
+            <div class="row" style="display: flex;justify-content: center; margin-top: 20px">
+                <button (click)="routerTour()">Đặt tour</button>
+                <button (click)="routerThe()">Hướng dẫn sử dụng thẻ</button>
+                <button (click)="routerLinkMain()">Tôi đã hiểu</button>
+            </div>
         </div>
     </div>
 </dx-popup>
