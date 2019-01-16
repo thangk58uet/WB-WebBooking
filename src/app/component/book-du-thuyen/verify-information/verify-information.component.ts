@@ -26,7 +26,7 @@ export class VerifyInformationComponent implements OnInit {
     firstName: '',
     lastName: '',
     phoneNumber: '',
-    passport: '',
+    passpost: '',
     address: '',
     message: ''
   };
@@ -64,7 +64,7 @@ export class VerifyInformationComponent implements OnInit {
       this.userInfoTotal =(res && res['value'])? res['value'] : {};
       this.userInfo.phoneNumber = this.userInfoTotal.phoneNumber;
       this.userInfo.address = this.userInfoTotal.address;
-      this.userInfo.passport = this.userInfoTotal.passport;
+      this.userInfo.passpost = this.userInfoTotal.passpost;
     })
   }
 
@@ -102,7 +102,7 @@ export class VerifyInformationComponent implements OnInit {
   }
 
   bookSuccess() {
-    if (!this.userInfo.address || ! this.userInfo.phoneNumber || !this.userInfo.passport) {
+    if (!this.userInfo.address || ! this.userInfo.phoneNumber || !this.userInfo.passpost) {
       alert('Vui lòng nhập đầy đủ thông tin khi đặt tour!', 'Yachttour');
     } else {
       const params = {
@@ -115,7 +115,7 @@ export class VerifyInformationComponent implements OnInit {
           lastName: this.userInfo.lastName,
           phoneNumber: this.userInfo.phoneNumber,
           address: this.userInfo.address,
-          passport: this.userInfo.passport
+          passpost: this.userInfo.passpost
         },
         listAccessoryId: JSON.parse(sessionStorage.getItem('listAccessoryId')),
         message: this.userInfo.message,
@@ -128,7 +128,7 @@ export class VerifyInformationComponent implements OnInit {
         this.popupBookSuccess = true;
       }, err => {
         this.popupBookSuccess = false;
-        alert(getMessageCodeError(err), 'Yachttour.vn');
+        alert(getMessageCodeError(err), 'Yachttour');
       });
     }
   }

@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
-    const result = confirm('Bạn muốn đăng xuất?', 'Yachttour.vn');
+    const result = confirm('Bạn muốn đăng xuất?', 'Yachttour');
     result['done']((dialogResult) => {
       if (dialogResult) {
         this.router.events.subscribe(e => {
@@ -58,10 +58,10 @@ export class HeaderComponent implements OnInit {
             }
           }
         });
+        this.clearCookie();
         this.loginService.isLogin = false;
         sessionStorage.clear();
         location.reload();
-        this.clearCookie();
       }
     });
   }

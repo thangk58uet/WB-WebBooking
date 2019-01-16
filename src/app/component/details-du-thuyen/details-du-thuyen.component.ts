@@ -34,8 +34,8 @@ export class DetailsDuThuyenComponent implements OnInit {
   public latitude;
   public longitude;
 
-  public typeBoat;
-  public location;
+  public typeBoat = '';
+  public location = '';
   public listLocation: any = [];
   public listTypeBoat: any = [];
   public listAccessoryFree = [];
@@ -57,8 +57,8 @@ export class DetailsDuThuyenComponent implements OnInit {
   public token = '';
   public popupLogin = false;
   public popupTourInfo = false;
-  public boatTypeId = '';
-  public provinceId = '';
+  public boatTypeId = null;
+  public provinceId = null;
   public tourId = '';
   public tourName = '';
   public tourPrice = '';
@@ -72,6 +72,12 @@ export class DetailsDuThuyenComponent implements OnInit {
     // hashtag:"#FACEBOOK-SHARE-HASGTAG"
   };
   public moneyAmount = 0;
+  public isLoadPanelVisible = false;
+  public price;
+  public locationId = null;
+  public minPrice = 0;
+  public maxPrice = 100000000000000;
+  public currentDay = new Date();
 
   @ViewChild(InformationComponent) informationComponent: InformationComponent;
 
@@ -97,9 +103,10 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.token = sessionStorage.getItem('token');
+    this.token = this.cookieService.get('token');
+    console.log(this.token);
 
-    this.getBoatTour();
+    this.getBoatTour(1);
     this.getAccessory();
     this.getAccesssoryType();
     this.getListBoatType();
@@ -107,6 +114,7 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.getListAcessoryType();
     this.getListComment();
     this.getUserInfo();
+    this.getAccountInfo();
   }
 
   getUserInfo() {
@@ -115,12 +123,20 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
   }
 
-  getBoatTour() {
-    console.log(this.dateBookBoat);
-    const dateParams = this.dateBookBoat.toJSON().slice(0, 10);
-    this.commonService.getBoatTour(this.activatedRoute.snapshot.queryParams.id, { date: dateParams }).subscribe( res => {
-      this.boatTour = (res && res['value']) ? res['value'] : [];
-    });
+  getBoatTour(params?) {
+    if(params) {
+      const dateParams = this.dateBookBoat.toJSON().slice(0, 10);
+      this.commonService.getBoatTour(this.activatedRoute.snapshot.queryParams.id, { date: dateParams }).subscribe( res => {
+        this.boatTour = (res && res['value']) ? res['value'] : [];
+      });
+    } else {
+      this.isLoadPanelVisible = true;
+      const dateParams = this.dateBookBoat.toJSON().slice(0, 10);
+      this.commonService.getBoatTour(this.activatedRoute.snapshot.queryParams.id, { date: dateParams }).subscribe( res => {
+        this.isLoadPanelVisible = false;
+        this.boatTour = (res && res['value']) ? res['value'] : [];
+      });
+    }
   }
 
   getListLocation() {
@@ -202,13 +218,33 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.linkImage = this.commonService.pathImage + this.listImages[index].reference;
   }
 
-  selectLocation(e) {}
+  selectLocation(e) {
+    this.location = e.selectedItem;
+    this.locationId = this.listLocation.indexOf(this.location) + 1;
+  }
 
-  selectTypeBoat(e) {}
+  selectTypeBoat(e) {
+    this.typeBoat = e.selectedItem;
+    this.boatTypeId = this.listTypeBoat.indexOf(this.typeBoat) + 1;
 
-  selectPrice(e) {}
+  }
 
-  search() {}
+  selectPrice(e) {
+    this.price = e.selectedItem;
+  }
+
+  search() {
+    const locationId = this.locationId;
+    let boatTypeId = this.boatTypeId;
+    const price = this.price;
+    const location = this.location;
+    const typeBoat = this.typeBoat;
+    if(boatTypeId === '0') {
+      boatTypeId = '';
+    }
+
+    this.router.navigate(['/tour'], { queryParams: { locationId, boatTypeId, price, location, typeBoat } })
+  }
 
   getAccessory() {
     this.commonService.getAccessory().subscribe( res => {
@@ -393,8 +429,12 @@ export class DetailsDuThuyenComponent implements OnInit {
 
   getAccountInfo() {
     this.userService.getAccountInfo().subscribe( res => {
-      this.moneyAmount = (res && res['value'] && res['value'].moneyAmount) ? res['value'].moneyAmount : {};
+      this.moneyAmount = (res && res['value'] && res['value'].moneyAmount) ? res['value'].moneyAmount : 0;
     });
   }
 
+  selectToDate(e) {
+    const dateParams = e.value.toJSON().slice(0, 10);
+    console.log(this.dateBookBoat.toUTCString().toString());
+  }
 }

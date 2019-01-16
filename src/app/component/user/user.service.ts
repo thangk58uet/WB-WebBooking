@@ -35,13 +35,13 @@ export class UserService {
   }
 
   public forgotPassword(params): Observable<Response> {
-    return this.httpClient.post(`/account/reset-password/init/`, params).pipe(map((res: Response) => {
+    return this.httpClient.post(`/account/reset-password/init`, params).pipe(map((res: Response) => {
       return res.json();
     }));
   }
 
   public resetPassword(params): Observable<Response> {
-    return this.httpClient.post(`/account/reset-password/finish/`, params).pipe(map((res: Response) => {
+    return this.httpClient.post(`/account/reset-password/finish`, params).pipe(map((res: Response) => {
       return res.json();
     }));
   }

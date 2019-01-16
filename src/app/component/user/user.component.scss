@@ -24,15 +24,31 @@
         margin-bottom: 15px;
     }
     .info-the {
-        border: 1px solid #96d99d;
-        background-color: #e4f7e7;
-        padding: 25px 15px;
+        border: 1px solid #058511;
         margin-top: 30px;
+        margin-left: 0;
+        margin-right: 0;
         p {
             padding: 5px;
-            color: #07c;
+            padding-left: 20px;
+            padding-right: 20px;
+            padding-bottom: 12px;
+            color: #058511;
             font-size: 16px;
             font-weight: bold;
+            margin: 0;
+            border-bottom: 1px solid #058511;
+            &:nth-child(3),
+            &:nth-child(2) {
+              text-align: center;
+            }
+        }
+        h4 {
+          color: white;
+          text-align: center;
+          background: #058511;
+          padding: 10px 20px;
+          margin-top: 0;
         }
     }
     .list-group {

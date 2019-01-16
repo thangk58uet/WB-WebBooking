@@ -130,7 +130,7 @@
                                                     <div class="row input-field">
                                                         <div class="col-sm-4">
                                                             <span>CMTND/passport *</span>
-                                                            <input type="text" [(ngModel)]="userInfo.passport">
+                                                            <input type="text" [(ngModel)]="userInfo.passpost">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,7 +180,7 @@
     </section>
     <!-- END / ROOMS -->
 
-    <dx-popup class="popup" [width]="600" [height]="400" [showTitle]="true" [title]="'Yachttour.vn thông báo'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="popupBookSuccess">
+    <dx-popup class="popup" [width]="600" [height]="400" [showTitle]="true" [title]="'Yachttour thông báo'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="popupBookSuccess">
         <div *dxTemplate="let data of 'content'">
             <app-book-success (closePopup)="closePopup()"></app-book-success>
         </div>

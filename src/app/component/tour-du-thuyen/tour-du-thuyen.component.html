@@ -40,21 +40,21 @@
                                                                                 <div class="col-sm-6" style="padding-right: 5px">
                                                                                     <div class="form-group">
                                                                                         <p class="form-label">Từ ngày</p>
-                                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" [(min)]="currentDay" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
                                                                                         </dx-date-box>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-6" style="padding-left: 0">
                                                                                     <div class="form-group">
                                                                                         <p class="form-label">Đến ngày</p>
-                                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" [(min)]="fromDate" type="date" displayFormat="yyyy-MM-dd" (onValueChanged)="selectToDate($event)">
                                                                                         </dx-date-box>
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
                                                                             <div class="form-group">
                                                                                 <p class="form-label">Mức giá</p>
-                                                                                <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
+                                                                                <dx-select-box placeholder="Chọn mức giá" [(value)]="price" [dataSource]="commonService.listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
                                                                                 </dx-select-box>
                                                                             </div>
                                                                             <div class="form-btn">

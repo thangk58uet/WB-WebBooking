@@ -25,14 +25,14 @@
                 <div class="departure date-title ">
                     <label>Từ ngày</label>
                     <div>
-                        <dx-date-box class="from-date-box" [(value)]="fromDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                        <dx-date-box class="from-date-box" [(value)]="fromDate" [(min)]="currentDay" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
                         </dx-date-box>
                     </div>
                 </div>
                 <div class="departure date-title ">
                     <label>Đến ngày</label>
                     <div>
-                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
+                        <dx-date-box class="from-date-box" [(value)]="toDate" [(min)]="fromDate" type="date" displayFormat="dd/MM/yyyy" valueChangeEvent="keyup">
                         </dx-date-box>
                     </div>
                 </div>

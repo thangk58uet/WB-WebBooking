@@ -16,7 +16,7 @@
                     <span class="focus-input100" data-symbol="&#xf190;"></span>
                 </div>
                 <div class="text-right p-t-8 p-b-31">
-                    <a href="#">
+                    <a (click)="forgotPassword()" style="cursor: pointer">
                         Quên mật khẩu?
                       </a>
                 </div>
@@ -51,3 +51,32 @@
         </div>
     </div>
 </div>
+
+<!-- QUÊN MẬT KHẨU -->
+<dx-popup [width]="'30%'" [height]="'70%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupForgotPassword">
+    <div *dxTemplate="let data of 'content'">
+        <div class="form-forgot-password">
+            <div class="limiter">
+                <div class="container-login100">
+                    <form class="login100-form validate-form">
+                        <span class="login100-form-title p-b-20">
+                            Lấy lại mật khẩu
+                        </span>
+                        <p style="text-align: center;color: #07c;font-size: 16px;font-weight: bolder;text-decoration: underline;">Vui lòng nhập email đăng ký tài khoản của bạn</p>
+                        <div class="wrap-input100 validate-input m-b-40" data-validate="Username is reauired">
+                            <span class="label-input100">Email</span>
+                            <input class="input100" type="text" name="username" placeholder="Email" [(ngModel)]="email">
+                            <span class="focus-input100" data-symbol="&#x2709;"></span>
+                        </div>
+                        <div class="container-login100-form-btn">
+                            <div class="wrap-login100-form-btn">
+                                <div class="login100-form-bgbtn"></div>
+                                <button class="login100-form-btn" style="background: #07c" (click)="confirmForgotPassword()">Tiếp tục</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</dx-popup>

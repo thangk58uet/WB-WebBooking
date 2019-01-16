@@ -6,6 +6,9 @@ import { map } from 'rxjs/operators';
 import { Http } from '@angular/http';
 import { environment } from '../../../environments/environment';
 import { CookieService } from 'ngx-cookie-service';
+import { alert } from 'devextreme/ui/dialog';
+import { getMessageCodeError } from 'src/app/common/common.constant';
+
 const API_URL = environment.apiUrl;
 
 @Injectable()
@@ -36,6 +39,7 @@ export class LoginService {
       }, (err) => {
         reject(err);
         this.isLogin = false;
+        alert(getMessageCodeError(err), 'Yachttour');
         // tslint:disable-next-line:no-unused-expression
         failCallback && failCallback(err.json());
       });

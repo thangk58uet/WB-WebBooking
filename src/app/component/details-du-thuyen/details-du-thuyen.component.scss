@@ -760,14 +760,17 @@ table th {
     cursor: pointer;
 }
 
-.enable-make-reservation {
+.have-token-have-tour, .no-token-have-tour {
     background: #e7efdb;
 }
 
-.disable-make-reservation {
+.have-token-no-tour, .no-token-no-tour {
     background: #f3dbe0;
 }
 
+.have-token-no-money {
+  background: #dadada;
+}
 .inlineBlock _2tga _49ve {
     padding: 8px 4px 22px 4px;
 }

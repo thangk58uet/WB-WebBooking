@@ -2,6 +2,9 @@ import { Component, OnInit, Input, ViewChild, ViewEncapsulation, Output, EventEm
 import { LoginService } from './login.service';
 import { Router, NavigationEnd } from '@angular/router';
 import { HeaderComponent } from 'src/app/layout/header/header.component';
+import { alert } from 'devextreme/ui/dialog';
+import { getMessageCodeError } from 'src/app/common/common.constant';
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'app-login',
@@ -16,12 +19,17 @@ export class LoginComponent implements OnInit {
 
   public userName: string;
   public passWord: string;
+  public popupForgotPassword = false;
+  public email = '';
+  public popupCheckEmail = false;
+
   @Output() routerMain = new EventEmitter();
 
   @ViewChild(HeaderComponent) headerComponent: HeaderComponent;
 
   constructor(private loginService: LoginService,
-              private router: Router) { }
+              private router: Router,
+              private userService: UserService) { }
 
   ngOnInit() {
     this.loginInfo = new LoginInfo();
@@ -52,6 +60,25 @@ export class LoginComponent implements OnInit {
     this.authenticationError = true;
     sessionStorage.clear();
   }
+
+  forgotPassword() {
+    this.popupForgotPassword = true;
+  }
+
+  confirmForgotPassword() {
+    if (!this.email) {
+      alert('Vui lòng nhập email!', 'Yachttour');
+    } else {
+      this.userService.forgotPassword(this.email).subscribe( res => {
+        this.popupCheckEmail = true;
+        this.popupForgotPassword = false;
+      }, err => {
+        this.popupCheckEmail = true;
+        alert(getMessageCodeError(err), 'Yachttour');
+      });
+    }
+  }
+
 }
 
 class LoginInfo {

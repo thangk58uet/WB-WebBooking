@@ -22,8 +22,8 @@ export class TourDuThuyenComponent implements OnInit {
   public totalCount;
   public listLocation: any = [];
   public listTypeBoat: any = [];
-  public locationId = null;
-  public boatTypeId = null;
+  public locationId;
+  public boatTypeId;
 
   public totalElements: number;
   public totalPages = 0;
@@ -36,6 +36,7 @@ export class TourDuThuyenComponent implements OnInit {
   public sortDirection = '';
   public minPrice = 0;
   public maxPrice = 100000000000000;
+  public currentDay = new Date();
 
   constructor(private tourDuThuyenService: TourDuThuyenService,
               public commonService: CommonService,
@@ -67,10 +68,6 @@ export class TourDuThuyenComponent implements OnInit {
 
   selectPrice(e) {
     this.price = e.selectedItem;
-    if (this.price) {
-      this.minPrice = this.commonService.listPriceId[this.commonService.listPrice.indexOf(this.price)].min;
-      this.maxPrice = this.commonService.listPriceId[this.commonService.listPrice.indexOf(this.price)].max;
-    }
   }
 
   getListLocation() {
@@ -99,6 +96,10 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   search() {
+    if (this.price) {
+      this.minPrice = this.commonService.listPriceId[this.commonService.listPrice.indexOf(this.price)].min;
+      this.maxPrice = this.commonService.listPriceId[this.commonService.listPrice.indexOf(this.price)].max;
+    }
     const params = {
       boatTypeId: this.boatTypeId,
       locationId: this.locationId,
@@ -117,16 +118,21 @@ export class TourDuThuyenComponent implements OnInit {
     if (params.sortDirection === '') {
       delete params.sortDirection;
     }
-    if (!params.boatTypeId) {
+    if (params.boatTypeId === '0' || !params.boatTypeId) {
       delete params.boatTypeId;
     }
-    if (!params.locationId) {
+    if (!params.locationId || params.locationId === '0') {
       delete params.locationId;
     }
     if (!this.price) {
       delete params.minPrice;
       delete params.maxPrice;
     }
+    const boatTypeId = this.boatTypeId;
+    const locationId = this.locationId;
+    const price = this.price;
+
+    this.router.navigate(['/tour'], { queryParams: { locationId, boatTypeId, price } });
     this.tourDuThuyenService.getListBoatByParams(params).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];
@@ -172,5 +178,8 @@ export class TourDuThuyenComponent implements OnInit {
     this.search();
     $('.click-btn-tour').removeClass('click-btn-tour-selected');
     $(e.target).addClass('click-btn-tour-selected');
+  }
+
+  selectToDate(e) {
   }
 }

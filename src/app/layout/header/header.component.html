@@ -54,22 +54,22 @@
     <!-- END / MENU-HEADER -->
 </div>
 
-<dx-popup class="popup" [width]="'30%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupLogin">
+<dx-popup class="popup" [width]="'30%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupLogin">
     <div *dxTemplate="let data of 'content'">
         <app-login></app-login>
     </div>
 </dx-popup>
 
-<dx-popup class="popup" [width]="'50%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupRegister">
+<dx-popup class="popup" [width]="'50%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="loginService.popupRegister">
     <div *dxTemplate="let data of 'content'">
         <app-register></app-register>
     </div>
 </dx-popup>
 
-<dx-popup [width]="'50%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="loginService.popupWellcome">
+<dx-popup [width]="'50%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="loginService.popupWellcome">
     <div *dxTemplate="let data of 'content'">
         <div class="popup-wellcome">
-            <h4>Chào mừng bạn đến với Yachttour.vn</h4>
+            <h4>Chào mừng bạn đến với Yachttour</h4>
             <p>Hệ thống du thuyền cá nhân Yachttour!</p>
             <p>Nơi mở ra không gian và thời gian dành riêng cho bạn</p>
             <p>Hãy bắt đầu trải nghiệm những thú vị tại đây! </p>

@@ -40,21 +40,21 @@
                                                                 <div class="col-sm-6" style="padding-right: 5px">
                                                                     <div class="form-group">
                                                                         <p class="form-label">Từ ngày</p>
-                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" [(min)]="currentDay" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
                                                                         </dx-date-box>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-sm-6" style="padding-left: 0">
                                                                     <div class="form-group">
                                                                         <p class="form-label">Đến ngày</p>
-                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" [(min)]="fromDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
                                                                         </dx-date-box>
                                                                     </div>
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <p class="form-label">Mức giá</p>
-                                                                <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
+                                                                <dx-select-box placeholder="Chọn mức giá" [(value)]="price" [dataSource]="commonService.listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
                                                                 </dx-select-box>
                                                             </div>
                                                             <div class="form-btn">
@@ -218,7 +218,7 @@
                                                                 <div class="row">
                                                                     <span class="col-sm-4" style="font-weight: normal; text-align: right; line-height: 33px">Ngày
                                     đặt du thuyền</span>
-                                                                    <dx-date-box class="from-date-box col-sm-4" style="width: 22%" [(value)]="dateBookBoat" [(min)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                    <dx-date-box class="from-date-box col-sm-4" [(value)]="dateBookBoat" [(min)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup" (onValueChanged)="selectToDate($event)">
                                                                     </dx-date-box>
                                                                     <div class="col-sm-3">
                                                                         <button class="b-button b-button_primary hp-section-row lp_bold_date_picker_btn" (click)="getBoatTour()">
@@ -246,7 +246,11 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr class="odd" *ngFor="let item of boatTour" [ngClass]="(item?.canMakeReservation === true) ? 'enable-make-reservation' : 'disable-make-reservation'">
+                                                        <tr class="odd" *ngFor="let item of boatTour" [ngClass]="{'have-token-have-tour': token && moneyAmount > item?.price && item?.canMakeReservation === true,
+                                                                                                                  'have-token-no-money' : token && moneyAmount < item?.price,
+                                                                                                                  'have-token-no-tour' : token && moneyAmount > item?.price && item?.canMakeReservation === false,
+                                                                                                                  'no-token-have-tour' : !token && item?.canMakeReservation === true,
+                                                                                                                  'no-token-not-tour' : !token && item?.canMakeReservation === false}">
                                                             <td class="ftd roomType">
                                                                 <div id="31386307">
                                                                     <div class="room-info" id="RD31386307">
@@ -267,9 +271,16 @@
                                                                 <span style="color: green; font-size: 18px">{{ item?.price | thousandNumberFormatter }}
                                   VND</span>
                                                             </td>
-                                                            <td class="rt_show_dates" style="border: 1px solid #5bbaff">
-                                                                <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="item?.canMakeReservation === true">Đặt tour</span>
-                                                                <span class="b-button" *ngIf="item?.canMakeReservation === false">Tour đã được đặt</span>
+                                                            <td class="rt_show_dates" style="border: 1px solid #5bbaff" >
+                                                              <div *ngIf="token">
+                                                                  <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="moneyAmount > item?.price && item?.canMakeReservation === true">Đặt tour</span>
+                                                                  <span class="b-button" *ngIf="moneyAmount < item?.price">Tài khoản không đủ</span>
+                                                                  <span class="b-button" *ngIf="moneyAmount > item?.price && item?.canMakeReservation === false">Tour đã được đặt</span>
+                                                              </div>
+                                                              <div *ngIf="!token">
+                                                                  <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="item?.canMakeReservation === true">Đặt tour</span>
+                                                                  <span class="b-button" *ngIf="item?.canMakeReservation === false">Tour đã được đặt</span>
+                                                              </div>
                                                             </td>
                                                         </tr>
                                                     </tbody>
@@ -334,7 +345,7 @@
             </div>
         </dx-popup>
 
-        <dx-popup class="popup" [width]="'22%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
+        <dx-popup class="popup" [width]="'22%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
             <div *dxTemplate="let data of 'content'">
                 <app-login></app-login>
             </div>
@@ -356,3 +367,5 @@
                 fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
+
+        <dx-load-panel shadingColor="rgba(0,0,0,0.4)" [closeOnOutsideClick]="false" [(visible)]="isLoadPanelVisible"></dx-load-panel>

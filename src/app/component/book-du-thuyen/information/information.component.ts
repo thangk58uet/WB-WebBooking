@@ -54,10 +54,10 @@ export class InformationComponent implements OnInit {
 
   routerLinkVerify(name, date) {
     if (!this.userInfo.firstName || !this.userInfo.lastName || !this.userInfo.email || !this.userInfo.confirmEmail) {
-      alert('Vui lòng nhập đầy đủ thông tin của bạn!', 'Yachttour.vn');
+      alert('Vui lòng nhập đầy đủ thông tin của bạn!', 'Yachttour');
     } else {
       if (this.userInfo.email !== this.userInfo.confirmEmail) {
-        alert('Email xác nhận không trùng khớp!', 'Yachttour.vn');
+        alert('Email xác nhận không trùng khớp!', 'Yachttour');
       } else {
         const tourId = this.activatedRoute.snapshot.queryParams.tourId;
         const boatTypeId = this.activatedRoute.snapshot.queryParams.boatTypeId;

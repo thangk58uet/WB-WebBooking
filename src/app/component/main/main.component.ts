@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
   public listTourHighlights: any = [];
   public listNews: any = [];
   public listNewsDisplay: any = [];
+  public currentDay = new Date();
 
   constructor(public commonService: CommonService,
               private router: Router,
@@ -86,7 +87,7 @@ export class MainComponent implements OnInit {
     // const fromDate = this.fromDate.toJSON().slice(0, 10);
     // const toDate = this.toDate.toJSON().slice(0, 10);
 
-    // const price = this.price;
+    const price = this.price;
     this.router.navigate(['/tour'], {queryParams: { locationId, boatTypeId, location, typeBoat }});
   }
 

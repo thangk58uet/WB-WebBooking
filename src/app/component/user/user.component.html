@@ -7,10 +7,17 @@
                     <a (click)="historyTour($event)" class="list-group-item list-group-item-action">Lịch sử đặt tour</a>
                 </div>
                 <div class="info-the row">
+                    <h4>Thông tin thẻ</h4>
                     <p class="col-sm-12">{{ userInfo.level }}</p>
                     <p class="col-sm-12">{{ userInfo.cardType }}</p>
-                    <p class="col-sm-4">Họ và tên: </p><span class="col-sm-8">{{ userInfo.fullName }}</span>
-                    <p class="col-sm-4">Số dư : </p><span class="col-sm-8">{{ userInfo.moneyAmount | thousandNumberFormatter }} VND</span>
+                    <p class="col-sm-12">
+                      <span class="col-sm-6" style="width: 40%">Họ và tên: </span>
+                      <span class="col-sm-6" style="width: 60%">{{ userInfo.fullName }}</span>
+                    </p>
+                    <p class="col-sm-12" style="border-bottom: none">
+                      <span class="col-sm-6" style="width: 40%">Số dư : </span>
+                      <span class="col-sm-6" style="width: 60%">{{ userInfo.moneyAmount | thousandNumberFormatter }} VND</span>
+                    </p>
                 </div>
             </div>
             <div class="col-sm-8">
@@ -19,7 +26,7 @@
                     <div class="card-body profile" *ngIf="isProfile">
                         <div class="row">
                             <div class="col-sm-12">
-                                <h4 style="color: #07c;padding-left: 0" class="col-sm-8">Tài khoản Yachttour.vn của bạn</h4>
+                                <h4 style="color: #07c;padding-left: 0" class="col-sm-8">Tài khoản Yachttour của bạn</h4>
                                 <div class="col-sm-4" style="padding-right: 0;text-align: right; width: 33%">
 
                                 </div>
@@ -59,7 +66,7 @@
                                         <input id="username" name="username" placeholder="Tên đăng nhập" class="form-control here" type="text" disabled="userInfo.login" [(ngModel)]="userInfo.login">
                                         <input id="password" name="password" placeholder="Họ của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.firstName">
                                         <input id="lastname" name="lastname" placeholder="Tên của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.lastName">
-                                        <input id="name" name="name" placeholder="Chứng minh thư / hộ chiếu" class="form-control here" type="text" [(ngModel)]="userInfo.passport">
+                                        <input id="name" name="name" placeholder="Chứng minh thư / hộ chiếu" class="form-control here" type="text" [(ngModel)]="userInfo.passpost">
                                         <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" [(ngModel)]="userInfo.email">
                                         <input id="website" name="website" placeholder="Số điện thoại" class="form-control here" type="text" [(ngModel)]="userInfo.phoneNumber">
                                         <textarea id="publicinfo" name="publicinfo" cols="40" rows="2" class="form-control" [(ngModel)]="userInfo.address"></textarea>
@@ -91,8 +98,8 @@
                                         <h4>Thông tin tour du thuyền</h4>
                                         <p>Tên tour : {{ item?.tour?.name }}</p>
                                         <p>Địa điểm : {{ item?.boat?.province?.name }}</p>
-                                        <p>Ngày nhận du thuyền : {{ item?.tour?.startHour}}</p>
-                                        <p>Ngày trả du thuyền : {{ item?.tour?.startHour}}</p>
+                                        <p>Ngày nhận du thuyền : {{ item?.fromDate }}</p>
+                                        <p>Ngày trả du thuyền : {{ item?.toDate }}</p>
                                         <p>Giá : {{ item?.price | thousandNumberFormatter }} VND</p>
                                     </div>
                                     <div class="col-sm-6 user-book-tour-info" style="width: 40%;padding-left: 0;padding-right: 0">
@@ -100,9 +107,9 @@
                                         <p>Họ tên: {{ item?.contact?.firstName }} {{ item?.contact?.lastName }}</p>
                                         <p>Số điện thoại: {{ item?.contact?.phoneNumber }}</p>
                                         <p>Email : {{ item?.contact?.email }}</p>
-                                        <p>CMTND/passport : {{ item?.contact?.passport }}</p>
+                                        <p>CMTND/passport : {{ item?.contact?.passpost }}</p>
                                         <p>Địa chỉ : {{ item?.contact?.address }}</p>
-                                        <p>Ghi chú : </p>
+                                        <p>Ghi chú : {{ item?.message }}</p>
                                     </div>
                                     <div class="status col-sm-4" style="width: 20%;padding-left: 0;padding-right: 0">
                                         <h4 style="border-right: unset !important">Trạng thái</h4>
@@ -136,7 +143,7 @@
 </div>
 
 <!-- ĐỔI MẬT KHẨU -->
-<dx-popup [width]="'30%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupChangePassword">
+<dx-popup [width]="'30%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupChangePassword">
     <div *dxTemplate="let data of 'content'">
         <div class="form-change-password">
             <div class="limiter">
@@ -179,7 +186,7 @@
 </dx-popup>
 
 <!-- QUÊN MẬT KHẨU -->
-<dx-popup [width]="'30%'" [height]="'70%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupForgotPassword">
+<dx-popup [width]="'30%'" [height]="'70%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupForgotPassword">
     <div *dxTemplate="let data of 'content'">
         <div class="form-forgot-password">
             <div class="limiter">
@@ -208,7 +215,7 @@
 </dx-popup>
 
 <!-- KIỂM TRA EMAIL LẤY LẠI MẬT KHẨU -->
-<dx-popup [width]="'30%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupCheckEmail">
+<dx-popup [width]="'30%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupCheckEmail">
     <div *dxTemplate="let data of 'content'">
         <div class="form-forgot-password">
             <div class="limiter">

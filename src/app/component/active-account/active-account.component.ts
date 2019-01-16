@@ -12,6 +12,7 @@ export class ActiveAccountComponent implements OnInit {
 
   public popupActive = true;
   public popupLogin = false;
+
   constructor(private activatedRoute: ActivatedRoute,
               private commonService: CommonService,
               private router: Router) { }
