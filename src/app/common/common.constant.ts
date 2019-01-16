@@ -53,8 +53,6 @@ export function getMessageCodeError(err) {
     case '400.402' : return 'Menu thiếu parentId';
     case '400.403' : return 'Lỗi di chuyển menu';
 
-    default: 'Đã có lỗi xảy ra!'
-
     // case '400.' : return '';
   }
 }

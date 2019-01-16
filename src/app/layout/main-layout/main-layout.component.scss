@@ -3,13 +3,26 @@
     background: #07c;
     color: white;
 }
-.dx-toolbar-before {
-  width: 100%;
-  display: flex;
-  justify-content: center;
+
+.dx-popup-title {
+    background: #07c;
+    .dx-toolbar-items-container {
+        background: #07c;
+        color: white;
+    }
+    .dx-toolbar-before {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+    .dx-closebutton .dx-icon {
+        color: white;
+    }
 }
 
-
+.dx-icon {
+    color: white;
+}
 
 // .dx-dropdowneditor-button-visible .dx-texteditor-input {
 //     padding-right: 0 !important;

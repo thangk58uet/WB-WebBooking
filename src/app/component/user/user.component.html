@@ -6,11 +6,11 @@
                     <a (click)="profile($event)" class="list-group-item list-group-item-action active">Hồ sơ của bạn</a>
                     <a (click)="historyTour($event)" class="list-group-item list-group-item-action">Lịch sử đặt tour</a>
                 </div>
-                <div class="info-the">
-                    <p>Level: {{ userInfo.level }}</p>
-                    <p>Loại thẻ: {{ userInfo.cardType }}</p>
-                    <p>Họ và tên: {{ userInfo.fullName }}</p>
-                    <p>Số dư : {{ userInfo.moneyAmount | thousandNumberFormatter }} VND</p>
+                <div class="info-the row">
+                    <p class="col-sm-12">{{ userInfo.level }}</p>
+                    <p class="col-sm-12">{{ userInfo.cardType }}</p>
+                    <p class="col-sm-4">Họ và tên: </p><span class="col-sm-8">{{ userInfo.fullName }}</span>
+                    <p class="col-sm-4">Số dư : </p><span class="col-sm-8">{{ userInfo.moneyAmount | thousandNumberFormatter }} VND</span>
                 </div>
             </div>
             <div class="col-sm-8">
@@ -21,7 +21,7 @@
                             <div class="col-sm-12">
                                 <h4 style="color: #07c;padding-left: 0" class="col-sm-8">Tài khoản Yachttour.vn của bạn</h4>
                                 <div class="col-sm-4" style="padding-right: 0;text-align: right; width: 33%">
-                                    <button name="submit" type="submit" class="btn btn-primary" (click)="changePassword()">Đổi mật khẩu</button>
+
                                 </div>
                             </div>
                             <div class="col-sm-12" style="margin-bottom: 5px">
@@ -63,6 +63,7 @@
                                         <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" [(ngModel)]="userInfo.email">
                                         <input id="website" name="website" placeholder="Số điện thoại" class="form-control here" type="text" [(ngModel)]="userInfo.phoneNumber">
                                         <textarea id="publicinfo" name="publicinfo" cols="40" rows="2" class="form-control" [(ngModel)]="userInfo.address"></textarea>
+                                        <button name="submit" type="submit" class="btn btn-primary" (click)="changePassword()" style="margin-right: 20px;">Đổi mật khẩu</button>
                                         <button name="submit" type="submit" class="btn btn-primary" (click)="modifyAccountInfo()">Cập nhật thông tin</button>
                                     </div>
                                 </form>
@@ -89,7 +90,6 @@
                                     <div class="col-sm-6 tour-reservation-info" style="width: 40%;padding-left: 0;padding-right: 0">
                                         <h4>Thông tin tour du thuyền</h4>
                                         <p>Tên tour : {{ item?.tour?.name }}</p>
-                                        <p>Tên du thuyền : {{ item?.boat?.name }}</p>
                                         <p>Địa điểm : {{ item?.boat?.province?.name }}</p>
                                         <p>Ngày nhận du thuyền : {{ item?.tour?.startHour}}</p>
                                         <p>Ngày trả du thuyền : {{ item?.tour?.startHour}}</p>
@@ -222,40 +222,6 @@
                             <div class="wrap-login100-form-btn">
                                 <div class="login100-form-bgbtn"></div>
                                 <button class="login100-form-btn" style="background: #07c" (click)="checkEmailResetPassword()">Kiểm tra ngay</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</dx-popup>
-
-<!-- TẠO MẬT KHẨU MỚI( QUÊN MẬT KHẨU) -->
-<dx-popup [width]="'30%'" [height]="'90%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupResetPassword">
-    <div *dxTemplate="let data of 'content'">
-        <div class="form-reset-password">
-            <div class="limiter">
-                <div class="container-login100">
-                    <form class="login100-form validate-form">
-                        <span class="login100-form-title p-b-20">
-                        Tạo mật khẩu mới
-                      </span>
-                        <p style="text-align: center;color: #07c;font-size: 16px;font-weight: bolder;text-decoration: underline;">Vui lòng kiểm tra email của bạn và nhập key để tạo mật khẩu mới</p>
-                        <div class="wrap-input100 validate-input m-b-23" data-validate="Password is required">
-                            <span class="label-input100">Mật khẩu mới</span>
-                            <input class="input100" type="password" name="pass" placeholder="Mật khẩu mới" [(ngModel)]="resetPasswordInfo.newPassword">
-                            <span class="focus-input100" data-symbol="&#xf190;"></span>
-                        </div>
-                        <div class="wrap-input100 validate-input m-b-40" data-validate="Password is required">
-                            <span class="label-input100">Xác nhận mật khẩu</span>
-                            <input class="input100" type="password" name="pass" placeholder="Xác nhận mật khẩu" [(ngModel)]="resetPasswordInfo.confirmNewPassword">
-                            <span class="focus-input100" data-symbol="&#xf190;"></span>
-                        </div>
-                        <div class="container-login100-form-btn">
-                            <div class="wrap-login100-form-btn">
-                                <div class="login100-form-bgbtn"></div>
-                                <button class="login100-form-btn" style="background: #07c" (click)="confirmResetPassword()">Tiếp tục</button>
                             </div>
                         </div>
                     </form>

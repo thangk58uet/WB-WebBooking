@@ -87,18 +87,18 @@ export class VerifyInformationComponent implements OnInit {
   getTourInfo() {
     this.commonService.getTourById(this.activatedRoute.snapshot.queryParams.tourId).subscribe( res => {
       this.tourInfo = (res && res['value']) ? res['value'] : {};
-    })
+    });
   }
 
   getBoatInfo() {
     this.commonService.getDetailBoatById(this.activatedRoute.snapshot.queryParams.boatId).subscribe( res => {
       this.boatInfo = (res && res['value']) ? res['value'] : {};
-      if(this.boatInfo.images) {
+      if (this.boatInfo.images) {
         this.boatInfo.linkImage = this.commonService.pathImage + this.boatInfo.images[0].reference;
       } else {
         this.boatInfo.linkImage = this.commonService.pathImage + this.boatInfo.type.images.reference;
       }
-    })
+    });
   }
 
   bookSuccess() {

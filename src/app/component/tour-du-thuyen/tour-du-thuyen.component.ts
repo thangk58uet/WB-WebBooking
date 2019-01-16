@@ -144,8 +144,9 @@ export class TourDuThuyenComponent implements OnInit {
   }
 
   routerLinkDetail(item, id) {
-    const typeBoat = item.type.name;
-    this.router.navigate(['/details'], {queryParams: { id, typeBoat }} );
+    location.reload();
+      const typeBoat = item.type.name;
+      this.router.navigate(['/details'], {queryParams: { id, typeBoat }} );
   }
 
   goToPage(e) {

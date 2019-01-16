@@ -1,381 +1,358 @@
 <div cz-shortcut-listen="true details-du-thuyen" style="margin-bottom: 20px;">
-  <section class="rooms">
-    <div class="container">
-      <div class="wrap-rooms">
-        <div class="row">
-          <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
-            <div class="owl-stage-outer">
+    <section class="rooms">
+        <div class="container">
+            <div class="wrap-rooms">
+                <div class="row">
+                    <div id="rooms" class="owl-carousel owl-theme owl-loaded owl-drag">
+                        <div class="owl-stage-outer">
 
-              <div class="owl-stage">
-                <div class="owl-item">
-                  <div class="item ">
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-0" style="width: 30%">
-                      <div class="wrap-box">
+                            <div class="owl-stage">
+                                <div class="owl-item">
+                                    <div class="item ">
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-left-0" style="width: 30%">
+                                            <div class="wrap-box">
 
-                        <div class="section">
-                          <div class="booking-menu-left">
-                            <a class="btn-booking-now" (click)="forcusTour()">Đặt ngay</a>
-                          </div>
+                                                <div class="section">
+                                                    <div class="booking-menu-left">
+                                                        <a class="btn-booking-now" (click)="forcusTour()">Đặt ngay</a>
+                                                    </div>
 
-                          <div class="booking-menu-left background-green">
-                            <div class="justify-content-center">
-                              <i class="bpg_logo"></i>
-                              <span class="text-bpg_logo">Chúng tôi luôn khớp giá</span>
-                            </div>
-                          </div>
-                          <div class="booking-form-detail">
-                            <form>
-                              <h2 style="text-align: left">Tìm</h2>
-                              <div class="form-group">
-                                <p class="form-label">Địa điểm</p>
-                                <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation"
-                                  [searchEnabled]="true" [value]="location" (onSelectionChanged)="selectLocation($event)">
-                                </dx-select-box>
-                              </div>
-                              <div class="form-group">
-                                <p class="form-label">Loại du thuyền</p>
-                                <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat"
-                                  [searchEnabled]="true" [value]="typeBoat" (onSelectionChanged)="selectTypeBoat($event)">
-                                </dx-select-box>
-                              </div>
-                              <div class="row">
-                                <div class="col-sm-6" style="padding-right: 5px">
-                                  <div class="form-group">
-                                    <p class="form-label">Từ ngày</p>
-                                    <dx-date-box class="from-date-box" [(value)]="fromDate" [(max)]="toDate" type="date"
-                                      displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
-                                    </dx-date-box>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6" style="padding-left: 0">
-                                  <div class="form-group">
-                                    <p class="form-label">Đến ngày</p>
-                                    <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="yyyy-MM-dd"
-                                      valueChangeEvent="keyup">
-                                    </dx-date-box>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="form-group">
-                                <p class="form-label">Mức giá</p>
-                                <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice"
-                                  [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
-                                </dx-select-box>
-                              </div>
-                              <div class="form-btn">
-                                <button class="submit-btn" (click)="search()">Tìm</button>
-                              </div>
-                            </form>
-                          </div>
-                          <div class="booking-menu-left">
-                            <!-- Google Map -->
-                            <div id="google_map" class="google_map" style="width:100%;height:300px">
-                            </div>
+                                                    <div class="booking-menu-left background-green">
+                                                        <div class="justify-content-center">
+                                                            <i class="bpg_logo"></i>
+                                                            <span class="text-bpg_logo">Chúng tôi luôn khớp giá</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-form-detail">
+                                                        <form>
+                                                            <h2 style="text-align: left">Tìm</h2>
+                                                            <div class="form-group">
+                                                                <p class="form-label">Địa điểm</p>
+                                                                <dx-select-box placeholder="Chọn địa điểm" [dataSource]="listLocation" [searchEnabled]="true" [value]="location" (onSelectionChanged)="selectLocation($event)">
+                                                                </dx-select-box>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p class="form-label">Loại du thuyền</p>
+                                                                <dx-select-box placeholder="Chọn loại du thuyền" [dataSource]="listTypeBoat" [searchEnabled]="true" [value]="typeBoat" (onSelectionChanged)="selectTypeBoat($event)">
+                                                                </dx-select-box>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-6" style="padding-right: 5px">
+                                                                    <div class="form-group">
+                                                                        <p class="form-label">Từ ngày</p>
+                                                                        <dx-date-box class="from-date-box" [(value)]="fromDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                        </dx-date-box>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-6" style="padding-left: 0">
+                                                                    <div class="form-group">
+                                                                        <p class="form-label">Đến ngày</p>
+                                                                        <dx-date-box class="from-date-box" [(value)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                        </dx-date-box>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <p class="form-label">Mức giá</p>
+                                                                <dx-select-box placeholder="Chọn mức giá" [dataSource]="commonService.listPrice" [searchEnabled]="true" (onSelectionChanged)="selectPrice($event)">
+                                                                </dx-select-box>
+                                                            </div>
+                                                            <div class="form-btn">
+                                                                <button class="submit-btn" (click)="search()">Tìm</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="booking-menu-left">
+                                                        <!-- Google Map -->
+                                                        <div id="google_map" class="google_map" style="width:100%;height:300px">
+                                                        </div>
 
-                          </div>
+                                                    </div>
 
-                          <div class="booking-menu-left">
-                            <span class="text-drive">Bạn thích du thuyền này, nhưng vẫn chưa chắc chắn?</span>
-                            <button class="btn-hostel" [routerLink]="'/tour'">Xem các du thuyền tương tự</button>
-                          </div>
+                                                    <div class="booking-menu-left">
+                                                        <span class="text-drive">Bạn thích du thuyền này, nhưng vẫn chưa chắc chắn?</span>
+                                                        <button class="btn-hostel" [routerLink]="'/tour'">Xem các du thuyền tương tự</button>
+                                                    </div>
 
-                          <div class="comment-customer">
-                            <span class="title-cmt">Điều khách yêu thích nhất:</span>
-                            <div class="text-customer-like" *ngFor="let item of listComment">
-                              <span style="background: #e9f0fa; margin-bottom: 10px">{{ item?.content }}</span>
-                              <div class="info-customer row">
-                                <div class="row col-sm-8">
-                                  <div class=""><span style="text-align: center"><i class="fa fa-user-circle-o avata-customer"
+                                                    <div class="comment-customer">
+                                                        <span class="title-cmt">Điều khách yêu thích nhất:</span>
+                                                        <div class="text-customer-like" *ngFor="let item of listComment">
+                                                            <span style="background: #e9f0fa; margin-bottom: 10px">{{ item?.content }}</span>
+                                                            <div class="info-customer row">
+                                                                <div class="row col-sm-8">
+                                                                    <div class=""><span style="text-align: center"><i class="fa fa-user-circle-o avata-customer"
                                         aria-hidden="true"></i></span></div>
-                                  <div class=" customer-content">
-                                    <span class="name-customer" style="font-size: 14px">{{ item?.user?.lastName }}</span>
-                                  </div>
-                                </div>
-                                <div class="col-sm-4" style="padding-left: 0; padding-right: 0; border: 1px solid #07c"
-                                  *ngIf="item?.linkImageComment">
-                                  <img src="{{ item?.linkImageComment }}" (click)="viewImageComment(item?.linkImageComment, item?.content)"
-                                    class="img-responsive" alt="Comment Image" title="Xem hình ảnh" style="width: 100%; height: 85px; cursor: pointer">
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="booking-menu-left login-comment">
-                            <p class="text-drive">Để lại bình luận của bạn, <span class="text-login-comment"
-                                (click)="login()">Đăng
+                                                                    <div class=" customer-content">
+                                                                        <span class="name-customer" style="font-size: 14px">{{ item?.user?.lastName }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-sm-4" style="padding-left: 0; padding-right: 0; border: 1px solid #07c" *ngIf="item?.linkImageComment">
+                                                                    <img src="{{ item?.linkImageComment }}" (click)="viewImageComment(item?.linkImageComment, item?.content)" class="img-responsive" alt="Comment Image" title="Xem hình ảnh" style="width: 100%; height: 85px; cursor: pointer">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="booking-menu-left login-comment">
+                                                        <p class="text-drive">Để lại bình luận của bạn, <span class="text-login-comment" (click)="login()">Đăng
                                 nhập</span> ngay</p>
-                            <p>Mỗi ý kiến đóng góp của các bạn đều là món quà đối với chúng tôi!</p>
-                          </div>
-                        </div>
+                                                        <p>Mỗi ý kiến đóng góp của các bạn đều là món quà đối với chúng tôi!</p>
+                                                    </div>
+                                                </div>
 
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 68%">
-                      <!-- <div class="category-header">
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 padding-right-0" style="width: 68%">
+                                            <!-- <div class="category-header">
                                                 <div style="width: 30%">Thông tin du thuyền và giá</div>
                                                 <div style="width: 15%">Tiện nghi</div>
                                                 <div style="width: 25%">Quy tắc chung</div>
                                                 <div style="width: 30%">Đánh giá của khách(333)</div>
                                             </div> -->
-                      <div class="boat-details-description">
-                        <div class="row">
-                          <div class="col-sm-6" style="width: 70%">
-                            <h2 style="margin-top: 0 !important">{{ detailBoat?.name }}</h2>
-                          </div>
-                          <div class="col-sm-6" style="display: flex;justify-content: flex-end; width: 30%">
-                            <a (click)="forcusTour()" style="text-decoration: none; line-height: 2">Đặt ngay</a>
-                            <!-- <span class="icon-share" title="Chia sẻ"><i class="fa fa-share-alt" aria-hidden="true"></i></span> -->
-                            <!-- Your share button code -->
-                            <div class="fb-share-button" data-href="https://yachttour.vn/" data-layout="button_count">
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="col-sm-6" style="width: 70%">
-                            <p style="font-weight: bold; color: #07c">{{ detailBoat?.province?.name }} –
-                              <a style="background: unset !important; border: unset !important" target="_blank" rel="noopener noreferrer"
-                                href="https://www.google.com/maps/search/?api=1&query={{latitude}},{{longitude}}">
-                                <span style="color: blue; text-decoration: underline; font-weight: normal">Vị
+                                            <div class="boat-details-description">
+                                                <div class="row">
+                                                    <div class="col-sm-6" style="width: 70%">
+                                                        <h2 style="margin-top: 0 !important">{{ detailBoat?.name }}</h2>
+                                                    </div>
+                                                    <div class="col-sm-6" style="display: flex;justify-content: flex-end; width: 30%">
+                                                        <a (click)="forcusTour()" style="text-decoration: none; line-height: 2">Đặt ngay</a>
+                                                        <!-- <span class="icon-share" title="Chia sẻ"><i class="fa fa-share-alt" aria-hidden="true"></i></span> -->
+                                                        <!-- Your share button code -->
+                                                        <div class="fb-share-button" data-href="https://yachttour.vn/" data-layout="button_count">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-sm-6" style="width: 70%">
+                                                        <p style="font-weight: bold; color: #07c">{{ detailBoat?.province?.name }} –
+                                                            <a style="background: unset !important; border: unset !important" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query={{latitude}},{{longitude}}">
+                                                                <span style="color: blue; text-decoration: underline; font-weight: normal">Vị
                                   trí xuất sắc - hiển thị bản đồ
                                 </span>
-                              </a>
-                            </p>
-                          </div>
-                          <div class="col-sm-6" style="width: 30%">
-                            <!-- <i class="bpg_logo" style="color: green"></i> -->
-                            <p style="color: green; text-align: right;font-weight: bold">Chúng tôi luôn khớp giá!</p>
-                          </div>
-                        </div>
+                                                            </a>
+                                                        </p>
+                                                    </div>
+                                                    <div class="col-sm-6" style="width: 30%">
+                                                        <!-- <i class="bpg_logo" style="color: green"></i> -->
+                                                        <p style="color: green; text-align: right;font-weight: bold">Chúng tôi luôn khớp giá!</p>
+                                                    </div>
+                                                </div>
 
-                      </div>
-                      <div class="wrap-box">
-                        <div class="box-img" style="border: 1px solid #dadada" style="display: flex; justify-content: center;background: black">
-                          <img src="{{ linkImage }}" (click)="viewImage(linkImage, detailBoat?.name)" class="img-responsive"
-                            alt="Double Room" title="{{ detailBoat?.name }}" style="width: auto; height: 100%;cursor: pointer">
-                          <div class="owl-nav-custom">
-                            <div class="owl-prev" (click)="prevImage()"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-                            <div class="owl-next" (click)="nextImage()"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-                          </div>
-                        </div>
-                        <div class="list-image">
-                          <a class="" (click)="selectImage(i)" *ngFor="let item of listImages; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
-                        </div>
-                        <div class="text-des-details">
-                          <div>
-                            <div class="text-left">
-                              <h4>Một trong những lựa chọn hàng đầu của chúng tôi {{ detailBoat?.name }}</h4>
-                              <div class="content" [innerHTML]="detailBoat?.description"></div>
-                            </div>
-                          </div>
-                          <div class="text-right">
-                            <p>Khách yêu thích chỗ này vì...</p>
-                            <p> Nằm tại khu vực được đánh giá cao nhất ở {{ detailBoat?.province?.name }}, địa điểm này
-                              có vị trí xuất sắc</p>
-                            <p>Đồ Ăn Ngon Tuyệt: Bạn rất nên dùng các bữa ăn ở đây</p>
-                            <p>Bạn muốn thư giãn? Du thuyền ở đây được đánh giá cao về chất lượng.
-                            </p>
-                            <p>Wifi miễn phí</p>
-                            <p><a class="btn-booking-now" (click)="forcusTour()" style="color: white">Đặt ngay</a></p>
-                          </div>
-                        </div>
-                        <div class="background-green">
-                          <h4>Giữ giá tốt cho kỳ nghỉ sắp tới của bạn</h4>
-                          <p>Xác nhận tức thời và hủy MIỄN PHÍ đối với hầu hết tất cả các du thuyền!</p>
-                        </div>
-                        <h4 style="text-align: left; padding: 8px 0;">Các dịch vụ đi kèm</h4>
-                        <div class="background-green dich-vu">
-                          <div class="row free" style="margin: auto !important">
-                            <div class="col-sm-3">
-                              <h5 style="padding-left: 0">Dịch vụ miễn phí</h5>
-                            </div>
-                            <div class="col-sm-4" style="margin-top: 9px">
-                              <div *ngFor="let item of listAccessoryFree; let i = index">
-                                <input type="checkbox" checked *ngIf="i%2 === 0"><span *ngIf="i%2 === 0">{{ item?.name
+                                            </div>
+                                            <div class="wrap-box">
+                                                <div class="box-img" style="border: 1px solid #dadada" style="display: flex; justify-content: center;background: black">
+                                                    <img src="{{ linkImage }}" (click)="viewImage(linkImage, detailBoat?.name)" class="img-responsive" alt="Double Room" title="{{ detailBoat?.name }}" style="width: auto; height: 100%;cursor: pointer">
+                                                    <div class="owl-nav-custom">
+                                                        <div class="owl-prev" (click)="prevImage()"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+                                                        <div class="owl-next" (click)="nextImage()"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+                                                    </div>
+                                                </div>
+                                                <div class="list-image">
+                                                    <a class="" (click)="selectImage(i)" *ngFor="let item of listImages; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
+                                                </div>
+                                                <div class="text-des-details">
+                                                    <div>
+                                                        <div class="text-left">
+                                                            <h4>Một trong những lựa chọn hàng đầu của chúng tôi {{ detailBoat?.name }}</h4>
+                                                            <div class="content" [innerHTML]="detailBoat?.description"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="text-right">
+                                                        <p>Khách yêu thích chỗ này vì...</p>
+                                                        <p> Nằm tại khu vực được đánh giá cao nhất ở {{ detailBoat?.province?.name }}, địa điểm này có vị trí xuất sắc</p>
+                                                        <p>Đồ Ăn Ngon Tuyệt: Bạn rất nên dùng các bữa ăn ở đây</p>
+                                                        <p>Bạn muốn thư giãn? Du thuyền ở đây được đánh giá cao về chất lượng.
+                                                        </p>
+                                                        <p>Wifi miễn phí</p>
+                                                        <p><a class="btn-booking-now" (click)="forcusTour()" style="color: white">Đặt ngay</a></p>
+                                                    </div>
+                                                </div>
+                                                <div class="background-green">
+                                                    <h4>Giữ giá tốt cho kỳ nghỉ sắp tới của bạn</h4>
+                                                    <p>Xác nhận tức thời và hủy MIỄN PHÍ đối với hầu hết tất cả các du thuyền!</p>
+                                                </div>
+                                                <h4 style="text-align: left; padding: 8px 0;">Các dịch vụ đi kèm</h4>
+                                                <div class="background-green dich-vu">
+                                                    <div class="row free" style="margin: auto !important">
+                                                        <div class="col-sm-3">
+                                                            <h5 style="padding-left: 0">Dịch vụ miễn phí</h5>
+                                                        </div>
+                                                        <div class="col-sm-4" style="margin-top: 9px">
+                                                            <div *ngFor="let item of listAccessoryFree; let i = index">
+                                                                <input type="checkbox" checked *ngIf="i%2 === 0"><span *ngIf="i%2 === 0">{{ item?.name
                                   }}</span>
-                              </div>
-                            </div>
-                            <div class="col-sm-4" style="margin-top: 9px">
-                              <div *ngFor="let item of listAccessoryFree; let i = index">
-                                <input type="checkbox" checked *ngIf="i%2 != 0"><span *ngIf="i%2 != 0">{{ item?.name }}</span>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="row paid" style="margin: auto !important">
-                            <div class="col-sm-3">
-                              <h5 style="padding-left: 0">Dịch vụ trả phí</h5>
-                            </div>
-                            <div class="col-sm-9" style="margin-top: 9px">
-                              <div *ngFor="let item of listAccessoryPaid; let i = index">
-                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-4" style="margin-top: 9px">
+                                                            <div *ngFor="let item of listAccessoryFree; let i = index">
+                                                                <input type="checkbox" checked *ngIf="i%2 != 0"><span *ngIf="i%2 != 0">{{ item?.name }}</span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row paid" style="margin: auto !important">
+                                                        <div class="col-sm-3">
+                                                            <h5 style="padding-left: 0">Dịch vụ trả phí</h5>
+                                                        </div>
+                                                        <div class="col-sm-9" style="margin-top: 9px">
+                                                            <div *ngFor="let item of listAccessoryPaid; let i = index">
+                                                                <input class="row" type="checkbox" (click)="checkBox($event, item?.id)"><span>{{
                                   item?.name }} : {{ item?.price | thousandNumberFormatter}} VND</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <section>
-                          <div id="availability_target" class="hp-availability-section js-hp-availability-section">
-                            <a name="availability"></a>
-                            <div class="hp-section-header hp-section-header--with-badge" style="text-align: left; margin: 6px 0">
-                              <h2 class="hp-dates-summary__header" name="availability_target" style="padding-top: 12px">
-                                Du thuyền sẵn có
-                              </h2>
-                            </div>
-                            <div class="hp-section hp-section__exp-highlight hp-section__highlighted book-boat">
-                              <div class="hp-section-row">
-                                <label class="availability-sub-header">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <section>
+                                                    <div id="availability_target" class="hp-availability-section js-hp-availability-section">
+                                                        <a name="availability"></a>
+                                                        <div class="hp-section-header hp-section-header--with-badge" style="text-align: left; margin: 6px 0">
+                                                            <h2 class="hp-dates-summary__header" name="availability_target" style="padding-top: 12px">
+                                                                Du thuyền sẵn có
+                                                            </h2>
+                                                        </div>
+                                                        <div class="hp-section hp-section__exp-highlight hp-section__highlighted book-boat">
+                                                            <div class="hp-section-row">
+                                                                <label class="availability-sub-header">
                                   Vui lòng nhập ngày bạn muốn đặt du thuyền
                                 </label>
-                              </div>
-                              <div class="hp-section-row hp-input-label">
-                                <div class="row">
-                                  <span class="col-sm-4" style="font-weight: normal; text-align: right; line-height: 33px">Ngày
+                                                            </div>
+                                                            <div class="hp-section-row hp-input-label">
+                                                                <div class="row">
+                                                                    <span class="col-sm-4" style="font-weight: normal; text-align: right; line-height: 33px">Ngày
                                     đặt du thuyền</span>
-                                  <dx-date-box class="from-date-box col-sm-4" style="width: 22%" [(value)]="dateBookBoat"
-                                    [(min)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
-                                  </dx-date-box>
-                                  <div class="col-sm-3">
-                                    <button class="b-button b-button_primary hp-section-row lp_bold_date_picker_btn"
-                                      (click)="getBoatTour()">
+                                                                    <dx-date-box class="from-date-box col-sm-4" style="width: 22%" [(value)]="dateBookBoat" [(min)]="toDate" type="date" displayFormat="yyyy-MM-dd" valueChangeEvent="keyup">
+                                                                    </dx-date-box>
+                                                                    <div class="col-sm-3">
+                                                                        <button class="b-button b-button_primary hp-section-row lp_bold_date_picker_btn" (click)="getBoatTour()">
                                       <span class="b-button__text">
                                         Kiểm tra
                                       </span>
                                     </button>
-                                  </div>
-                                </div>
+                                                                    </div>
+                                                                </div>
 
-                              </div>
-                            </div>
-                          </div>
-                        </section>
-                        <div class="background-green" style="margin-bottom: 10px">
-                          <p style="color: #07c; font-weight: bold; text-align: center">Nếu như tất cả các tour đã
-                            được đặt, vui lòng chọn 1 ngày khác!</p>
-                        </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </section>
+                                                <div class="background-green" style="margin-bottom: 10px">
+                                                    <p style="color: #07c; font-weight: bold; text-align: center">Nếu như tất cả các tour đã được đặt, vui lòng chọn 1 ngày khác!</p>
+                                                </div>
 
-                        <table class="roomstable rt_no_dates dr_rt_no_dates js-dr_rt_no_dates __big-buttons rt_lightbox_enabled roomstable-no-dates-expanded"
-                          id="maxotel_rooms" cellspacing="0" border="2">
-                          <thead data-has="">
-                            <tr id="maxotel_table_header">
-                              <th>Các tour tương ứng với du thuyền</th>
-                              <th class="figure">Giá</th>
-                              <th class="figure"></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr class="odd" *ngFor="let item of boatTour" [ngClass]="(item?.canMakeReservation === true) ? 'enable-make-reservation' : 'disable-make-reservation'">
-                              <td class="ftd roomType">
-                                <div id="31386307">
-                                  <div class="room-info" id="RD31386307">
-                                    <a class="jqrt togglelink" (click)="openPopupTourInfo(item?.id, item?.price, item?.name)"
-                                      data-room-name-en="Superior Double Room" title="Xem chi tiết">
-                                      <i class="rt_room_type_ico bicon-triangleright"></i> {{ item?.name }}
-                                    </a>
-                                    <div class="bed-types-wrapper">
-                                      <ul class="rt-bed-types">
-                                        <li class="rt-bed-type">
-                                          <span>Thời gian tour: {{ item?.duration }} tiếng<i class="bicon bicon-double"></i></span>
-                                        </li>
-                                      </ul>
-                                    </div>
-                                  </div>
-                                </div>
-                              </td>
-                              <td class="occ_no_dates" style="border: 1px solid #5bbaff">
-                                <span style="color: green; font-size: 18px">{{ item?.price | thousandNumberFormatter }}
+                                                <table class="roomstable rt_no_dates dr_rt_no_dates js-dr_rt_no_dates __big-buttons rt_lightbox_enabled roomstable-no-dates-expanded" id="maxotel_rooms" cellspacing="0" border="2">
+                                                    <thead data-has="">
+                                                        <tr id="maxotel_table_header">
+                                                            <th>Các tour tương ứng với du thuyền</th>
+                                                            <th class="figure">Giá</th>
+                                                            <th class="figure"></th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                        <tr class="odd" *ngFor="let item of boatTour" [ngClass]="(item?.canMakeReservation === true) ? 'enable-make-reservation' : 'disable-make-reservation'">
+                                                            <td class="ftd roomType">
+                                                                <div id="31386307">
+                                                                    <div class="room-info" id="RD31386307">
+                                                                        <a class="jqrt togglelink" (click)="openPopupTourInfo(item?.id, item?.price, item?.name)" data-room-name-en="Superior Double Room" title="Xem chi tiết">
+                                                                            <i class="rt_room_type_ico bicon-triangleright"></i> {{ item?.name }}
+                                                                        </a>
+                                                                        <div class="bed-types-wrapper">
+                                                                            <ul class="rt-bed-types">
+                                                                                <li class="rt-bed-type">
+                                                                                    <span>Thời gian tour: {{ item?.duration }} tiếng<i class="bicon bicon-double"></i></span>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                            <td class="occ_no_dates" style="border: 1px solid #5bbaff">
+                                                                <span style="color: green; font-size: 18px">{{ item?.price | thousandNumberFormatter }}
                                   VND</span>
-                              </td>
-                              <td class="rt_show_dates" style="border: 1px solid #5bbaff">
-                                <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)"
-                                  *ngIf="item?.canMakeReservation === true">Đặt tour</span>
-                                <span class="b-button" *ngIf="item?.canMakeReservation === false">Tour đã được đặt</span>
-                              </td>
-                            </tr>
-                          </tbody>
-                        </table>
-                        <div class="background-green">
-                          <h4>Giữ giá tốt cho kỳ nghỉ sắp tới của bạn</h4>
-                          <p>Giá có thể sẽ tăng, vì vậy hãy đảm bảo đặt du thuyền của bạn ngay hôm nay.</p>
-                        </div>
-                        <div class="background-green write-comment" *ngIf="token">
-                          <h4>Bình luận về {{ detailBoat?.name }}</h4>
-                          <div class="row information">
-                            <div class="col-sm-6">
-                              <span class="title">Họ tên : </span>
-                              <span class="value"> {{ userInfo.fullName }}</span>
-                            </div>
-                            <div class="col-sm-6">
-                              <span class="title">Email : </span>
-                              <span class="value">{{ userInfo.email }}</span>
-                            </div>
-                          </div>
-                          <div class="row input-comment">
-                            <div class="col-sm-11">
-                              <textarea name="" id="" cols="90" rows="5" [(ngModel)]="contentComment" placeholder="Viết bình luận của bạn..."></textarea>
-                            </div>
-                            <div class="row col-sm-11" style="margin: 6px 0">
-                              <div class="col-sm-3" style="width: 20%">
-                                <span style="color:#07c; font-weight: bold">Thêm hình ảnh</span>
-                              </div>
-                              <div class="col-sm-4">
-                                <input class="choose-file" type="file" value="Upload" name="uploadFile" id="inputFile"
-                                  accept=".xlsx, .xlsb" (change)="fileChange(input)" #input />
-                              </div>
-                            </div>
-                            <div class="col-sm-11">
-                              <button (click)="creatComment()">Bình luận</button>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                                                            </td>
+                                                            <td class="rt_show_dates" style="border: 1px solid #5bbaff">
+                                                                <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="item?.canMakeReservation === true">Đặt tour</span>
+                                                                <span class="b-button" *ngIf="item?.canMakeReservation === false">Tour đã được đặt</span>
+                                                            </td>
+                                                        </tr>
+                                                    </tbody>
+                                                </table>
+                                                <div class="background-green">
+                                                    <h4>Giữ giá tốt cho kỳ nghỉ sắp tới của bạn</h4>
+                                                    <p>Giá có thể sẽ tăng, vì vậy hãy đảm bảo đặt du thuyền của bạn ngay hôm nay.</p>
+                                                </div>
+                                                <div class="background-green write-comment" *ngIf="token">
+                                                    <h4>Bình luận về {{ detailBoat?.name }}</h4>
+                                                    <div class="row information">
+                                                        <div class="col-sm-6">
+                                                            <span class="title">Họ tên : </span>
+                                                            <span class="value"> {{ userInfo.fullName }}</span>
+                                                        </div>
+                                                        <div class="col-sm-6">
+                                                            <span class="title">Email : </span>
+                                                            <span class="value">{{ userInfo.email }}</span>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row input-comment">
+                                                        <div class="col-sm-11">
+                                                            <textarea name="" id="" cols="90" rows="5" [(ngModel)]="contentComment" placeholder="Viết bình luận của bạn..."></textarea>
+                                                        </div>
+                                                        <div class="row col-sm-11" style="margin: 6px 0">
+                                                            <div class="col-sm-3" style="width: 20%">
+                                                                <span style="color:#07c; font-weight: bold">Thêm hình ảnh</span>
+                                                            </div>
+                                                            <div class="col-sm-4">
+                                                                <input class="choose-file" type="file" value="Upload" name="uploadFile" id="inputFile" accept=".xlsx, .xlsb" (change)="fileChange(input)" #input />
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-sm-11">
+                                                            <button (click)="creatComment()">Bình luận</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
 
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <!-- /container -->
+            <!-- END / ROOMS -->
+
         </div>
-      </div>
-      <!-- /container -->
-      <!-- END / ROOMS -->
 
-    </div>
+        <dx-popup class="popup" [width]="'99%'" [height]="'90%'" [showTitle]="true" [title]="'Xem hình ảnh'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImage">
+            <div *dxTemplate="let data of 'content'">
+                <app-show-image [linkImage]="linkImage" [listImages]="listImages" [countImage]="indexImage" [name]="nameTitleShowImage"></app-show-image>
+            </div>
+        </dx-popup>
 
-    <dx-popup class="popup" [width]="'99%'" [height]="'90%'" [showTitle]="true" [title]="'Xem hình ảnh'"
-      [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImage">
-      <div *dxTemplate="let data of 'content'">
-        <app-show-image [linkImage]="linkImage" [listImages]="listImages" [countImage]="indexImage" [name]="nameTitleShowImage"></app-show-image>
-      </div>
-    </dx-popup>
+        <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Xem hình ảnh'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImageComment">
+            <div *dxTemplate="let data of 'content'">
+                <app-show-image-component [linkImage]="linkImageComment" [name]="contentNameComment"></app-show-image-component>
+            </div>
+        </dx-popup>
 
-    <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Xem hình ảnh'"
-      [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupShowImageComment">
-      <div *dxTemplate="let data of 'content'">
-        <app-show-image-component [linkImage]="linkImageComment" [name]="contentNameComment"></app-show-image-component>
-      </div>
-    </dx-popup>
+        <dx-popup class="popup" [width]="'22%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour.vn'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
+            <div *dxTemplate="let data of 'content'">
+                <app-login></app-login>
+            </div>
+        </dx-popup>
 
-    <dx-popup class="popup" [width]="'22%'" [height]="'80%'" [showTitle]="true" [title]="'Yachttour.vn'"
-      [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupLogin">
-      <div *dxTemplate="let data of 'content'">
-        <app-login></app-login>
-      </div>
-    </dx-popup>
-
-    <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Chi tiết tour'"
-      [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupTourInfo">
-      <div *dxTemplate="let data of 'content'">
-        <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice"
-          [tourName]="tourName" [provinceName]="provinceName" [detailTourInfo]="detailTour" [linkImageInfo]="linkImagePopupInfo"></app-popup-tour-info>
-      </div>
-    </dx-popup>
-    <div id="fb-root"></div>
-    <script>
-      (function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-      }(document, 'script', 'facebook-jssdk'));
-    </script>
+        <dx-popup class="popup" [width]="'60%'" [height]="'80%'" [showTitle]="true" [title]="'Chi tiết tour'" [showCloseButton]="true" [dragEnabled]="false" [closeOnOutsideClick]="true" [(visible)]="popupTourInfo">
+            <div *dxTemplate="let data of 'content'">
+                <app-popup-tour-info [tourId]="tourId" [provinceId]="provinceId" [boatTypeId]="boatTypeId" [tourPrice]="tourPrice" [tourName]="tourName" [provinceName]="provinceName" [detailTourInfo]="detailTour" [linkImageInfo]="linkImagePopupInfo"></app-popup-tour-info>
+            </div>
+        </dx-popup>
+        <div id="fb-root"></div>
+        <script>
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s);
+                js.id = id;
+                js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+        </script>

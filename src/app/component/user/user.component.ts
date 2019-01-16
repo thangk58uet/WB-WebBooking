@@ -35,11 +35,6 @@ export class UserComponent implements OnInit {
   public popupForgotPassword = false;
   public popupResetPassword = false;
   public popupCheckEmail = false;
-  public resetPasswordInfo = {
-    key: '',
-    newPassword: '',
-    confirmNewPassword: ''
-  };
 
   public totalElements: number;
   public totalPages = 0;
@@ -92,10 +87,10 @@ export class UserComponent implements OnInit {
   }
 
   getHistoryTourInfo() {
-    let params = {
+    const params = {
       pageNum: this.pagination.pageNum,
       pageSize: this.pagination.pageSize,
-    }
+    };
     this.userService.getHistoryTour(params).subscribe( res => {
       this.historyTourInfo = (res && res['value'] && res['value'].list) ? res['value'].list : {};
       this.totalCount = this.historyTourInfo['totalCount'];
@@ -105,28 +100,28 @@ export class UserComponent implements OnInit {
 
   modifyAccountInfo() {
     this.userService.modifyAccountInfo(this.userInfo).subscribe( res => {
-      alert('Cập nhật thành công!','Yachttour.vn');
+      alert('Cập nhật thành công!', 'Yachttour.vn');
       this.getAccountInfo();
-    })
+    });
   }
 
   confirmChangePassword() {
-    if(!this.oldPassword || !this.newPassword || !this.confirmPassword) {
-      alert('Vui lòng nhập đủ thông tin đổi mật khẩu!','Yachttour.vn');
+    if (!this.oldPassword || !this.newPassword || !this.confirmPassword) {
+      alert('Vui lòng nhập đủ thông tin đổi mật khẩu!', 'Yachttour.vn');
     } else {
       if (this.newPassword !== this.confirmPassword) {
-        alert('Xác nhận mật khẩu không trùng khớp!','Yachttour.vn');
+        alert('Xác nhận mật khẩu không trùng khớp!', 'Yachttour.vn');
       } else {
-        let params = {
+        const params = {
           currentPassword : this.oldPassword,
           newPassword: this.newPassword
-        }
+        };
         this.userService.changePassword(params).subscribe( res => {
-          alert('Đổi mật khẩu thành công, có hiệu lực trong lần đăng nhập tiếp theo!','Yachttour.vn');
+          alert('Đổi mật khẩu thành công, có hiệu lực trong lần đăng nhập tiếp theo!', 'Yachttour.vn');
           this.popupChangePassword = false;
         }, err => {
-          alert(getMessageCodeError(err),'Yachttour.vn');
-        })
+          alert(getMessageCodeError(err), 'Yachttour.vn');
+        });
       }
     }
   }
@@ -138,31 +133,15 @@ export class UserComponent implements OnInit {
 
   confirmForgotPassword() {
     if (!this.userInfo.email) {
-      alert('Vui lòng nhập email!','Yachttour.vn');
+      alert('Vui lòng nhập email!', 'Yachttour.vn');
     } else {
       this.userService.forgotPassword(this.userInfo.email).subscribe( res => {
         this.popupCheckEmail = true;
         this.popupForgotPassword = false;
       }, err => {
         this.popupCheckEmail = true;
-        alert(getMessageCodeError(err),'Yachttour.vn');
-      })
-    }
-  }
-
-  confirmResetPassword() {
-    if (!this.resetPasswordInfo.newPassword || !this.resetPasswordInfo.confirmNewPassword) {
-      alert('Vui lòng nhập đủ thông tin để tạo mật khẩu mới','Yachttour.vn');
-    } else {
-      if (this.resetPasswordInfo.newPassword !== this.resetPasswordInfo.confirmNewPassword) {
-        alert('Mật khẩu xác nhận không trùng khớp! Vui lòng nhập lại mật khẩu', 'Yachttour.vn');
-      } else {
-        this.userService.resetPassword(this.resetPasswordInfo).subscribe( res => {
-          alert('Tạo lại mật khẩu thành công, có hiệu lực trong lần đăng nhập tiếp theo!','Yachttour.vn');
-        }, err => {
-          alert(getMessageCodeError(err),'Yachttour.vn');
-        })
-      }
+        alert(getMessageCodeError(err), 'Yachttour.vn');
+      });
     }
   }
 

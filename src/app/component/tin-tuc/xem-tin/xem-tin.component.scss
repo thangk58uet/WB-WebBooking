@@ -3,10 +3,10 @@
         height: 500px;
     }
     .rooms {
-      text-align: unset;
-      .wrap-rooms .wrap-box .box-img {
-        height: 240px;
-      }
+        text-align: unset !important;
+        .wrap-rooms .wrap-box .box-img {
+            height: 240px;
+        }
     }
 }
 

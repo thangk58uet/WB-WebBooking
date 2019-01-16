@@ -6,6 +6,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { DetailsDuThuyenService } from './details-du-thuyen.service';
 import { UploadFileService } from 'src/app/service/upload-file.service';
 import { InformationComponent } from './../book-du-thuyen/information/information.component';
+import { UserService } from '../user/user.service';
 
 declare var google: any;
 declare const $: any;
@@ -67,9 +68,10 @@ export class DetailsDuThuyenComponent implements OnInit {
   public linkImagePopupInfo = '';
 
   shareObj = {
-    href: "https://yachttour.vn/",
+    href: 'https://yachttour.vn/',
     // hashtag:"#FACEBOOK-SHARE-HASGTAG"
   };
+  public moneyAmount = 0;
 
   @ViewChild(InformationComponent) informationComponent: InformationComponent;
 
@@ -79,7 +81,8 @@ export class DetailsDuThuyenComponent implements OnInit {
               private activatedRoute: ActivatedRoute,
               private detailsDuThuyenService: DetailsDuThuyenService,
               private uploadFileService: UploadFileService,
-              private cookieService: CookieService) { }
+              private cookieService: CookieService,
+              private userService: UserService) { }
 
   // tslint:disable-next-line:use-life-cycle-interface
   ngAfterViewInit(): void {
@@ -113,8 +116,8 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getBoatTour() {
+    console.log(this.dateBookBoat);
     const dateParams = this.dateBookBoat.toJSON().slice(0, 10);
-    this.commonService.dateBook = dateParams;
     this.commonService.getBoatTour(this.activatedRoute.snapshot.queryParams.id, { date: dateParams }).subscribe( res => {
       this.boatTour = (res && res['value']) ? res['value'] : [];
     });
@@ -173,6 +176,7 @@ export class DetailsDuThuyenComponent implements OnInit {
         if (lat && long) {
           // tslint:disable-next-line:radix
           setTimeout(() => {
+            // tslint:disable-next-line:radix
             this.gmt_init_map(Number(lat), Number(long), 'google_map', parseInt('11'),
             'ROADMAP', '', true, false, true);
           }, 1500);
@@ -249,7 +253,7 @@ export class DetailsDuThuyenComponent implements OnInit {
     this.listComment = [];
     this.detailsDuThuyenService.getComment().subscribe( res => {
       this.listComment = (res && res['value'] && res['value'].list) ? res['value'].list : [];
-      this.listComment = this.listComment.slice(0,5);
+      this.listComment = this.listComment.slice(0, 5);
       if (this.listComment) {
         for (let index = 0; index < this.listComment.length; index++) {
           if (this.listComment[index].image) {
@@ -384,6 +388,12 @@ export class DetailsDuThuyenComponent implements OnInit {
   forcusTour() {
     $('html, body').animate({
       scrollTop: $('#availability_target').offset().top
+    });
+  }
+
+  getAccountInfo() {
+    this.userService.getAccountInfo().subscribe( res => {
+      this.moneyAmount = (res && res['value'] && res['value'].moneyAmount) ? res['value'].moneyAmount : {};
     });
   }
 

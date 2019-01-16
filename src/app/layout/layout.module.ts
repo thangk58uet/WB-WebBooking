@@ -41,6 +41,7 @@ import { StaticPageComponent } from 'src/app/component/static-page/static-page.c
 import { StaticPageService } from 'src/app/component/static-page/static-page.service';
 import { PopupTourInfoComponent } from '../component/details-du-thuyen/popup-tour-info/popup-tour-info.component';
 import { UserService } from '../component/user/user.service';
+import { ResetPasswordComponent } from '../component/user/reset-password/reset-password.component';
 // export const layoutRoutes: Routes = [
 //   { path: '', component: LayoutComponent, children: [
 //     { path: 'main', component: MainComponent },
@@ -76,7 +77,7 @@ import { UserService } from '../component/user/user.service';
         { path: 'tin-tuc/xem-tin', component: XemTinComponent},
         { path: 'the', component: TheComponent},
         { path: 'noi-dung/:link', component: StaticPageComponent},
-        { path: '/account/reset/finish', component: StaticPageComponent}
+        { path: 'account/reset/finish', component: ResetPasswordComponent}
       ]
     }]),
     DxSelectBoxModule,
@@ -109,7 +110,8 @@ import { UserService } from '../component/user/user.service';
     XemTinComponent,
     TheComponent,
     StaticPageComponent,
-    PopupTourInfoComponent
+    PopupTourInfoComponent,
+    ResetPasswordComponent
   ],
   providers: [
     CommonHttpService,

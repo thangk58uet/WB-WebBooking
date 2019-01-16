@@ -58,8 +58,7 @@ export class InformationComponent implements OnInit {
     } else {
       if (this.userInfo.email !== this.userInfo.confirmEmail) {
         alert('Email xác nhận không trùng khớp!', 'Yachttour.vn');
-      }
-      else {
+      } else {
         const tourId = this.activatedRoute.snapshot.queryParams.tourId;
         const boatTypeId = this.activatedRoute.snapshot.queryParams.boatTypeId;
         const boatId = this.activatedRoute.snapshot.queryParams.boatId;
