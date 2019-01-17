@@ -25,8 +25,8 @@ export class VerifyInformationComponent implements OnInit {
     email: '',
     firstName: '',
     lastName: '',
-    phoneNumber: '',
-    passpost: '',
+    phoneNumber: null,
+    passpost: null,
     address: '',
     message: ''
   };
@@ -61,11 +61,11 @@ export class VerifyInformationComponent implements OnInit {
     this.userInfo.message = sessionStorage.getItem('message');
 
     this.userService.getAccountInfo().subscribe( res => {
-      this.userInfoTotal =(res && res['value'])? res['value'] : {};
+      this.userInfoTotal = (res && res['value']) ? res['value'] : {};
       this.userInfo.phoneNumber = this.userInfoTotal.phoneNumber;
       this.userInfo.address = this.userInfoTotal.address;
       this.userInfo.passpost = this.userInfoTotal.passpost;
-    })
+    });
   }
 
   getListAccessory() {
@@ -74,7 +74,7 @@ export class VerifyInformationComponent implements OnInit {
     this.listAccessoryId = JSON.parse(sessionStorage.getItem('listAccessoryId'));
     for (let index = 0; index < this.listAccessoryId.length; index++) {
       this.commonService.getAccessoryById(this.listAccessoryId[index]).subscribe( res => {
-        if(res && res['value']) {
+        if (res && res['value']) {
           setTimeout(() => {
             this.accessoryInfo.push(res['value']);
             this.totalPriceAccessory += res['value'].price;
@@ -113,9 +113,9 @@ export class VerifyInformationComponent implements OnInit {
           firstName: this.userInfo.firstName,
           gender: 'MALE',
           lastName: this.userInfo.lastName,
-          phoneNumber: this.userInfo.phoneNumber,
+          phoneNumber: this.userInfo.phoneNumber.toString(),
           address: this.userInfo.address,
-          passpost: this.userInfo.passpost
+          passpost: this.userInfo.passpost.toString()
         },
         listAccessoryId: JSON.parse(sessionStorage.getItem('listAccessoryId')),
         message: this.userInfo.message,
@@ -135,5 +135,9 @@ export class VerifyInformationComponent implements OnInit {
 
   closePopup() {
     this.popupBookSuccess = false;
+  }
+
+  reCheckTour() {
+    history.back();
   }
 }

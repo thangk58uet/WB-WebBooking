@@ -124,7 +124,7 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getBoatTour(params?) {
-    if(params) {
+    if (params) {
       const dateParams = this.dateBookBoat.toJSON().slice(0, 10);
       this.commonService.getBoatTour(this.activatedRoute.snapshot.queryParams.id, { date: dateParams }).subscribe( res => {
         this.boatTour = (res && res['value']) ? res['value'] : [];
@@ -239,7 +239,7 @@ export class DetailsDuThuyenComponent implements OnInit {
     const price = this.price;
     const location = this.location;
     const typeBoat = this.typeBoat;
-    if(boatTypeId === '0') {
+    if (boatTypeId === '0') {
       boatTypeId = '';
     }
 

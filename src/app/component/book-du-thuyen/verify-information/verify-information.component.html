@@ -124,13 +124,13 @@
                                                     <div class="row input-field">
                                                         <div class="col-sm-4">
                                                             <span>Điện thoại/mobile (ĐTDĐ) *</span>
-                                                            <input type="text" [(ngModel)]="userInfo.phoneNumber">
+                                                            <input type="number" [(ngModel)]="userInfo.phoneNumber">
                                                         </div>
                                                     </div>
                                                     <div class="row input-field">
                                                         <div class="col-sm-4">
                                                             <span>CMTND/passport *</span>
-                                                            <input type="text" [(ngModel)]="userInfo.passpost">
+                                                            <input type="number" [(ngModel)]="userInfo.passpost">
                                                         </div>
                                                     </div>
                                                 </div>
@@ -161,7 +161,7 @@
                                                 <p>Bằng việc hoàn tất đặt tour này, bạn đồng ý với <span class="special">điều kiện đặt tour</span> , <span class="special">các điều khoản chung</span> và <span class="special">chính sách an toàn và bảo mật.</span></p>
                                             </div>
                                             <div class="next-book-boat">
-                                                <p style="margin-right: 15px; color: #07c;background: white; border: 1px solid #07c">Kiểm tra lại tour</p>
+                                                <p style="margin-right: 15px; color: #07c;background: white; border: 1px solid #07c" (click)=reCheckTour()>Kiểm tra lại tour</p>
                                                 <p (click)="bookSuccess()">Hoàn tất đặt tour</p>
 
                                             </div>

@@ -250,7 +250,7 @@
                                                                                                                   'have-token-no-money' : token && moneyAmount < item?.price,
                                                                                                                   'have-token-no-tour' : token && moneyAmount > item?.price && item?.canMakeReservation === false,
                                                                                                                   'no-token-have-tour' : !token && item?.canMakeReservation === true,
-                                                                                                                  'no-token-not-tour' : !token && item?.canMakeReservation === false}">
+                                                                                                                  'no-token-no-tour' : !token && item?.canMakeReservation === false}">
                                                             <td class="ftd roomType">
                                                                 <div id="31386307">
                                                                     <div class="room-info" id="RD31386307">
@@ -271,16 +271,16 @@
                                                                 <span style="color: green; font-size: 18px">{{ item?.price | thousandNumberFormatter }}
                                   VND</span>
                                                             </td>
-                                                            <td class="rt_show_dates" style="border: 1px solid #5bbaff" >
-                                                              <div *ngIf="token">
-                                                                  <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="moneyAmount > item?.price && item?.canMakeReservation === true">Đặt tour</span>
-                                                                  <span class="b-button" *ngIf="moneyAmount < item?.price">Tài khoản không đủ</span>
-                                                                  <span class="b-button" *ngIf="moneyAmount > item?.price && item?.canMakeReservation === false">Tour đã được đặt</span>
-                                                              </div>
-                                                              <div *ngIf="!token">
-                                                                  <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="item?.canMakeReservation === true">Đặt tour</span>
-                                                                  <span class="b-button" *ngIf="item?.canMakeReservation === false">Tour đã được đặt</span>
-                                                              </div>
+                                                            <td class="rt_show_dates" style="border: 1px solid #5bbaff">
+                                                                <div *ngIf="token">
+                                                                    <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="moneyAmount > item?.price && item?.canMakeReservation === true">Đặt tour</span>
+                                                                    <span class="b-button" *ngIf="moneyAmount < item?.price">Tài khoản không đủ</span>
+                                                                    <span class="b-button" *ngIf="moneyAmount > item?.price && item?.canMakeReservation === false">Tour đã được đặt</span>
+                                                                </div>
+                                                                <div *ngIf="!token">
+                                                                    <span class="b-button" (click)="bookTour(item?.price, item?.id, item?.name, item?.duration, item?.startHour)" *ngIf="item?.canMakeReservation === true">Đặt tour</span>
+                                                                    <span class="b-button" *ngIf="item?.canMakeReservation === false">Tour đã được đặt</span>
+                                                                </div>
                                                             </td>
                                                         </tr>
                                                     </tbody>

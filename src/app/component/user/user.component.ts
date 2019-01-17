@@ -54,7 +54,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit() {
     this.token = this.cookieService.get('token');
-    if(this.token) {
+    if (this.token) {
       this.getAccountInfo();
       this.getHistoryTourInfo();
     } else {
@@ -103,11 +103,11 @@ export class UserComponent implements OnInit {
     };
     this.userService.getHistoryTour(params).subscribe( res => {
       this.historyTourInfo = (res && res['value'] && res['value'].list) ? res['value'].list : {};
-      for(let index = 0; index < this.historyTourInfo.length;index++) {
+      this.totalCount = res['value']['totalCount'];
+      for (let index = 0; index < this.historyTourInfo.length; index++) {
         this.historyTourInfo[index].fromDate = this.convertMonth(this.historyTourInfo[index].fromDate);
         this.historyTourInfo[index].toDate = this.convertMonth(this.historyTourInfo[index].toDate);
       }
-      this.totalCount = this.historyTourInfo['totalCount'];
       this.totalPages = Math.ceil(this.totalCount / this.pagination.pageSize);
     });
   }
