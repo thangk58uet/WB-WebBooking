@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { Http } from '@angular/http';
@@ -6,7 +7,8 @@ import { Http } from '@angular/http';
 export class DownloadHelperService {
   private API_URL: string = environment.apiUrl;
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private cookieService: CookieService) {
   }
 
   public downloadUrl(url, fileName = '', successCallback = null, failCallback = null) {
@@ -14,8 +16,8 @@ export class DownloadHelperService {
     xhr.open('get', this.API_URL + url, true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Accept', 'application/vnd.ms-excel, application/json, text/plain, */*');
-    if (sessionStorage.getItem('token')) {
-      xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+    if (this.cookieService.get('token')) {
+      xhr.setRequestHeader('Authorization', 'Bearer ' + this.cookieService.get('token'));
     }
     xhr.responseType = 'arraybuffer';
     xhr.onreadystatechange = function () {
@@ -72,8 +74,8 @@ export class DownloadHelperService {
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Accept', 'application/vnd.ms-excel, application/json, text/plain, */*');
     xhr.setRequestHeader('Content-type', 'application/json');
-    if (sessionStorage.getItem('token')) {
-      xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+    if (this.cookieService.get('token')) {
+      xhr.setRequestHeader('Authorization', 'Bearer ' + this.cookieService.get('token'));
     }
     xhr.responseType = 'blob';
     xhr.onreadystatechange = function () {

@@ -63,10 +63,10 @@ export class InformationComponent implements OnInit {
         const boatTypeId = this.activatedRoute.snapshot.queryParams.boatTypeId;
         const boatId = this.activatedRoute.snapshot.queryParams.boatId;
         const price = this.price;
-        sessionStorage.setItem('InputFirstName', this.userInfo.firstName);
-        sessionStorage.setItem('InputLastName', this.userInfo.lastName);
-        sessionStorage.setItem('InputEmail', this.userInfo.email);
-        sessionStorage.setItem('message', this.userInfo.message);
+        this.cookieService.set('InputFirstName', this.userInfo.firstName);
+        this.cookieService.set('InputLastName', this.userInfo.lastName);
+        this.cookieService.set('InputEmail', this.userInfo.email);
+        this.cookieService.set('message', this.userInfo.message);
         this.router.navigate(['/book/verify-information'], { queryParams: { boatTypeId, tourId, date, boatId, price }});
       }
     }
@@ -81,12 +81,12 @@ export class InformationComponent implements OnInit {
 
   getUserInfo() {
     this.userService.getAccountInfo().subscribe( res => {
-      this.userInfoTotal =(res && res['value'])? res['value'] : {};
+      this.userInfoTotal = (res && res['value']) ? res['value'] : {};
       this.userInfo.firstName = this.userInfoTotal.firstName;
       this.userInfo.lastName = this.userInfoTotal.lastName;
       this.userInfo.email = this.userInfoTotal.email;
       this.userInfo.confirmEmail = this.userInfoTotal.email;
-    })
+    });
   }
 
   selectType(e) {}
@@ -94,7 +94,8 @@ export class InformationComponent implements OnInit {
   getListAccessory() {
     this.accessoryInfo = [];
     this.totalPriceAccessory = 0;
-    this.listAccessoryId = JSON.parse(sessionStorage.getItem('listAccessoryId'));
+    this.listAccessoryId = JSON.parse(this.cookieService.get('listAccessoryId'));
+    console.log(this.listAccessoryId);
     for (let index = 0; index < this.listAccessoryId.length; index++) {
       this.commonService.getAccessoryById(this.listAccessoryId[index]).subscribe( res => {
         if (res && res['value']) {

@@ -128,11 +128,7 @@ export class TourDuThuyenComponent implements OnInit {
       delete params.minPrice;
       delete params.maxPrice;
     }
-    const boatTypeId = this.boatTypeId;
-    const locationId = this.locationId;
-    const price = this.price;
 
-    this.router.navigate(['/tour'], { queryParams: { locationId, boatTypeId, price } });
     this.tourDuThuyenService.getListBoatByParams(params).subscribe(res => {
       this.listBoat = (res && res['value']) ? res['value'] : [];
       this.totalCount = this.listBoat['totalCount'];

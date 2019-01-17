@@ -96,7 +96,7 @@
                                                 <div class="wrap-box">
                                                     <div class="box-img row">
                                                         <div class="img-right col-sm-3" style="padding-left: 8px"><img src="{{ item?.linkImage }}" class="img-responsive" alt="Double Room" title="Double Room"></div>
-                                                        <div class="text-content col-sm-6" style="padding-left: 0; padding-right: 8px">
+                                                        <div class="text-content col-sm-6" style="padding-left: 0; padding-right: 8px;    height: 208px;text-overflow: ellipsis;overflow: hidden;">
                                                             <h2 (click)="routerLinkDetail(item, item?.id)" style="margin-top: 0">{{ item?.name }}</h2>
                                                             <p>
                                                                 <a target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/search/?api=1&query={{item?.province?.latitude}},{{item?.province?.longitude}}"> <span class="sub-text">{{ item?.province?.name }} – Xem trên bản đồ</span></a>

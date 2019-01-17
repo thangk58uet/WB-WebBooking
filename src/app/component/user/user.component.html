@@ -11,12 +11,12 @@
                     <p class="col-sm-12">{{ userInfo.level }}</p>
                     <p class="col-sm-12">{{ userInfo.cardType }}</p>
                     <p class="col-sm-12">
-                      <span class="col-sm-6" style="width: 40%">Họ và tên: </span>
-                      <span class="col-sm-6" style="width: 60%">{{ userInfo.fullName }}</span>
+                        <span class="col-sm-6" style="width: 40%">Họ và tên: </span>
+                        <span class="col-sm-6" style="width: 60%">{{ userInfo.fullName }}</span>
                     </p>
                     <p class="col-sm-12" style="border-bottom: none">
-                      <span class="col-sm-6" style="width: 40%">Số dư : </span>
-                      <span class="col-sm-6" style="width: 60%">{{ userInfo.moneyAmount | thousandNumberFormatter }} VND</span>
+                        <span class="col-sm-6" style="width: 40%">Số dư : </span>
+                        <span class="col-sm-6" style="width: 60%">{{ userInfo.moneyAmount | thousandNumberFormatter }} VND</span>
                     </p>
                 </div>
             </div>
@@ -66,9 +66,13 @@
                                         <input id="username" name="username" placeholder="Tên đăng nhập" class="form-control here" type="text" disabled="userInfo.login" [(ngModel)]="userInfo.login">
                                         <input id="password" name="password" placeholder="Họ của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.firstName">
                                         <input id="lastname" name="lastname" placeholder="Tên của bạn" class="form-control here" type="text" [(ngModel)]="userInfo.lastName">
-                                        <input id="name" name="name" placeholder="Chứng minh thư / hộ chiếu" class="form-control here" type="text" [(ngModel)]="userInfo.passpost">
+                                        <input id="name" name="name" placeholder="Chứng minh thư / hộ chiếu" class="form-control here" type="text" (keyup)="checkIsPassport(userInfo.passpost)" [(ngModel)]="userInfo.passpost">
+                                        <span style="display:block; color: red; font-weight: normal !important; margin-top: -9px; margin-bottom:3px" *ngIf="isInvalidPasspost">CMTND/passport không hợp lệ</span>
+
                                         <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text" [(ngModel)]="userInfo.email">
-                                        <input id="website" name="website" placeholder="Số điện thoại" class="form-control here" type="text" [(ngModel)]="userInfo.phoneNumber">
+                                        <input id="website" name="website" placeholder="Số điện thoại" class="form-control here" type="text" (keyup)="checkIsPhonenumber(userInfo.phoneNumber)" [(ngModel)]="userInfo.phoneNumber">
+                                        <span style="display:block; color: red; font-weight: normal !important; margin-top: -9px;margin-bottom:3px" *ngIf="isInvalidPhoneNumber">SĐT không hợp lệ</span>
+
                                         <textarea id="publicinfo" name="publicinfo" cols="40" rows="2" class="form-control" [(ngModel)]="userInfo.address"></textarea>
                                         <button name="submit" type="submit" class="btn btn-primary" (click)="changePassword()" style="margin-right: 20px;">Đổi mật khẩu</button>
                                         <button name="submit" type="submit" class="btn btn-primary" (click)="modifyAccountInfo()">Cập nhật thông tin</button>
@@ -114,7 +118,7 @@
                                     <div class="status col-sm-4" style="width: 20%;padding-left: 0;padding-right: 0">
                                         <h4 style="border-right: unset !important">Trạng thái</h4>
                                         <p *ngIf="item?.status === 'CONFIRMED'" class="confirm">Đã thanh toán</p>
-                                        <p *ngIf="item?.status !== 'CONFIRMED'" class="pending">Chưa thanh toán</p>
+                                        <p *ngIf="item?.status !== 'CONFIRMED'" class="pending">Hủy tour</p>
                                     </div>
                                 </div>
                             </div>

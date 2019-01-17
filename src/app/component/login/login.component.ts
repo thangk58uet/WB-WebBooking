@@ -1,3 +1,4 @@
+import { CookieService } from 'ngx-cookie-service';
 import { Component, OnInit, Input, ViewChild, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 import { LoginService } from './login.service';
 import { Router, NavigationEnd } from '@angular/router';
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   public popupForgotPassword = false;
   public email = '';
   public popupCheckEmail = false;
+  public isLogged = false;
 
   @Output() routerMain = new EventEmitter();
 
@@ -29,7 +31,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService,
               private router: Router,
-              private userService: UserService) { }
+              private userService: UserService,
+              private cookieService: CookieService) { }
 
   ngOnInit() {
     this.loginInfo = new LoginInfo();
@@ -44,10 +47,13 @@ export class LoginComponent implements OnInit {
 
   loginSuccess(response = null) {
     if (response && response.accessToken) {
-      this.loginService.popupWellcome = true;
-      sessionStorage.setItem('token', response.accessToken);
-      // location.reload();
-      this.routerMain.emit();
+      this.cookieService.set('token', response.accessToken);
+      this.isLogged = response.isLogged;
+      if (!this.isLogged) {
+        this.loginService.popupWellcome = true;
+      } else {
+        location.reload();
+      }
       setTimeout(() => {
         this.loginService.popupLogin = false;
       }, 1000);

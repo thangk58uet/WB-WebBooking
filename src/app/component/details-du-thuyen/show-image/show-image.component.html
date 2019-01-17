@@ -1,21 +1,10 @@
 <div class="show-image row">
-    <div class="image title col-sm-8">
-        <span>{{ name }}</span> <span> Đặt ngay!</span>
-    </div>
-    <div class="image col-sm-8">
-        <img src="{{ linkImage }}" class="img-responsive col-sm-4" alt="Double Room" title="{{ name }}" style="width: 80%">
+    <div class="image">
+        <img src="{{ linkImage }}" class="img-responsive col-sm-4" alt="Double Room" title="{{ name }}" style="width: auto">
         <div class="owl-nav-custom ">
             <div class="owl-prev " (click)="prevImage() "><i class="fa fa-angle-left " aria-hidden="true "></i></div>
             <div class="owl-next " (click)="nextImage() "><i class="fa fa-angle-right " aria-hidden="true "></i></div>
+            <div class="text">{{ countImage + 1}}/{{ listImages?.length }}</div>
         </div>
     </div>
-    <div class="comment col-sm-4">Comment</div>
-    <div class="image col-sm-8" style="padding-top: 6px;">
-        <div class="text row col-sm-8">{{ countImage + 1}}/{{ listImages?.length }}</div>
-    </div>
-    <!-- <div class="image col-sm-8" style="padding: 6px;">
-      <div class="list-image row col-sm-8">
-          <a class="" *ngFor="let item of listImages; let i = index" [ngStyle]="{background: 'url(' + commonService.pathImage + item?.reference + ') no-repeat center'}"></a>
-      </div>
-  </div> -->
 </div>

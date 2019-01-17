@@ -22,12 +22,12 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.getMenu();
-    if (sessionStorage.getItem('token')) {
+    if (this.cookieService.get('token')) {
       this.loginService.isLogin = true;
     } else {
       this.loginService.isLogin = false;
     }
-    this.lastName = sessionStorage.getItem('lastName');
+    this.lastName = this.cookieService.get('lastName');
   }
 
   getMenu() {
@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
   }
 
   routerLinkMain() {
-    this.lastName = sessionStorage.getItem('lastName');
+    this.lastName = this.cookieService.get('lastName');
     this.loginService.popupWellcome = false;
     this.router.navigate(['/trang-chu']);
   }
@@ -84,13 +84,13 @@ export class HeaderComponent implements OnInit {
   }
 
   routerTour() {
-    this.lastName = sessionStorage.getItem('lastName');
+    this.lastName = this.cookieService.get('lastName');
     this.router.navigate(['/tour']);
     this.loginService.popupWellcome = false;
   }
 
   routerThe() {
-    this.lastName = sessionStorage.getItem('lastName');
+    this.lastName = this.cookieService.get('lastName');
     this.router.navigate(['/noi-dung/huong-dan-su-dung-the']);
     this.loginService.popupWellcome = false;
   }

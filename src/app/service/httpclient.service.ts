@@ -15,8 +15,8 @@ export class HttpClientCustom {
   }
 
   createAuthorizationHeader(headers: Headers) {
-    if (sessionStorage.getItem('token')) {
-      headers.append('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+    if (this.cookieService.get('token')) {
+      headers.append('Authorization', 'Bearer ' + this.cookieService.get('token'));
     }
   }
 

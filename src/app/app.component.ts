@@ -17,15 +17,5 @@ export class AppComponent implements OnInit {
         window.scrollTo(0, 0);
       }
     });
-    // setTimeout(() => {
-    //   if (sessionStorage.getItem('currentUrl')) {
-    //     if (sessionStorage.getItem('currentUrl') === '/') {
-    //       this.router.navigate(['/trang-chu']);
-    //       return;
-    //     } else {
-    //       this.router.navigateByUrl(sessionStorage.getItem('currentUrl'));
-    //     }
-    //   } else { this.router.navigate(['/trang-chu']); }
-    // }, 1000);
   }
 }

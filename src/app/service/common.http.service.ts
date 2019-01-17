@@ -14,11 +14,11 @@ export class CommonHttpService {
     private cookieService: CookieService) {}
 
   private  getAccessToken() {
-    return sessionStorage.getItem('token');
+    return this.cookieService.get('token');
   }
 
   private setAuthorization(headers: Headers) {
-    headers.append('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+    headers.append('Authorization', 'Bearer ' + this.cookieService.get('token'));
   }
 
   public post(url, data = null, successCallback = null, failCallback = null) {
@@ -42,7 +42,7 @@ export class CommonHttpService {
     const headers = new Headers();
     this.setAuthorization(headers);
     const accessToken = this.getAccessToken();
-    if (!sessionStorage.getItem('userName')) {
+    if (!this.cookieService.get('userName')) {
       this.router.navigate(['/login/']);
     } else {
       this.http.get(this.API_URL + url, {headers: headers, search: params}).toPromise()
@@ -65,8 +65,8 @@ export class CommonHttpService {
     xhr.open('get', this.API_URL + url, true);
     xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
     xhr.setRequestHeader('Accept', 'application/json, text/plain, */*');
-    if (sessionStorage.getItem('token')) {
-      xhr.setRequestHeader('Authorization', 'Bearer ' + sessionStorage.getItem('token'));
+    if (this.cookieService.get('token')) {
+      xhr.setRequestHeader('Authorization', 'Bearer ' + this.cookieService.get('token'));
     }
     xhr.responseType = 'arraybuffer';
     xhr.onreadystatechange = function () {

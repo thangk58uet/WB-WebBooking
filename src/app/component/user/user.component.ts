@@ -48,6 +48,9 @@ export class UserComponent implements OnInit {
   public totalCount = 0;
   public token = '';
 
+  public isInvalidPhoneNumber = false;
+  public isInvalidPasspost = false;
+
   constructor(private userService: UserService,
               private cookieService: CookieService,
               private router: Router) { }
@@ -113,6 +116,10 @@ export class UserComponent implements OnInit {
   }
 
   modifyAccountInfo() {
+    if (this.isInvalidPhoneNumber && this.isInvalidPasspost) {
+      alert('Thông tin không hợp lệ!', 'Yachttour');
+      return;
+    }
     this.userService.modifyAccountInfo(this.userInfo).subscribe( res => {
       alert('Cập nhật thành công!', 'Yachttour');
       this.getAccountInfo();
@@ -188,5 +195,21 @@ export class UserComponent implements OnInit {
       strDateTime += '-' + dateTime.getDate();
     }
     return strDateTime;
+  }
+
+  checkIsPhonenumber(e) {
+    this.isInvalidPhoneNumber = false;
+    const regex = /^\d+$/;
+    if (!regex.test(e)) {
+      this.isInvalidPhoneNumber = true;
+    }
+  }
+
+  checkIsPassport(e) {
+    this.isInvalidPasspost = false;
+    const regex = /^\d+$/;
+    if (!regex.test(e)) {
+      this.isInvalidPasspost = true;
+    }
   }
 }

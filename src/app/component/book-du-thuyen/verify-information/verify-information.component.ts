@@ -25,11 +25,13 @@ export class VerifyInformationComponent implements OnInit {
     email: '',
     firstName: '',
     lastName: '',
-    phoneNumber: null,
-    passpost: null,
+    phoneNumber: '',
+    passpost: '',
     address: '',
     message: ''
   };
+  public isInvalidPhoneNumber = false;
+  public isInvalidPasspost = false;
   public userInfoTotal: any = {};
 
   public listAccessoryId = [];
@@ -47,7 +49,7 @@ export class VerifyInformationComponent implements OnInit {
     this.dateBook = this.activatedRoute.snapshot.queryParams.date;
     this.price = +this.activatedRoute.snapshot.queryParams.price;
 
-    //this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
+    //this.userInfo.phoneNumber = this.cookieService.get('phoneNumber');
     this.getListAccessory();
     this.getTourInfo();
     this.getBoatInfo();
@@ -55,10 +57,10 @@ export class VerifyInformationComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userInfo.firstName = sessionStorage.getItem('InputFirstName');
-    this.userInfo.lastName = sessionStorage.getItem('InputLastName');
-    this.userInfo.email = sessionStorage.getItem('InputEmail');
-    this.userInfo.message = sessionStorage.getItem('message');
+    this.userInfo.firstName = this.cookieService.get('InputFirstName');
+    this.userInfo.lastName = this.cookieService.get('InputLastName');
+    this.userInfo.email = this.cookieService.get('InputEmail');
+    this.userInfo.message = this.cookieService.get('message');
 
     this.userService.getAccountInfo().subscribe( res => {
       this.userInfoTotal = (res && res['value']) ? res['value'] : {};
@@ -71,7 +73,7 @@ export class VerifyInformationComponent implements OnInit {
   getListAccessory() {
     this.accessoryInfo = [];
     this.totalPriceAccessory = 0;
-    this.listAccessoryId = JSON.parse(sessionStorage.getItem('listAccessoryId'));
+    this.listAccessoryId = JSON.parse(this.cookieService.get('listAccessoryId'));
     for (let index = 0; index < this.listAccessoryId.length; index++) {
       this.commonService.getAccessoryById(this.listAccessoryId[index]).subscribe( res => {
         if (res && res['value']) {
@@ -102,6 +104,10 @@ export class VerifyInformationComponent implements OnInit {
   }
 
   bookSuccess() {
+    if(this.isInvalidPasspost || this.isInvalidPhoneNumber) {
+      alert('Thông tin không hợp lệ!', 'Yachttour');
+      return;
+    }
     if (!this.userInfo.address || ! this.userInfo.phoneNumber || !this.userInfo.passpost) {
       alert('Vui lòng nhập đầy đủ thông tin khi đặt tour!', 'Yachttour');
     } else {
@@ -117,17 +123,17 @@ export class VerifyInformationComponent implements OnInit {
           address: this.userInfo.address,
           passpost: this.userInfo.passpost.toString()
         },
-        listAccessoryId: JSON.parse(sessionStorage.getItem('listAccessoryId')),
+        listAccessoryId: JSON.parse(this.cookieService.get('listAccessoryId')),
         message: this.userInfo.message,
         tourId: this.activatedRoute.snapshot.queryParams.tourId
       };
+
       if (!params.contact.phoneNumber) {
         delete params.contact.phoneNumber;
       }
       this.commonService.bookReservation(params).subscribe( res => {
         this.popupBookSuccess = true;
       }, err => {
-        this.popupBookSuccess = false;
         alert(getMessageCodeError(err), 'Yachttour');
       });
     }
@@ -139,5 +145,21 @@ export class VerifyInformationComponent implements OnInit {
 
   reCheckTour() {
     history.back();
+  }
+
+  checkIsPhonenumber(e) {
+    this.isInvalidPhoneNumber = false;
+    let regex = /^\d+$/;
+    if(!regex.test(e)) {
+      this.isInvalidPhoneNumber = true;
+    }
+  }
+
+  checkIsPassport(e) {
+    this.isInvalidPasspost = false;
+    let regex = /^\d+$/;
+    if(!regex.test(e)) {
+      this.isInvalidPasspost = true;
+    }
   }
 }

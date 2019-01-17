@@ -83,15 +83,7 @@
                 color: black !important;
             }
             .inner-description {
-                p::after {
-                    content: "...";
-                    display: inline-block;
-                    width: 3px;
-                    height: 3px;
-                }
-                // span {
-                //     display: none;
-                // }
+
             }
         }
         .danh-gia {

@@ -24,7 +24,7 @@
                                                 <div class="section">
                                                     <div class="booking-menu-left">
                                                         <div class="details-information">
-                                                            <h4>Chi tiết đặt phòng của bạn</h4>
+                                                            <h4>Chi tiết đặt tour của bạn</h4>
                                                             <p>
                                                                 <span>Thông tin tour : </span>
                                                                 <span class="value">{{ tourInfo?.name }}</span>
@@ -122,15 +122,25 @@
                                                         </div>
                                                     </div>
                                                     <div class="row input-field">
-                                                        <div class="col-sm-4">
-                                                            <span>Điện thoại/mobile (ĐTDĐ) *</span>
-                                                            <input type="number" [(ngModel)]="userInfo.phoneNumber">
+                                                        <div class="row col-sm-12">
+                                                            <span style="display: block; margin-left: 16px">Điện thoại/mobile (ĐTDĐ) *</span>
+                                                            <div class="col-sm-4">
+                                                                <input type="text" [(ngModel)]="userInfo.phoneNumber" (keyup)="checkIsPhonenumber(userInfo.phoneNumber)">
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                              <span style="color: red; font-weight: normal !important; margin-top: 5px" *ngIf="isInvalidPhoneNumber">SĐT không hợp lệ</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row input-field">
-                                                        <div class="col-sm-4">
-                                                            <span>CMTND/passport *</span>
-                                                            <input type="number" [(ngModel)]="userInfo.passpost">
+                                                        <div class="row col-sm-12">
+                                                            <span style="display: block; margin-left: 16px">CMTND/passport *</span>
+                                                            <div class="col-sm-4">
+                                                                <input type="text" [(ngModel)]="userInfo.passpost" (keyup)="checkIsPassport(userInfo.passpost)">
+                                                            </div>
+                                                            <div class="col-sm-6">
+                                                                <span style="color: red; font-weight: normal !important; margin-top: 5px" *ngIf="isInvalidPasspost">CMTND/passport không hợp lệ</span>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -180,7 +190,7 @@
     </section>
     <!-- END / ROOMS -->
 
-    <dx-popup class="popup" [width]="600" [height]="400" [showTitle]="true" [title]="'Yachttour thông báo'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="popupBookSuccess">
+    <dx-popup class="popup" [width]="'60%'" [height]="'50%'" [showTitle]="true" [title]="'Yachttour'" [showCloseButton]="false" [dragEnabled]="false" [closeOnOutsideClick]="false" [(visible)]="popupBookSuccess">
         <div *dxTemplate="let data of 'content'">
             <app-book-success (closePopup)="closePopup()"></app-book-success>
         </div>

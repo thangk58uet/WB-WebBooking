@@ -28,11 +28,11 @@ export class LoginService {
     return new Promise((resolve, reject) => {
       this.doLogin(loginInfo).subscribe((data) => {
         this.isLogin = true;
-        sessionStorage.setItem('token', data.json().value.accessToken);
+
         this.cookieService.set('token', data.json().value.accessToken);
-        sessionStorage.setItem('firstName', data.json().value.firstName);
-        sessionStorage.setItem('lastName', data.json().value.lastName);
-        sessionStorage.setItem('email', data.json().value.email);
+        this.cookieService.set('firstName', data.json().value.firstName);
+        this.cookieService.set('lastName', data.json().value.lastName);
+        this.cookieService.set('email', data.json().value.email);
 
         // tslint:disable-next-line:no-unused-expression
         successCallback && successCallback(data.json().value);
@@ -55,7 +55,7 @@ export class LoginService {
   }
 
   getToken() {
-    return (sessionStorage.getItem('token'));
+    return (this.cookieService.get('token'));
   }
 
   public register(params): Observable<Response> {

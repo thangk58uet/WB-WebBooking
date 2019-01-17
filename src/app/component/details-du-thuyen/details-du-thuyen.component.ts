@@ -118,9 +118,9 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   getUserInfo() {
-    this.userInfo.fullName = sessionStorage.getItem('firstName') + ' ' + sessionStorage.getItem('lastName');
-    this.userInfo.email = sessionStorage.getItem('email');
-    this.userInfo.phoneNumber = sessionStorage.getItem('phoneNumber');
+    this.userInfo.fullName = this.cookieService.get('firstName') + ' ' + this.cookieService.get('lastName');
+    this.userInfo.email = this.cookieService.get('email');
+    this.userInfo.phoneNumber = this.cookieService.get('phoneNumber');
   }
 
   getBoatTour(params?) {
@@ -259,7 +259,8 @@ export class DetailsDuThuyenComponent implements OnInit {
   }
 
   bookTour(price, id) {
-    sessionStorage.setItem('listAccessoryId', JSON.stringify(this.listAccessoryId));
+    this.listAccessoryId = this.listAccessoryId.sort();
+    this.cookieService.set('listAccessoryId', JSON.stringify(this.listAccessoryId));
     const date = this.dateBookBoat.toJSON().slice(0, 10);
     const tourId = id;
     const provinceId = this.detailBoat.province.id;
@@ -395,6 +396,7 @@ export class DetailsDuThuyenComponent implements OnInit {
         this.listAccessoryId.splice(index, 1);
       }
     }
+    console.log(this.listAccessoryId);
   }
 
   openPopupTourInfo(id, price, name) {
