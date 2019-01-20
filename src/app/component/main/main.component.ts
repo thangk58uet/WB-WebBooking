@@ -131,6 +131,7 @@ export class MainComponent implements OnInit {
       }
       for (let index = 0; index < this.listNewsDisplay.length; index++) {
         this.listNewsDisplay[index].linkImage = this.commonService.pathImage + this.listNewsDisplay[index].image.reference;
+        this.listNewsDisplay[index].description = this.listNewsDisplay[index].description.slice(0,100) + '...';
       }
     });
   }

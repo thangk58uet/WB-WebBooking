@@ -63,8 +63,8 @@
                                 <div class="col-lg-4 col-md-4 col-sm-6 col-xs-6 uu-dai-1" *ngFor="let item of listNewsDisplay; let i = index" [ngClass]="i%2 === 0 ? 'padding-right-8' : 'padding-left-8'">
                                     <div class="wrap-box">
                                         <div class="box-img row">
-                                            <img src="{{ item?.linkImage }}" class="img-responsive col-sm-6" style="width: 40% !important">
-                                            <div class="text col-sm-6" style="padding-left: 0">
+                                            <img src="{{ item?.linkImage }}" class="img-responsive" style="width: 40% !important">
+                                            <div class="text col-sm-6" style="padding-left: 0; width: 60%">
                                                 <h4 style="margin-top: 0; color: #07c">{{ item?.title }}</h4>
                                                 <p>{{ item?.description }}</p>
                                                 <a (click)="xemUuDai(item?.id, item?.category?.id)">Xem ngay!</a>

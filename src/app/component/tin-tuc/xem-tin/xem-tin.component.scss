@@ -1,12 +1,21 @@
 .xem-tin {
+    h4,
+    p,
+    span {
+        font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+        color: black;
+    }
     .section {
         height: 500px;
     }
     .rooms {
-        text-align: unset !important;
+        text-align: left !important;
         .wrap-rooms .wrap-box .box-img {
             height: 240px;
         }
+    }
+    .content-news {
+        padding-left: 20px;
     }
 }
 
