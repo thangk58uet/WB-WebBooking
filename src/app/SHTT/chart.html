@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>Search</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <!-- MAIN STYLE -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="chart.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <script src="https://cdn.zingchart.com/zingchart.min.js"></script>
+    <script>
+        zingchart.MODULESDIR = "https://cdn.zingchart.com/modules/";
+        ZC.LICENSE = ["569d52cefae586f634c54f86dc99e6a9", "ee6b7db5b51705a13dc2339db3edaf6d"];
+    </script>
+
+</head>
+
+<body>
+    <div class="search-page">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="row">
+                <div class="col-sm-6 content-header-left">
+                    <span class="search"><i class="fa fa-align-justify" aria-hidden="true"></i>TÌM KIẾM</span>
+                </div>
+                <div class="col-sm-6 content-header-right">
+                    <span class="alert"><i class="fa fa-bell" aria-hidden="true"></i></span>
+                    <img src="./img/viet-nam.png" alt="">
+                    <span>Dennis Quốc <i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENU -->
+        <div class="menu">
+            <h1 class="text-logo">SHTT LOGO</h1>
+            <div class="menu-content">
+                <!-- MENU-1 -->
+                <div class="menu-parent">
+                    <div class="menu-parent-title">
+                        <h4>KHAI THÁC</h4>
+                    </div>
+                    <div class="menu-child">
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-search" aria-hidden="true"></i>Tìm kiếm</a>
+                        </div>
+                        <div class="menu-child-item active">
+                            <a href=""><i class="fa fa-bar-chart" aria-hidden="true"></i>Phân tích</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-address-card" aria-hidden="true"></i>Đo lường sự tương đồng</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-address-book" aria-hidden="true"></i>Đối thủ cạnh tranh</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Cảnh báo sáng chế</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-plus" aria-hidden="true"></i>Xu hướng công nghệ</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-bullseye" aria-hidden="true"></i>Cơ hội công nghệ</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-pie-chart" aria-hidden="true"></i>Công nghệ phụ trợ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-parent">
+                    <div class="menu-parent-title">
+                        <h4>QUẢN LÝ</h4>
+                    </div>
+                    <div class="menu-child">
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-bars" aria-hidden="true"></i>Danh mục IPC</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-table" aria-hidden="true"></i>Danh mục CPC</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a href=""><i class="fa fa-list" aria-hidden="true"></i>Danh mục quốc gia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-footer row">
+                <div class="col-sm-3"><i class="fa fa-cog" aria-hidden="true"></i></div>
+                <div class="col-sm-3"><i class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+                <div class="col-sm-3"><i class="fa fa-bullseye" aria-hidden="true"></i></div>
+                <div class="col-sm-3"><i class="fa fa-power-off" aria-hidden="true"></i></div>
+            </div>
+        </div>
+
+        <!-- LAYOUT CONTENT -->
+        <div class="layout-content">
+            <div class="box-search row">
+                <div class="col-sm-10 input-text">
+                    <input type="text">
+                    <img src="img/Group 121.png" srcset="img/Group 121@2x.png 2x,
+                        img/Group 121@3x.png 3x" class="icon-search">
+                </div>
+                <div class="col-sm-2 search-text">
+                    <span>Tìm kiếm <i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+                </div>
+            </div>
+
+            <div class="action-search row">
+                <div class="action-search-center">
+                    <div class="text-left active"> <i class="fa fa-bar-chart" aria-hidden="true"></i> Phân tích</div>
+                    <div class="text-right"><i class="fa fa-search" aria-hidden="true"></i>Kết quả tìm kiếm</div>
+                </div>
+            </div>
+
+            <div class="chart-content row">
+                <div class="col-sm-10 p-r-0 p-l-60">
+                    <div class="header-chart-info row">
+                        <div class="col-sm-2 invent-trend-text">
+                            <h4>Xu hướng sáng chế</h4>
+                        </div>
+
+                        <div class="col-sm-5 row legend p-r-0">
+                            <div class="col-sm-4">
+                                <img src="img/legend-red.png" srcset="img/legend-red 2x.png 2x,
+                                    legend-red 3x.png 3x" class="icon-search">
+                                <span>Đơn ưu tiên</span>
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="img/legend-blue.png" srcset="img/legend-blue 2x.png 2x,
+                                    legend-red 3x.png 3x" class="icon-search">
+                                <span>Đơn nộp</span>
+                            </div>
+                            <div class="col-sm-4">
+                                <img src="img/legend-green.png" srcset="img/legend-green 2x.png 2x,
+                                    legend-green 3x.png 3x" class="icon-search">
+                                <span>Đơn công bố</span>
+                            </div>
+                        </div>
+                        <div class="col-sm-5 row p-r-0">
+                            <div class="col-sm-1">
+                                <span>Từ</span>
+                            </div>
+                            <div class="col-sm-5">
+                                <form>
+                                    <div class="form-group">
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>August 2018</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-sm-1">
+                                <span>Đến</span>
+                            </div>
+                            <div class="col-sm-5">
+                                <form>
+                                    <div class="form-group">
+                                        <select class="form-control" id="exampleFormControlSelect1">
+                                            <option>May 2019</option>
+                                        </select>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="myChart"></div>
+                </div>
+                <div class="col-sm-2 invent-trend p-r-0 p-l-0">
+                    <p class="title">Xu hướng sáng chế</p>
+                    <p>Sáng chế được cấp</p>
+                    <p>Sáng chế tại nhà nước</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                    <p>Top 10 sáng chế</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        zingchart.render({
+            id: 'myChart',
+            data: {
+                'type': 'line',
+                'plot': {
+                    'aspect': 'spline'
+                },
+                'scale-x': {
+                    'labels': ['Aug 2018', 'Sep 2018', 'Nov 2018', 'Oct 2018', 'Dec 2018', 'Jan 2019', 'Feb 2019', 'Mar 2019', 'Apr 2019', 'May 2019']
+                },
+                'series': [{
+                    'values': [20000, 40000, 25000, 50000, 15000, 45000, 33000, 34000, 22000, 40000],
+                    // 'line-color': '#14BBD4'
+                }, {
+                    'values': [5000, 30000, 21000, 18000, 59000, 50000, 28000, 33000, 50000, 10000],
+                    // 'line-color': '#52C41A'
+                }, {
+                    'values': [30000, 5000, 18000, 21000, 33000, 41000, 29000, 15000, 30000, 22000],
+                    // 'line-color': '#F5222D'
+                }]
+            }
+        });
+    </script>
+
+</body>
+
+</html>

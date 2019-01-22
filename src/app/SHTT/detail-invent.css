@@ -1,0 +1,275 @@
+body * {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: #F0F2F5;
+    color: black;
+}
+
+.detail-invent .header {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 80px;
+    background: white;
+    margin-left: 350px;
+    z-index: 1;
+}
+
+.detail-invent .header .content-header-left {
+    padding: 20px 55px;
+}
+
+.detail-invent .header .content-header-left .search {
+    font-size: 32px;
+    color: black;
+    font-weight: 500;
+}
+
+.detail-invent .header .content-header-right {
+    padding: 30px 55px;
+    text-align: right;
+    font-size: 20px;
+}
+
+.detail-invent .header .content-header-right img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-top: -5px;
+}
+
+.detail-invent .header .content-header-right .alert {
+    color: #14BBD4;
+}
+
+.detail-invent .header .content-header-right .fa-sort-desc {
+    margin-left: 15px;
+}
+
+.detail-invent .header .content-header-left .fa-align-justify {
+    font-weight: 600;
+    margin-right: 24px;
+}
+
+.detail-invent .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 350px;
+    background: #2A3F54;
+    z-index: 999;
+    color: white;
+}
+
+.detail-invent .menu .text-logo {
+    text-align: center;
+    font-size: 40px;
+    font-weight: 500;
+    padding: 15px 0 45px;
+}
+
+.detail-invent .menu .menu-content .menu-parent-title {
+    margin-left: 35px;
+    font-weight: 500;
+    margin-bottom: 30px;
+}
+
+.detail-invent .menu .menu-content .menu-parent:nth-child(1) {
+    margin-bottom: 56px;
+}
+
+.detail-invent .menu .menu-content .menu-parent .menu-child .menu-child-item i {
+    font-size: 14px;
+    margin-right: 10px;
+    width: 20px;
+}
+
+.detail-invent .menu .menu-content .menu-parent .menu-child .menu-child-item a {
+    margin-left: 20px;
+    padding: 15px;
+    color: #959FAA;
+    display: block;
+    cursor: pointer;
+}
+
+.detail-invent .menu .menu-content .menu-parent .menu-child .menu-child-item a:hover {
+    text-decoration: unset;
+}
+
+.detail-invent .menu .menu-content .menu-parent .menu-child .active {
+    background: #1890FF;
+}
+
+.detail-invent .menu .menu-content .menu-parent .menu-child .active a {
+    color: white;
+}
+
+.detail-invent .menu .menu-footer {
+    position: fixed;
+    background: #162D44;
+    left: 0;
+    bottom: 0;
+    height: 45px;
+    width: 364px;
+    padding: 12px;
+}
+
+.detail-invent .menu .menu-footer div {
+    text-align: center;
+}
+
+.detail-invent .menu .menu-content .menu-footer i {
+    color: white;
+}
+
+.detail-invent .layout-content {
+    margin-left: 350px;
+    margin-top: 105px;
+}
+
+.detail-invent .layout-content .detail-invent-content {
+    background: white;
+}
+
+.detail-invent .layout-content .detail-invent-content .header-detail-invent-content {
+    padding: 20px;
+}
+
+.detail-invent .layout-content .detail-invent-content .header-detail-invent-content img {
+    margin-right: 20px;
+    margin-top: -8px;
+}
+
+.detail-invent .layout-content .detail-invent-content .header-detail-invent-content .title-code {
+    color: #14BBD4;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table {
+    width: 100%;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table td {
+    border-right: 1px solid #8995A0;
+    border-top: 1px solid black;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table td:first-child {
+    width: 30%;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-info .row {
+    margin: 10px 30px;
+    padding: 15px 0;
+    border-bottom: 1px solid #dadada;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-info .text-left {
+    color: #14BBD4;
+    font-weight: 500;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-info .text-right {
+    font-weight: 500;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table td:nth-child(2) {
+    width: 55%;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-detail-description {
+    padding: 24px;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-detail-description .title-description {
+    color: black;
+    font-weight: 500;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-detail-description .content-description,
+.detail-invent .layout-content .main-detail-invent-content table .invent-detail-description .type-description {
+    margin-top: 10px;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-detail-description .content-description h4 {
+    margin: 20px 0;
+    color: #14BBD4;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-detail-description .type-description h4 {
+    margin: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .invent-detail-description .type-description .list-type span {
+    color: #14BBD4;
+    border: 1px solid #14BBD4;
+    padding: 5px 15px;
+    margin: 6px 4px;
+    display: inline-block;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table td:last-child {
+    width: 15%;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .key-word {
+    padding: 24px;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .key-word p {
+    padding: 8px 10px;
+    display: inline-block;
+}
+
+.detail-invent .layout-content .main-detail-invent-content table .key-word .title-key-word {
+    color: #14BBD4;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 25px;
+}
+
+.p-l-0 {
+    padding-left: 0;
+}
+
+.p-r-0 {
+    padding-right: 0;
+}
+
+.b-b-unset {
+    border-bottom: unset !important;
+}
+
+.text-highlight {
+    background: red;
+    color: white;
+    padding: 2px 5px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.t-a-r {
+    text-align: right
+}
+
+.m-t-6 {
+    margin-top: 6px;
+}
+
+.p-l-38 {
+    padding-left: 38px;
+}

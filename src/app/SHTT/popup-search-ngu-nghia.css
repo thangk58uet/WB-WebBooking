@@ -1,0 +1,37 @@
+.body {
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: #F0F2F5;
+    color: black;
+}
+
+.popup-search-ngu-nghia {
+    width: 350px;
+    border: 1px solid #959FAA;
+    background: white;
+}
+
+.popup-search-ngu-nghia .header {
+    background: #14BBD4;
+    color: white;
+    padding: 10px;
+}
+
+.popup-search-ngu-nghia .header span {
+    font-size: 16px;
+}
+
+.popup-search-ngu-nghia .header .button-close {
+    float: right;
+}
+
+.popup-search-ngu-nghia .key-search .list-key-search h4 {
+    font-weight: bold;
+}
+
+.popup-search-ngu-nghia .key-search .icon-dropdown i {
+    padding: 13px 10px;
+}
+
+.disable-text {
+    color: #959FAA;
+}

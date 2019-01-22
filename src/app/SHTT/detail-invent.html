@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Search</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="detail-invent.css">
+
+    <!-- SCRIPT -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        window.jQuery || document.write(decodeURIComponent('%3Cscript src="js/jquery.min.js"%3E%3C/script%3E'))
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr/event.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr/supplemental.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cldrjs/0.4.4/cldr/unresolved.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/message.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/number.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/currency.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/globalize/1.1.1/globalize/date.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn3.devexpress.com/jslib/18.2.4/css/dx.common.css" />
+    <link rel="dx-theme" data-theme="generic.light" href="https://cdn3.devexpress.com/jslib/18.2.4/css/dx.light.css" />
+    <script src="https://cdn3.devexpress.com/jslib/18.2.4/js/dx.all.js"></script>
+</head>
+
+<body>
+    <div class="detail-invent">
+
+        <!-- HEADER -->
+        <div class="header">
+            <div class="row">
+                <div class="col-sm-6 content-header-left">
+                    <span class="search"><i class="fa fa-align-justify" aria-hidden="true"></i>TÌM KIẾM</span>
+                </div>
+                <div class="col-sm-6 content-header-right">
+                    <span class="alert"><i class="fa fa-bell" aria-hidden="true"></i></span>
+                    <img src="./img/viet-nam.png" alt="">
+                    <span>Dennis Quốc <i class="fa fa-sort-desc" aria-hidden="true"></i></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- MENU -->
+        <div class="menu">
+            <h1 class="text-logo">SHTT LOGO</h1>
+            <div class="menu-content">
+                <!-- MENU-1 -->
+                <div class="menu-parent">
+                    <div class="menu-parent-title">
+                        <h4>KHAI THÁC</h4>
+                    </div>
+                    <div class="menu-child">
+                        <div class="menu-child-item active">
+                            <a><i class="fa fa-search" aria-hidden="true"></i>Tìm kiếm</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-bar-chart" aria-hidden="true"></i>Phân tích</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-address-card" aria-hidden="true"></i>Đo lường sự tương đồng</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-address-book" aria-hidden="true"></i>Đối thủ cạnh tranh</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-exclamation-triangle" aria-hidden="true"></i>Cảnh báo sáng chế</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-plus" aria-hidden="true"></i>Xu hướng công nghệ</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-bullseye" aria-hidden="true"></i>Cơ hội công nghệ</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-pie-chart" aria-hidden="true"></i>Công nghệ phụ trợ</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="menu-parent">
+                    <div class="menu-parent-title">
+                        <h4>QUẢN LÝ</h4>
+                    </div>
+                    <div class="menu-child">
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-bars" aria-hidden="true"></i>Danh mục IPC</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-table" aria-hidden="true"></i>Danh mục CPC</a>
+                        </div>
+                        <div class="menu-child-item">
+                            <a><i class="fa fa-list" aria-hidden="true"></i>Danh mục quốc gia</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="menu-footer row">
+                <div class="col-sm-3"><i class="fa fa-cog" aria-hidden="true"></i></div>
+                <div class="col-sm-3"><i class="fa fa-arrows-alt" aria-hidden="true"></i></div>
+                <div class="col-sm-3"><i class="fa fa-bullseye" aria-hidden="true"></i></div>
+                <div class="col-sm-3"><i class="fa fa-power-off" aria-hidden="true"></i></div>
+            </div>
+        </div>
+
+        <!-- LAYOUT CONTENT -->
+        <div class="layout-content">
+            <div class="detail-invent-content">
+                <div class="header-detail-invent-content row">
+                    <div class="col-sm-6 p-l-38">
+                        <img src="img/back.png" srcset="img/back 2x.png 2x,
+                            img/back 3x.png 3x" class="icon-back cursor-pointer">
+                        <span class="title-code">DE20201010199520U21</span>
+                    </div>
+                    <div class="col-sm-6 t-a-r m-t-6">
+                        <img src="img/pdf.png" srcset="img/pdf 2x.png 2x,
+                            img/pdf 3x.png 3x" class="icon-pdf cursor-pointer">
+                        <span class="">Original Document</span>
+                    </div>
+
+                </div>
+                <div class="main-detail-invent-content">
+                    <table class="detail-invent-table">
+                        <tr class="row">
+                            <td class="col-sm-4" valign="top">
+                                <div class="invent-info">
+                                    <div class="row">
+                                        <div class="col-sm-6 p-l-0">
+                                            <span class="text-left">Tác giả</span>
+                                        </div>
+                                        <div class="col-sm-6 p-r-0">
+                                            <span class="text-right">JohnStep Weibo Intel Light</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 p-l-0">
+                                            <span class="text-left">Chủ sở hữu</span>
+                                        </div>
+                                        <div class="col-sm-6 p-r-0">
+                                            <span class="text-right">JohnStep Weibo Light Itel Co.Ltd</span>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6 p-l-0">
+                                            <span class="text-left">Ngày công bố</span>
+                                        </div>
+                                        <div class="col-sm-6 p-r-0">
+                                            <span class="text-right">24/03/2017</span>
+                                        </div>
+                                    </div>
+                                    <div class="row b-b-unset">
+                                        <div class="col-sm-6 p-l-0">
+                                            <span class="text-left">Ngày nộp hồ sơ</span>
+                                        </div>
+                                        <div class="col-sm-6 p-r-0">
+                                            <span class="text-right">12/12/2015</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="col-sm-6" valign="top">
+                                <div class="invent-detail-description">
+                                    <div class="title-description">
+                                        <span>Connection structures of <span class="text-highlight">LED light</span> structures and this <span class="text-highlight">LED light</span> source</span>
+                                    </div>
+                                    <div class="content-description">
+                                        <h4>Tóm tắt</h4>
+                                        <p>Technisches GebietDie vorliegende Erfindung betrifft ein LED-Leuchtmittel sowie eine LED-Lampe mit einem solchen LED-Leuchtmittel.Stand der TechnikLED-Leuchtmittel zum Einsatz in LED-Lampen, insbesondere in LED-Retrofitlampen,
+                                            werden aufgrund ihrer hohen Energieeffizienz immer beliebter als Ersatz für klassische Leuchtmittel wie Halogen- oder Glühlampen. LED-Leuchtmittel weisen jedoch im Vergleich zu klassischen Leuchtmitteln mehrere
+                                            Nachteile auf.So haben LED-Leuchtmittel eine deutlich schlechtere Abstrahlcharakteristik und eine reduzierte Beleuchtungsqualität. Bekannte LED-Leuchtmittel weisen beispielsweise ein Lichtflackern bei einer
+                                            Frequenz von 100 Hz auf. Zudem ist der abgedeckte Raumwinkel meist wesentlich geringer als bei klassischen Leuchtmitteln und/oder die Abstrahlung ist räumlich stark inhomogen. Auch eine schlechte Halterung bzw.
+                                            Justage der Leuchtdiodenchips innerhalb des LED-Leuchtmittels kann zu einer Reduktion der Beleuchtungsqualität führen.Ein weiterer Nachteil ist die derzeitige Größe der LED-Leuchtmittel bzw. der LED-Lampen.
+                                            So wird bei LED-Leuchtmitteln zusätzlich Treiberelektronik benötigt, die meist im Sockel der LED-Lampen und/oder in Anschlussbereichen der LED-Leuchtmittel untergebracht ist. Hierdurch sind herkömmliche LED-Lampen
+                                            relativ groß ausgebildet. Die für die Treiberelektronik und/oder die Leuchtdiodenchips erforderlichen Kühlkörper sind ein weiterer Grund für sperrige und teure LED-Leuchtmittel. Eine schlechte Kühlung reduziert
+                                            aber die Lebensdauer der LED-Lampe und die Beleuchtungsqualität.Die Druckschrift WO 2012/031533 A1 beschreibt eine LED-Lampe bei der eine omnidirektionale Abstrahlcharakteristik durch die Verwendung von LED-Filamenten
+                                            gewährleistet wird. Zudem ist die Treiberelektronik in dem Lampensockel der LED-Lampe angeordnet. Hierdurch ist die LED-Lampe insgesamt relativ groß ausgebildet.Die Druckschrift JP 2013-222782 A beschreibt ein
+                                            LED-Leuchtmittel bei dem Leuchtdiodenchips mittels sogenannter Nacktchipmontage (Englisch: chip-on-board assembly, COB) auf eine Leiterplatte aufgebracht sind. Die Abstrahlcharakteristik des LED-Leuchtmittels
+                                            entspricht jedoch der einseitigen Lambert'schen Abstrahlung der Leuchtdiodenchips und ist damit stark inhomogen. Zudem tritt das bereits erwähnte 100 Hz-Flackern auf.Darstellung der ErfindungAusgehend von dem
+                                            bekannten Stand der Technik ist es eine Aufgabe der vorliegenden Erfindung, ein kompaktes und kostengünstig herstellbares LED-Leuchtmittel bereitzustellen. Ferner soll eine LED-Lampe mit einem solchen LED-Leuchtmittel
+                                            bereitgestellt werden.Die Aufgaben werden durch ein LED-Leuchtmittel und eine LED-Lampe mit den Merkmalen der unabhängigen Patentansprüche gelöst. Vorteilhafte Weiterbildungen ergeben sich aus den Unteransprüchen,
+                                            der Beschreibung, den Figuren sowie den im Zusammenhang mit den Figuren beschriebenen Ausführungsbeispielen.Entsprechend wird ein LED-Leuchtmittel vorgeschlagen, aufweisend einen Glaskolben, ein Leuchtmodul
+                                            und eine Treiberelektronik für das Leuchtmodul. Das Leuchtmodul weist wenigstens einen Leuchtdiodenchip auf, der mittels Nacktchipmontage auf eine Leiterplatte aufgebracht ist. Das Leuchtmodul und die Treiberelektronik
+                                            sind in dem Glaskolben, insbesondere in einen Innenraum des Glaskolbens, aufgenommen.Die Nacktchipmontage von Leuchtdiodenchips ermöglicht zudem die kostengünstige Herstellung von kompakten und kleinen elektrischen
+                                            Modulen. Hierbei und im Folgenden ist unter dem Begriff "Nacktchipmontage" die Direktmontage von Halbleiterchips auf eine Leiterplatte, insbesondere unter Verwendung von Bonddrähten, zu verstehen. Die Nacktchipmontage
+                                            erfolgt bevorzugt mit ungehäusten Halbleiterchips und/oder mit sogenannten chip-scale Bauteilen, bei denen das Gehäuse maximal 20 % mehr als die Fläche des nackten Halbleiterchips ausmacht.Durch das Einbringen
+                                            der Treiberelektronik in den Glaskolben in Kombination mit der Nacktchipmontage der Leuchtdiodenchips kann somit ein kompaktes LED-Leuchtmittel auf kostengünstige Weise bereitgestellt werden.Bevorzugt weist
+                                            das Leuchtmodul eine Vielzahl von Leuchtdiodenchips auf. Die Leuchtdiodenchips können beispielsweise seriell miteinander verschaltet sein. Ferner kann das LED-Leuchtmittel eine Vielzahl von Leuchtmodulen aufweisen.
+                                            In einer bevorzugten Ausführungsform enthält das LED-Leuchtmittel ein einziges Leuchtmodul mit einer Vielzahl von Leuchtdiodenchips.Gemäß einer bevorzugten Ausführungsform des LED-Leuchtmittels ist zumindest
+                                            ein Teil der Treiberelektronik, insbesondere die gesamte Treiberelektronik, mittels Nacktchipmontage auf die Leiterplatte aufgebracht. Die Treiberelektronik weist insbesondere elektronische Komponenten auf.
+                                            Bevorzugt ist zumindest ein Teil der elektronischen Komponenten, insbesondere alle elektronischen Komponenten, der Treiberelektronik mittels Nacktchipmontage auf die Leiterplatte aufgebracht. Alternativ oder
+                                            zusätzlich ist es möglich, dass zumindest ein Teil der Treiberelektronik auf eine zusätzliche Platine aufgebracht ist. Ferner kann zumindest ein Teil der elektronischen Komponenten mittels Oberflächenmontage
+                                            auf die Platine und/oder die Leiterplatte aufgebracht sein (Englisch: surface mounted device, SMD) und/oder mittels Drahtverbindungen elektrisch leitend mit dem Leuchtdiodenchip verbunden sein.Gemäß einer bevorzugten
+                                            Ausführungsform des LED-Leuchtmittels umfasst die Treiberelektronik einen Glättungskondensator, der mit dem wenigstens einen Leuchtdiodenchip parallel geschaltet ist. Im Fall von mehreren Leuchtdiodenchips ist
+                                            jeder Leuchtdiodenchip bevorzugt parallel zu dem Glättungskondensator geschaltet. Durch den Glättungskondensator wird ein Energiespeicher in das System eingeführt. Hierdurch kann ein Flackern (auch Lichtflimmern
+                                            genannt), insbesondere das 100 Hz-Flackern, des von dem zumindest einen Leuchtdiodenchip emittierten Lichts wesentlich reduziert oder sogar ganz verhindert werden und so die Abstrahlcharakteristik deutlich verbessert
+                                            werden.Der Glättungskondensator kann auf der Platine der Treiberelektronik und/oder die Leiterplatte des Leuchtmoduls, insbesondere mittels Oberflächenmontage, aufgebracht sein. Alternativ kann der Glättungskondensator
+                                            mittels Oberflächenmontage oder Nacktchipmontage auf die Leiterplatte des Leuchtmoduls oder eine weitere Platine aufgebracht sein. Bei der Oberflächenmontage kommt bevorzugt ein Laserlötverfahren zum Einsatz,
+                                            wodurch die Verwendung eines Reflow-Ofens vermieden werden kann. Es ist ferner möglich, dass der Glättungskondensator als einfacher Klemmkondensator an der Leiterplatte des Leuchtmoduls angebracht ist. Alternativ
+                                            kann der Glättungskondensator mittels eines elektrisch leitfähigen Klebers und/oder Bonddrähten aufgebracht werden.Falls der Glättungskondensator und/oder die weiteren elektronischen Bauteile der Treiberelektronik
+                                            mittels Oberflächenmontage auf die Platine (bzw. die Leiterplatte) aufgebracht werden, werden der Glättungskondensator und/oder die elektronischen Bauteile bevorzugt vor dem Aufbringen der Leuchtdiodenchips
+                                            und einem eventuellen Vergießen der Leuchtdiodenchips mit einem Vergussmaterial durchgeführt. Alternativ oder zusätzlich kann die Oberflächenmontage in einem gemeinsamen Verfahrensschritt mit dem Anbringen von
+                                            elektrischen Anschlüssen zur elektrischen Kontaktierung des Leuchtmoduls erfolgen, wodurch die Herstellung des LED-Leuchtmittels noch weiter vereinfacht wird.Bei dem Glättungskondensator kann es sich um einen
+                                            Keramikvielschicht-(Chip-)Kondensator handeln, dessen Kapazität beispielsweise in einem Bereich von 1 µm liegt. Alternativ kann ein Elektrolytkondensator zum Einsatz kommen, der hohe Kapazitäten ermöglicht.Die
+                                            Treiberelektronik kann eine Gleichrichterschaltung (Englisch: rectifier circuit) umfassen, die dazu eingerichtet ist, eine AC-Netzspannung in eine DC-Betriebsspannung des LED-Leuchtmittels umzuwandeln. Es ist
+                                            möglich, dass für die Gleichrichterschaltung die Leuchtdiodenchips, insbesondere ausschließlich die Leuchtdiodenchips, als Gleichrichtungskomponenten verwendet werden. Die Treiberelektronik kann ferner einen
+                                            Transistor, der zur Stromregulierung und/oder Strombegrenzung des durch die Leuchtdiodenchips fließenden Stroms eingerichtet ist, umfassen.Gemäß zumindest einer Ausführungsform des LED-Leuchtmittels beträgt
+                                            eine Dicke der Leiterplatte höchstens 400 µm. Bevorzugt beträgt die Dicke höchstens 300 µm, besonders bevorzugt höchstens 200 µm. Eine geringe Dicke ist insbesondere für eine gleichmäßige Abstrahlungscharakteristik
+                                            vorteilhaft. Hierbei und im Folgenden ist die Dicke der Leiterplatte deren Ausdehnung entlang einer vertikalen Richtung der Leiterplatte. Die vertikale Richtung läuft senkrecht zu lateralen Richtungen der Leiterplatte,
+                                            entlang derer sich diese erstreckt.In den lateralen Richtungen weist die Leiterplatte eine Breite und eine senkrecht zur Breite verlaufende Länge, die bevorzugt größer als die Breite ist, auf. Die Leiterplatte
+                                            ist bevorzugt derart in dem Glaskolben gehaltert, dass die Länge entlang einer Symmetrieachse des Glaskolbens verläuft.Die lateralen Richtungen spannen eine Vorderseite und eine Rückseite der Leiterplatte auf.
+                                            Die Leuchtdiodenchips sind auf der Vorderseite und/oder auf der Rückseite montiert.Gemäß einer bevorzugten Ausführungsform des LED-Leuchtmittels ist die Leiterplatte lichtdurchlässig ausgebildet. Das heißt,
+                                            wenigstens 50 %, bevorzugt wenigstens 70 %, des von dem zumindest einen Leuchtdiodenchip emittierten und auf die Leiterplatte auftreffenden Lichts wird durch die
+                                        </p>
+                                    </div>
+                                    <div class="type-description">
+                                        <h4>Phân loại</h4>
+                                        <div class="list-type">
+                                            <span>H04N 21/222    20110101AFI20180209BHEP</span>
+                                            <span>H04N 21/222    20110101AFI20180209BHEP</span>
+                                            <span>H04N 21/222    20110101AFI20180209BHEP</span>
+                                            <span>H04N 21/222    20110101AFI20180209BHEP</span>
+                                            <span>H04N 21/222    20110101AFI20180209BHEP</span>
+                                            <span>H04N 21/222    20110101AFI20180209BHEP</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+
+                            <td class="col-sm-2" valign="top">
+                                <div class="key-word">
+                                    <h4 class="title-key-word">Từ khóa</h4>
+                                    <div>
+                                        <p class="text-highlight">lead light (145)</p>
+                                        <p>Weibo (154)</p>
+                                        <p>JohnStep (150)</p>
+                                        <p>Intel Light (100)</p>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

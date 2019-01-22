@@ -1,0 +1,62 @@
+.body {
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+    background: #F0F2F5;
+    color: black;
+}
+
+.popup-search-tu-dong-nghia {
+    width: 350px;
+    border: 1px solid #959FAA;
+    background: white;
+}
+
+.popup-search-tu-dong-nghia .header {
+    background: #14BBD4;
+    color: white;
+    padding: 10px;
+}
+
+.popup-search-tu-dong-nghia .header span {
+    font-size: 16px;
+}
+
+.popup-search-tu-dong-nghia .header .button-close {
+    float: right;
+}
+
+.popup-search-tu-dong-nghia .key-search .list-key-search h4 {
+    font-weight: bold;
+}
+
+.popup-search-tu-dong-nghia .key-search .icon-dropdown i {
+    padding: 13px 10px;
+}
+
+.popup-search-tu-dong-nghia .key-search .list-key-search i {
+    color: #52C41A;
+    margin-right: 10px;
+}
+
+.popup-search-tu-dong-nghia .button-search {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+}
+
+.popup-search-tu-dong-nghia .button-search span {
+    color: #14BBD4;
+    border: 1px solid #14BBD4;
+    padding: 5px 26px;
+    font-weight: 600;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.disable-text {
+    color: #959FAA;
+}
+
+.disable-icon-check i {
+    color: #D0D0D0 !important;
+}
