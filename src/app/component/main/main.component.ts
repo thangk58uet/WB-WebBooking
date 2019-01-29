@@ -125,13 +125,14 @@ export class MainComponent implements OnInit {
       this.listNews = (res && res['value'] ? res['value'].list : []);
       this.listNewsDisplay = [];
       for ( let index = 0; index < this.listNews.length; index++) {
-        if (this.listNews[index].isHighlight === true) {
+        if (index < 2) {
           this.listNewsDisplay.push(this.listNews[index]);
         }
       }
       for (let index = 0; index < this.listNewsDisplay.length; index++) {
         this.listNewsDisplay[index].linkImage = this.commonService.pathImage + this.listNewsDisplay[index].image.reference;
-        this.listNewsDisplay[index].description = this.listNewsDisplay[index].description.slice(0,100) + '...';
+        this.listNewsDisplay[index].description = this.listNewsDisplay[index].description.slice(0,60) + '...';
+        this.listNewsDisplay[index].title = this.listNewsDisplay[index].title.slice(0,50) + '...';
       }
     });
   }
